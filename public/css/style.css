@@ -6,7 +6,7 @@
     -moz-background-size:cover;
     -o-background-size:cover;
     -ms-background-size:cover;*/
-    min-height: 170px;
+    min-height: 130px;
 }
 
 iframe {
@@ -123,14 +123,18 @@ input:checked + .slider:before {
     padding-bottom: 8px;
 }
 .navbar-default .navbar-collapse, .navbar-default .navbar-form{
-    padding-top: 130px;
+    padding-top: 90px;
     padding-right: 20px;
 }
 .navbar-default .navbar-nav>li>a, .navbar-default .navbar-text{
-    color: #ffffff;
+    color: #5c5c5c;
 }
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-    color: #ffffff;
+    color: #000000;
+    background-color: transparent;
+}
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    color: #000000;
     background-color: transparent;
 }
 

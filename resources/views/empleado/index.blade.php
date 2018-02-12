@@ -356,5 +356,11 @@
 
   			
 
-<script type="text/javascript" src="{{ asset('js/peticion.js') }}"></script>
+@endsection
+
+@section('scripts')
+	{{-- expr --}}
+	<script type="text/javascript" src="{{ asset('js/peticion.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/vistarapida.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/forms.js') }}"></script>
 @endsection
