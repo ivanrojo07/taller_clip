@@ -18,21 +18,16 @@ Route::get('/', function () {
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
-Route::get('personal', 'Personal\PersonalController@search');
+Route::get('prospectos', 'Personal\PersonalController@search');
 // Route::get('clientes', 'Personal\PersonalController@clientes');
 // Route::get('prospectos', 'Personal\PersonalController@prospectos');
+Route::resource('clientes', 'Cliente\ClienteController');
 Route::resource('personals', 'Personal\PersonalController');
 Route::resource('personals.datoslaborales', 'Personal\PersonalDatosLabController');
 Route::resource('personals.referenciapersonales', 'Personal\PersonalRefPersonalController');
 Route::resource('personals.datosbeneficiario', 'Personal\PersonalBeneficiarioController');
 Route::resource('personals.producto','Personal\PersonalProductoController');
 Route::resource('personals.crm','Personal\PersonalCRMController');
-Route::resource('productos','Producto\ProductController');
-
-Route::get('import-export-csv-excel',array('as'=>'excel.import','uses'=>'FileController@importExportExcelORCSV'));
-Route::post('import-csv-excel',array('as'=>'import-csv-excel','uses'=>'FileController@importFileIntoDB'));
-Route::get('download-excel-file/{type}', array('as'=>'excel-file','uses'=>'FileController@downloadExcelFile'));
-
 
 Route::get('buscarcliente','Personal\PersonalController@buscar');
 
