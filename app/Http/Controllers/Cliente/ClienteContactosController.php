@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Cliente;
 
 use App\Cliente;
-use Illuminate\Http\Request;
+use App\ClienteContactos;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use UxWeb\SweetAlert\SweetAlert as Alert;
+
 
 class ClienteContactosController extends Controller
 {
@@ -13,9 +16,11 @@ class ClienteContactosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Cliente $cliente)
     {
         //
+        $contactos = $cliente->contactos;
+        return view('contacto.index',['cliente'=>$cliente,'contactos'=>$contactos]);
     }
 
     /**
@@ -23,9 +28,11 @@ class ClienteContactosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Cliente $cliente)
     {
         //
+        $contacto= new ClienteContactos;
+        return view('contacto.create',['cliente'=>$cliente, 'contacto'=>$contacto,'edit'=>false]);
     }
 
     /**
@@ -34,9 +41,12 @@ class ClienteContactosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Cliente $cliente,Request $request)
     {
         //
+        $contacto = ClienteContactos::create($request->all());
+        Alert::success('Contacto creado con éxito');
+        return redirect()->route('clientes.contactos.index',['cliente'=>$cliente]);
     }
 
     /**
@@ -45,9 +55,11 @@ class ClienteContactosController extends Controller
      * @param  \App\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function show(Cliente $cliente)
+    public function show(Cliente $cliente,ClienteContactos $contacto)
     {
         //
+        // $contacto = ClienteContactos::findOrFail($contacto);
+        return view('contacto.view',['cliente'=>$cliente,'contacto'=>$contacto]);
     }
 
     /**
@@ -56,9 +68,11 @@ class ClienteContactosController extends Controller
      * @param  \App\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cliente $cliente)
+    public function edit(Cliente $cliente, ClienteContactos $contacto)
     {
         //
+        // $contacto = ClienteContactos::findOrFail($contacto);
+        return view('contacto.create',['cliente'=>$cliente,'contacto'=>$contacto,'edit'=>true]);
     }
 
     /**
@@ -68,9 +82,13 @@ class ClienteContactosController extends Controller
      * @param  \App\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cliente $cliente)
+    public function update(Request $request, Cliente $cliente, ClienteContactos $contacto)
     {
         //
+        // $contacto = ClienteContactos::findOrFail($contacto);
+        $contacto->update($request->all());
+        Alert::success('Contacto actualizado con éxito');
+        return redirect()->route('clientes.contactos.index',['cliente'=>$cliente]);
     }
 
     /**

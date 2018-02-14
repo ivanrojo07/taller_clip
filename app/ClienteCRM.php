@@ -27,7 +27,7 @@ class ClienteCRM extends Model
     	'tipo_cont'
     ];
 
-    protected $hidden[
+    protected $hidden=[
     	'updated_at',
     	'created_at',
     	'deleted_at'

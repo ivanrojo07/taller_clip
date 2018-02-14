@@ -131,10 +131,9 @@
 							</div>
 							@endif
 						</div>
-					</div>
 					<a class="btn btn-info btn-md" href="{{ route('clientes.edit', ['cliente'=>$cliente]) }}">
-					<strong>Editar</strong>
-				</a>
+					<strong>Editar</strong></a>
+					</div>
 				</div>
   				</div>
 		</div>

@@ -1,10 +1,14 @@
 @extends('layouts.infocliente')
 	@section('cliente')
-		<ul role="tablist" class="nav nav-tabs nav-pills nav-justified">
-			<li class="ui-tabs-tab ui-corner-top ui-state-default ui-tab"> <a href="{{ route('clientes.show',['cliente'=>$personal]) }} ">Dirección Fiscal:</a> </li>
-			<li class="active"> <a href=" {{ route('clientes.direccionfisica.index',['cliente'=>$personal]) }} ">Dirección Fisica:</a> ></li>
-			<li role="presentation" tabindex="-1" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab" aria-controls="tabs-3" aria-labelledby="ui-id-3" aria-selected="false" aria-expanded="false"> <a href="{{ route('clientes.contacto.index',['cliente'=>$personal]) }}" role="presentation" tabindex="-1" class="ui-tabs-anchor" id="ui-id-3">Contacto:</a> </li>
-			<li role="presentation" tabindex="-1" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab" aria-controls="tabs-3" aria-labelledby="ui-id-3" aria-selected="false" aria-expanded="false"> <a href="<{{ route('clientes.datosgenerales.index', ['cliente'=>$personal]) }} " role="presentation" tabindex="-1" class="ui-tabs-anchor" id="ui-id-3">Datos Generales:</a> </li>
+		<ul role="tablist" class="nav nav-tabs">
+			<li  role="presentation"><a href="{{ route('clientes.show',['cliente'=>$cliente]) }}">Dirección/Domicilio:</a></li>
+			@if ($cliente->tipo == 'Cliente')
+				{{-- expr --}}
+			<li id="lidir" class="active" role="presentation"><a href="{{ route('clientes.direccion.index',['cliente'=>$cliente]) }}" >Direccion Fiscal:</a></li>
+			<li id="licont" role="presentation"><a href="{{ route('clientes.contactos.index',['cliente'=>$cliente]) }}">Contactos</a></li>
+			<li id="lidat" role="presentation"><a href="{{ route('clientes.datos.index',['cliente'=>$cliente]) }}">Datos Generales</a></li>
+			@endif
+			<li role="presentation"><a href="{{ route('clientes.crm.index',['cliente'=>$cliente]) }}" class="disabled">C.R.M.</a></li>
 		</ul>
 					<div class="panel-default">
 
@@ -22,6 +26,10 @@
 			  					<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
 			    					<label class="control-label" for="numint">Numero interior:</label>
 			    					<dd> {{$direccion->numint}} </dd>
+			  					</div>	
+			  					<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+			    					<label class="control-label" for="cp">Código Postal:</label>
+			    					<dd> {{$direccion->cp}} </dd>
 			  					</div>		
 							</div>
 							<div class="col-md-12 offset-md-2 mt-3" id="perfisica">
@@ -56,7 +64,7 @@
 			  						<dd> {{$direccion->referencia}} </dd>
 			  					</div>
 							</div>
-						<a class="btn btn-info" href=" {{ route('clientes.direccionfisica.edit',['cliente'=>$personal, 'direccionfisica'=>$direccion]) }} ">Editar</a>
+						<a class="btn btn-info" href=" {{ route('clientes.direccion.edit',['cliente'=>$cliente, 'direccion'=>$direccion]) }} ">Editar</a>
 						</div>
 					</div>
   				</div>

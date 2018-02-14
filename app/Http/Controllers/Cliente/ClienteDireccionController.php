@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Cliente;
 
 use App\Cliente;
-use Illuminate\Http\Request;
+use App\ClienteDireccion;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use UxWeb\SweetAlert\SweetAlert as Alert;
 
 class ClienteDireccionController extends Controller
 {
@@ -13,9 +15,16 @@ class ClienteDireccionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Cliente $cliente)
     {
         //
+        $direccion = $cliente->direccion;
+        if($direccion == null){
+            return redirect()->route('clientes.direccion.create',['cliente'=>$cliente]);
+        }
+        else{
+            return view('direccion.view',['cliente'=>$cliente,'direccion'=>$direccion]);
+        }
     }
 
     /**
@@ -23,9 +32,11 @@ class ClienteDireccionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Cliente $cliente)
     {
         //
+        $direccion = new ClienteDireccion;
+        return view('direccion.create',['cliente'=>$cliente, 'direccion'=>$direccion,'edit'=>false]);
     }
 
     /**
@@ -34,9 +45,13 @@ class ClienteDireccionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Cliente $cliente)
     {
         //
+        $direccion = ClienteDireccion::create($request->all());
+        Alert::success('Dirección creada con éxito');
+        return redirect()->route('clientes.direccion.index',['cliente'=>$cliente]);
+
     }
 
     /**
@@ -48,6 +63,8 @@ class ClienteDireccionController extends Controller
     public function show(Cliente $cliente)
     {
         //
+        $direccion = $cliente->direccion;
+        return view('direccion.view',['direccion'=>$direccion,'cliente'=>$cliente]);
     }
 
     /**
@@ -59,6 +76,8 @@ class ClienteDireccionController extends Controller
     public function edit(Cliente $cliente)
     {
         //
+        $direccion = $cliente->direccion;
+        return view('direccion.create',['cliente'=>$cliente,'direccion'=>$direccion, 'edit'=>true]);
     }
 
     /**
@@ -68,9 +87,12 @@ class ClienteDireccionController extends Controller
      * @param  \App\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cliente $cliente)
+    public function update(Request $request, Cliente $cliente, ClienteDireccion $direccion)
     {
         //
+        $cliente->direccion->update($request->all());
+        Alert::success('Direccion actualizada con éxito');
+        return redirect()->route('clientes.direccion.index',['cliente'=>$cliente]);
     }
 
     /**

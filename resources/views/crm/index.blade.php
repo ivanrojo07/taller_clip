@@ -1,23 +1,22 @@
-@extends('layouts.infopersonal')
-	@section('personal')
+@extends('layouts.infocliente')
+	@section('cliente')
 		<ul role="tablist" class="nav nav-tabs">
-		    <li class="ui-tabs-tab ui-corner-top ui-state-default ui-tab"><a href="{{ route('personals.show',['personal'=>$personal]) }}" class="">Dirección/Domicilio:</a></li>
-		    @if ($personal->tipo == 'Cliente')
-		    <li class="ui-tabs-tab ui-corner-top ui-state-default ui-tab"><a href="{{ route('personals.datoslaborales.index',['personal'=>$personal]) }}" class="">Datos Laborales:</a></li>
-		    <li class="ui-tabs-tab ui-corner-top ui-state-default ui-tab"><a href="{{ route('personals.referenciapersonales.index',['personal'=>$personal]) }}" class="">Referencias Personales:</a></li>
-		    <li class="ui-tabs-tab ui-corner-top ui-state-default ui-tab"><a href="{{ route('personals.datosbeneficiario.index',['personal'=>$personal]) }}" class="">Datos de Beneficiarios:</a></li>
-		    @endif
-		    <li class="ui-tabs-tab ui-corner-top ui-state-default ui-tab"><a href="{{ route('personals.producto.index',['personal'=>$personal]) }}" class="">Productos:</a></li>
-		    <li class=""><a href="{{ route('personals.product.index',['personal'=>$personal]) }}" class="ui-tabsanchor">Productos seleccionados:</a></li>
-		    <li class="active"><a href="{{ route('personals.crm.index',['personal'=>$personal]) }}" class="">C.R.M.:</a></li>
-		</ul>
+		<li  role="presentation"><a href="{{ route('clientes.show',['cliente'=>$cliente]) }}">Dirección/Domicilio:</a></li>
+		@if ($cliente->tipo == 'Cliente')
+			{{-- expr --}}
+		<li id="lidir" role="presentation"><a href="{{ route('clientes.direccion.index',['cliente'=>$cliente]) }}" >Direccion Fiscal:</a></li>
+		<li id="licont" role="presentation"><a href="{{ route('clientes.contactos.index',['cliente'=>$cliente]) }}">Contactos</a></li>
+		<li id="lidat" role="presentation"><a href="{{ route('clientes.datos.index',['cliente'=>$cliente]) }}">Datos Generales</a></li>
+		@endif
+		<li role="presentation" class="active"><a href="{{ route('clientes.crm.index',['cliente'=>$cliente]) }}" class="disabled">C.R.M.</a></li>
+	</ul>
 		<div class="panel-default">
 			<div class="panel-heading">C.R.M.&nbsp;&nbsp;&nbsp;&nbsp;  <i class="fa fa-asterisk" aria-hidden="true"></i>Campos Requeridos</div>
 			<div class="panel-body">
 				<div class="panel-body">
-					<form role="form" method="POST" action="{{ route('personals.crm.store',['personal'=>$personal]) }}">
+					<form role="form" method="POST" action="{{ route('clientes.crm.store',['cliente'=>$cliente]) }}">
 						{{ csrf_field() }}
-						<input type="hidden" name="personal_id" value="{{ $personal->id }}">
+						<input type="hidden" name="cliente_id" value="{{ $cliente->id }}">
 						<div class="col-xs-4 col-xs-offset-10">
 							<a class="btn btn-warning" id="limpiar" onclick="limpiar()"><strong>Limpiar</strong></a>
 							<button id="submit" type="submit" class="btn btn-success"><strong>Guardar</strong></button>
@@ -114,7 +113,7 @@
 									<td>{{$crm->status}}</td>
 									<td>{{substr($crm->acuerdos,0,50)}}...</td>
 									<td>{{substr($crm->observaciones,0,50)}}...</td>
-									<td><a class="btn btn-primary" onclick="crm({{$crm}})" {{-- href="{{ route('personals.crm.show',['personal'=>$personal,'crm'=>$crm]) }}" --}}>Ver</a></td>
+									<td><a class="btn btn-primary" onclick="crm({{$crm}})" {{-- href="{{ route('personals.crm.show',['cliente'=>$cliente,'crm'=>$crm]) }}" --}}>Ver</a></td>
 								</tr>
 							@endforeach
 						</table>

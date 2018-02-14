@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Cliente;
 
 use App\Cliente;
-use Illuminate\Http\Request;
+use App\ClienteCRM;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use UxWeb\SweetAlert\SweetAlert as Alert;
+
 
 class ClienteCRMController extends Controller
 {
@@ -13,9 +16,11 @@ class ClienteCRMController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Cliente $cliente)
     {
         //
+        $crms = $cliente->crm;
+        return view('crm.index',['cliente'=>$cliente, 'crms'=>$crms]);
     }
 
     /**
@@ -34,9 +39,12 @@ class ClienteCRMController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Cliente $cliente)
     {
         //
+        $crm = ClienteCRM::create($request->all());
+        Alert::success('CRM creado con éxito');
+        return redirect()->route('clientes.crm.index',['cliente'=>$cliente]);
     }
 
     /**
