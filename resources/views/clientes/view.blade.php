@@ -58,26 +58,18 @@
 									<label class="control-label" for="celular">* Número Celular:</label>
 									<dd>{{ $cliente->celular }}</dd>
 								</div>
-								@if ($cliente->estadocivil)
-									{{-- true expr --}}
-								<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12" id="cliente2" style="display:none;">
-									<label class="control-label" for="estadocivil">Estado Civil:</label>
-									<dd>{{$cliente->estadocivil}}</dd>
-								</div>
-								@endif
 							</div>
 						</div>
 					</div>
 				<ul role="tablist" class="nav nav-tabs">
-					<li class="active"><a href="#tab1">Dirección/Domicilio:</a></li>
+					<li class="active" role="presentation"><a href="#">Dirección/Domicilio:</a></li>
 					@if ($cliente->tipo == 'Cliente')
-					<li class="ui-tabs-tab ui-corner-top ui-state-default ui-tab"><a href="{{ route('personals.datoslaborales.index',['cliente'=>$cliente]) }}" class="">Datos Laborales:</a></li>
-					<li class="ui-tabs-tab ui-corner-top ui-state-default ui-tab"><a href="{{ route('personals.referenciapersonales.index',['cliente'=>$cliente]) }}" class="">Referencias Personales:</a></li>
-					<li class="ui-tabs-tab ui-corner-top ui-state-default ui-tab"><a href="{{ route('personals.datosbeneficiario.index',['cliente'=>$cliente]) }}" class="">Datos de Beneficiarios:</a></li>
+						{{-- expr --}}
+					<li id="lidir" role="presentation"><a href="{{ route('clientes.direccion.index',['cliente'=>$cliente]) }}" >Direccion Fiscal:</a></li>
+					<li id="licont" role="presentation"><a href="{{ route('clientes.contactos.index',['cliente'=>$cliente]) }}">Contactos</a></li>
+					<li id="lidat" role="presentation"><a href="{{ route('clientes.datos.index',['cliente'=>$cliente]) }}">Datos Generales</a></li>
 					@endif
-					<li class="ui-tabs-tab ui-corner-top ui-state-default ui-tab"><a href="{{ route('personals.producto.index',['cliente'=>$cliente]) }}" class="">Productos:</a></li>
-					<li class=""><a href="{{ route('personals.product.index',['cliente'=>$cliente]) }}" class="">Productos seleccionados:</a></li>
-					<li class="ui-tabs-tab ui-corner-top ui-state-default ui-tab"><a href="{{ route('personals.crm.index',['cliente'=>$cliente]) }}" class="">C.R.M.:</a></li>
+					<li role="presentation"><a href="{{ route('clientes.crm.index',['cliente'=>$cliente]) }}" class="disabled">C.R.M.</a></li>
 				</ul>
 				<div class="panel-default">
 					<div class="panel-heading">Dirección/Domicilio:</div>
@@ -140,7 +132,7 @@
 							@endif
 						</div>
 					</div>
-					<a class="btn btn-info btn-md" href="{{ route('personals.edit', [$cliente]) }}">
+					<a class="btn btn-info btn-md" href="{{ route('clientes.edit', ['cliente'=>$cliente]) }}">
 					<strong>Editar</strong>
 				</a>
 				</div>

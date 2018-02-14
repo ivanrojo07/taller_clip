@@ -90,12 +90,16 @@ class ClienteController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Cliente $cliente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Cliente $cliente)
     {
         //
+        $cliente->update($request->all());
+        Alert::success('Datos actualizados');
+        return redirect()->route('clientes.show',['cliente'=>$cliente]);
+
     }
 
     /**

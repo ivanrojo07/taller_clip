@@ -160,10 +160,43 @@
 						{{-- expr --}}
 				<ul role="tablist" class="nav nav-tabs">
 					<li class="active" role="presentation"><a href="#">Dirección/Domicilio:</a></li>
-					<li id="lidir" style="display:none;" role="presentation"><a href="{{ route('clientes.direccion') }}" id="clienteli1">Direccion Fiscal:</a></li>
-					<li id="licont" class="disabled" disabled style="display:none;" role="presentation"><a href="{{ route('clientes.contactos') }}" class="disabled">Contactos</a></li>
-					<li id="lidat" class="disabled" id="clienteli3" style="display:none;" role="presentation"><a href="{{ route('clientes.datos') }}" class="disabled">Datos Generales</a></li>
-					<li class="disabled"  role="presentation"><a href="{{ route('clientes.crm') }}" class="disabled">C.R.M.</a></li>
+					<li id="lidir" @if ($cliente->tipo == "Cliente")
+						{{-- expr --}}
+						style="display:inline;"
+					@else
+						style="display:none;"
+					@endif role="presentation"><a @if ($cliente->tipo == "Cliente")
+						{{-- true expr --}}
+						href="{{ route('clientes.direccion.index',['cliente'=>$cliente]) }}"
+					@else
+						{{-- false expr --}}
+						href="#" class="disabled" 
+					@endif id="clienteli1">Direccion Fiscal:</a></li>
+					<li id="licont" @if ($cliente->tipo == "Cliente")
+						{{-- expr --}}
+						style="display:inline;"
+					@else
+						style="display:none;"
+					@endif role="presentation"><a @if ($cliente->tipo == "Cliente")
+						{{-- true expr --}}
+						href="{{ route('clientes.contactos.index',['cliente'=>$cliente]) }}"
+					@else
+						{{-- false expr --}}
+						href="#" class="disabled" 
+					@endif>Contactos</a></li>
+					<li id="lidat" id="clienteli3" @if ($cliente->tipo == "Cliente")
+						{{-- expr --}}
+						style="display:inline;"
+					@else
+						style="display:none;"
+					@endif role="presentation"><a @if ($cliente->tipo == "Cliente")
+						{{-- true expr --}}
+						href="{{ route('clientes.datos.index',['cliente'=>$cliente]) }}"
+					@else
+						{{-- false expr --}}
+						href="#" class="disabled" 
+					@endif>Datos Generales</a></li>
+					<li role="presentation"><a href="{{ route('clientes.crm.index',['cliente'=>$cliente]) }}" class="disabled">C.R.M.</a></li>
 				</ul>
 					@endif
 				<div class="panel-default">

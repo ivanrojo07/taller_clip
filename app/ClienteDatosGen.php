@@ -2,7 +2,9 @@
 
 namespace App;
 
+use App\Giro;
 use App\Cliente;
+use App\FormaContacto;
 use Illuminate\Database\Eloquent\Model;
 
 class ClienteDatosGen extends Model
@@ -28,5 +30,11 @@ class ClienteDatosGen extends Model
 
     public function cliente(){
     	return $this->belongsTo(Cliente::class);
+    }
+    public function giro(){
+        return $this->belongsTo(Giro::class, 'giro_id','id');
+    }
+    public function contacto(){
+        return $this->belongsTo(FormaContacto::class,'forma_contacto_id','id');
     }
 }

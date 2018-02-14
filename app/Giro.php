@@ -2,10 +2,11 @@
 
 namespace App;
 
+use App\ClienteDatosGen;
+use Laravel\Scout\Searchable;
+use Kyslik\ColumnSortable\Sortable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Kyslik\ColumnSortable\Sortable;
-use Laravel\Scout\Searchable;
 
 class Giro extends Model
 {
@@ -15,4 +16,8 @@ class Giro extends Model
     protected $fillable=['id','nombre','etiqueta'];
     protected $hidden=[ 'created_at', 'updated_at','deleted_at'];
     public $sortable=['id','nombre', 'etiqueta'];
+
+    public function datosGen(){
+    	return $this->hasOne(ClienteDatosGen::class);
+    }
 }
