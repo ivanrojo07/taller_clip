@@ -164,7 +164,7 @@
 						{{-- expr --}}
 						style="display:inline;"
 					@else
-						style="display:none;"
+						style="display:none;" class="disabled"
 					@endif role="presentation"><a @if ($cliente->tipo == "Cliente")
 						{{-- true expr --}}
 						href="{{ route('clientes.direccion.index',['cliente'=>$cliente]) }}"
@@ -176,7 +176,7 @@
 						{{-- expr --}}
 						style="display:inline;"
 					@else
-						style="display:none;"
+						style="display:none;" class="disabled" 
 					@endif role="presentation"><a @if ($cliente->tipo == "Cliente")
 						{{-- true expr --}}
 						href="{{ route('clientes.contactos.index',['cliente'=>$cliente]) }}"
@@ -188,7 +188,7 @@
 						{{-- expr --}}
 						style="display:inline;"
 					@else
-						style="display:none;"
+						style="display:none;" class="disabled"
 					@endif role="presentation"><a @if ($cliente->tipo == "Cliente")
 						{{-- true expr --}}
 						href="{{ route('clientes.datos.index',['cliente'=>$cliente]) }}"
