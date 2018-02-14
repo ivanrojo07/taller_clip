@@ -33,7 +33,7 @@ Route::resource('personals.datosbeneficiario', 'Personal\PersonalBeneficiarioCon
 Route::resource('personals.producto','Personal\PersonalProductoController');
 Route::resource('personals.crm','Personal\PersonalCRMController');
 
-Route::get('buscarcliente','Personal\PersonalController@buscar');
+Route::get('buscarcliente','Cliente\ClienteController@buscar');
 
 Route::resource('personals.products.transactions', 'Personal\PersonalProductTransactionController',['only'=>'store']);
 Route::resource('personals.product','Personal\PersonalProductController', ['only'=>'index']);
