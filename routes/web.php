@@ -17,6 +17,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
+Route::get('getareas','Area\AreaController@getAreas');
+Route::get('getcontratos','Precargas\TipoContratoController@getContratos');
+Route::get('getpuestos','Puesto\PuestoController@getPuestos');
+Route::get('getSucursal','Sucursal\SucursalController@getSucursal');
+Route::get('getbancos','Banco\BancoController@getBancos');
+
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::get('prospectos', 'Personal\PersonalController@search');
 // Route::get('clientes', 'Personal\PersonalController@clientes');

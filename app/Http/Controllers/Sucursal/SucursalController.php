@@ -121,6 +121,12 @@ return view('sucursales.view',['sucursal'=>$sucursal]);
 
     }
 
+       public function getSucursal(){
+        $sucursales = Sucursal::get();
+        return view('precargas.select',['precargas'=>$sucursales]);
+        // return response()->json(['data'=>$areas,200]);
+    }
+
 
 
   

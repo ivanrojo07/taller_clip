@@ -17,15 +17,20 @@
 	 			</div>
 	 			<div class="form-group col-lg-4 col-md-3 col-sm-6 col-xs-12">
 	 				<label class="control-label" for="nombre">Giro de la empresa:</label>
-	 				
+	 				@if($giro==null)
+	 				<dd>SIN DEFINIR</dd>
+	 				@else
 					<dd>{{$giro}}</dd>
+					@endif
 				
 	 			</div>
 	 			<div class="form-group col-lg-4 col-md-3 col-sm-6 col-xs-12">
 	 				<label class="control-label" for="nombre">Forma de contacto:</label>
-	 				
+	 				@if($formaContacto==null)
+	 				<dd>SIN DEFINIR</dd>
+	 				@else
 	 				<dd>{{$formaContacto}}</dd>
-	 				
+	 				@endif
 	 			</div>
 	 		</div>
 	 		<div class="col-md-12 offset-md-2 mt-3">

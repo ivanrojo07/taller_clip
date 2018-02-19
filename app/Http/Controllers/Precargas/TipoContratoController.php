@@ -29,6 +29,11 @@ class TipoContratoController extends Controller
         return view('precargas.index',['precargas'=>$contratos, 'agregar'=>$this->agregar, 'editar'=>$this->editar,'borrar'=>$this->borrar,'titulo'=>$this->titulo,'buscar'=>$this->buscar]);
     }
 
+        public function getContratos(){
+        $contratos = TipoContrato::get();
+        return view('precargas.select',['precargas'=>$contratos]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

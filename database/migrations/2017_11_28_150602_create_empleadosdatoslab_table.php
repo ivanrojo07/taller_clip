@@ -33,7 +33,7 @@ class CreateEmpleadosdatoslabTable extends Migration
 
             $table->decimal('salarionom',8,2)->nullable();
             $table->decimal('salariodia',8,2)->nullable();
-            $table->string('puesto_inicio')->nullable();
+          
             $table->enum('periodopaga',['Semanal','Quincenal','Mensual']);
             $table->string('prestaciones')->nullable();
             $table->enum('regimen',['Sueldos y salarios','Jubilados','Pensionados']);

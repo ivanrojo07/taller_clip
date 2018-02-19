@@ -50,6 +50,8 @@
 					</div>
 					<div class="form-group col-xs-3">
 						<label class="control-label" for="contrato">Tipo de contrato:</label>
+						<div class="input-group">
+						<span class="input-group-addon" id="basic-addon3" onclick='getContratos()'><i class="fa fa-refresh" aria-hidden="true"></i></span>
 						<select type="select" class="form-control" name="contrato_id" >
 							<option id="contrato_id" value="">Sin Definir</option>
 							@foreach ($contratos as $contrato)
@@ -61,54 +63,21 @@
 							@endforeach
 						</select>
 					</div>
-
-
-
-					<div class="form-group col-xs-3">
-						<label class="control-label" for="area_id">
-						Área:</label>
-						<select type="select" 
-						        class="form-control" 
-						        name="area_id"
-						        >
-						        <option id="area_id" value="">Sin Definir</option>
- 
-							@foreach ($areas as $area)
-								{{-- expr --}}
-								<option id="{{$area->id}}" 
-									    value="{{$area->id}}" 
-							@if ($datoslab->area_id == $area->id)
-									{{-- expr --}}
-									selected="selected" 
-								@endif>{{$area->nombre}}</option>
-							@endforeach
-						</select>
 					</div>
+
 
 
 					
-					<div class="form-group col-xs-3">
-						<label class="control-label" for="puesto_id">
-						Puesto:</label>
-						<select type="select" name="puesto_id" id="puesto_id" class="form-control" >
-							<option id="puesto_id" value="">Sin Definir</option>
 
-							@foreach ($puestos as $puesto)
-								{{-- expr --}}
-								<option id="{{$puesto->id}}" 
-									    value="{{$puesto->id}}" 
-									    
-							@if ($datoslab->puesto_id == $puesto->id)
-									{{-- expr --}}
-									selected
-								@endif>{{$puesto->nombre}}</option>
-							@endforeach
-						</select>
-					</div>
+
+					
+				
 
 
 	<div class="form-group col-xs-3">
 						<label class="control-label" for="contrato">Sucursal:</label>
+						<div class="input-group">
+  						<span class="input-group-addon" id="basic-addon3" onclick='getSucursal()'><i class="fa fa-refresh" aria-hidden="true"></i></span>
 						<select type="select" class="form-control" name="sucursal_id" >
 							<option id="sucursal_id" value="">Sin Definir</option>
 							@foreach ($sucursales as $sucursal)
@@ -119,6 +88,7 @@
 								@endif>{{$sucursal->nombre}}</option>
 							@endforeach
 						</select>
+					</div>
 					</div>
 
 						
@@ -136,6 +106,53 @@
 						</select>
 					</div>
 
+					<div class="form-group col-xs-3">
+						<label class="control-label" for="area_id">
+						Área:</label>
+						<div class="input-group">
+  						<span class="input-group-addon" id="basic-addon3" onclick='getAreas()'><i class="fa fa-refresh" aria-hidden="true"></i></span>
+						<select type="select" 
+						        class="form-control" 
+						        name="area_id"
+						        >
+						        <option id="area_id" value="">Sin Definir</option>
+ 
+							@foreach ($areas as $area)
+								{{-- expr --}}
+								<option id="{{$area->id}}" 
+									    value="{{$area->id}}" 
+							@if ($datoslab->area_id == $area->id)
+									{{-- expr --}}
+									selected="selected" 
+								@endif>{{$area->nombre}}</option>
+							@endforeach
+						</select>
+					</div>
+					</div>
+
+
+					
+					<div class="form-group col-xs-3">
+						<label class="control-label" for="puesto_id">
+						Puesto:</label>
+						<div class="input-group">
+  						<span class="input-group-addon" id="basic-addon3" onclick='getPuestos()'><i class="fa fa-refresh" aria-hidden="true"></i></span>
+						<select type="select" name="puesto_id" id="puesto_id" class="form-control" >
+							<option id="puesto_id" value="">Sin Definir</option>
+
+							@foreach ($puestos as $puesto)
+								{{-- expr --}}
+								<option id="{{$puesto->id}}" 
+									    value="{{$puesto->id}}" 
+									    
+							@if ($datoslab->puesto_id == $puesto->id)
+									{{-- expr --}}
+									selected
+								@endif>{{$puesto->nombre}}</option>
+							@endforeach
+						</select>
+					</div>
+					</div>
 
 				</div>
 				<div class="col-md-12 offset-md-2 mt-3">
@@ -147,10 +164,7 @@
 						<label class="control-label" for="salariodia">Salario Diario:</label>
 						<input class="form-control" type="text" id="salariodia" name="salariodia" value="{{ $datoslab->salariodia }}">
 					</div>
-					<div class="form-group col-xs-3">
-						<label class="control-label" for="puesto_inicio">Puesto Inicial:</label>
-						<input class="form-control" type="text" id="puesto_inicio" name="puesto_inicio" value="{{ $datoslab->puesto_inicio }}">
-					</div>
+					
 					<div class="form-group col-xs-3">
 						<label class="control-label" for="periodopaga">Periodicidad de Pago:</label>
 						<select type="select" class="form-control" name="periodopaga" id="periodopaga">
@@ -252,6 +266,8 @@
 					
 					<div class="form-group col-xs-3">
 						<label class="control-label" for="banco">Banco:</label>
+						<div class="input-group">
+  						<span class="input-group-addon" id="basic-addon3" onclick='getBancos()'><i class="fa fa-refresh" aria-hidden="true"></i></span>
 						<select class="form-control" type="select" name="banco" id="banco">
 
 
@@ -267,6 +283,8 @@
 
 						</select>
 					</div>
+					</div>
+
 					<div class="form-group col-xs-3">
 						<label class="control-label" for="cuenta">Cuenta:</label>
 						<input class="form-control" type="text" id="cuenta" name="cuenta" value="{{ $datoslab->cuenta }}">
@@ -276,13 +294,7 @@
 						<input class="form-control" type="clabe" name="clabe" id="clabe" value="{{ $datoslab->clabe }}">
 					</div>
 				
-					<!-- <div class="form-group col-xs-3">
-						<label class="control-label" for="bonopuntualidad" id="lbl_inst2">Bono Puntualidad:</label>
-						<input id="boton-toggle" type="checkbox" data-toggle="toggle" data-on="Sí" data-off="No" data-style="ios" name="bonopuntualidad" @if ($datoslab->bonopuntualidad == 1)
-							
-							checked="checked"
-						@endif>
-					</div> -->
+					
 				</div>
 				<div class="panel">
 					<div class="panel-heading">Datos de Baja:</div>
@@ -291,8 +303,11 @@
 							<label class="control-label" for="fechabaja">Fecha de la baja:</label>
 							<input class="form-control" type="date" id="fechabaja" name="fechabaja" value="{{ $datoslab->fechabaja }}">
 						</div>
+
 						<div class="form-group col-xs-3">
 							<label class="control-label" for="tipobaja_id">Tipo de Baja:</label>
+							<div class="input-group">
+  							<span class="input-group-addon" id="basic-addon3" onclick='getBajas()'><i class="fa fa-refresh" aria-hidden="true"></i></span>
 							<select class="form-control" type="select" name="tipobaja_id" id="tipobaja_id">
 								<option id="0" value="">No hay baja</option>
 								@foreach ($bajas as $baja)
@@ -304,6 +319,8 @@
 								@endforeach
 							</select>
 						</div>
+						</div>
+
 						<div class="form-group col-xs-3">
 							<label class="control-label" for="comentariobaja">Comentarios:</label>
 							<textarea class="form-control" id="comentariobaja" name="comentariobaja" maxlength="500">{{$datoslab->comentariobaja}}</textarea>
@@ -317,5 +334,93 @@
 			</form>
 		</div>
 	</div>
-	<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+<script type="text/javascript">
+		function getAreas()
+		{
+		  $.ajaxSetup({
+		    headers: {
+		      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		    }
+		  });
+		  $.ajax({
+		    url: "{{ url('/getareas') }}",
+		    type: "GET",
+		    dataType: "html",
+		  }).done(function(resultado){
+		    $("#area_id").html(resultado);
+		  });
+		}
+		function getContratos(){
+			$.ajaxSetup({
+		    headers: {
+		      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		    }
+			});
+			$.ajax({
+				url: "{{ url('/getcontratos') }}",
+			    type: "GET",
+			    dataType: "html",
+			}).done(function(resultado){
+			    $("#contrato_id").html(resultado);
+			});
+		}
+		function getPuestos(){
+			$.ajaxSetup({
+		    headers: {
+		      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		    }
+			});
+			$.ajax({
+				url: "{{ url('/getpuestos') }}",
+			    type: "GET",
+			    dataType: "html",
+			}).done(function(resultado){
+			    $("#puesto_id").html(resultado);
+			});
+		}
+		function getBajas(){
+			$.ajaxSetup({
+		    headers: {
+		      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		    }
+			});
+			$.ajax({
+				url: "{{ url('/getbajas') }}",
+			    type: "GET",
+			    dataType: "html",
+			}).done(function(resultado){
+			    $("#tipobaja_id").html(resultado);
+			});
+		}
+		function getBancos(){
+			$.ajaxSetup({
+		    headers: {
+		      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		    }
+			});
+			$.ajax({
+				url: "{{ url('/getbancos') }}",
+			    type: "GET",
+			    dataType: "html",
+			}).done(function(resultado){
+			    $("#banco").html(resultado);
+			});
+		}
+
+		function getSucursal(){
+			$.ajaxSetup({
+		    headers: {
+		      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		    }
+			});
+			$.ajax({
+				url: "{{ url('/getSucursal') }}",
+			    type: "GET",
+			    dataType: "html",
+			}).done(function(resultado){
+			    $("#sucursal_id").html(resultado);
+			});
+		}
+	</script>
 @endsection

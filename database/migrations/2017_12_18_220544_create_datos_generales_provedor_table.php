@@ -17,10 +17,10 @@ class CreateDatosGeneralesProvedorTable extends Migration
             $table->increments('id');
             $table->integer('provedor_id')->unsigned();
             $table->foreign('provedor_id')->references('id')->on('proveedores');
-            $table->integer('giro_id')->unsigned();
+            $table->integer('giro_id')->unsigned()->nullable();
             $table->foreign('giro_id')->references('id')->on('giro');
             $table->enum('tamano',['micro', 'pequeña','mediana', 'grande']);
-            $table->integer('forma_contacto_id')->unsigned();
+            $table->integer('forma_contacto_id')->unsigned()->nullable();
             $table->foreign('forma_contacto_id')->references('id')->on('forma_contacto');
             $table->string('web')->nullable();
             $table->text('comentario')->nullable();

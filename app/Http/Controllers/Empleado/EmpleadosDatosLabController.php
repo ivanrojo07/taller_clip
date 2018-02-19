@@ -122,7 +122,7 @@ class EmpleadosDatosLabController extends Controller
         
         $datoslab->salarionom = $request->salarionom;
         $datoslab->salariodia = $request->salariodia ;
-        $datoslab->puesto_inicio = $request->puesto_inicio ;
+       
         $datoslab->periodopaga = $request->periodopaga ;
         $datoslab->prestaciones = $request->prestaciones ;
         $datoslab->regimen = $request->regimen ;

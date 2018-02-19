@@ -35,6 +35,7 @@
 					
 					<dd><strong> {{ $datoslab->fechacontratacion }}</strong></dd>
 				</div>
+				
 				<div class="form-group col-xs-3">
 					<label class="control-label" for="contrato">Tipo de contrato:</label>
 					@if($contrato==null)
@@ -71,20 +72,24 @@
 					@endif
 				</div>
 				
-				<div class="form-group col-xs-3">
-					<label class="control-label" for="lugartrabajo">Lugar de Trabajo:</label>
-					<dd>{{ $datoslab->lugartrabajo }}</dd>
-				</div>
+				
 				
 
 
 
 			</div>
+
 			<div class="col-md-12 offset-md-2 mt-3">
+				<div class="form-group col-xs-3">
+					<label class="control-label" for="lugartrabajo">Lugar de Trabajo:</label>
+					<dd>{{ $datoslab->lugartrabajo }}</dd>
+				</div>
+
 				<div class="form-group col-xs-3">
 					<label class="control-label" for="salarionom">Salario Nóminal:</label>
 					<dd>{{ $datoslab->salarionom }}</dd>
 				</div>
+
 				<div class="form-group col-xs-3">
 					<label class="control-label" for="salariodia">Salario Diario:</label>
 					<dd>{{ $datoslab->salariodia }}</dd>
@@ -97,6 +102,7 @@
 					<dd>{{ $datoslab->periodopaga }}</dd>
 				</div>
 			</div>
+
 			<div class="col-md-12 offset-md-2 mt-3">
 				<div class="form-group col-xs-3">
 					<label class="control-label" for="prestaciones">Prestaciones:</label>

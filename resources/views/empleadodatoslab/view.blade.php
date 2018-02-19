@@ -51,10 +51,7 @@
 					<label class="control-label" for="salariodia">Salario Diario:</label>
 					<dd>{{ $actual->salariodia }}</dd>
 				</div>
-				<div class="form-group col-xs-3">
-					<label class="control-label" for="puesto_inicio">Puesto Inicial:</label>
-					<dd>{{ $actual->puesto_inicio }}</dd>
-				</div>
+				
 				<div class="form-group col-xs-3">
 					<label class="control-label" for="periodopaga">Periodicidad de Pago:</label>
 					<dd>{{ $actual->periodopaga }}</dd>

@@ -20,7 +20,6 @@ class EmpleadosDatosLab extends Model
      'contrato_id',
      'salarionom',
      'salariodia',
-     'puesto_inicio',
      'periodopaga',
      'prestaciones',
      'regimen',
