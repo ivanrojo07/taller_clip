@@ -279,7 +279,7 @@
 									<th>No. de Cèdula</th>
 								</tr>
 							</thead>
-							
+							<tbody>
 								<tr class="active">
 
 									<td>{{ $empleado->estudios->escolaridad1 }}  </td>
