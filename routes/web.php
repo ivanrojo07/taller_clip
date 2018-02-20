@@ -23,6 +23,9 @@ Route::get('getcontratos','Precargas\TipoContratoController@getContratos');
 Route::get('getpuestos','Puesto\PuestoController@getPuestos');
 Route::get('getSucursal','Sucursal\SucursalController@getSucursal');
 Route::get('getbancos','Banco\BancoController@getBancos');
+Route::get('getbajas','Precargas\TipoBajaController@getBajas');
+Route::get('getgiros','Giro\GiroController@getGiros');
+Route::get('getformas','FormaContacto\FormaContactoController@getFormas');
 
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::get('prospectos', 'Personal\PersonalController@search');

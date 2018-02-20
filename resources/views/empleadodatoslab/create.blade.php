@@ -52,8 +52,8 @@
 						<label class="control-label" for="contrato">Tipo de contrato:</label>
 						<div class="input-group">
 						<span class="input-group-addon" id="basic-addon3" onclick='getContratos()'><i class="fa fa-refresh" aria-hidden="true"></i></span>
-						<select type="select" class="form-control" name="contrato_id" >
-							<option id="contrato_id" value="">Sin Definir</option>
+						<select type="select" class="form-control" name="contrato_id" id="contrato_id">
+							<option id="" value="">Sin Definir</option>
 							@foreach ($contratos as $contrato)
 								{{-- expr --}}
 								<option id="{{$contrato->id}}" value="{{$contrato->id}}" @if ($datoslab->contrato_id == $contrato->id)
@@ -78,8 +78,8 @@
 						<label class="control-label" for="contrato">Sucursal:</label>
 						<div class="input-group">
   						<span class="input-group-addon" id="basic-addon3" onclick='getSucursal()'><i class="fa fa-refresh" aria-hidden="true"></i></span>
-						<select type="select" class="form-control" name="sucursal_id" >
-							<option id="sucursal_id" value="">Sin Definir</option>
+						<select type="select" class="form-control" name="sucursal_id" id="sucursal_id">
+							<option  value="">Sin Definir</option>
 							@foreach ($sucursales as $sucursal)
 								{{-- expr --}}
 								<option id="{{$sucursal->id}}" value="{{$sucursal->id}}" @if ($datoslab->sucursal_id == $sucursal->id)
@@ -113,9 +113,9 @@
   						<span class="input-group-addon" id="basic-addon3" onclick='getAreas()'><i class="fa fa-refresh" aria-hidden="true"></i></span>
 						<select type="select" 
 						        class="form-control" 
-						        name="area_id"
+						        name="area_id" id="area_id"
 						        >
-						        <option id="area_id" value="">Sin Definir</option>
+						        <option  value="">Sin Definir</option>
  
 							@foreach ($areas as $area)
 								{{-- expr --}}
@@ -138,7 +138,7 @@
 						<div class="input-group">
   						<span class="input-group-addon" id="basic-addon3" onclick='getPuestos()'><i class="fa fa-refresh" aria-hidden="true"></i></span>
 						<select type="select" name="puesto_id" id="puesto_id" class="form-control" >
-							<option id="puesto_id" value="">Sin Definir</option>
+							<option  value="">Sin Definir</option>
 
 							@foreach ($puestos as $puesto)
 								{{-- expr --}}
@@ -271,7 +271,7 @@
 						<select class="form-control" type="select" name="banco" id="banco">
 
 
-							<option id="banco" value="">Sin Definir</option>
+							<option  value="">Sin Definir</option>
 							@foreach ($bancos as $banco)
 								{{-- expr --}}
 								<option id="{{$banco->nombre}}" value="{{$banco->nombre}}" @if ($datoslab->banco == $banco->nombre)
@@ -335,6 +335,7 @@
 		</div>
 	</div>
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
 <script type="text/javascript">
 		function getAreas()
 		{
@@ -351,6 +352,7 @@
 		    $("#area_id").html(resultado);
 		  });
 		}
+
 		function getContratos(){
 			$.ajaxSetup({
 		    headers: {
