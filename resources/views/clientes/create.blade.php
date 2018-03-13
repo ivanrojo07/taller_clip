@@ -17,7 +17,7 @@
 						<div class="panel-body">
 							<div class="col-md-12 offset-md-2 mt-3">
 								<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
-			    					<label class="control-label" for="tipo"><i class="fa fa-asterisk" aria-hidden="true"></i>Tipo de Cliente:</label>
+			    					<label class="control-label" for="tipo">Tipo de Cliente:</label>
 			    					<select type="select" name="tipo" class="form-control" id="tipo" onchange="formulario(this)">
 			    						<option id="Prospecto" value="Prospecto" @if ($cliente->tipo == 'Prospecto')
 			    							{{-- expr --}}
@@ -30,7 +30,7 @@
 			    					</select>
 			  					</div>
 			  					<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
-			    					<label class="control-label" for="tipopersona"><i class="fa fa-asterisk" aria-hidden="true"></i>Tipo de Persona:</label>
+			    					<label class="control-label" for="tipopersona">Tipo de Persona:</label>
 			    					<select type="select" name="tipopersona" class="form-control" id="tipopersona" onchange="persona(this)">
 			    						<option id="Fisica" value="Fisica" @if ($cliente->tipopersona == 'Fisica')
 			    							{{-- expr --}}
@@ -107,12 +107,14 @@
 							</div>
 							<div class="col-md-12 offset-md-2 mt-3" id="perfisica">
 								<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
-			  						<label class="control-label" for="nombre"><i class="fa fa-asterisk" aria-hidden="true"></i> Nombre(s):</label>
-			  						<input type="text" class="form-control" id="idnombre" name="nombre" value="{{ $cliente->nombre }}">
+			  						<label class="control-label" for="nombre"> 
+								<i class="fa fa-asterisk" aria-hidden="true"></i>
+							          Nombre(s):</label>
+			  						<input type="text" class="form-control" id="idnombre" name="nombre" value="{{ $cliente->nombre }}" required>
 			  					</div>
 			  					<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
-			  						<label class="control-label" for="apellidopaterno"><i class="fa fa-asterisk" aria-hidden="true"></i> Apellido Paterno:</label>
-			  						<input type="text" class="form-control" id="apellidopaterno" name="apellidopaterno" value="{{ $cliente->apellidopaterno }}">
+			  						<label class="control-label" for="apellidopaterno"><i class="fa fa-asterisk" aria-hidden="true"></i>Apellido Paterno:</label>
+			  						<input type="text" class="form-control" id="apellidopaterno" name="apellidopaterno" value="{{ $cliente->apellidopaterno }}" required>
 			  					</div>
 			  					<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
 			  						<label class="control-label" for="apellidomaterno">Apellido Materno:</label>
@@ -122,26 +124,26 @@
 							<div class="col-md-12 offset-md-2 mt-3" id="permoral" style="display:none;">
 								<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
 
-			  						<label class="control-label" for="razonsocial"><i class="fa fa-asterisk" aria-hidden="true"></i> Razon Social:</label>
+			  						<label class="control-label" for="razonsocial"> Razon Social:</label>
 			  						<input type="text" class="form-control" id="razonsocial" name="razonsocial" value="{{ $cliente->razonsocial }}">
 			  					</div>
 							</div>
 							<div class="col-md-12 offset-md-2 mt-3">
 								<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
-									<label class="control-label" for="mail"><i class="fa fa-asterisk" aria-hidden="true"></i> Correo:</label>
-									<input type="email" class="form-control" id="mail" name="mail" value="{{ $cliente->mail }}" required>
+									<label class="control-label" for="mail"> Correo:</label>
+									<input type="email" class="form-control" id="mail" name="mail" value="{{ $cliente->mail }}" >
 								</div>
 								<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
-									<label class="control-label" for="rfc"><i class="fa fa-asterisk" aria-hidden="true"></i> RFC:</label>
-									<input type="text" class="form-control" id="varrfc" name="rfc" required minlength="12" maxlength="13" pattern="^[A-Za-z]{4}[0-9]{6}[A-Za-z0-9]{3}" placeholder="Ingrese 13 caracteres" title="Siga el formato 4 letras seguidas por 6 digitos y 3 caracteres" value="{{ $cliente->rfc }}" required>
+									<label class="control-label" for="rfc"> RFC:</label>
+									<input type="text" class="form-control" id="varrfc" name="rfc"  minlength="12" maxlength="13" pattern="^[A-Za-z]{4}[0-9]{6}[A-Za-z0-9]{3}" placeholder="Ingrese 13 caracteres" title="Siga el formato 4 letras seguidas por 6 digitos y 3 caracteres" value="{{ $cliente->rfc }}" >
 								</div>
 								<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
-									<label class="control-label" for="telefono"><i class="fa fa-asterisk" aria-hidden="true" value></i> Número de Telefono:</label>
-									<input type="text" class="form-control" id="telefonofijo" name="telefono" value="{{ $cliente->telefono }}" required>
+									<label class="control-label" for="telefono">Número de Telefono:</label>
+									<input type="text" class="form-control" id="telefonofijo" name="telefono" value="{{ $cliente->telefono }}" >
 								</div>
 								<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
-									<label class="control-label" for="celular"><i class="fa fa-asterisk" aria-hidden="true"></i> Número Celular:</label>
-									<input type="text" class="form-control" id="celular" name="celular" value="{{ $cliente->celular }}" required>
+									<label class="control-label" for="celular">Número Celular:</label>
+									<input type="text" class="form-control" id="celular" name="celular" value="{{ $cliente->celular }}" >
 								</div>
 							</div>
 						</div>
@@ -200,7 +202,7 @@
 				</ul>
 					@endif
 				<div class="panel-default">
-					<div class="panel-heading">Dirección/Domicilio:&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-asterisk" aria-hidden="true"></i>Campos Requeridos</div>
+					<div class="panel-heading"><h5>Dirección/Domicilio:</h5></div>
 					<div class="panel-body">
 						<div class="col-xs-2 col-xs-offset-10">
 								<button type="submit" class="btn btn-success">

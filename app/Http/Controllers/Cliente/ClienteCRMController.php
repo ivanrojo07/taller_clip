@@ -30,7 +30,7 @@ class ClienteCRMController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -90,5 +90,16 @@ class ClienteCRMController extends Controller
     public function destroy(Cliente $cliente)
     {
         //
+    }
+    /**
+     * Show the form for recording a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function record(){
+
+        dd(date('Y-m-d'));
+        $crms=CRM::where('fecha_cont','like',date('Y-m'));
+
     }
 }

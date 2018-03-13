@@ -9,7 +9,7 @@
 		<li class=""><a href="{{ route('provedores.crm.index',['provedore'=>$provedore]) }}" class="ui-tabs-anchor">C.R.M.:</a></li>
 	</ul>
 	<div class="panel panel-default">
-	 	<div class="panel-heading">Datos Generales:&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-asterisk" aria-hidden="true"></i>Campos Requeridos</a></li></div>
+	 	<div class="panel-heading">Datos Generales:&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-asterisk" aria-hidden="true"></i>Campos Requeridos</div>
 		<form role="form" id="form-cliente" method="POST" action="{{ route('provedores.datosgenerales.update',['provedore'=>$provedore, 'datosgenerale'=>$datos]) }}" name="form">
 	{{ csrf_field() }}
 	<input type="hidden" name="_method" value="PUT">
@@ -22,6 +22,8 @@
 	 		<div class="col-md-12 offset-md-2 mt-3">
 	 			<div class="form-group col-lg-4 col-md-3 col-sm-6 col-xs-12">
 	 			<label class="control-label" for="nombre"><i class="fa fa-asterisk" aria-hidden="true"></i>Giro:</label>
+	 			<div class="input-group">
+  							<span class="input-group-addon" id="basic-addon3" onclick='getGiros()'><i class="fa fa-refresh" aria-hidden="true"></i></span>
 				<select type="select" name="giro_id" class="form-control" id="giro_id">
 					 <option id="giro_id'" value="">Sin Definir</option>
 					
@@ -32,6 +34,7 @@
 							@endif >{{$giro->nombre}}</option>
 						@endforeach
 				</select>
+				 </div>
 	 			</div>
 	 			<div class="form-group col-lg-4 col-md-3 col-sm-6 col-xs-12">
 	 			<label class="control-label" for="nombre"><i class="fa fa-asterisk" aria-hidden="true"></i>Tamaño de la empresa:</label>
@@ -56,6 +59,8 @@
 	 			</div>
 	 			<div class="form-group col-lg-4 col-md-3 col-sm-6 col-xs-12">
 	 			<label class="control-label" for="forma_contacto_id"><i class="fa fa-asterisk" aria-hidden="true"></i>Forma de contacto:</label>
+	 			<div class="input-group">
+  							<span class="input-group-addon" id="basic-addon3" onclick='getFormas()'><i class="fa fa-refresh" aria-hidden="true"></i></span>
 					<select type="select" name="forma_contacto_id" class="form-control" id="forma_contacto_id">
 
 					<option id="forma_contacto_id" value="">Sin Definir</option>
@@ -68,6 +73,7 @@
 							@endif>{{ $formaContacto->nombre }}</option>
 						@endforeach
 					</select>
+				 </div>
 	 			</div>
 	 		</div>
 	 		<div class="col-md-12 offset-md-2 mt-3">
@@ -86,5 +92,102 @@
 	 			</div>
 	 		</div>
 	 	</div>
+	 	<div class="panel-heading jumbotron">Datos Bancarios:&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-asterisk" aria-hidden="true"></i>Campos Requeridos</div>
+	 	<div class="panel-body">
+	 	  <div class="row">
+	 	  	<div class="col-sm-3">
+	 	  		<label class="control-label" for="banco"> <i class="fa fa-asterisk" aria-hidden="true"></i>Banco</label>
+	 	  		<div class="input-group">
+  						<span class="input-group-addon" id="basic-addon3" onclick='getBancos()'><i class="fa fa-refresh" aria-hidden="true"></i></span>
+					<select type="select" name="banco" class="form-control" id="banco">
+						<option id="sin_definir" value="sin_definir">Sin Definir</option>
+						@foreach($bancos as $banco)
+						<option id="{{$banco->nombre}}" value="{{$banco->nombre}}"
+							@if($datos->banco==$banco->nombre)
+							selected="selected"
+							@endif>{{$banco->nombre}}</option>
+						@endforeach
+					</select>
+				</div>
+	 	  	</div>
+	 	  	<div class="col-sm-3">
+	 	  		<label class="control-label" for="cuenta"> <i class="fa fa-asterisk" aria-hidden="true"></i>Número de Cuenta</label>
+	 	  		<input type="text" name="cuenta" id="cuenta" class="form-control" value="{{$datos->cuenta}}">
+	 	  	</div>
+	 	  	<div class="col-sm-3">
+	 	  		<label class="control-label" for="clabe"> <i class="fa fa-asterisk" aria-hidden="true"></i>CLABE</label>
+	 	  		<input type="text" name="clabe" id="clabe" class="form-control" value="{{$datos->clabe}}">
+	 	  	</div>
+	 	  	<div class="col-sm-3">
+	 	  		<label class="control-label" for="beneficiario"> <i class="fa fa-asterisk" aria-hidden="true"></i>Beneficiario</label>
+	 	  		<input type="text" name="beneficiario" id="beneficiario" class="form-control" value="{{$datos->beneficiario}}">
+	 	  	</div>
+	 	  </div>	
+	 	</div>
+
+	 </form>
 	</div>
+
+		<script type="text/javascript">
+
+		function getGiros()
+		{
+		  $.ajaxSetup({
+		    headers: {
+		      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		    }
+		  });
+		  $.ajax({
+		    url: "{{ url('/getgiros') }}",
+		    type: "GET",
+		    dataType: "html",
+		  }).done(function(resultado){
+		    $("#giro_id").html(resultado);
+		  });
+		}
+
+		function getFormas()
+		{
+		  $.ajaxSetup({
+		    headers: {
+		      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		    }
+		  });
+		  $.ajax({
+		    url: "{{ url('/getformas') }}",
+		    type: "GET",
+		    dataType: "html",
+		  }).done(function(resultado){
+		    $("#forma_contacto_id").html(resultado);
+		  });
+		}
+
+			function getBancos(){
+			$.ajaxSetup({
+		    headers: {
+		      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		    }
+			});
+			$.ajax({
+				url: "{{ url('/getbancos') }}",
+			    type: "GET",
+			    dataType: "html",
+			}).done(function(resultado){
+			    $("#banco").html(resultado);
+			});
+		}
+
+	
+	</script>
 	@endsection
+		<script type="text/javascript">
+		// input type url agree http:// in automatic
+		function checkURL (abc) {
+  			var string = abc.value;
+  			if (!~string.indexOf("http")) {
+    			string = "http://" + string;
+  			}
+  			abc.value = string;
+  			return abc
+		}
+	</script>

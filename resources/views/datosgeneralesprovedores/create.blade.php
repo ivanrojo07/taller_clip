@@ -73,6 +73,36 @@
 	 			</div>
 	 		</div>
 	 	</div>
+
+<div class="panel-heading jumbotron" style="color: black;">Datos Bancarios: &nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-asterisk" aria-hidden="true"></i>Campos Requeridos</div>
+	 	<div class="panel-body">
+	 	  <div class="row">
+	 	  	<div class="col-sm-3">
+	 	  		<label class="control-label" for="banco"> <i class="fa fa-asterisk" aria-hidden="true"></i>Banco</label>
+	 	  		<div class="input-group">
+  						<span class="input-group-addon" id="basic-addon3" onclick='getBancos()'><i class="fa fa-refresh" aria-hidden="true"></i></span>
+					<select type="select" name="banco" class="form-control" id="banco">
+						<option id="sin_definir" value="sin_definir">Sin Definir</option>
+						@foreach($bancos as $banco)
+						<option id="{{$banco->nombre}}" value="{{$banco->nombre}}">{{$banco->nombre}}</option>
+						@endforeach
+					</select>
+				</div>
+	 	  	</div>
+	 	  	<div class="col-sm-3">
+	 	  		<label class="control-label" for="cuenta"> <i class="fa fa-asterisk" aria-hidden="true"></i>Número de Cuenta</label>
+	 	  		<input type="text" name="cuenta" id="cuenta" class="form-control">
+	 	  	</div>
+	 	  	<div class="col-sm-3">
+	 	  		<label class="control-label" for="clabe"> <i class="fa fa-asterisk" aria-hidden="true"></i>CLABE</label>
+	 	  		<input type="text" name="clabe" id="clabe" class="form-control">
+	 	  	</div>
+	 	  	<div class="col-sm-3">
+	 	  		<label class="control-label" for="beneficiario"> <i class="fa fa-asterisk" aria-hidden="true"></i>Beneficiario</label>
+	 	  		<input type="text" name="beneficiario" id="beneficiario" class="form-control">
+	 	  	</div>
+	 	  </div>	
+	 	</div>
 	 	</form>
 	 	</div>
 	</div>
@@ -110,6 +140,21 @@
 		  }).done(function(resultado){
 		    $("#forma_contacto_id").html(resultado);
 		  });
+		}
+
+			function getBancos(){
+			$.ajaxSetup({
+		    headers: {
+		      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		    }
+			});
+			$.ajax({
+				url: "{{ url('/getbancos') }}",
+			    type: "GET",
+			    dataType: "html",
+			}).done(function(resultado){
+			    $("#banco").html(resultado);
+			});
 		}
 
 	

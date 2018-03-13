@@ -25,6 +25,10 @@ class CreateDatosGeneralesProvedorTable extends Migration
             $table->string('web')->nullable();
             $table->text('comentario')->nullable();
             $table->date('fechacontacto')->nullable();
+            $table->string('banco')->nullable();
+            $table->string('cuenta')->nullable();
+            $table->string('clabe')->nullable();
+            $table->string('beneficiario')->nullable();
             $table->timestamps();
         });
     }

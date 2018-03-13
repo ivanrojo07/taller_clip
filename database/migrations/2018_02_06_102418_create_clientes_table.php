@@ -15,19 +15,19 @@ class CreateClientesTable extends Migration
     {
         Schema::create('clientes', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('tipopersona',['Fisica','Moral']);
-            $table->enum('tipo',['Prospecto','Cliente']);
-            $table->enum('prioridad',['Baja', 'Mediana', 'Alta']);
-            $table->integer('calificacion');
+            $table->enum('tipopersona',['Fisica','Moral'])->nullable();
+            $table->enum('tipo',['Prospecto','Cliente'])->nullable();
+            $table->enum('prioridad',['Baja', 'Mediana', 'Alta'])->nullable();
+            $table->integer('calificacion')->nullable();
             //Nombre Completo
-            $table->string('nombre')->nullable();
-            $table->string('apellidopaterno')->nullable();
+            $table->string('nombre');
+            $table->string('apellidopaterno');
             $table->string('apellidomaterno')->nullable();
             $table->string('razonsocial')->nullable();
-            $table->string('mail');
-            $table->string('rfc');
-            $table->string('telefono');
-            $table->string('celular');
+            $table->string('mail')->nullable();
+            $table->string('rfc')->nullable();
+            $table->string('telefono')->nullable();
+            $table->string('celular')->nullable();
             //Domicilio
             $table->string('calle')->nullable();
             $table->string('numext')->nullable();

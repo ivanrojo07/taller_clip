@@ -20,7 +20,7 @@
 	 				@if($giro==null)
 	 				<dd>SIN DEFINIR</dd>
 	 				@else
-					<dd>{{$giro}}</dd>
+					<dd>{{$giro->nombre}}</dd>
 					@endif
 				
 	 			</div>
@@ -29,7 +29,7 @@
 	 				@if($formaContacto==null)
 	 				<dd>SIN DEFINIR</dd>
 	 				@else
-	 				<dd>{{$formaContacto}}</dd>
+	 				<dd>{{$formaContacto->nombre}}</dd>
 	 				@endif
 	 			</div>
 	 		</div>
@@ -48,6 +48,33 @@
 	 				<dd>{{$datos->fechacontacto}}</dd>
 	 				
 	 			</div>
+	 		</div>
+ 		
+	 	</div>
+	 	<div class="panel-heading">Datos Bancarios:</div>
+	 	<div class="panel-body">
+	 		<div class="col-md-12 offset-md-2 mt-3">
+	 			<div class="form-group col-lg-4 col-md-3 col-sm-6 col-xs-12">
+	 				<label class="control-label" for="nombre">Nombre del Banco:</label>
+					<dd>{{$datos->banco}}</dd>
+	 			</div>
+	 			<div class="form-group col-lg-4 col-md-3 col-sm-6 col-xs-12">
+	 				<label class="control-label" for="nombre">Número de Cuenta:</label>
+	 				<dd>{{$datos->cuenta}}</dd>
+	 			</div>
+	 			<div class="form-group col-lg-4 col-md-3 col-sm-6 col-xs-12">
+	 				<label class="control-label" for="nombre">Nombre del Beneficiario:</label>
+	 				<dd>{{$datos->beneficiario}}</dd>
+	 			</div>
+	 		</div>
+	 		<div class="col-md-12 offset-md-2 mt-3">
+	 			<div class="form-group col-lg-4 col-md-3 col-sm-6 col-xs-12">
+	 				<label class="control-label" for="web">CLABE:</label>
+	 				<dd>{{$datos->clabe}}</a></dd>
+	 			</div>
+
+	 			
+	 			
 	 		</div>
  		<a class="btn btn-info" href="{{ route('provedores.datosgenerales.edit',['provedores'=>$provedore,'datosgenerale'=>$datos]) }}">
  	<strong>Editar</strong>	</a>

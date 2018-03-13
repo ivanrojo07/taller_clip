@@ -41,15 +41,16 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $rfc = Cliente::where('rfc', $request->rfc)->get();
-        if (count($rfc)!=0) {
-            # code...
-            return redirect()->back()->with('errors','El RFC ya existe');                               
-        } else {
-            # code...
-
-            $cliente = Cliente::create($request->all());
+        
+        //$rfc = Cliente::where('rfc', $request->rfc)->get();
+        // if (count($rfc)!=0) {
+        //     # code...
+        //     return redirect()->back()->with('errors','El RFC ya existe');                               
+        // } else {
+        //     # code...
+        //        }
+               
+         $cliente = Cliente::create($request->all());
             if ($request['tipo'] == 'Cliente') {
                 Alert::success('Cliente creado con éxito', 'Siga agregando información');
                 return redirect()->route('clientes.direccion.index', ['cliente'=>$cliente]);
@@ -57,8 +58,7 @@ class ClienteController extends Controller
             if($request['tipo'] == 'Prospecto') {
                 Alert::success('Prospecto creado con éxito');
                 return redirect()->route('clientes.crm.index',['cliente'=>$cliente]);
-            }   
-        }
+            }  
     }
 
     /**

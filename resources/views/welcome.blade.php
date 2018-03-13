@@ -110,7 +110,7 @@
 
                     
                     
-                  {{--  <li class="dropdown">
+                    <li class="dropdown">
                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Productos <span class="caret"></span> </a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
@@ -123,8 +123,7 @@
 
                             </li>                     
                         </ul>
-                    </li> --}}
-
+                    </li> 
 
                     
 
@@ -226,6 +225,9 @@
                                       <li><a href="#" 
                                              onclick="AgregarNuevoTab('{{ url('/formacontactos') }}','Forma de Contacto')">
                                              <i class="fa fa-refresh" aria-hidden="true"></i>Forma Contactos</a></li>
+                                              <li>
+                                         <a href="#" onclick="AgregarNuevoTab('{{ url('/bancos') }}','Bancos')"><i class="fa fa-refresh" aria-hidden="true"></i> Precargas Bancos</a>
+                                        </li>
                                     </ul>
                                   </li>
 
@@ -251,6 +253,7 @@
     <div class="container" style="width: 100%; height: 100%;">
         <ul id="tabsApp" class="nav nav-tabs"></ul>
         <div id="contenedortab" class="tab-content"></div>
+        
     </div>
 </div>
     </body>

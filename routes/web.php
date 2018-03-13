@@ -86,7 +86,6 @@ Route::get('comision',function(){
 //   11/Dic/2017
 //-----------------------------------------------------
 
-
 Route::resource('formacontactos','FormaContacto\FormaContactoController');
 
 //Route::resource('clientes','Personal\PersonalController');
@@ -121,3 +120,5 @@ Route::get('sucursales.create','Sucursal\SucursalController@create');
 Route::get('sucursales.index','Sucursal\SucursalController@index');
 
 Route::resource('sucursal','Empleado\EmpleadoSucursalController');
+//-------------------------------------------------------------------
+
