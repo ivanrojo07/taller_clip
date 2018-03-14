@@ -25,6 +25,8 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="{{ asset('js/peticion.js') }}"></script>
+    
+
     </head>
     <body>
 
@@ -116,6 +118,9 @@
                             <li>
                                 <a href="#"
                                    onclick="AgregarNuevoTab('{{ url('import-export-csv-excel') }}','Importar Excel')"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Alta por excel</a>
+
+                                <a href="#"
+                                   onclick="AgregarNuevoTab('{{ url('producto/create') }}','Alta Manual')"><i class="fa fa-plus" aria-hidden="true"></i> Alta Manual</a>
 
                                 <a href="#"
                                    onclick="AgregarNuevoTab('{{ url('productos') }}','Buqueda de Productos')">

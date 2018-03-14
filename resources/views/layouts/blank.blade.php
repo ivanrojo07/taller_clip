@@ -49,5 +49,80 @@
     <script type="https://unpkg.com/sweetalert/dist/main.js"></script>
     {{-- ¿Por qué usamos JQUERY 2.2.2 Y 3.2.1?--}}
      <script type="https://unpkg.com/sweetalert/dist/jquery-3.2.1.min"></script>
+
+     <script>
+        
+        $(document).ready(function(){
+
+            $("#utilidad").change(function(){
+                
+                var option=document.getElementById("utilidad").value;
+                console.log(option);
+               
+
+               if(option == 'Montajes'){
+                
+                document.getElementById('montajes_div').style.display = 'block';
+                document.getElementById('proteccion_div').style.display = 'none';
+                document.getElementById('marcos_div').style.display = 'none';
+                document.getElementById('maria_div').style.display = 'none';
+                document.getElementById('generales_div').style.display = 'none';
+               
+               }
+               else if(option  == 'Marcos y Bastidores'){
+                    
+                document.getElementById('montajes_div').style.display = 'none';
+                document.getElementById('proteccion_div').style.display = 'none';
+                document.getElementById('marcos_div').style.display = 'block';
+                document.getElementById('maria_div').style.display = 'none';
+                document.getElementById('generales_div').style.display = 'none';
+               
+               }
+               else if(option  == 'Maria Luisa'){
+                
+                document.getElementById('montajes_div').style.display = 'none';
+                document.getElementById('proteccion_div').style.display = 'none';
+                document.getElementById('marcos_div').style.display = 'none';
+                document.getElementById('maria_div').style.display = 'block';
+                document.getElementById('generales_div').style.display = 'none';
+
+               }
+               else if(option  == 'Proteccion'){
+                
+                document.getElementById('montajes_div').style.display = 'none';
+                document.getElementById('proteccion_div').style.display = 'block';
+                document.getElementById('marcos_div').style.display = 'none';
+                document.getElementById('maria_div').style.display = 'none';
+                document.getElementById('generales_div').style.display = 'none';
+
+               }
+               else if(option  == 'Generales'){
+                
+                document.getElementById('montajes_div').style.display = 'none';
+                document.getElementById('proteccion_div').style.display = 'none';
+                document.getElementById('marcos_div').style.display = 'none';
+                document.getElementById('maria_div').style.display = 'none';
+                document.getElementById('generales_div').style.display = 'block';       
+               }
+               else{
+                document.getElementById('montajes_div').style.display = 'none';
+                document.getElementById('proteccion_div').style.display = 'none';
+                document.getElementById('marcos_div').style.display = 'none';
+                document.getElementById('maria_div').style.display = 'none';
+                document.getElementById('generales_div').style.display = 'none'; 
+               }
+            });
+
+             $("#precio").keyup(function(){
+                
+                var precio=document.getElementById("precio").value;
+                var cambio=document.getElementById("cambio").value;
+                var ajuste=Number(precio)*Number(cambio);
+                
+                document.getElementById('ajuste').value = ajuste;
+             });
+        });
+
+    </script>
 </body>
 </html>
