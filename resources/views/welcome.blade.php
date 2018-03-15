@@ -107,7 +107,16 @@
                         </ul>
                     </li>
 
+                       <li class="dropdown">
+                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-dollar" aria-hidden="true"></i> Tipo de Cambio <span class="caret"></span> </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                        <a href="#" onclick="AgregarNuevoTab('{{ url('cambio') }}','Tipo de Cambio')">
+                                   <i class="fa fa-refresh" aria-hidden="true"></i>Gestión de Tipo de Cambio</a>  
 
+                            </li>                     
+                        </ul>
+                    </li> 
 
 
                     
@@ -178,29 +187,6 @@
                         </ul>
                     </li>
 
-                   
-                    
-                     <!-- <li class="dropdown-submenu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Productos <span class="caret"></span> </a>
-                    <ul class="dropdown-menu">
-                      <li class="dropdown-submenu">
-                        <a class="test" href="#"><i class="fa fa-car" aria-hidden="true"></i> Vehiculos <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                          <li><a href="#"><i class="fa fa-plus" aria-hidden="true"></i> Alta</a></li>
-                          <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i> Busqueda</a></li>
-                        </ul>
-                        <a class="test" href="#"><i class="fa fa-motorcycle" aria-hidden="true"></i> Motocicletas <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                          <li><a href="#"><i class="fa fa-plus" aria-hidden="true"></i> Alta</a></li>
-                          <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i> Busqueda</a></li>
-                        </ul>
-                         <a class="test" href="#"><i class="fa fa-home" aria-hidden="true"></i>Casas <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                          <li><a href="#"><i class="fa fa-plus" aria-hidden="true"></i> Alta</a></li>
-                          <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i> Busqueda</a></li>
-                        </ul>
-                      </li>
-                    </li> -->
 
 
                          <li class="dropdown">

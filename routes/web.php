@@ -63,7 +63,7 @@ Route::resource('bajas','Precargas\TipoBajaController');
 
 Route::get('buscarempleado','Empleado\EmpleadoController@buscar');
     
-//Añadido <Iyari> 5/dic/2017//
+//-----  Sólo vistas  ---------------------------------------
 Route::get('sucursales',function(){
 	return View::make('Sucursales.index');
 });
@@ -82,6 +82,10 @@ Route::get('bonos',function(){
 Route::get('comision',function(){
 
 	return View::make('Empleadobonos.comision');
+});
+Route::get('cambio',function(){
+
+	return View::make('Tipocambio.create');
 });
 //   11/Dic/2017
 //-----------------------------------------------------

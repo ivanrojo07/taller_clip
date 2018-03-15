@@ -49,7 +49,7 @@
     <script type="https://unpkg.com/sweetalert/dist/main.js"></script>
     {{-- ¿Por qué usamos JQUERY 2.2.2 Y 3.2.1?--}}
      <script type="https://unpkg.com/sweetalert/dist/jquery-3.2.1.min"></script>
-
+   
      <script>
         
         $(document).ready(function(){

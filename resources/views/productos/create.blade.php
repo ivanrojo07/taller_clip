@@ -44,16 +44,19 @@
 					<div class="row">
 						<div class="col-sm-3">
 							<label class="control-label" for="precio"> Precio:</label>
-	  						<input type="number" class="form-control" id="precio" name="precio"  t placeholder="$--">
+	  						<input type="number" class="form-control" id="precio" name="precio"  placeholder="$--">
 						</div>
 						<div class="col-sm-3">
 							<label class="control-label" for="cambio">Tipo de Cambio: &nbsp;&nbsp;&nbsp;&nbsp;
 								<b>|{{date('d-m-y')}}|</b></label>
-	  						<input type="number" class="form-control" id="cambio" name="cambio"  maxlength="20" placeholder="$--" readonly value="18.4">
+						 <div class="input-group">
+						<span class="input-group-addon" id="basic-addon3" onclick='getCambio()'><i class="fa fa-refresh" aria-hidden="true"></i></span>
+	  						<input type="number" class="form-control" id="cambio" name="cambio"  maxlength="20" placeholder="$--" readonly value="18.4" style="color: black;">
+	  					 </div>
 						</div>
 						<div class="col-sm-3">
 							<label class="control-label" for="ajuste">Ajuste: (Automático)</label>
-	  						<input type="number" class="form-control" id="ajuste" name="ajuste"  maxlength="20" placeholder="$--" readonly>
+	  						<input type="number" class="form-control" id="ajuste" name="ajuste"  maxlength="20" placeholder="$--" readonly style="color: black;">
 						</div>
 					</div><br>
 					<div class="row">
@@ -109,7 +112,7 @@
 			</div>
 			<div class="col-sm-3">
 				<label class="control-label" for="clave_montaje">Clave Montaje: (Automático)</label>
-	  			<input type="text" class="form-control" id="clave_montaje" name="clave_montaje"  maxlength="20" readonly placeholder="Nombre+Color+Espesor">
+	  			<input type="text" class="form-control" id="clave_montaje" name="clave_montaje"  maxlength="20" readonly placeholder="Nombre+Color+Espesor" style="color: black;">
 			</div>
 		</div><br>
 		<div class="row">
@@ -156,7 +159,7 @@
 			</div>
 			<div class="col-sm-3">
 				<label class="control-label" for="clave_proteccion">Clave Protección: (Automático)</label>
-	  			<input type="text" class="form-control" id="clave_proteccion" name="clave_proteccion"  maxlength="20" readonly placeholder="Nombre+Color+Espesor">
+	  			<input type="text" class="form-control" id="clave_proteccion" name="clave_proteccion"  maxlength="20" readonly placeholder="Nombre+Color+Espesor" style="color: black;">
 			</div>
 		</div><br>
 		<div class="row">
@@ -237,7 +240,7 @@
 			</div>
 			<div class="col-sm-3">
 				<label class="control-label" for="clave_montaje">Clave Marco/Bastidor:</label>
-	  			<input type="text" class="form-control" id="clave_montaje" name="clave_montaje"  maxlength="20" readonly placeholder="No Definido Aún">
+	  			<input type="text" class="form-control" id="clave_montaje" name="clave_montaje"  maxlength="20" readonly placeholder="No Definido Aún" style="color: black;">
 			</div>
 		</div><br>
 		<div class="row">
@@ -294,7 +297,7 @@
 			</div>
 			<div class="col-sm-3">
 				<label class="control-label" for="clave_montaje">Clave María Luisa</label>
-	  			<input type="text" class="form-control" id="clave_montaje" name="clave_montaje"  maxlength="20" readonly placeholder="No Definido Aún">
+	  			<input type="text" class="form-control" id="clave_montaje" name="clave_montaje"  maxlength="20" readonly placeholder="No Definido Aún" style="color: black;">
 			</div>
 		</div><br>
 		<div class="row">
@@ -319,7 +322,7 @@
 			</div>
 			<div class="col-sm-3">
 				<label class="control-label" for="clave_generales">Clave Generales</label>
-	  			<input type="text" class="form-control" id="clave_generales" name="clave_generales"  maxlength="20" readonly placeholder="No Definido Aún">
+	  			<input type="text" class="form-control" id="clave_generales" name="clave_generales"  maxlength="20" readonly placeholder="No Definido Aún" style="color: black;">
 			</div>
 		</div><br>
 		<div class="row">
