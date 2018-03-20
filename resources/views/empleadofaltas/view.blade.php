@@ -7,7 +7,7 @@
 
 			<li role="presentation" class=""><a href="{{ route('empleados.datoslaborales.index',['empleado'=>$empleado]) }}" class="ui-tabs-anchor">Laborales:</a></li>
 
-			<li role="presentation" class=""><a href="{{ route('empleados.estudios.index',['empleado'=>$empleado]) }}" class="ui-tabs-anchor">Estudios:</a></li>
+			
 
 			<li role="presentation" class=""><a href="{{ route('empleados.emergencias.index',['empleado'=>$empleado]) }}" class="ui-tabs-anchor">Emergencias:</a></li>
 
@@ -40,17 +40,15 @@
 				<div class="col-xs-12 offset-md-2 mt-3">
 					<div class="form-group col-xs-3">
 						<label class="control-label" for="tipofalta" id="lbl_falta"><i class="fa fa-asterisk" aria-hidden="true"></i>Tipo de falta:</label>
-						<select type="select" name="tipofalta" class="form-control" id="id_falta">
-							<option id="1" value="Falta 1">falta 1</option>
-							<option id="2" value="Falta 2">falta 2</option>
-	    					<option id="3" value="Falta 3">falta 3</option>
-	    					<option id="4" value="Falta 4">falta 4</option>
-							<option id="5" value="Falta 5">falta 5</option>
-	    					<option id="6" value="Falta 6">falta 6</option>
-	    					<option id="7" value="Falta 7">falta 7</option>
-							<option id="8" value="Falta 8">falta 8</option>
-	    					<option id="9" value="Falta 9">falta 9</option>
-						</select>
+						 <div class="input-group">
+						 <span class="input-group-addon" id="basic-addon3" onclick='getFaltas()'><i class="fa fa-refresh" aria-hidden="true"></i></span>
+						<select type="select" name="tipofalta" class="form-control" id="tipofalta">
+	  							<option id="Sin Definir" value="Sin Definir" selected="selected">Sin Definir</option>
+	  							@foreach($faltasp as $falta)
+	  							<option id="{{$falta->id}}" value="{{$falta->nombre}}">{{$falta->nombre}}</option>
+	  							@endforeach
+	  						</select>
+					</div>
 					</div>
 				</div>
 				<div class="col-xs-12 offset-md-2 mt-3">
@@ -83,5 +81,21 @@
 						@endforeach
 			</table>
 			</div>
-				
+				<script type="text/javascript">
+		function getFaltas()
+		{
+		  $.ajaxSetup({
+		    headers: {
+		      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		    }
+		  });
+		  $.ajax({
+		    url: "{{ url('/getfaltas') }}",
+		    type: "GET",
+		    dataType: "html",
+		  }).done(function(resultado){
+		    $("#tipofalta").html(resultado);
+		  });
+		}
+				</script>
 @endsection

@@ -93,7 +93,7 @@
 				<ul role="tablist" class="nav nav-tabs nav-pills nav-justified">
 					<li role="tab" tabindex="0" aria-controls="tabs-1" aria-labelledby="ui-id-1" aria-selected="true" aria-expanded="true" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab ui-tabs-active ui-state-active active"><a href="#tab1{{$empleado->id}}" tabindex="-1">Datos Generales:</a></li>
 					<li role="tab" tabindex="-1" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab" aria-controls="tabs-2" aria-labelledby="ui-id-2" aria-selected="false" aria-expanded="false"><a href="#tab2{{$empleado->id}}" role="tab" tabindex="-1" class="ui-tabs-anchor" id="ui-id-2">Datos Laborales:</a></li>
-					<li role="tab" tabindex="-1" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab" aria-controls="tabs-3" aria-labelledby="ui-id-3" aria-selected="false" aria-expanded="false"><a href="#tab3{{$empleado->id}}" role="tab" tabindex="-1" class="ui-tabs-anchor" id="ui-id-3">Estudios:</a></li>
+					
 					<li role="tab" tabindex="-1" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab" aria-controls="tabs-3" aria-labelledby="ui-id-3" aria-selected="false" aria-expanded="false"><a href="#tab4{{$empleado->id}}" role="tab" tabindex="-1" class="ui-tabs-anchor" id="ui-id-3">Datos Emergencias:</a></li>
 					
 				</ul>

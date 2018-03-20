@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Empleado;
 
 use App\Empleado;
+use App\Falta;
 use App\EmpleadosFaltasAdministrativas;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -18,7 +19,11 @@ class EmpleadosFaltasAdministrativasController extends Controller
     {
         //
         $faltas = $empleado->faltasAdmin;
-        return view('empleadofaltas.view',['empleado'=>$empleado,'faltas'=>$faltas]);
+        $faltasp=Falta::get();
+        return view('empleadofaltas.view',
+                    ['empleado'=>$empleado,
+                     'faltas'=>$faltas,
+                     'faltasp'=>$faltasp]);
     }
 
     /**

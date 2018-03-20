@@ -7,7 +7,7 @@
 
 			<li role="presentation" class=""><a href="{{ route('empleados.datoslaborales.index',['empleado'=>$empleado]) }}" class="ui-tabs-anchor">Laborales:</a></li>
 
-			<li role="presentation" class=""><a href="{{ route('empleados.estudios.index',['empleado'=>$empleado]) }}" class="ui-tabs-anchor">Estudios:</a></li>
+			
 
 			<li role="presentation" class="active"><a href="{{ route('empleados.emergencias.index',['empleado'=>$empleado]) }}" class="ui-tabs-anchor">Emergencias:</a></li>
 
@@ -17,8 +17,7 @@
 		</ul>
 	</div>
 	<div class="panel-default">
-		<div class="panel-heading"><h5>Emergencias:
-		&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-asterisk" aria-hidden="true"></i>Campos Requeridos</h5></div>
+		<div class="panel-heading"><h5>Emergencias:</h5></div>
 		<div class="panel-body">
 			@if ($edit == true)
 				{{-- true expr --}}
@@ -34,7 +33,7 @@
 			@endif
 				<div class="col-md-12 offset-md-2 mt-3">
 					<div class="form-group col-xs-4">
-						<label class="control-label" for="sangre" id="sangre"><i class="fa fa-asterisk" aria-hidden="true"></i>Tipo de Sangre:</label>
+						<label class="control-label" for="sangre" id="sangre">Tipo de Sangre:</label>
 						<select type="select" name="sangre" class="form-control" id="sangre">
 							<option id="1" value="O-" @if ($emergencias->sangre == "O-")
 								{{-- expr --}}
@@ -73,11 +72,11 @@
 				</div>
 				<div class="col-md-12 offset-md-2 mt-3">
 					<div class="form-group col-xs-4">
-						<label class="control-label" for="enfermedades" id="lbl_enf"><i class="fa fa-asterisk" aria-hidden="true"></i>Enfermedades:</label>
+						<label class="control-label" for="enfermedades" id="lbl_enf">Enfermedades:</label>
 						<textarea class="form-control" id="enfermedades" name="enfermedades" maxlength="500" >{{ $emergencias->enfermedades }}</textarea>
 					</div>
 					<div class="form-group col-xs-4">
-						<label class="control-label" for="alergias" id="lbl_alerg"><i class="fa fa-asterisk" aria-hidden="true"></i>Alergias:</label>
+						<label class="control-label" for="alergias" id="lbl_alerg">Alergias:</label>
 						<textarea class="form-control" id="alergias" name="alergias" maxlength="500">{{ $emergencias->alergias }}</textarea>
 					</div>
 					<div class="form-group col-xs-4">
@@ -88,21 +87,21 @@
 				<div class="panel-heading"><h5>En caso de emergencia llamar a:</h5></div>
 				<div class="col-xs-12 offset-md-2 mt-3">
 					<div class="form-group col-xs-4">
-    					<label class="control-label" for="nombrecontac1"><i class="fa fa-asterisk" aria-hidden="true"></i>Nombre:</label>
+    					<label class="control-label" for="nombrecontac1">Nombre:</label>
     					<input type="text" class="form-control" id="nombrecontac1" name="nombrecontac1" value="{{ $emergencias->nombrecontac1 }}">
   					</div>
   					<div class="form-group col-xs-4">
-    					<label class="control-label" for="parentescocontac1"><i class="fa fa-asterisk" aria-hidden="true"></i>Parentesco:</label>
+    					<label class="control-label" for="parentescocontac1">Parentesco:</label>
     					<input type="text" class="form-control" id="parentescocontac1" name="parentescocontac1" value="{{ $emergencias->parentescocontac1 }}">
   					</div>
   				</div>
   				<div class="col-xs-12 offset-md-2 mt-3">
 					<div class="form-group col-xs-4">
-    					<label class="control-label" for="telefonocontac1"><i class="fa fa-asterisk" aria-hidden="true"></i>Télefono:</label>
+    					<label class="control-label" for="telefonocontac1">Télefono:</label>
     					<input type="text" class="form-control" id="telefonocontac1" name="telefonocontac1" value="{{ $emergencias->telefonocontac1 }}">
   					</div>
   					<div class="form-group col-xs-4">
-    					<label class="control-label" for="movilcontac1"><i class="fa fa-asterisk" aria-hidden="true"></i>Telefono celular:</label>
+    					<label class="control-label" for="movilcontac1">Telefono celular:</label>
     					<input type="text" class="form-control" id="movilcontac1" name="movilcontac1" value="{{ $emergencias->movilcontac1 }}">
   					</div>
   				</div>

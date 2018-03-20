@@ -26,10 +26,7 @@
 						<label class="control-label" for="nombre">Nombre(s):</label>
 						<dd>{{$empleado->nombre}}</dd>
 					</div>
-					<div class="form-group col-xs-3">
-						<label class="control-label" for="rfc">RFC:</label>
-						<dd>{{$empleado->rfc}}</dd>
-					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -39,7 +36,7 @@
 
 				<li role="presentation" class=""><a href="{{ route('empleados.datoslaborales.index',['empleado'=>$empleado]) }}" class="ui-tabs-anchor">Laborales:</a></li>
 
-				<li role="presentation" class=""><a href="{{ route('empleados.estudios.index',['empleado'=>$empleado]) }}" class="ui-tabs-anchor">Estudios:</a></li>
+				
 
 				<li role="presentation" class=""><a href="{{ route('empleados.emergencias.index',['empleado'=>$empleado]) }}" class="ui-tabs-anchor">Emergencias:</a></li>
 

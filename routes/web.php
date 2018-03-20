@@ -26,6 +26,7 @@ Route::get('getbancos','Banco\BancoController@getBancos');
 Route::get('getbajas','Precargas\TipoBajaController@getBajas');
 Route::get('getgiros','Giro\GiroController@getGiros');
 Route::get('getformas','FormaContacto\FormaContactoController@getFormas');
+Route::get('getfaltas','Falta\FaltaController@getFaltas');
 
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::get('prospectos', 'Personal\PersonalController@search');
@@ -115,6 +116,7 @@ Route::resource('producto', 'Producto\ProductController');
 Route::resource('areas','Area\AreaController', ['except'=>'show']);
 Route::resource('puestos','Puesto\PuestoController', ['except'=>'show']);
 Route::resource('bancos','Banco\BancoController', ['except'=>'show']);
+Route::resource('faltas','Falta\FaltaController', ['except'=>'show']);
 //--------------------------------------------------------------------
 Route::resource('gastos','Gasto\GastoController', ['except'=>'show']);
 // Route::resource('gastos.create','Gasto\GastoController@create');
