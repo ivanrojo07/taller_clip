@@ -56,15 +56,10 @@ class EmpleadoController extends Controller
     public function store(Request $request)
     {
         //
-        $rfc = Empleado::where('rfc',$request->rfc)->get();
-        if (count($rfc)!=0) {
-            # code...
-            return redirect()->back()->with('errors','El RFC ya existe');
-        }
-        else {
-            $empleado = Empleado::create($request->all());
+        
+
+         $empleado = Empleado::create($request->all());
             return redirect()->route('empleados.show',['empleado'=>$empleado])->with('success','Empleado Creado');
-        }
     }
 
     /**
