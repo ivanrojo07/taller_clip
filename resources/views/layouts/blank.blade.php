@@ -177,6 +177,34 @@
         });
 
 //---------------------------------------------------------------------------------------------
+$("#atributo_1").change(function(){
+      document.getElementById('descripcion_div').style.display = 'block';
+      document.getElementById('medidas_div').style.display = 'none';
+      document.getElementById('espesor_div').style.display = 'none';
+      document.getElementById('color_div').style.display = 'none';
+});
+
+$("#atributo_2").change(function(){
+      document.getElementById('descripcion_div').style.display = 'none';
+      document.getElementById('medidas_div').style.display = 'block';
+      document.getElementById('espesor_div').style.display = 'none';
+      document.getElementById('color_div').style.display = 'none';
+});
+
+$("#atributo_3").change(function(){
+      document.getElementById('descripcion_div').style.display = 'none';
+      document.getElementById('medidas_div').style.display = 'none';
+      document.getElementById('espesor_div').style.display = 'block';
+      document.getElementById('color_div').style.display = 'none';
+});
+
+$("#atributo_4").change(function(){
+      document.getElementById('descripcion_div').style.display = 'none';
+      document.getElementById('medidas_div').style.display = 'none';
+      document.getElementById('espesor_div').style.display = 'none';
+      document.getElementById('color_div').style.display = 'block';
+});
+//*********************************************************************************************
 });
 
     </script>
