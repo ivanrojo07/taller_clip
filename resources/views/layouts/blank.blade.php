@@ -54,64 +54,7 @@
         
         $(document).ready(function(){
 
-            $("#utilidad").change(function(){
-                
-                var option=document.getElementById("utilidad").value;
-                console.log(option);
-               
-
-               if(option == 'Montajes'){
-                
-                document.getElementById('montajes_div').style.display = 'block';
-                document.getElementById('proteccion_div').style.display = 'none';
-                document.getElementById('marcos_div').style.display = 'none';
-                document.getElementById('maria_div').style.display = 'none';
-                document.getElementById('generales_div').style.display = 'none';
-               
-               }
-               else if(option  == 'Marcos y Bastidores'){
-                    
-                document.getElementById('montajes_div').style.display = 'none';
-                document.getElementById('proteccion_div').style.display = 'none';
-                document.getElementById('marcos_div').style.display = 'block';
-                document.getElementById('maria_div').style.display = 'none';
-                document.getElementById('generales_div').style.display = 'none';
-               
-               }
-               else if(option  == 'Maria Luisa'){
-                
-                document.getElementById('montajes_div').style.display = 'none';
-                document.getElementById('proteccion_div').style.display = 'none';
-                document.getElementById('marcos_div').style.display = 'none';
-                document.getElementById('maria_div').style.display = 'block';
-                document.getElementById('generales_div').style.display = 'none';
-
-               }
-               else if(option  == 'Proteccion'){
-                
-                document.getElementById('montajes_div').style.display = 'none';
-                document.getElementById('proteccion_div').style.display = 'block';
-                document.getElementById('marcos_div').style.display = 'none';
-                document.getElementById('maria_div').style.display = 'none';
-                document.getElementById('generales_div').style.display = 'none';
-
-               }
-               else if(option  == 'Generales'){
-                
-                document.getElementById('montajes_div').style.display = 'none';
-                document.getElementById('proteccion_div').style.display = 'none';
-                document.getElementById('marcos_div').style.display = 'none';
-                document.getElementById('maria_div').style.display = 'none';
-                document.getElementById('generales_div').style.display = 'block';       
-               }
-               else{
-                document.getElementById('montajes_div').style.display = 'none';
-                document.getElementById('proteccion_div').style.display = 'none';
-                document.getElementById('marcos_div').style.display = 'none';
-                document.getElementById('maria_div').style.display = 'none';
-                document.getElementById('generales_div').style.display = 'none'; 
-               }
-            });
+            
 
              $("#precio").keyup(function(){
                 

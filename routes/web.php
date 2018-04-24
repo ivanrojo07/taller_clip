@@ -108,7 +108,7 @@ Route::resource('provedores.crm','Provedor\ProvedorCRMController');
 Route::resource('giros','Giro\GiroController', ['except'=>'show']);
 //---------------------------------------------------------------------
 
-Route::resource('producto', 'Producto\ProductController');
+
 //---------------------------------------------------------------------------
 Route::resource('areas','Area\AreaController', ['except'=>'show']);
 Route::resource('puestos','Puesto\PuestoController', ['except'=>'show']);
@@ -125,5 +125,6 @@ Route::get('sucursales.index','Sucursal\SucursalController@index');
 Route::resource('sucursal','Empleado\EmpleadoSucursalController');
 //-------------------------------------------------------------------
 Route::resource('montaje', 'Montaje\MontajeController');
+Route::resource('producto', 'Producto\ProductoController');
 //----------------------------------------------------------------
 Route::resource('cambio', 'TipoCambio\TipoCambioController', ['except'=>'show']);

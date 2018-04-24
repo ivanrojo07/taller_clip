@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Producto;
 
-use App\Product;
+use App\Producto;
+use App\Provedor;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ProductoClienteTransactionController extends Controller
+class ProductoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,7 +26,7 @@ class ProductoClienteTransactionController extends Controller
      */
     public function create()
     {
-        //
+        return view('productos.create');
     }
 
     /**
@@ -42,10 +43,10 @@ class ProductoClienteTransactionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Producto $producto)
     {
         //
     }
@@ -53,10 +54,10 @@ class ProductoClienteTransactionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Producto $producto)
     {
         //
     }
@@ -65,10 +66,10 @@ class ProductoClienteTransactionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
+     * @param  \App\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Producto $producto)
     {
         //
     }
@@ -76,10 +77,10 @@ class ProductoClienteTransactionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Producto $producto)
     {
         //
     }
