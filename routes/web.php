@@ -84,10 +84,7 @@ Route::get('comision',function(){
 
 	return View::make('Empleadobonos.comision');
 });
-Route::get('cambio',function(){
 
-	return View::make('Tipocambio.create');
-});
 //   11/Dic/2017
 //-----------------------------------------------------
 
@@ -128,3 +125,5 @@ Route::get('sucursales.index','Sucursal\SucursalController@index');
 Route::resource('sucursal','Empleado\EmpleadoSucursalController');
 //-------------------------------------------------------------------
 Route::resource('montaje', 'Montaje\MontajeController');
+//----------------------------------------------------------------
+Route::resource('cambio', 'TipoCambio\TipoCambioController', ['except'=>'show']);

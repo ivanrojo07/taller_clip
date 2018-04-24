@@ -5,14 +5,18 @@
 		<form role="form" id="form-cambio" method="POST" name="form" >
 			<div role="application" class="panel panel-group">
 				<div class="panel-default">
-					<div class="panel-heading"><h4>Tipo de Cambio:&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-dollar" aria-hidden="true"></i>
+					<div class="panel-heading" style="background-color: lightgray!important;"><h4>Tipo de Cambio:&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-dollar" aria-hidden="true"></i>
 				</h4>
 				</div>
 				<div class="panel-body">
 					<div class="row">
+					 <form   method="POST" action="{{ route('cambio.update',['tipoCambio'=>null]) }}">
+							<input type="hidden" name="_token" value="{{ csrf_token() }}">
+							<input type="hidden" name="_method" value="PUT">
+							
 						<div class="col-sm-3">
 							<label class="control-label" for="valor">Cantidad de Pesos por Dolar:</label>
-	  						<input type="number" class="form-control" id="valor" name="valor" placeholder="$--">
+	  						<input type="number" step="any" class="form-control" id="cantidad" name="cantidad" placeholder="$--">
 						</div>
 						<div class="col-sm-3">
 							<label class="control-label" for="fecha">Fecha Actual:</label>
@@ -20,8 +24,10 @@
 						</div>
 						<div class="col-sm-3">
 							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="submit" name="submit" value="Agregar" class="btn btn-primary" disabled>
+							<button type="submit" class="btn btn-warning"><strong>Agregar</strong></button>
+							
 						</div>
+					  </form>
 					</div>
 				</div><br>
 				<div class="panel-heading">
@@ -29,24 +35,22 @@
 					       </h4>
 				</div>
 				<div class="panel-body">
-					<div class="container-fluid">
+					<div class="container-fluid" style=" max-height: 200px;  overflow-y: scroll;">
 						  <table class="table" style="border: solid;">
-						  	 <thead style="background-color: black; color: white; ">
+						  	 <thead style="background-color: black; color: white;">
 							    <tr>
 							        <th  style="text-align: center;">Pesos por Dolar</th>
 							        <th  style="text-align: center;">Fecha</th>
 							    </tr>
 							 </thead>
 							 <tbody style="color: black;">
+							 	@foreach($tipoCambios as $cambio)
 						      <tr style="text-align: center;">
-						        <td><strong>18.4</strong></td>
-						        <td><strong>{{date('d/m/Y')}}</strong></td>
+						        <td><strong>{{$cambio->cantidad}}</strong></td>
+						        <td><strong>{{$cambio->fecha}}</strong></td>
 						      </tr>
-						       <tr style="text-align: center;">
-						        <td><strong>18.17</strong></td>
-						        <td><strong>14/03/2018</strong></td>
-						      </tr>
-						      <tr>
+						      @endforeach
+
 						     </tbody>
 						  </table>
 					</div>

@@ -1,5 +1,6 @@
 @extends('layouts.blank')
  @section('content')
+<div class="container">
  <div role="application" class="panel panel-group container-fluid">
  	<div class="panel-default">
  		<div class="panel-heading" style="background-color: lightgray!important;" ><h3><i class="fa fa-clone"></i>
@@ -35,10 +36,10 @@
 	  			 <br>
 	  			 <div class="row">
 	  			 	<div class="col-sm-4">
- 						<button class="btn btn-success"><strong>Agregar</strong></button>
+ 						<button class="btn btn-primary"><strong>Agregar</strong></button>
  					</div>
  					<div class="col-sm-4">
- 						<button class="btn btn-primary"><strong>Actualizar</strong></button>
+ 						<button class="btn btn-warning"><strong>Actualizar</strong></button>
  					</div>
 	  			 </div>
  			    </div>
@@ -82,10 +83,10 @@
 	  			 <br>
 	  			 <div class="row">
 	  			 	<div class="col-sm-4">
- 						<button class="btn btn-success"><strong>Agregar</strong></button>
+ 						<button class="btn btn-primary"><strong>Agregar</strong></button>
  					</div>
  					<div class="col-sm-4">
- 						<button class="btn btn-primary"><strong>Actualizar</strong></button>
+ 						<button class="btn btn-warning"><strong>Actualizar</strong></button>
  					</div>
 	  			 </div>
  			    </div>
@@ -129,10 +130,10 @@
 	  			 <br>
 	  			 <div class="row">
 	  			 	<div class="col-sm-4">
- 						<button class="btn btn-success"><strong>Agregar</strong></button>
+ 						<button class="btn btn-primary"><strong>Agregar</strong></button>
  					</div>
  					<div class="col-sm-4">
- 						<button class="btn btn-primary"><strong>Actualizar</strong></button>
+ 						<button class="btn btn-warning"><strong>Actualizar</strong></button>
  					</div>
 	  			 </div>
  			    </div>
@@ -176,15 +177,15 @@
 	  			 <br>
 	  			 <div class="row">
 	  			 	<div class="col-sm-4">
- 						<button class="btn btn-success"><strong>Agregar</strong></button>
+ 						<button class="btn btn-primary"><strong>Agregar</strong></button>
  					</div>
  					<div class="col-sm-4">
- 						<button class="btn btn-primary"><strong>Actualizar</strong></button>
+ 						<button class="btn btn-warning"><strong>Actualizar</strong></button>
  					</div>
 	  			 </div>
  			    </div>
  			    <div class="col-sm-7 container-fluid pull-right" style="border:solid; border-color: gray; border-radius: 3px; overflow: scroll;max-height: 350px;">
- 					<div class="row">
+ 					<div class="row" >
  			    		<div class="col-sm-6"><h3>Lista de Colores</h3></div>
  			    		<div class="col-sm-4">Búsqueda<input type="text" class="form-control" name=""></div>
 					</div>
@@ -203,6 +204,6 @@
  		</div>
  	</div>
  </div>
-
+</div>
  @endsection
  

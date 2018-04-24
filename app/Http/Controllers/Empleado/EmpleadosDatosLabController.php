@@ -47,7 +47,7 @@ class EmpleadosDatosLabController extends Controller
         } else {
 
        
-        $datoslab=$empleado->datosLaborales()-> orderBy('created_at', 'desc')->first();
+        $datoslab=$empleado->datosLaborales()->orderBy('created_at', 'desc')->first();
         $area=Area::where('id',$datoslab->area_id)->first();
         $puesto=Puesto::where('id',$datoslab->puesto_id)->first();
         $contrato=TipoContrato::where('id',$datoslab->contrato_id)->first();

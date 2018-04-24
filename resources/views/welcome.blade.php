@@ -111,7 +111,7 @@
                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-dollar" aria-hidden="true"></i> Tipo de Cambio <span class="caret"></span> </a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                        <a href="#" onclick="AgregarNuevoTab('{{ url('cambio') }}','Tipo de Cambio')">
+                        <a href="#" onclick="AgregarNuevoTab('{{ url('/cambio/create') }}','Tipo de Cambio')">
                                    <i class="fa fa-refresh" aria-hidden="true"></i>Gestión de Tipo de Cambio</a>  
 
                             </li>                     
@@ -125,30 +125,22 @@
                                <li class="dropdown-submenu">
                                 <a tabindex="-1" href="#" onclick="AgregarNuevoTab('{{ url('/montaje/create') }}','Blue Print')"><i class="fa fa-clone"></i>
                                    Montajes</a>
-                                   
                               </li>
                                    <li class="dropdown-submenu">
                                 <a tabindex="-1" href="#"><i class="fa fa-object-group"></i>
-                                    
-                                       Protección</a>
+                                    Protección</a>
                                    </li>
                                    <li class="dropdown-submenu">
                                 <a tabindex="-1" href="#"><i class="fa fa-columns"></i>
-                                    
-                                      Marcos y Bastidores</a>
-                                   
-                                  </li>
+                                    Marcos y Bastidores</a>
+                                   </li>
                                    <li class="dropdown-submenu">
                                 <a tabindex="-1" href="#"><i class="fa fa-image"></i>
-                                    
-                                      María Luisa</a>
-                                    
+                                    María Luisa</a>
                                   </li>
-
                                   <li class="dropdown-submenu">
                                 <a tabindex="-1" href="#"><i class="fa fa-paperclip"></i>
-                                    
-                                      Generales</a>
+                                    Generales</a>
                                     <ul class="dropdown-menu">
                                       <li>
                                         <a href="#" 
@@ -164,9 +156,7 @@
                                          Colgaderas
                                         </a>
                                      </li>
-                                   
-                                   
-                                    </ul>
+                                   </ul>
                                   </li>
 
 
