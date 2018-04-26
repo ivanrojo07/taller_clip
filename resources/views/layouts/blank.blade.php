@@ -147,8 +147,62 @@ $("#atributo_4").change(function(){
       document.getElementById('espesor_div').style.display = 'none';
       document.getElementById('color_div').style.display = 'block';
 });
+//-----------------------------------------------------------------------------------------------
+$("#chk_montaje").change(function(){
+ document.getElementById('montajes_div').style.display = 'block';
+ document.getElementById('protecciones_div').style.display = 'none';
+ document.getElementById('marcos_div').style.display = 'none';
+ document.getElementById('maria_div').style.display = 'none';
+ document.getElementById('generales_div').style.display = 'none';
+});
+$("#chk_proteccion").change(function(){
+ document.getElementById('montajes_div').style.display = 'none';
+ document.getElementById('protecciones_div').style.display = 'block';
+ document.getElementById('marcos_div').style.display = 'none';
+ document.getElementById('maria_div').style.display = 'none';
+ document.getElementById('generales_div').style.display = 'none';
+});
+$("#chk_marcos").change(function(){
+ document.getElementById('montajes_div').style.display = 'none';
+ document.getElementById('protecciones_div').style.display = 'none';
+ document.getElementById('marcos_div').style.display = 'block';
+ document.getElementById('maria_div').style.display = 'none';
+ document.getElementById('generales_div').style.display = 'none';
+});
+$("#chk_maria").change(function(){
+ document.getElementById('montajes_div').style.display = 'none';
+ document.getElementById('protecciones_div').style.display = 'none';
+ document.getElementById('marcos_div').style.display = 'none';
+ document.getElementById('maria_div').style.display = 'block';
+ document.getElementById('generales_div').style.display = 'none';
+});
+$("#chk_generales").change(function(){
+ document.getElementById('montajes_div').style.display = 'none';
+ document.getElementById('protecciones_div').style.display = 'none';
+ document.getElementById('marcos_div').style.display = 'none';
+ document.getElementById('maria_div').style.display = 'none';
+ document.getElementById('generales_div').style.display = 'block';
+});
+//----------------------------------------------------------------
+
 //*********************************************************************************************
 });
+
+function montaje(valor){
+
+
+   $(document).ready(function(){
+//----------------------------------------------------------
+var producto='precio_'+valor+'_sel';
+var prod='precio_'+valor;
+var clave=valor+'_sel';
+var clav='clave_'+valor;
+
+document.getElementById(producto).value='$'+document.getElementById(prod).value;
+document.getElementById(clave).value=document.getElementById(clav).value;
+   });
+  
+}
 
     </script>
 </body>
