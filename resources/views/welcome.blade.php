@@ -123,7 +123,7 @@
                         <ul class="dropdown-menu" role="menu">
                             <li>
                                <li class="dropdown-submenu">
-                                <a tabindex="-1" href="#" onclick="AgregarNuevoTab('{{ url('/montaje/create') }}','Blue Print')"><i class="fa fa-clone"></i>
+                                <a tabindex="-1" href="#" onclick="AgregarNuevoTab('{{ url('/des_montaje/create/') }}','Blue Print')"><i class="fa fa-clone"></i>
                                    Montajes</a>
                               </li>
                                    <li class="dropdown-submenu">

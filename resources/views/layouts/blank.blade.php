@@ -203,6 +203,10 @@ document.getElementById(clave).value=document.getElementById(clav).value;
    });
   
 }
+///****************************************************************
+
+
+
 
     </script>
 </body>

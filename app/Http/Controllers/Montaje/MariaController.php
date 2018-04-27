@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Montaje;
 
-use App\Montaje;
+use App\Maria;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class MontajeController extends Controller
+class MariaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,10 +42,10 @@ class MontajeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Montaje  $montaje
+     * @param  \App\Maria  $maria
      * @return \Illuminate\Http\Response
      */
-    public function show(Montaje $montaje)
+    public function show(Maria $maria)
     {
         //
     }
@@ -53,10 +53,10 @@ class MontajeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Montaje  $montaje
+     * @param  \App\Maria  $maria
      * @return \Illuminate\Http\Response
      */
-    public function edit(Montaje $montaje)
+    public function edit(Maria $maria)
     {
         //
     }
@@ -65,10 +65,10 @@ class MontajeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Montaje  $montaje
+     * @param  \App\Maria  $maria
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Montaje $montaje)
+    public function update(Request $request, Maria $maria)
     {
         //
     }
@@ -76,10 +76,10 @@ class MontajeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Montaje  $montaje
+     * @param  \App\Maria  $maria
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Montaje $montaje)
+    public function destroy(Maria $maria)
     {
         //
     }

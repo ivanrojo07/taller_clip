@@ -126,5 +126,6 @@ Route::resource('sucursal','Empleado\EmpleadoSucursalController');
 //-------------------------------------------------------------------
 Route::resource('montaje', 'Montaje\MontajeController');
 Route::resource('producto', 'Producto\ProductoController');
+Route::resource('des_montaje', 'Material\DescripcionMontajeController');
 //----------------------------------------------------------------
 Route::resource('cambio', 'TipoCambio\TipoCambioController', ['except'=>'show']);

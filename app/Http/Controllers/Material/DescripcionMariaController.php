@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Montaje;
+namespace App\Http\Controllers\Material;
 
-use App\Montaje;
+use App\DescripcionMaria;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class MontajeController extends Controller
+class DescripcionMariaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,10 +42,10 @@ class MontajeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Montaje  $montaje
+     * @param  \App\DescripcionMaria  $descripcionMaria
      * @return \Illuminate\Http\Response
      */
-    public function show(Montaje $montaje)
+    public function show(DescripcionMaria $descripcionMaria)
     {
         //
     }
@@ -53,10 +53,10 @@ class MontajeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Montaje  $montaje
+     * @param  \App\DescripcionMaria  $descripcionMaria
      * @return \Illuminate\Http\Response
      */
-    public function edit(Montaje $montaje)
+    public function edit(DescripcionMaria $descripcionMaria)
     {
         //
     }
@@ -65,10 +65,10 @@ class MontajeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Montaje  $montaje
+     * @param  \App\DescripcionMaria  $descripcionMaria
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Montaje $montaje)
+    public function update(Request $request, DescripcionMaria $descripcionMaria)
     {
         //
     }
@@ -76,10 +76,10 @@ class MontajeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Montaje  $montaje
+     * @param  \App\DescripcionMaria  $descripcionMaria
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Montaje $montaje)
+    public function destroy(DescripcionMaria $descripcionMaria)
     {
         //
     }
