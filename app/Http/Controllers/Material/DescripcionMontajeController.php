@@ -29,10 +29,10 @@ class DescripcionMontajeController extends Controller
      */
     public function create()
     {
-        $descripciones=DescripcionMontaje::get();
-        $espesores    =EspesorMontaje::get();
-        $medidas      =MedidasMontaje::get();
-        $colores      =ColorMontaje::get();
+        $descripciones=DescripcionMontaje::orderBy('descripcion')->get();
+        $espesores    =EspesorMontaje::orderBy('espesor')->get();
+        $medidas      =MedidasMontaje::orderBy('medidas')->get();
+        $colores      =ColorMontaje::orderBy('color')->get();
 
          return view('layouts.material',
                     ['descripciones'=>$descripciones,
@@ -55,22 +55,31 @@ class DescripcionMontajeController extends Controller
     {
         if($request->atributo=='descripcion'){
 
+            $exist=DescripcionMontaje::where('descripcion',$request->descripcion)->get();
+            if(count($exist)!=0){Alert::error('Error Message', 'Ya existe esa Descripción');}else{
             DescripcionMontaje::create($request->all());
-            Alert::success('Success Message', 'Se Agregó un nueva Descripción');
+            Alert::success('Success Message', 'Se Agregó un nueva Descripción');}
 
         }else if($request->atributo=='espesor'){
 
+            $exist=EspesorMontaje::where('espesor',$request->espesor)->get();
+            if(count($exist)!=0){Alert::error('Error Message', 'Ya existe ese Espesor');}else{
             EspesorMontaje::create($request->all());
-            Alert::success('Success Message', 'Se Agregó un nuevo Espesor');
+            Alert::success('Success Message', 'Se Agregó un nuevo Espesor');}
         }
         else if($request->atributo=='medidas'){
             
+            $exist=MedidasMontaje::where('medidas',$request->medidas)->get();
+            if(count($exist)!=0){Alert::error('Error Message', 'Ya existe esa Medida');}else{
             MedidasMontaje::create($request->all());
-            Alert::success('Success Message', 'Se Agregó un nueva Medida');
+            Alert::success('Success Message', 'Se Agregó un nueva Medida');}
+
         } else if($request->atributo=='color'){
             
+            $exist=ColorMontaje::where('color',$request->color)->get();
+            if(count($exist)!=0){Alert::error('Error Message', 'Ya existe ese Color');}else{
             ColorMontaje::create($request->all());
-            Alert::success('Success Message', 'Se Agregó un nuevo Color');
+            Alert::success('Success Message', 'Se Agregó un nuevo Color');}
         }
         
         return redirect()->back();

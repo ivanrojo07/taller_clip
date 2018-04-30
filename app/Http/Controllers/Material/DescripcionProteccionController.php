@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Material;
 
 use App\DescripcionProteccion;
+use App\EspesorProteccion;
+use App\MedidasProteccion;
+use App\ColorProteccion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use UxWeb\SweetAlert\SweetAlert as Alert;
 
 class DescripcionProteccionController extends Controller
 {
@@ -25,7 +29,20 @@ class DescripcionProteccionController extends Controller
      */
     public function create()
     {
-        //
+        $descripciones=DescripcionProteccion::orderBy('descripcion')->get();
+        $espesores    =EspesorProteccion::orderBy('espesor')->get();
+        $medidas      =MedidasProteccion::orderBy('medidas')->get();
+        $colores      =ColorProteccion::orderBy('color')->get();
+
+         return view('layouts.material',
+                    ['descripciones'=>$descripciones,
+                     'espesores'    =>$espesores,
+                     'medidas'      =>$medidas,
+                     'colores'      =>$colores,
+                     'nombre'       =>'Protecciones',
+                     'class'        =>'fa fa-object-group',
+                     'ruta'         =>'des_proteccion.store'      
+                     ]);
     }
 
     /**
@@ -36,7 +53,36 @@ class DescripcionProteccionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->atributo=='descripcion'){
+
+            $exist=DescripcionProteccion::where('descripcion',$request->descripcion)->get();
+            if(count($exist)!=0){Alert::error('Error Message', 'Ya existe esa Descripción');}else{
+            DescripcionProteccion::create($request->all());
+            Alert::success('Success Message', 'Se Agregó un nueva Descripción');}
+
+        }else if($request->atributo=='espesor'){
+
+            $exist=EspesorProteccion::where('espesor',$request->espesor)->get();
+            if(count($exist)!=0){Alert::error('Error Message', 'Ya existe ese Espesor');}else{
+            EspesorProteccion::create($request->all());
+            Alert::success('Success Message', 'Se Agregó un nuevo Espesor');}
+        }
+        else if($request->atributo=='medidas'){
+            
+            $exist=MedidasProteccion::where('medidas',$request->medidas)->get();
+            if(count($exist)!=0){Alert::error('Error Message', 'Ya existe esa Medida');}else{
+            MedidasProteccion::create($request->all());
+            Alert::success('Success Message', 'Se Agregó un nueva Medida');}
+
+        } else if($request->atributo=='color'){
+            
+            $exist=ColorProteccion::where('color',$request->color)->get();
+            if(count($exist)!=0){Alert::error('Error Message', 'Ya existe ese Color');}else{
+            ColorProteccion::create($request->all());
+            Alert::success('Success Message', 'Se Agregó un nuevo Color');}
+        }
+        
+        return redirect()->back();
     }
 
     /**

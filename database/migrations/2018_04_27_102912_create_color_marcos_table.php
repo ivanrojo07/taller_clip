@@ -15,6 +15,8 @@ class CreateColorMarcosTable extends Migration
     {
         Schema::create('color_marcos', function (Blueprint $table) {
             $table->increments('id');
+             $table->string('color');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

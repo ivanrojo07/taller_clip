@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateColorGeneralsTable extends Migration
+class CreateColgaderasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateColorGeneralsTable extends Migration
      */
     public function up()
     {
-        Schema::create('color_generals', function (Blueprint $table) {
+        Schema::create('colgaderas', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('colgadera');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateColorGeneralsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('color_generals');
+        Schema::dropIfExists('colgaderas');
     }
 }

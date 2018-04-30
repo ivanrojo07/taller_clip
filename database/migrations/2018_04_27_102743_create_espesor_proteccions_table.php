@@ -15,6 +15,8 @@ class CreateEspesorProteccionsTable extends Migration
     {
         Schema::create('espesor_proteccions', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('espesor');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

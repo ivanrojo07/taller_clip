@@ -123,41 +123,25 @@
                         <ul class="dropdown-menu" role="menu">
                             <li>
                                <li class="dropdown-submenu">
-                                <a tabindex="-1" href="#" onclick="AgregarNuevoTab('{{ url('/des_montaje/create/') }}','Blue Print')"><i class="fa fa-clone"></i>
+                                <a tabindex="-1" href="#" onclick="AgregarNuevoTab('{{ url('/des_montaje/create/') }}','Montajes')"><i class="fa fa-clone"></i>
                                    Montajes</a>
                               </li>
                                    <li class="dropdown-submenu">
-                                <a tabindex="-1" href="#"><i class="fa fa-object-group"></i>
-                                    Protección</a>
+                                <a tabindex="-1" href="#" onclick="AgregarNuevoTab('{{ url('/des_proteccion/create/') }}','Protecciónes')"><i class="fa fa-object-group"></i>
+                                    Protección</a> 
                                    </li>
                                    <li class="dropdown-submenu">
-                                <a tabindex="-1" href="#"><i class="fa fa-columns"></i>
-                                    Marcos y Bastidores</a>
+                                <a tabindex="-1" href="#" onclick="AgregarNuevoTab('{{ url('/des_marco/create/') }}','Marcos y Bastidores')"><i class="fa fa-columns"></i>
+                                    Marcos y Bastidores</a> 
                                    </li>
                                    <li class="dropdown-submenu">
-                                <a tabindex="-1" href="#"><i class="fa fa-image"></i>
+                                <a tabindex="-1" href="#" onclick="AgregarNuevoTab('{{ url('/des_maria/create/') }}','María Luisa')"><i class="fa fa-image"></i>
                                     María Luisa</a>
                                   </li>
                                   <li class="dropdown-submenu">
-                                <a tabindex="-1" href="#"><i class="fa fa-paperclip"></i>
+                                <a tabindex="-1" href="#" onclick="AgregarNuevoTab('{{ url('/des_generales/create/') }}','Materiales Generales')"><i class="fa fa-paperclip"></i>
                                     Generales</a>
-                                    <ul class="dropdown-menu">
-                                      <li>
-                                        <a href="#" 
-                                           onclick="AgregarNuevoTab('{{ url('/giros') }}','Giros')">
-                                           <i class="fa fa-clipboard" aria-hidden="true"></i> 
-                                          Adhesivos
-                                        </a>
-                                     </li>
-                                      <li>
-                                        <a href="#" 
-                                           onclick="AgregarNuevoTab('{{ url('/giros') }}','Giros')">
-                                           <i class="fa fa-object-group" aria-hidden="true"></i> 
-                                         Colgaderas
-                                        </a>
-                                     </li>
-                                   </ul>
-                                  </li>
+                                   </li>
 
 
 

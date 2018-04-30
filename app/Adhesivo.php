@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Kyslik\ColumnSortable\Sortable;
 use Laravel\Scout\Searchable;
 
-class DescripcionGeneral extends Model
+class Adhesivo extends Model
 {
     use Sortable, SoftDeletes;
-    protected $table = 'descripcion_generals';
-    protected $fillable=['descripcion'];
+    protected $table = 'adhesivos';
+    protected $fillable=['adhesivo'];
     protected $hidden=[ 'created_at', 'updated_at','deleted_at'];
-    public $sortable=['descripcion','created_at'];
+    public $sortable=['adhesivo','created_at'];
 }

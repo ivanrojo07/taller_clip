@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Kyslik\ColumnSortable\Sortable;
 use Laravel\Scout\Searchable;
 
-class ColorMaria extends Model
+class Colgadera extends Model
 {
     use Sortable, SoftDeletes;
-    protected $table = 'color_marias';
-    protected $fillable=['color'];
+    protected $table = 'colgaderas';
+    protected $fillable=['colgadera'];
     protected $hidden=[ 'created_at', 'updated_at','deleted_at'];
-    public $sortable=['color','created_at'];
+    public $sortable=['colgadera','created_at'];
 }

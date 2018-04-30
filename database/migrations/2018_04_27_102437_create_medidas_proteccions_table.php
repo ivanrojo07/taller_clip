@@ -15,6 +15,8 @@ class CreateMedidasProteccionsTable extends Migration
     {
         Schema::create('medidas_proteccions', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('medidas');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

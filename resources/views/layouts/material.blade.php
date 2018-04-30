@@ -51,7 +51,7 @@
  			    <div class="col-sm-7 container-fluid pull-right" style="border:solid; border-color: gray; border-radius: 3px; overflow: scroll;max-height: 350px;">
  					<div class="row">
  			    		<div class="col-sm-6"><h3>Lista de Descripciones</h3></div>
- 			    		<div class="col-sm-4">Búsqueda<input type="text" class="form-control" name=""></div>
+ 			    		
 					</div>
  				    <div class="list-group" id="descripcion_lista">
  				    	@foreach($descripciones as $descripcion)
@@ -86,7 +86,7 @@
  			    <div class="col-sm-7 container-fluid pull-right" style="border:solid; border-color: gray; border-radius: 3px; overflow: scroll;max-height: 350px;">
  					<div class="row">
  			    		<div class="col-sm-6"><h3>Lista de Medidas</h3></div>
- 			    		<div class="col-sm-4">Búsqueda<input type="text" class="form-control" name=""></div>
+ 			    		
 					</div>
  				    <div class="list-group" id="medidas_lista">
 					    @foreach($medidas as $medida)
@@ -121,7 +121,7 @@
  			    <div class="col-sm-7 container-fluid pull-right" style="border:solid; border-color: gray; border-radius: 3px; overflow: scroll;max-height: 350px;">
  			    	<div class="row">
  			    		<div class="col-sm-6"><h3>Lista de Espesor</h3></div>
- 			    		<div class="col-sm-4">Búsqueda<input type="text" class="form-control" name=""></div>
+ 			    		
 					</div>
  					<div class="list-group" id="espesor_lista">
 					    @foreach($espesores as $espesor)
@@ -156,7 +156,7 @@
  			    <div class="col-sm-7 container-fluid pull-right" style="border:solid; border-color: gray; border-radius: 3px; overflow: scroll;max-height: 350px;">
  					<div class="row" >
  			    		<div class="col-sm-6"><h3>Lista de Colores</h3></div>
- 			    		<div class="col-sm-4">Búsqueda<input type="text" class="form-control" name=""></div>
+ 			    		
 					</div>
  				    <div class="list-group" id="color_lista">
 					    @foreach($colores as $color)

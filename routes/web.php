@@ -116,7 +116,7 @@ Route::resource('bancos','Banco\BancoController', ['except'=>'show']);
 Route::resource('faltas','Falta\FaltaController', ['except'=>'show']);
 //--------------------------------------------------------------------
 Route::resource('gastos','Gasto\GastoController', ['except'=>'show']);
-// Route::resource('gastos.create','Gasto\GastoController@create');
+
 
 Route::resource('sucursales','Sucursal\SucursalController');
 Route::get('sucursales.create','Sucursal\SucursalController@create');
@@ -127,5 +127,9 @@ Route::resource('sucursal','Empleado\EmpleadoSucursalController');
 Route::resource('montaje', 'Montaje\MontajeController');
 Route::resource('producto', 'Producto\ProductoController');
 Route::resource('des_montaje', 'Material\DescripcionMontajeController');
+Route::resource('des_proteccion', 'Material\DescripcionProteccionController');
+Route::resource('des_marco', 'Material\DescripcionMarcoController');
+Route::resource('des_maria', 'Material\DescripcionMariaController');
+Route::resource('des_generales', 'Material\DescripcionGeneralController');
 //----------------------------------------------------------------
 Route::resource('cambio', 'TipoCambio\TipoCambioController', ['except'=>'show']);

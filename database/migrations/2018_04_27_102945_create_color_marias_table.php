@@ -15,6 +15,8 @@ class CreateColorMariasTable extends Migration
     {
         Schema::create('color_marias', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('color');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

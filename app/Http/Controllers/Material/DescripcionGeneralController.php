@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Material;
 
-use App\DescripcionGeneral;
+use App\Colgadera;
+use App\Adhesivo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use UxWeb\SweetAlert\SweetAlert as Alert;
 
 class DescripcionGeneralController extends Controller
 {
@@ -25,7 +27,14 @@ class DescripcionGeneralController extends Controller
      */
     public function create()
     {
-        //
+       
+        $colgaderas    =Colgadera::orderBy('colgadera')->get();
+        $adhesivos     =Adhesivo::orderBy('adhesivo')->get();
+
+        return view('layouts.generales',
+                   ['colgaderas'=>$colgaderas,
+                    'adhesivos' =>$adhesivos
+                    ]);
     }
 
     /**
@@ -36,7 +45,25 @@ class DescripcionGeneralController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+         if($request->atributo=='colgaderas'){
+
+            $exist=Colgadera::where('colgadera',$request->colgadera)->get();
+            if(count($exist)!=0){Alert::error('Error Message', 'Ya existe esa Colgadera');}else{
+                Colgadera::create($request->all());
+            Alert::success('Success Message', 'Se Agregó un nueva Colgadera');
+            }
+            
+
+        }else if($request->atributo=='adhesivos'){
+            $exist=Adhesivo::where('adhesivo',$request->adhesivo)->get();
+             if(count($exist)!=0){Alert::error('Error Message', 'Ya existe ese Adhesivo');}else{
+            Adhesivo::create($request->all());
+            Alert::success('Success Message', 'Se Agregó un nuevo Adhesivo');
+        }
+        }
+        
+       return redirect()->back();
     }
 
     /**

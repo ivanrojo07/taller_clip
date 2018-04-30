@@ -15,6 +15,8 @@ class CreateEspesorMariasTable extends Migration
     {
         Schema::create('espesor_marias', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('espesor');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
