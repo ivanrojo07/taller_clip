@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Material;
 
 use App\Colgadera;
 use App\Adhesivo;
+use App\Provedor;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use UxWeb\SweetAlert\SweetAlert as Alert;
@@ -17,7 +18,18 @@ class DescripcionGeneralController extends Controller
      */
     public function index()
     {
-        //
+        $materiales=General::orderBy('descripcion')->get();
+        $descripciones=DescripcionGeneral::orderBy('descripcion')->get();
+        $provedores=Provedor::get();
+        return view('montajes.index',
+                   ['descripciones'=>$descripciones,
+                    'ruta'         =>'des_general.store',
+                    'nombre'       =>'Generales',
+                    'ruta1'        =>'general.store',
+                    'materiales'   =>$materiales,
+                    'provedores'   =>$provedores
+
+               ]);
     }
 
     /**
@@ -33,7 +45,11 @@ class DescripcionGeneralController extends Controller
 
         return view('layouts.generales',
                    ['colgaderas'=>$colgaderas,
-                    'adhesivos' =>$adhesivos
+                    'adhesivos' =>$adhesivos,
+                    'nombre'       =>'Productos Generales',
+                     'class'        =>'fa fa-clip',
+                     'ruta'         =>'des_generales.store',
+                     'ruta_frame'   =>'des_generales.index'
                     ]);
     }
 

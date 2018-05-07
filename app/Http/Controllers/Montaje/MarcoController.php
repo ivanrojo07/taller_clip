@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Montaje;
 use App\Marco;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use UxWeb\SweetAlert\SweetAlert as Alert;
 
 class MarcoController extends Controller
 {
@@ -36,7 +37,19 @@ class MarcoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $lista=Marco::where('clave',$request->clave)->get();
+
+        if(count($lista)){
+            Alert::error('Error Message', 'Ya existe esa Clave y Marco');
+        }else{
+
+            $marco=Marco::create($request->all());
+            Alert::success('Success Message', 'Se Agregó un Clave y Marco');
+        }
+
+        
+
+        return redirect()->route('des_montaje.index');
     }
 
     /**

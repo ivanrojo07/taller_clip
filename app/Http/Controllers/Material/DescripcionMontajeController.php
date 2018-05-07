@@ -6,6 +6,8 @@ use App\DescripcionMontaje;
 use App\EspesorMontaje;
 use App\MedidasMontaje;
 use App\ColorMontaje;
+use App\Montaje;
+use App\Provedor;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use UxWeb\SweetAlert\SweetAlert as Alert;
@@ -19,7 +21,18 @@ class DescripcionMontajeController extends Controller
      */
     public function index()
     {
-        //
+        $materiales=Montaje::orderBy('descripcion')->get();
+        $descripciones=DescripcionMontaje::orderBy('descripcion')->get();
+        $provedores=Provedor::get();
+        return view('montajes.index',
+                   ['descripciones'=>$descripciones,
+                    'ruta'         =>'des_montaje.store',
+                    'nombre'       =>'Montajes',
+                    'ruta1'        =>'montaje.store',
+                    'materiales'   =>$materiales,
+                    'provedores'   =>$provedores
+
+               ]);
     }
 
     /**
@@ -41,7 +54,8 @@ class DescripcionMontajeController extends Controller
                      'colores'      =>$colores,
                      'nombre'       =>'Montajes',
                      'class'        =>'fa fa-clone',
-                     'ruta'         =>'des_montaje.store'      
+                     'ruta'         =>'des_montaje.store',
+                     'ruta_frame'   =>'des_montaje.index'      
                      ]);
     }
 
@@ -53,6 +67,7 @@ class DescripcionMontajeController extends Controller
      */
     public function store(Request $request)
     {
+        
         if($request->atributo=='descripcion'){
 
             $exist=DescripcionMontaje::where('descripcion',$request->descripcion)->get();

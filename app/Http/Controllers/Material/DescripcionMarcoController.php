@@ -6,6 +6,8 @@ use App\DescripcionMarco;
 use App\EspesorMarco;
 use App\MedidasMarco;
 use App\ColorMarco;
+use App\Marco;
+use App\Provedor;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use UxWeb\SweetAlert\SweetAlert as Alert;
@@ -19,7 +21,18 @@ class DescripcionMarcoController extends Controller
      */
     public function index()
     {
-        //
+        $materiales=Marco::orderBy('descripcion')->get();
+        $descripciones=DescripcionMarco::orderBy('descripcion')->get();
+        $provedores=Provedor::get();
+        return view('montajes.index',
+                   ['descripciones'=>$descripciones,
+                    'ruta'         =>'des_marco.store',
+                    'nombre'       =>'Marcos',
+                    'ruta1'        =>'marco.store',
+                    'materiales'   =>$materiales,
+                    'provedores'   =>$provedores
+
+               ]);
     }
 
     /**
@@ -41,7 +54,8 @@ class DescripcionMarcoController extends Controller
                      'colores'      =>$colores,
                      'nombre'       =>'Marcos y Bastidores',
                      'class'        =>'fa fa-columns',
-                     'ruta'         =>'des_marco.store'      
+                     'ruta'         =>'des_marco.store',
+                     'ruta_frame'   =>'des_marco.index'      
                      ]);
     }
 

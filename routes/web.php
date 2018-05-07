@@ -131,5 +131,9 @@ Route::resource('des_proteccion', 'Material\DescripcionProteccionController');
 Route::resource('des_marco', 'Material\DescripcionMarcoController');
 Route::resource('des_maria', 'Material\DescripcionMariaController');
 Route::resource('des_generales', 'Material\DescripcionGeneralController');
+Route::resource('proteccion', 'Montaje\ProteccionController');
+Route::resource('marco', 'Montaje\MarcoController');
+Route::resource('maria', 'Montaje\MariaController');
+Route::resource('general', 'Montaje\GeneralController');
 //----------------------------------------------------------------
 Route::resource('cambio', 'TipoCambio\TipoCambioController', ['except'=>'show']);

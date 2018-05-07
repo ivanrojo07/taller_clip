@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Montaje;
 
 use App\Montaje;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use UxWeb\SweetAlert\SweetAlert as Alert;
 
 class MontajeController extends Controller
 {
@@ -15,7 +17,8 @@ class MontajeController extends Controller
      */
     public function index()
     {
-        //
+        $montajes=Montaje::orderBy('clave_montaje')->get();
+         return view('');
     }
 
     /**
@@ -36,7 +39,19 @@ class MontajeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $lista=Montaje::where('clave',$request->clave)->get();
+
+        if(count($lista)){
+            Alert::error('Error Message', 'Ya existe esa Clave y Montaje');
+        }else{
+
+            $montaje=Montaje::create($request->all());
+            Alert::success('Success Message', 'Se Agregó un Clave y Montaje');
+        }
+
+        
+
+        return redirect()->route('des_montaje.index');
     }
 
     /**

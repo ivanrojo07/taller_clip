@@ -15,6 +15,11 @@ class CreateGeneralsTable extends Migration
     {
         Schema::create('generals', function (Blueprint $table) {
             $table->increments('id');
+            $table->enum('tipo',['Colgaderas','Adhesivos']);
+            $table->string('clave');
+            $table->string('proveedor');
+            $table->float('precio', 8, 2);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

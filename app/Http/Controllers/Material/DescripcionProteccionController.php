@@ -6,6 +6,8 @@ use App\DescripcionProteccion;
 use App\EspesorProteccion;
 use App\MedidasProteccion;
 use App\ColorProteccion;
+use App\Proteccion;
+use App\Provedor;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use UxWeb\SweetAlert\SweetAlert as Alert;
@@ -19,7 +21,18 @@ class DescripcionProteccionController extends Controller
      */
     public function index()
     {
-        //
+        $materiales=Proteccion::orderBy('descripcion')->get();
+        $descripciones=DescripcionProteccion::orderBy('descripcion')->get();
+        $provedores=Provedor::get();
+        return view('montajes.index',
+                   ['descripciones'=>$descripciones,
+                    'ruta'         =>'des_proteccion.store',
+                    'nombre'       =>'Proteccion',
+                    'ruta1'        =>'proteccion.store',
+                    'materiales'   =>$materiales,
+                    'provedores'   =>$provedores
+
+               ]);
     }
 
     /**
@@ -41,7 +54,8 @@ class DescripcionProteccionController extends Controller
                      'colores'      =>$colores,
                      'nombre'       =>'Protecciones',
                      'class'        =>'fa fa-object-group',
-                     'ruta'         =>'des_proteccion.store'      
+                     'ruta'         =>'des_proteccion.store',
+                     'ruta_frame'   =>'des_proteccion.index'      
                      ]);
     }
 

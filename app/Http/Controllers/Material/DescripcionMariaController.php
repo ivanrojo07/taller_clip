@@ -6,6 +6,8 @@ use App\DescripcionMaria;
 use App\EspesorMaria;
 use App\MedidasMaria;
 use App\ColorMaria;
+use App\Maria;
+use App\Provedor;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use UxWeb\SweetAlert\SweetAlert as Alert;
@@ -19,7 +21,18 @@ class DescripcionMariaController extends Controller
      */
     public function index()
     {
-        //
+        $materiales=Maria::orderBy('descripcion')->get();
+        $descripciones=DescripcionMaria::orderBy('descripcion')->get();
+        $provedores=Provedor::get();
+        return view('montajes.index',
+                   ['descripciones'=>$descripciones,
+                    'ruta'         =>'des_maria.store',
+                    'nombre'       =>'Maria Luisa',
+                    'ruta1'        =>'maria.store',
+                    'materiales'   =>$materiales,
+                    'provedores'   =>$provedores
+
+               ]);
     }
 
     /**
@@ -41,7 +54,8 @@ class DescripcionMariaController extends Controller
                      'colores'      =>$colores,
                      'nombre'       =>'María Luisa',
                      'class'        =>'fa fa-image',
-                     'ruta'         =>'des_maria.store'      
+                     'ruta'         =>'des_maria.store',
+                     'ruta_frame'   =>'des_maria.index'      
                      ]);
     }
 

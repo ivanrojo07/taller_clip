@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Montaje;
 use App\Maria;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use UxWeb\SweetAlert\SweetAlert as Alert;
 
 class MariaController extends Controller
 {
@@ -15,7 +16,7 @@ class MariaController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -36,7 +37,19 @@ class MariaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $lista=Maria::where('clave',$request->clave)->get();
+
+        if(count($lista)){
+            Alert::error('Error Message', 'Ya existe esa Clave y Maria');
+        }else{
+
+            $maria=Maria::create($request->all());
+            Alert::success('Success Message', 'Se Agregó un Clave y Maria');
+        }
+
+        
+
+        return redirect()->route('des_montaje.index');
     }
 
     /**

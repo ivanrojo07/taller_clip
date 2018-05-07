@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Montaje;
 use App\Proteccion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use UxWeb\SweetAlert\SweetAlert as Alert;
 
 class ProteccionController extends Controller
 {
@@ -36,7 +37,19 @@ class ProteccionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $lista=Proteccion::where('clave',$request->clave)->get();
+
+        if(count($lista)){
+            Alert::error('Error Message', 'Ya existe esa Clave y Proteccion');
+        }else{
+
+            $proteccion=Proteccion::create($request->all());
+            Alert::success('Success Message', 'Se Agregó un Clave y Proteccion');
+        }
+
+        
+
+        return redirect()->route('des_montaje.index');
     }
 
     /**

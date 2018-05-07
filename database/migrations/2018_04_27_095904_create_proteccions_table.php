@@ -15,6 +15,14 @@ class CreateProteccionsTable extends Migration
     {
         Schema::create('proteccions', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('descripcion');
+            $table->string('clave');
+            $table->string('medidas');
+            $table->string('espesor');
+            $table->string('color');
+            $table->string('proveedor');
+            $table->float('precio', 8, 2);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

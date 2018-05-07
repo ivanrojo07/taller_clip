@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Montaje;
 use App\General;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use UxWeb\SweetAlert\SweetAlert as Alert;
 
 class GeneralController extends Controller
 {
@@ -36,7 +37,19 @@ class GeneralController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $lista=General::where('clave',$request->clave)->get();
+
+        if(count($lista)){
+            Alert::error('Error Message', 'Ya existe esa Clave y Producto');
+        }else{
+
+            $general=General::create($request->all());
+            Alert::success('Success Message', 'Se Agregó un Clave y Producto');
+        }
+
+        
+
+        return redirect()->route('des_montaje.index');
     }
 
     /**

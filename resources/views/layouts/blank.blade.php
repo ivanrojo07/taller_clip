@@ -49,13 +49,12 @@
     <script type="https://unpkg.com/sweetalert/dist/main.js"></script>
     {{-- ¿Por qué usamos JQUERY 2.2.2 Y 3.2.1?--}}
      <script type="https://unpkg.com/sweetalert/dist/jquery-3.2.1.min"></script>
+
    
-     <script>
+<script>
         
         $(document).ready(function(){
-
             
-
              $("#precio").keyup(function(){
                 
                 var precio=document.getElementById("precio").value;
@@ -64,31 +63,44 @@
                 
                 document.getElementById('ajuste').value = ajuste;
              });
+//----------------------------------------------
+
 //---------------------------------------------------------------------------------------------
-        $("#nombre_montaje").keyup(function(){
+        $("#descripcion_sel").change(function(){
                  
-                var nombre_montaje=document.getElementById("nombre_montaje").value;
+                var descripcion_sel=document.getElementById("descripcion_sel").value;
                 var color_montaje=document.getElementById("color_montaje").value;
                 var espesor_montaje=document.getElementById("espesor_montaje").value;
-                var clave_montaje=nombre_montaje+color_montaje+espesor_montaje;
-                document.getElementById('clave_montaje').value = clave_montaje.toUpperCase();;
-                 
+                var medidas_montaje=document.getElementById("medidas_montaje").value;
+                var clave_montaje=descripcion_sel+medidas_montaje+color_montaje+espesor_montaje;
+                document.getElementById('clave_montaje').value = clave_montaje.toUpperCase();
+                
              });
         $("#color_montaje").keyup(function(){
-
-                var nombre_montaje=document.getElementById("nombre_montaje").value;
+                var descripcion_sel=document.getElementById("descripcion_sel").value;
                 var color_montaje=document.getElementById("color_montaje").value;
                 var espesor_montaje=document.getElementById("espesor_montaje").value;
-                var clave_montaje=nombre_montaje+color_montaje+espesor_montaje;
-                document.getElementById('clave_montaje').value = clave_montaje.toUpperCase();;
+                var medidas_montaje=document.getElementById("medidas_montaje").value;
+                var clave_montaje=descripcion_sel+medidas_montaje+color_montaje+espesor_montaje;
+                document.getElementById('clave_montaje').value = clave_montaje.toUpperCase();
         });
-
          $("#espesor_montaje").keyup(function(){
             
-                var nombre_montaje=document.getElementById("nombre_montaje").value;
+                var descripcion_sel=document.getElementById("descripcion_sel").value;
                 var color_montaje=document.getElementById("color_montaje").value;
                 var espesor_montaje=document.getElementById("espesor_montaje").value;
-                var clave_montaje=nombre_montaje+color_montaje+espesor_montaje;
+                var medidas_montaje=document.getElementById("medidas_montaje").value;
+                var clave_montaje=descripcion_sel+medidas_montaje+color_montaje+espesor_montaje;
+                document.getElementById('clave_montaje').value = clave_montaje.toUpperCase();
+        });
+
+         $("#medidas_montaje").keyup(function(){
+            
+                var descripcion_sel=document.getElementById("descripcion_sel").value;
+                var color_montaje=document.getElementById("color_montaje").value;
+                var espesor_montaje=document.getElementById("espesor_montaje").value;
+                var medidas_montaje=document.getElementById("medidas_montaje").value;
+                var clave_montaje=descripcion_sel+medidas_montaje+color_montaje+espesor_montaje;
                 document.getElementById('clave_montaje').value = clave_montaje.toUpperCase();
         });
 //-------------------------------------------------------------------------------------------------
@@ -98,18 +110,16 @@
                 var color_proteccion=document.getElementById("color_proteccion").value;
                 var espesor_proteccion=document.getElementById("espesor_proteccion").value;
                 var clave_proteccion=nombre_proteccion+color_proteccion+espesor_proteccion;
-                document.getElementById('clave_proteccion').value = clave_proteccion.toUpperCase();;
+                document.getElementById('clave_proteccion').value = clave_proteccion.toUpperCase();
                  
              });
         $("#color_proteccion").keyup(function(){
-
                 var nombre_proteccion=document.getElementById("nombre_proteccion").value;
                 var color_proteccion=document.getElementById("color_proteccion").value;
                 var espesor_proteccion=document.getElementById("espesor_proteccion").value;
                 var clave_proteccion=nombre_proteccion+color_proteccion+espesor_proteccion;
-                document.getElementById('clave_proteccion').value = clave_proteccion.toUpperCase();;
+                document.getElementById('clave_proteccion').value = clave_proteccion.toUpperCase();
         });
-
          $("#espesor_proteccion").keyup(function(){
             
                 var nombre_proteccion=document.getElementById("nombre_proteccion").value;
@@ -118,7 +128,6 @@
                 var clave_proteccion=nombre_proteccion+color_proteccion+espesor_proteccion;
                 document.getElementById('clave_proteccion').value = clave_proteccion.toUpperCase();
         });
-
 //---------------------------------------------------------------------------------------------
 $("#atributo_1").change(function(){
       document.getElementById('descripcion_div').style.display = 'block';
@@ -126,21 +135,18 @@ $("#atributo_1").change(function(){
       document.getElementById('espesor_div').style.display = 'none';
       document.getElementById('color_div').style.display = 'none';
 });
-
 $("#atributo_2").change(function(){
       document.getElementById('descripcion_div').style.display = 'none';
       document.getElementById('medidas_div').style.display = 'block';
       document.getElementById('espesor_div').style.display = 'none';
       document.getElementById('color_div').style.display = 'none';
 });
-
 $("#atributo_3").change(function(){
       document.getElementById('descripcion_div').style.display = 'none';
       document.getElementById('medidas_div').style.display = 'none';
       document.getElementById('espesor_div').style.display = 'block';
       document.getElementById('color_div').style.display = 'none';
 });
-
 $("#atributo_4").change(function(){
       document.getElementById('descripcion_div').style.display = 'none';
       document.getElementById('medidas_div').style.display = 'none';
@@ -184,28 +190,34 @@ $("#chk_generales").change(function(){
  document.getElementById('generales_div').style.display = 'block';
 });
 //----------------------------------------------------------------
+$("#descripcion_sel").change(function(){
+   
+   var option=$("#descripcion_sel").val();
+   document.getElementById('nombreh').innerHTML=option;
+   document.getElementById('montaje_descripcion').value =option;
+   
 
+});
+//-----------------------------------------------------
+ $(":text").keyup(function(){
+   var lowe=$(this).val();
+   $(this).val(lowe.toUpperCase());
+    }); 
 //*********************************************************************************************
 });
-
 function montaje(valor){
-
-
    $(document).ready(function(){
 //----------------------------------------------------------
 var producto='precio_'+valor+'_sel';
 var prod='precio_'+valor;
 var clave=valor+'_sel';
 var clav='clave_'+valor;
-
 document.getElementById(producto).value='$'+document.getElementById(prod).value;
 document.getElementById(clave).value=document.getElementById(clav).value;
    });
   
 }
 ///****************************************************************
-
-
 
 
     </script>
