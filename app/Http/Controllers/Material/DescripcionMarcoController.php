@@ -44,13 +44,13 @@ class DescripcionMarcoController extends Controller
     {
         $descripciones=DescripcionMarco::orderBy('descripcion')->get();
         $espesores    =EspesorMarco::orderBy('espesor')->get();
-        $medidas      =MedidasMarco::orderBy('medidas')->get();
+        
         $colores      =ColorMarco::orderBy('color')->get();
 
          return view('layouts.material',
                     ['descripciones'=>$descripciones,
                      'espesores'    =>$espesores,
-                     'medidas'      =>$medidas,
+                     
                      'colores'      =>$colores,
                      'nombre'       =>'Marcos y Bastidores',
                      'class'        =>'fa fa-columns',
@@ -81,14 +81,7 @@ class DescripcionMarcoController extends Controller
             EspesorMarco::create($request->all());
             Alert::success('Success Message', 'Se Agregó un nuevo Espesor');}
         }
-        else if($request->atributo=='medidas'){
-            
-            $exist=MedidasMarco::where('medidas',$request->medidas)->get();
-            if(count($exist)!=0){Alert::error('Error Message', 'Ya existe esa Medida');}else{
-            MedidasMarco::create($request->all());
-            Alert::success('Success Message', 'Se Agregó un nueva Medida');}
-
-        } else if($request->atributo=='color'){
+         else if($request->atributo=='color'){
             
             $exist=ColorMarco::where('color',$request->color)->get();
             if(count($exist)!=0){Alert::error('Error Message', 'Ya existe ese Color');}else{

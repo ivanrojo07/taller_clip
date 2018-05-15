@@ -50,7 +50,7 @@ class DescripcionMontajeController extends Controller
          return view('layouts.material',
                     ['descripciones'=>$descripciones,
                      'espesores'    =>$espesores,
-                     'medidas'      =>$medidas,
+                     //'medidas'      =>$medidas,
                      'colores'      =>$colores,
                      'nombre'       =>'Montajes',
                      'class'        =>'fa fa-clone',

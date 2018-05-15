@@ -44,13 +44,13 @@ class DescripcionMariaController extends Controller
     {
         $descripciones=DescripcionMaria::orderBy('descripcion')->get();
         $espesores    =EspesorMaria::orderBy('espesor')->get();
-        $medidas      =MedidasMaria::orderBy('medidas')->get();
+        
         $colores      =ColorMaria::orderBy('color')->get();
 
          return view('layouts.material',
                     ['descripciones'=>$descripciones,
                      'espesores'    =>$espesores,
-                     'medidas'      =>$medidas,
+                     
                      'colores'      =>$colores,
                      'nombre'       =>'María Luisa',
                      'class'        =>'fa fa-image',
@@ -81,14 +81,7 @@ class DescripcionMariaController extends Controller
             EspesorMaria::create($request->all());
             Alert::success('Success Message', 'Se Agregó un nuevo Espesor');}
         }
-        else if($request->atributo=='medidas'){
-            
-            $exist=MedidasMaria::where('medidas',$request->medidas)->get();
-            if(count($exist)!=0){Alert::error('Error Message', 'Ya existe esa Medida');}else{
-            MedidasMaria::create($request->all());
-            Alert::success('Success Message', 'Se Agregó un nueva Medida');}
-
-        } else if($request->atributo=='color'){
+        else if($request->atributo=='color'){
             
             $exist=ColorMaria::where('color',$request->color)->get();
             if(count($exist)!=0){Alert::error('Error Message', 'Ya existe ese Color');}else{
