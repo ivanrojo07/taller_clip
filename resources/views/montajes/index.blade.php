@@ -101,6 +101,9 @@
     </thead>
     <tbody>
     	@foreach($materiales as $material)
+      <form action="">
+        <input type="hidden" id="id_montaje"name="id_montaje" value="{{$material->id}}">
+      </form>
       <tr>
         <td>{{$material->descripcion}}</td>
         <td>{{$material->clave}}</td>

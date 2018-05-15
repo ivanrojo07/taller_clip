@@ -65,44 +65,7 @@
              });
 //----------------------------------------------
 
-//---------------------------------------------------------------------------------------------
-        $("#descripcion_sel").change(function(){
-                 
-                var descripcion_sel=document.getElementById("descripcion_sel").value;
-                var color_montaje=document.getElementById("color_montaje").value;
-                var espesor_montaje=document.getElementById("espesor_montaje").value;
-                var medidas_montaje=document.getElementById("medidas_montaje").value;
-                var clave_montaje=descripcion_sel+medidas_montaje+color_montaje+espesor_montaje;
-                document.getElementById('clave_montaje').value = clave_montaje.toUpperCase();
-                
-             });
-        $("#color_montaje").keyup(function(){
-                var descripcion_sel=document.getElementById("descripcion_sel").value;
-                var color_montaje=document.getElementById("color_montaje").value;
-                var espesor_montaje=document.getElementById("espesor_montaje").value;
-                var medidas_montaje=document.getElementById("medidas_montaje").value;
-                var clave_montaje=descripcion_sel+medidas_montaje+color_montaje+espesor_montaje;
-                document.getElementById('clave_montaje').value = clave_montaje.toUpperCase();
-        });
-         $("#espesor_montaje").keyup(function(){
-            
-                var descripcion_sel=document.getElementById("descripcion_sel").value;
-                var color_montaje=document.getElementById("color_montaje").value;
-                var espesor_montaje=document.getElementById("espesor_montaje").value;
-                var medidas_montaje=document.getElementById("medidas_montaje").value;
-                var clave_montaje=descripcion_sel+medidas_montaje+color_montaje+espesor_montaje;
-                document.getElementById('clave_montaje').value = clave_montaje.toUpperCase();
-        });
 
-         $("#medidas_montaje").keyup(function(){
-            
-                var descripcion_sel=document.getElementById("descripcion_sel").value;
-                var color_montaje=document.getElementById("color_montaje").value;
-                var espesor_montaje=document.getElementById("espesor_montaje").value;
-                var medidas_montaje=document.getElementById("medidas_montaje").value;
-                var clave_montaje=descripcion_sel+medidas_montaje+color_montaje+espesor_montaje;
-                document.getElementById('clave_montaje').value = clave_montaje.toUpperCase();
-        });
 //-------------------------------------------------------------------------------------------------
        $("#nombre_proteccion").keyup(function(){
                  
@@ -190,14 +153,7 @@ $("#chk_generales").change(function(){
  document.getElementById('generales_div').style.display = 'block';
 });
 //----------------------------------------------------------------
-$("#descripcion_sel").change(function(){
-   
-   var option=$("#descripcion_sel").val();
-   document.getElementById('nombreh').innerHTML=option;
-   document.getElementById('montaje_descripcion').value =option;
-   
 
-});
 //-----------------------------------------------------
  $(":text").keyup(function(){
    var lowe=$(this).val();
@@ -217,6 +173,35 @@ document.getElementById(clave).value=document.getElementById(clav).value;
    });
   
 }
+
+$( ":input" ).keyup(function() {
+  $("#clave_montaje").val(
+    ($("#montaje_descripcion").val()+
+    $("#color_montaje").val()+
+    $("#espesor_montaje").val()+
+    $("#ancho_montaje").val()+"x"+
+    $("#alto_montaje").val()).toUpperCase()
+  );
+});
+  /*
+  Descripción
+  Color
+  Espesor
+  ancho
+  x
+  alto
+  *
+  */
+
+ //    var option=$("#descripcion_sel").val();
+//    document.getElementById('nombreh').innerHTML=option;
+//    document.getElementById('montaje_descripcion').value =option;
+   
+
+    $('#descripcion_sel').change(function(){
+        $("#montaje_descripcion").val($("#descripcion_sel").val());
+        $("#nombreh").text($("#descripcion_sel").val());
+    });
 ///****************************************************************
 
 

@@ -44,13 +44,13 @@ class DescripcionProteccionController extends Controller
     {
         $descripciones=DescripcionProteccion::orderBy('descripcion')->get();
         $espesores    =EspesorProteccion::orderBy('espesor')->get();
-        $medidas      =MedidasProteccion::orderBy('medidas')->get();
+        //$medidas      =MedidasProteccion::orderBy('medidas')->get();
         $colores      =ColorProteccion::orderBy('color')->get();
 
          return view('layouts.material',
                     ['descripciones'=>$descripciones,
                      'espesores'    =>$espesores,
-                     'medidas'      =>$medidas,
+                     //'medidas'      =>$medidas,
                      'colores'      =>$colores,
                      'nombre'       =>'Protecciones',
                      'class'        =>'fa fa-object-group',
