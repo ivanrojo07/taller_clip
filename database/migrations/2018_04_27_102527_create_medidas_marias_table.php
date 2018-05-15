@@ -15,7 +15,8 @@ class CreateMedidasMariasTable extends Migration
     {
         Schema::create('medidas_marias', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('medidas');
+            $table->float('ancho',8,2);
+            $table->float('alto',8,2);
             $table->softDeletes();
             $table->timestamps();
         });

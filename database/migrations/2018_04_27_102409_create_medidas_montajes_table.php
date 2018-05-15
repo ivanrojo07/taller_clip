@@ -15,6 +15,8 @@ class CreateMedidasMontajesTable extends Migration
     {
         Schema::create('medidas_montajes', function (Blueprint $table) {
             $table->increments('id');
+            $table->float('ancho',8,2);
+            $table->float('alto',8,2);
             $table->string('medidas');
             $table->softDeletes();
             $table->timestamps();

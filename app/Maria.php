@@ -13,7 +13,8 @@ class Maria extends Model
     protected $table = 'marias';
     protected $fillable=['descripcion',
     					 'clave',
-						 'medidas',
+						 'ancho',
+                         'alto',
 						 'espesor',
 						 'color',
 						 'proveedor',

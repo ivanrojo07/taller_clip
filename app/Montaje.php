@@ -13,7 +13,8 @@ class Montaje extends Model
     protected $table = 'montajes';
     protected $fillable=['descripcion',
     					 'clave',
-						 'medidas',
+						 'ancho',
+                         'alto',
 						 'espesor',
 						 'color',
 						 'proveedor',

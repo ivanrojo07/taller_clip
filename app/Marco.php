@@ -13,7 +13,8 @@ class Marco extends Model
     protected $table = 'marcos';
     protected $fillable=['descripcion',
     					 'clave',
-						 'medidas',
+						 'ancho',
+                         'alto',
 						 'espesor',
 						 'color',
 						 'proveedor',

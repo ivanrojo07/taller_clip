@@ -42,9 +42,13 @@
  			</div><br>
  			<div class="row">
  				<div class="col-sm-3">
- 					<label for="medidas_montaje">Medidas</label>
- 					<input type="text" name="medidas" id="medidas_montaje" class="form-control">
- 				</div>
+          <label for="medidas_montaje">Ancho</label>
+          <input type="number" name="ancho" id="ancho_montaje" class="form-control">
+        </div>
+        <div class="col-sm-3">
+          <label for="medidas_montaje">Alto</label>
+          <input type="number" name="alto" id="alto_montaje" class="form-control">
+        </div>
  				<div class="col-sm-3">
  					<label for="espesor_montaje">Espesor</label>
  					<input type="text" name="espesor" id="espesor_montaje" class="form-control">

@@ -13,7 +13,8 @@ class Proteccion extends Model
     protected $table = 'proteccions';
     protected $fillable=['descripcion',
     					 'clave',
-						 'medidas',
+						 'ancho',
+                         'alto',
 						 'espesor',
 						 'color',
 						 'proveedor',
