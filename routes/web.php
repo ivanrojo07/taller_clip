@@ -85,6 +85,11 @@ Route::get('comision',function(){
 	return View::make('Empleadobonos.comision');
 });
 
+Route::get('cotizacion',function(){
+
+	return View::make('cotizacion.cot');
+});
+
 //   11/Dic/2017
 //-----------------------------------------------------
 
@@ -137,3 +142,5 @@ Route::resource('maria', 'Montaje\MariaController');
 Route::resource('general', 'Montaje\GeneralController');
 //----------------------------------------------------------------
 Route::resource('cambio', 'TipoCambio\TipoCambioController', ['except'=>'show']);
+
+Route::get('cotizacion','Producto\ProductoController@cotizar') -> name("cotizacion");

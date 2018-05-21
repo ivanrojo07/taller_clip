@@ -16,7 +16,7 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        //
+        return view('productos.create');
     }
 
     /**
@@ -83,5 +83,9 @@ class ProductoController extends Controller
     public function destroy(Producto $producto)
     {
         //
+    }
+
+    public function cotizar(){
+        return view('cotizacion.create');
     }
 }
