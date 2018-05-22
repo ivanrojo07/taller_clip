@@ -2,13 +2,45 @@
 @section('content')
 
 <!--CLIENTE-->
-**Cliente**
+<h1 class="display-4">Cliente</h1>
 <div class="row">
-    <div class="col">
-        cliente{select}
+    <div class="col-4">
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Options</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01">
+                <option selected>Choose...</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+
     </div>
-    <div class="col">
-        tablacliente
+    <div class="col-8">
+  
+<table class="table table-striped table-warning">
+    <thead>
+        <tr class="bg-warning">
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+    </tbody>
+</table>
+
+
     </div>
 </div>
 
@@ -36,9 +68,9 @@
 </div>
 
 <!--MATERIALES-->
-**Materiales**
-titulotabla1
+<h1 class="display-4">Materiales</h1>
 <table class="table table-striped table-warning">
+    <caption>Lista de Materiales</caption>
     <thead>
         <tr class="bg-warning">
             <th scope="col">Tipo Material</th>
@@ -77,13 +109,38 @@ titulotabla1
 
 
 <!--MANO DE OBRA-->
-**Mani de obra**
+<h1 class="display-4">Mano de Obra</h1>
 <div class="row">
-    <div class="col">input</div>
-    <div class="col">monto <br> botón agregar</div>
+    <div class="col mb-2">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Descripción</span>
+            </div>
+            <textarea class="form-control" aria-label="With textarea" style="resize: none;"></textarea>
+        </div>
+    </div>
+    <div class="col">
+
+        <div class="row">
+            <div class="col-3 offset-5 mb-3">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">$</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                    <div class="input-group-append">
+                        <span class="input-group-text">.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3 offset-5 mb-3">
+                <button type="button" class="btn btn-warning btn-lg btn-block">Agregar</button>
+            </div>
+        </div>
+
+    </div>
 </div>
 
-titulotabla2
 <table class="table table-striped table-warning">
     <thead>
         <tr class="bg-warning">
