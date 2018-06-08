@@ -219,6 +219,12 @@
                 </div>
                 <input type="text" readonly class="form-control" id="basic-url" aria-describedby="basic-addon3">
             </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon3">USD</span>
+                </div>
+                <input type="number" readonly class="form-control" id="basic-url" aria-describedby="basic-addon3">
+            </div>
         </div>
         <div class="col-3">
             <div class="input-group mb-3">

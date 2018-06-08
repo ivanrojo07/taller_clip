@@ -261,6 +261,19 @@
                         </ul>
                     </li>
 
+
+
+                    {{--COTIZACIÓN--}}
+                    <li class="dropdown">
+                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-dollar" aria-hidden="true"></i>Cotización<span class="caret"></span> </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                        <a href="#" onclick="AgregarNuevoTab('{{ url('/historial_cotizacion/') }}','Cotización')">
+                                   <i class="fa fa-refresh" aria-hidden="true"></i>Historial</a>  
+
+                            </li>                     
+                        </li>
+
                     
 
 

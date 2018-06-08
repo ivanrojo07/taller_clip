@@ -144,3 +144,8 @@ Route::resource('general', 'Montaje\GeneralController');
 Route::resource('cambio', 'TipoCambio\TipoCambioController', ['except'=>'show']);
 
 Route::get('cotizacion','Producto\ProductoController@cotizar') -> name("cotizacion");
+
+Route::get('historial_cotizacion',function(){
+
+	return View::make('cotizacion.historial');
+});
