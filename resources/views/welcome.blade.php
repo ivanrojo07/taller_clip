@@ -161,6 +161,9 @@
                                 <a href="#"
                                    onclick="AgregarNuevoTab('{{ url('producto/create') }}','Alta Manual')"><i class="fa fa-plus" aria-hidden="true"></i> Alta Manual</a>
 
+                                   <a href="#"
+                                   onclick="AgregarNuevoTab('{{ url('historial_orden') }}','Historial órdenes')"><i class="fa fa-plus" aria-hidden="true"></i>Historial órdenes</a>
+
                                 <a href="#"
                                    onclick="AgregarNuevoTab('{{ url('productos') }}','Buqueda de Productos')">
                                    <i class="fa fa-search" aria-hidden="true"></i> Busqueda</a>  

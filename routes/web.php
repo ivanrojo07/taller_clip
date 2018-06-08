@@ -149,3 +149,8 @@ Route::get('historial_cotizacion',function(){
 
 	return View::make('cotizacion.historial');
 });
+
+Route::get('historial_orden',function(){
+
+	return View::make('productos.historial');
+});

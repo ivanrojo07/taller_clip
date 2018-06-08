@@ -25,9 +25,9 @@
                     <td>4</td>
                     <td>5</td>
                     <td>
-                    <button type="button" class="btn btn-primary">Editar</button>
-                    <button type="button" class="btn btn-success">Crear</button>
-                    </td>              
+                    <button type="button" class="btn btn-primary">PDF</button>
+                    <button type="button" class="btn btn-success">A cotización</button>
+                    </td>           
                 </tr>
                 <tr>
                     <th scope="row">2</th>
@@ -38,8 +38,8 @@
                     <td>4</td>
                     <td>5</td>
                     <td>
-                    <button type="button" class="btn btn-primary">Editar</button>
-                    <button type="button" class="btn btn-success">Crear</button>
+                    <button type="button" class="btn btn-primary">PDF</button>
+                    <button type="button" class="btn btn-success">A cotización</button>
                     </td>              
                 </tr>
                 <tr>
@@ -51,8 +51,8 @@
                     <td>4</td>
                     <td>5</td>
                     <td>
-                    <button type="button" class="btn btn-primary">Editar</button>
-                    <button type="button" class="btn btn-success">Crear</button>
+                    <button type="button" class="btn btn-primary">PDF</button>
+                    <button type="button" class="btn btn-success">A cotización</button>
                     </td>              
                 </tr>
             </tbody>
