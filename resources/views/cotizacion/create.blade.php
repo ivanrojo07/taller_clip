@@ -23,7 +23,7 @@
     
     <table class="table">
         <thead>
-            <tr class="bg-warning">
+            <tr class="bg-primary">
                 <th scope="col">#</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Datos1</th>
@@ -69,7 +69,7 @@
     <h1>Materiales</h4>
     <table class="table">
         <thead>
-            <tr class="bg-warning">
+            <tr class="bg-primary">
                 <th scope="col">Tipo Material</th>
                 <th scope="col">Material</th>
                 <th scope="col">Clave</th>
@@ -121,13 +121,13 @@
             </div>
         </div>
         <div class="col">
-            <button type="button" class="btn btn-warning btn-lg btn-block">Agregar</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block">Agregar</button>
         </div>
     </div>
 
     <table class="table">
         <thead>
-            <tr class="bg-warning">
+            <tr class="bg-primary">
                 <th scope="col">Descripción</th>
                 <th scope="col">Monto</th>
                 <th scope="col">Operación</th>
@@ -175,13 +175,13 @@
             </div>
         </div>
         <div class="col">
-            <button type="button" class="btn btn-warning btn-lg btn-block">Agregar</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block">Agregar</button>
         </div>    
     </div>
 
     <table class="table">
         <thead>
-            <tr class="bg-warning">
+            <tr class="bg-primary">
                 <th scope="col">Descripción</th>
                 <th scope="col">Monto</th>
                 <th scope="col">Operación</th>

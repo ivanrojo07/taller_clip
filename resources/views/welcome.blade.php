@@ -152,7 +152,7 @@
                     
                     
                     <li class="dropdown">
-                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Productos <span class="caret"></span> </a>
+                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Órdenes <span class="caret"></span> </a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
                                 <a href="#"
