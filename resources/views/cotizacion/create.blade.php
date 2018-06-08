@@ -21,7 +21,7 @@
         </div>
         <div class="col-8">
     
-    <table class="table table-striped table-warning">
+    <table class="table">
         <thead>
             <tr class="bg-warning">
                 <th scope="col">#</th>
@@ -67,7 +67,7 @@
     <hr>
     <!--MATERIALES-->
     <h1>Materiales</h4>
-    <table class="table table-striped table-warning">
+    <table class="table">
         <thead>
             <tr class="bg-warning">
                 <th scope="col">Tipo Material</th>
@@ -125,7 +125,7 @@
         </div>
     </div>
 
-    <table class="table table-striped table-warning">
+    <table class="table">
         <thead>
             <tr class="bg-warning">
                 <th scope="col">Descripción</th>
@@ -179,7 +179,7 @@
         </div>    
     </div>
 
-    <table class="table table-striped table-warning">
+    <table class="table">
         <thead>
             <tr class="bg-warning">
                 <th scope="col">Descripción</th>

@@ -13,6 +13,33 @@
     <title>Document</title>
 </head>
 <body>
+
+    <style>
+        .btn-warning{
+            background-color: #3097D1;
+            color: #fff;
+            border-color: #3097D1;
+        }
+
+        .btn-warning:hover{
+            background-color: #2579a9;
+            color:#fff;
+        }
+
+        .table-warning th{
+            background-color: #3097D1;
+        }
+
+        .table-warning tr{
+            background-color: #c2e0f2;
+        }
+        .table-warning td{
+            background-color: #83c0e5;
+        }
+        .table-warning tr:nth-child(even) {
+            background-color: #83c0e5;
+        }
+    </style>
     <div class="container-fluid p-2">
         @yield('content')
     </div>
