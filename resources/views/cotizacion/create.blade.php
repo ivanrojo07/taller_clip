@@ -60,7 +60,7 @@
             <input type="text" class="form-control" id="proyecto">
         </div>
         <div class="form-group col-4">
-            <label for="fechaEntrega">Fecha</label>
+            <label for="fechaEntrega">Fecha de entrega</label>
             <input type="date" class="form-control" id="fechaEntrega">
         </div>
     </div>
@@ -210,7 +210,7 @@
     </div>
     <hr>
     <!--TOTAL-->
-    <h1>Total</h1>
+    <h1>Total de Gastos</h1>
     <div class="row">
         <div class="col-3 offset-3">
             <div class="input-group mb-3">

@@ -45,6 +45,12 @@
 								<span class="input-group-text" id="basic-addon3">Alto</span>
 							</div>
 							<input type="text" class="form-control" id="alto" aria-describedby="basic-addon3" form="explosionadoForm">
+							<select class="custom-select" id="inputGroupSelect01">
+								<option selected>Unidades...</option>
+								<option value="1">m</option>
+								<option value="2">cm</option>
+								<option value="3">mm</option>
+							</select>
 						</div>
 					</div>
 					<div class="col-12">
@@ -53,6 +59,12 @@
 								<span class="input-group-text" id="basic-addon3">Ancho</span>
 							</div>
 							<input type="text" class="form-control" id="ancho" aria-describedby="basic-addon3" form="explosionadoForm">
+							<select class="custom-select" id="inputGroupSelect01">
+								<option selected>Unidades...</option>
+								<option value="1">m</option>
+								<option value="2">cm</option>
+								<option value="3">mm</option>
+							</select>
 						</div>
 					</div>
 					<div class="col-12">
