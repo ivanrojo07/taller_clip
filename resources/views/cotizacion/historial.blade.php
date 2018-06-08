@@ -1,5 +1,9 @@
 @extends('layouts.cotizacion')
 @section('content')
+<h4>Historial de cotizaciones</h4>
+<br>
+<br>
+<br>
 <div class="row">
     <div class="col-8 offset-2">
         <table class="table">
