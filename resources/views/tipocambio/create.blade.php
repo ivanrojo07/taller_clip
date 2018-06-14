@@ -43,11 +43,12 @@
 							        <th  style="text-align: center;">Fecha</th>
 							    </tr>
 							 </thead>
-							 <tbody style="color: black;">
+							  <tbody style="color: black;">
 							 	@foreach($tipoCambios as $cambio)
 						      <tr style="text-align: center;">
 						        <td><strong>{{$cambio->cantidad}}</strong></td>
-						        <td><strong>{{$cambio->fecha}}</strong></td>
+						        
+						        <td><strong>{{date('d-m-Y', strtotime($cambio->fecha))}}</strong></td>
 						      </tr>
 						      @endforeach
 
