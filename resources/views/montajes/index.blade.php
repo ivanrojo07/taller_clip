@@ -49,8 +49,15 @@
           <label for="medidas_montaje">Alto</label>
           <input type="number" name="alto" id="alto_montaje" class="form-control" step="any" required>
         </div>
- 				
- 				
+ 				<div class="col-sm-3">
+          <label for="tipo_medidas">Tipo de medidas</label>
+          <select class="form-control" id="tipo_medidas" name="tipo_medidas" required>
+            <option value="">Seleccionar</option>
+            <option value="Milímetros">Milímetros</option>
+            <option value="Centímetros">Centímetros</option>
+            <option value="Metros">Metros</option>
+          </select>
+        </div>
  			</div><br>
       <div class="row">
         <div class="col-sm-3">
@@ -63,18 +70,21 @@
         </div>
       </div><br>
       <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-4">
           <label for="proveedor">Proveedor</label>
-          <select class="form-control" id="descripcion_sel" name="proveedor" required>
+           <div class="input-group">
+            <span class="input-group-addon" id="basic-addon3" onclick='getProveedor()'><i class="fa fa-refresh" aria-hidden="true"></i></span>
+          <select class="form-control" id="proveedor" name="proveedor" required>
     <option value="">Seleccionar</option>
     @foreach($provedores as $provedor)
-     @if($provedor->razonsocial==null)
-    <option value="{{$provedor->nombre}}">{{$provedor->nombre}}</option>
-     @else
+     @isset($provedor->razonsocial)
      <option value="{{$provedor->razonsocial}}">{{$provedor->razonsocial}}</option>
-     @endif
+     @else
+     <option value="{{$provedor->nombre}}">{{$provedor->nombre}}</option>
+     @endisset
     @endforeach
   </select>
+    </div>
         </div>
         <div class="col-sm-2">
           <label for="precio">Precio</label>
@@ -82,7 +92,7 @@
         </div>
         <div class="col-sm-3">
           <br>
-          <button type="sumbit" class=" btn btn-warning"><strong>Crear</strong></button>
+          <button type="sumbit" class="btn btn-warning"><strong>Crear</strong></button>
         </div>
       </div><br>
  				
@@ -91,9 +101,9 @@
  		{{-- Descripción --}}
 
  		{{-- Materiales --}}
- 		<div class="container jumbotron">
+ 		<div class="container jumbotron" style="color: black;">
 	<table class="table">
-    <thead class="thead-dark">
+    <thead class="thead-dark" style="background-color: darkblue;color: white;">
       <tr>
         <th>Nombre/Descripción</th>
         <th>Clave</th>
@@ -104,7 +114,7 @@
     </thead>
     <tbody>
     	@foreach($materiales as $material)
-      <form action="">
+      <form action="##" id="elim">
         <input type="hidden" id="id_montaje"name="id_montaje" value="{{$material->id}}">
       </form>
       <tr>
@@ -112,7 +122,7 @@
         <td>{{$material->clave}}</td>
         <td>${{$material->precio}}</td>
         <td>{{$material->proveedor}}</td>
-        <td><button><strong>Eliminar</strong></button></td>
+        <td><button class="btn btn-danger" onclick="deleteFunction('#elim')"><strong>Eliminar</strong></button></td>
       </tr>
       @endforeach
     </tbody>
@@ -123,5 +133,25 @@
  </div>
 
 
+<script type="text/javascript">
+  
+ 
 
+    function getProveedor(){
+      $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+      $.ajax({
+        url: "{{ url('/getprov') }}",
+          type: "GET",
+          dataType: "html",
+      }).done(function(resultado){
+          $("#proveedor").html(resultado);
+      });
+    }
+
+
+  </script>
  @endsection

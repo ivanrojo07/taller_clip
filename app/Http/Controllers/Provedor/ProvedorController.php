@@ -130,4 +130,9 @@ class ProvedorController extends Controller{
     }
 
 
+    public function getProveedor(){
+        $provedores = Provedor::get();
+        return view('precargas.select',['precargas'=>$provedores]);
+    }
+
 }

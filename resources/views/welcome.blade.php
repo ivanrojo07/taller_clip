@@ -32,10 +32,10 @@
 
 <!-- Navigation -->
 <div id="app">
-    <nav class="navbar navbar-default navbar-static-top">
-        <div class="container topnav">
+    <nav class="navbar navbar-default navbar-static-top" style="background-color: black;">
+        <div class="container topnav" >
             <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
+            <div class="navbar-header" >
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -67,7 +67,7 @@
 
 
 
-
+                    {{--  Clientes  --}}
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-users" aria-hidden="true"></i> Clientes<span class="caret"></span> </a>
                         <ul class="dropdown-menu" role="menu">
@@ -100,13 +100,13 @@
                                              <i class="fa fa-refresh" aria-hidden="true"></i>Forma Contactos</a></li>
                                     </ul>
                                   </li>
+                                </li>
+                              </ul>
+                            </li>
+                    {{--  Clientes  --}}
 
 
-
-                            </li>                     
-                        </ul>
-                    </li>
-
+                    {{--  Tipo de Cambio  --}}
                        <li class="dropdown">
                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-dollar" aria-hidden="true"></i> Tipo de Cambio <span class="caret"></span> </a>
                         <ul class="dropdown-menu" role="menu">
@@ -117,6 +117,8 @@
                             </li>                     
                         </ul>
                     </li> 
+                    {{--  Tipo de Cambio  --}}
+
                     {{--  Materiales  --}}
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-cubes" aria-hidden="true"></i>Materiales<span class="caret"></span> </a>
@@ -275,19 +277,15 @@
                                    <i class="fa fa-refresh" aria-hidden="true"></i>Historial</a>  
 
                             </li>                     
-                        </li>
-
-                    
-
-
-
-
-                </ul> 
+                        </ul> 
+                      </li>
+                    </ul>
             </div>
-            @endif
-        </ul>
+           </div>
+            <!-- @endif -->
+        
             <!-- /.navbar-collapse -->
-        </div>
+        
         <!-- /.container -->
     </nav>
     <div class="container" style="width: 100%; height: 100%;">
