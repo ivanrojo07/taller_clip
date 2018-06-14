@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProteccionsTable extends Migration
+class CreateMontajesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateProteccionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('proteccions', function (Blueprint $table) {
+        Schema::create('montajes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('descripcion');
             $table->string('clave');
@@ -36,6 +36,6 @@ class CreateProteccionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('proteccions');
+        Schema::dropIfExists('montajes');
     }
 }

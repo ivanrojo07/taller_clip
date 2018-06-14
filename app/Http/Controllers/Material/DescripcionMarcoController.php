@@ -43,15 +43,10 @@ class DescripcionMarcoController extends Controller
     public function create()
     {
         $descripciones=DescripcionMarco::orderBy('descripcion')->get();
-        $espesores    =EspesorMarco::orderBy('espesor')->get();
         
-        $colores      =ColorMarco::orderBy('color')->get();
 
          return view('layouts.material',
                     ['descripciones'=>$descripciones,
-                     'espesores'    =>$espesores,
-                     
-                     'colores'      =>$colores,
                      'nombre'       =>'Marcos y Bastidores',
                      'class'        =>'fa fa-columns',
                      'ruta'         =>'des_marco.store',

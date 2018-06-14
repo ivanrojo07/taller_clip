@@ -7,7 +7,7 @@
  			{{ csrf_field() }}
  		<div class="col-sm-3">
  			<label>Nombre/Descripción</label>
- 			<input type="text" class="form-control" name="descripcion">
+ 			<input type="text" class="form-control" name="descripcion" required>
  			<input type="hidden" name="atributo" value="descripcion">
  		</div>
  		<div class="col-sm-3">
@@ -15,10 +15,11 @@
  			<button type="sumbit" class="btn btn-warning"><strong>Agregar</strong></button>
  		</div>
      </form>
+     <form method="POST" action="{{route($ruta1)}}">
  		<div class="col-sm-3">
  			<div class="form-group">
   <label for="descripcion_sel">{{$nombre}}(Descripciones):</label>
-  <select class="form-control" id="descripcion_sel" name="descripcion_sel">
+  <select class="form-control" id="descripcion_sel" name="descripcion_sel" required>
     <option value="">Seleccionar</option>
     @foreach($descripciones as $descripcion)
     <option value="{{$descripcion->descripcion}}">{{$descripcion->descripcion}}</option>
@@ -29,7 +30,7 @@
  	</div><br>
 
  	{{--  Descripción --}}
- 	<form method="POST" action="{{route($ruta1)}}">
+ 	
  			{{ csrf_field() }}
  			<input type="hidden" name="descripcion" id="montaje_descripcion" value="">
  		<div class="jumbotron" id="descripcion_div">
@@ -101,12 +102,13 @@
  		{{-- Descripción --}}
 
  		{{-- Materiales --}}
- 		<div class="container jumbotron" style="color: black;">
+ 		<div class="container " style="color: black;border-color: black;border:solid;">
 	<table class="table">
     <thead class="thead-dark" style="background-color: darkblue;color: white;">
       <tr>
         <th>Nombre/Descripción</th>
         <th>Clave</th>
+        <th>Tipo de Medidas</th>
         <th>Precio</th>
         <th>Proveedor</th>
         <th>Operación</th>
@@ -114,16 +116,20 @@
     </thead>
     <tbody>
     	@foreach($materiales as $material)
-      <form action="##" id="elim">
+      <form action="{{$ruta2}}" id="elim" method="POST">
+        {{ csrf_field() }}
         <input type="hidden" id="id_montaje"name="id_montaje" value="{{$material->id}}">
-      </form>
+        <input type="hidden" name="_method" value="DELETE">
+      
       <tr>
         <td>{{$material->descripcion}}</td>
         <td>{{$material->clave}}</td>
+        <td>{{$material->tipo_medidas}}</td>
         <td>${{$material->precio}}</td>
         <td>{{$material->proveedor}}</td>
         <td><button class="btn btn-danger" onclick="deleteFunction('#elim')"><strong>Eliminar</strong></button></td>
       </tr>
+      </form>
       @endforeach
     </tbody>
   </table>

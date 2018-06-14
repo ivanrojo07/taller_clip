@@ -15,6 +15,7 @@ class Maria extends Model
     					 'clave',
 						 'ancho',
                          'alto',
+                         'tipo_medidas',
 						 'espesor',
 						 'color',
 						 'proveedor',

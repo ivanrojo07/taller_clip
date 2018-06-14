@@ -29,6 +29,7 @@ class DescripcionMontajeController extends Controller
                     'ruta'         =>'des_montaje.store',
                     'nombre'       =>'Montajes',
                     'ruta1'        =>'montaje.store',
+                    'ruta2'        =>'montaje.destroy',
                     'materiales'   =>$materiales,
                     'provedores'   =>$provedores
 
@@ -43,15 +44,10 @@ class DescripcionMontajeController extends Controller
     public function create()
     {
         $descripciones=DescripcionMontaje::orderBy('descripcion')->get();
-        $espesores    =EspesorMontaje::orderBy('espesor')->get();
-        $medidas      =MedidasMontaje::orderBy('medidas')->get();
-        $colores      =ColorMontaje::orderBy('color')->get();
+        
 
          return view('layouts.material',
                     ['descripciones'=>$descripciones,
-                     'espesores'    =>$espesores,
-                     //'medidas'      =>$medidas,
-                     'colores'      =>$colores,
                      'nombre'       =>'Montajes',
                      'class'        =>'fa fa-clone',
                      'ruta'         =>'des_montaje.store',

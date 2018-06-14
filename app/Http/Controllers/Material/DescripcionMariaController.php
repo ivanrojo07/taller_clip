@@ -43,15 +43,10 @@ class DescripcionMariaController extends Controller
     public function create()
     {
         $descripciones=DescripcionMaria::orderBy('descripcion')->get();
-        $espesores    =EspesorMaria::orderBy('espesor')->get();
         
-        $colores      =ColorMaria::orderBy('color')->get();
 
          return view('layouts.material',
                     ['descripciones'=>$descripciones,
-                     'espesores'    =>$espesores,
-                     
-                     'colores'      =>$colores,
                      'nombre'       =>'María Luisa',
                      'class'        =>'fa fa-image',
                      'ruta'         =>'des_maria.store',

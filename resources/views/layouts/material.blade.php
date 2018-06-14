@@ -10,7 +10,7 @@
 
  		<div class="panel-body" style="border:solid;">
  			<div class="row">
- 				<div class="col"><iframe src="{{route($ruta_frame)}}" style="height: 600px;"></iframe></div>
+ 				<div class="col"><iframe src="{{route($ruta_frame)}}" style="height: 800px;overflow-y: auto;"></iframe></div>
  			</div><br>
 		</div>
 		
