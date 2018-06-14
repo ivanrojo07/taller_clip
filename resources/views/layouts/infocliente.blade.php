@@ -3,7 +3,24 @@
 		<div class="container" id="tab">
 			<div role="application" class="panel panel-group" >
 				<div class="panel-default">
-						<div class="panel-heading"><h4>Datos del Prospecto/Cliente:</h4></div>
+						<div class="panel-heading">
+							<div class="row">
+								<div class="col-sm-3">
+									<h4>
+							@if($cliente->tipo=='Prospecto')
+							Datos del Prospecto
+							@else
+							Datos del Cliente
+							@endif</h4>
+								</div>
+								<div class="col-sm-3">
+									<a href="{{route('clientes.create')}}" class="btn btn-primary"><strong>Agregar Nuevo</strong></a>
+								</div>
+								<div class="col-sm-3">
+									<a href="{{route('clientes.index')}}" class="btn btn-warning"><strong>Ver Lista</strong></a>
+								</div>
+							</div>
+						</div>
 						<div class="panel-body">
 							<div class="col-md-12 offset-md-2 mt-3">
 								<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">

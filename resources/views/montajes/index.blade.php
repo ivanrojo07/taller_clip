@@ -43,26 +43,29 @@
  			<div class="row">
  				<div class="col-sm-3">
           <label for="medidas_montaje">Ancho</label>
-          <input type="number" name="ancho" id="ancho_montaje" class="form-control">
+          <input type="number" name="ancho" id="ancho_montaje" class="form-control" step="any" required>
         </div>
         <div class="col-sm-3">
           <label for="medidas_montaje">Alto</label>
-          <input type="number" name="alto" id="alto_montaje" class="form-control">
+          <input type="number" name="alto" id="alto_montaje" class="form-control" step="any" required>
         </div>
- 				<div class="col-sm-3">
- 					<label for="espesor_montaje">Espesor</label>
- 					<input type="text" name="espesor" id="espesor_montaje" class="form-control">
- 				</div>
- 				<div class="col-sm-3">
- 					<label for="color_montaje">Color</label>
- 					<input type="text" name="color" id="color_montaje" class="form-control">
- 				</div>
+ 				
  				
  			</div><br>
       <div class="row">
         <div class="col-sm-3">
+          <label for="espesor_montaje">Espesor</label>
+          <input type="text" name="espesor" id="espesor_montaje" class="form-control" required>
+        </div>
+        <div class="col-sm-3">
+          <label for="color_montaje">Color</label>
+          <input type="text" name="color" id="color_montaje" class="form-control" required>
+        </div>
+      </div><br>
+      <div class="row">
+        <div class="col-sm-3">
           <label for="proveedor">Proveedor</label>
-          <select class="form-control" id="descripcion_sel" name="proveedor">
+          <select class="form-control" id="descripcion_sel" name="proveedor" required>
     <option value="">Seleccionar</option>
     @foreach($provedores as $provedor)
      @if($provedor->razonsocial==null)
@@ -75,7 +78,7 @@
         </div>
         <div class="col-sm-2">
           <label for="precio">Precio</label>
-          <input type="number" name="precio" id="precio" class="form-control" step="any" placeholder="$--">
+          <input type="number" name="precio" id="precio" class="form-control" step="any" placeholder="$--" step="any" required>
         </div>
         <div class="col-sm-3">
           <br>
