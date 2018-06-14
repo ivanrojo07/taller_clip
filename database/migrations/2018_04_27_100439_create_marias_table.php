@@ -19,6 +19,7 @@ class CreateMariasTable extends Migration
             $table->string('clave');
             $table->float('ancho',8,2);
             $table->float('alto',8,2);
+            $table->string('tipo_medidas');
             $table->string('espesor');
             $table->string('color');
             $table->string('proveedor');
