@@ -69,7 +69,7 @@
 					<th>@sortablelink('prioridad', 'Prioridad')</th>
 					<th>@sortablelink('tipo', 'Tipo de cliente')</th>
 					<th>@sortablelink('calificacion', 'Calificación')</th>
-					<th>@sortablelink('mail', 'Correo')</th>
+					<th>@sortablelink('giro', 'Giro')</th>
 					<th>@sortablelink('created_at','Fecha de alta')</th>
 					
 					<th>Operacion</th>
@@ -94,8 +94,14 @@
 					<td>{{ $cliente->prioridad }}</td>
 					<td>{{ $cliente->tipo }}</td>
 					<td>{{ strtoupper($cliente->calificacion) }}</td>
-					<td>{{$cliente->mail}}</td>
-					<td>{{$cliente->created_at}}</td>
+					@isset($cliente->datoGen)
+					
+					<td>{{$cliente->datoGen->giro->nombre}}</td>
+					@else
+					<td>Indefinido</td>
+					@endisset
+					
+					<td>{{date('d-m-Y', strtotime($cliente->created_at))}}</td>
 					
 					<td>
 						<a class="btn btn-success btn-sm" href="{{ route('clientes.show',$cliente) }}"><i class="fa fa-eye" aria-hidden="true"></i> Ver</a>
