@@ -44,12 +44,12 @@ class MariaController extends Controller
         }else{
 
             $maria=Maria::create($request->all());
-            Alert::success('Success Message', 'Se Agregó un Clave y Maria');
+            Alert::success('Success Message', 'Se Agregó una Clave y Maria');
         }
 
         
 
-        return redirect()->route('des_montaje.index');
+        return redirect()->route('des_maria.index');
     }
 
     /**
@@ -92,8 +92,11 @@ class MariaController extends Controller
      * @param  \App\Maria  $maria
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Maria $maria)
+    public function destroy(Request $request,Maria $maria)
     {
-        //
+        $maria=Maria::where('id',$request->id)->first();
+        
+        $maria->delete();
+        return redirect()->route('des_maria.index');
     }
 }

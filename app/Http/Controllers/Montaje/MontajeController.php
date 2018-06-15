@@ -96,6 +96,7 @@ class MontajeController extends Controller
      */
     public function destroy(Montaje $montaje)
     {
-        //
+        $montaje->delete();
+        return redirect()->route('des_montaje.index');
     }
 }

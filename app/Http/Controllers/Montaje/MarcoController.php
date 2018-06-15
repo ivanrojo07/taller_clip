@@ -44,12 +44,12 @@ class MarcoController extends Controller
         }else{
 
             $marco=Marco::create($request->all());
-            Alert::success('Success Message', 'Se Agregó un Clave y Marco');
+            Alert::success('Success Message', 'Se Agregó una Clave y Marco');
         }
 
         
 
-        return redirect()->route('des_montaje.index');
+        return redirect()->route('des_marco.index');
     }
 
     /**
@@ -94,6 +94,7 @@ class MarcoController extends Controller
      */
     public function destroy(Marco $marco)
     {
-        //
+        $marco->delete();
+        return redirect()->route('des_marco.index');
     }
 }

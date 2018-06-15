@@ -30,6 +30,7 @@ class DescripcionMontajeController extends Controller
                     'nombre'       =>'Montajes',
                     'ruta1'        =>'montaje.store',
                     'ruta2'        =>'montaje.destroy',
+                    'objeto'       =>'montaje',
                     'materiales'   =>$materiales,
                     'provedores'   =>$provedores
 

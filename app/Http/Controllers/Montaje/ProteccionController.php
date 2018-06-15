@@ -44,12 +44,12 @@ class ProteccionController extends Controller
         }else{
 
             $proteccion=Proteccion::create($request->all());
-            Alert::success('Success Message', 'Se Agregó un Clave y Proteccion');
+            Alert::success('Success Message', 'Se Agregó una Clave y Proteccion');
         }
 
         
 
-        return redirect()->route('des_montaje.index');
+        return redirect()->route('des_proteccion.index');
     }
 
     /**
@@ -94,6 +94,7 @@ class ProteccionController extends Controller
      */
     public function destroy(Proteccion $proteccion)
     {
-        //
+        $proteccion->delete();
+        return redirect()->route('des_proteccion.index');
     }
 }

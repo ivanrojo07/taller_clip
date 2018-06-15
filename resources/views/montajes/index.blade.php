@@ -116,10 +116,11 @@
     </thead>
     <tbody>
     	@foreach($materiales as $material)
-      <form action="{{$ruta2}}" id="elim" method="POST">
+      <form action="{{route($ruta2,[$objeto=>$material])}}" id="elim" method="POST">
         {{ csrf_field() }}
-        <input type="hidden" id="id_montaje"name="id_montaje" value="{{$material->id}}">
+        
         <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="id" value="{{$material->id}}">
       
       <tr>
         <td>{{$material->descripcion}}</td>
@@ -127,7 +128,7 @@
         <td>{{$material->tipo_medidas}}</td>
         <td>${{$material->precio}}</td>
         <td>{{$material->proveedor}}</td>
-        <td><button class="btn btn-danger" onclick="deleteFunction('#elim')"><strong>Eliminar</strong></button></td>
+        <td><button class="btn btn-danger" onclick="deleteFunction('elim')"><strong>Eliminar</strong></button></td>
       </tr>
       </form>
       @endforeach

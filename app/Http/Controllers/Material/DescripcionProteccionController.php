@@ -29,6 +29,8 @@ class DescripcionProteccionController extends Controller
                     'ruta'         =>'des_proteccion.store',
                     'nombre'       =>'Proteccion',
                     'ruta1'        =>'proteccion.store',
+                    'ruta2'        =>'proteccion.destroy',
+                    'objeto'       =>'proteccion',
                     'materiales'   =>$materiales,
                     'provedores'   =>$provedores
 
@@ -76,14 +78,7 @@ class DescripcionProteccionController extends Controller
             EspesorProteccion::create($request->all());
             Alert::success('Success Message', 'Se Agregó un nuevo Espesor');}
         }
-        else if($request->atributo=='medidas'){
-            
-            $exist=MedidasProteccion::where('medidas',$request->medidas)->get();
-            if(count($exist)!=0){Alert::error('Error Message', 'Ya existe esa Medida');}else{
-            MedidasProteccion::create($request->all());
-            Alert::success('Success Message', 'Se Agregó un nueva Medida');}
-
-        } else if($request->atributo=='color'){
+         else if($request->atributo=='color'){
             
             $exist=ColorProteccion::where('color',$request->color)->get();
             if(count($exist)!=0){Alert::error('Error Message', 'Ya existe ese Color');}else{

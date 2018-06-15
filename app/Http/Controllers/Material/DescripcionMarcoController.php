@@ -29,6 +29,8 @@ class DescripcionMarcoController extends Controller
                     'ruta'         =>'des_marco.store',
                     'nombre'       =>'Marcos',
                     'ruta1'        =>'marco.store',
+                    'ruta2'        =>'marco.destroy',
+                    'objeto'       =>'marco',
                     'materiales'   =>$materiales,
                     'provedores'   =>$provedores
 

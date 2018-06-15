@@ -29,6 +29,8 @@ class DescripcionMariaController extends Controller
                     'ruta'         =>'des_maria.store',
                     'nombre'       =>'Maria Luisa',
                     'ruta1'        =>'maria.store',
+                    'ruta2'        =>'maria.destroy',
+                    'objeto'       =>'maria',
                     'materiales'   =>$materiales,
                     'provedores'   =>$provedores
 
