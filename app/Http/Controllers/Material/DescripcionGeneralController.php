@@ -42,14 +42,15 @@ class DescripcionGeneralController extends Controller
        
         $colgaderas    =Colgadera::orderBy('colgadera')->get();
         $adhesivos     =Adhesivo::orderBy('adhesivo')->get();
-
+        $provedores    =Provedor::get();
         return view('layouts.generales',
                    ['colgaderas'=>$colgaderas,
                     'adhesivos' =>$adhesivos,
                     'nombre'       =>'Productos Generales',
-                     'class'        =>'fa fa-clip',
-                     'ruta'         =>'des_generales.store',
-                     'ruta_frame'   =>'des_generales.index'
+                    'class'        =>'fa fa-clip',
+                    'ruta'         =>'des_generales.store',
+                    'ruta_frame'   =>'des_generales.index',
+                    'provedores'   =>$provedores
                     ]);
     }
 
@@ -61,7 +62,7 @@ class DescripcionGeneralController extends Controller
      */
     public function store(Request $request)
     {
-        
+        dd($request->all());
          if($request->atributo=='colgaderas'){
 
             $exist=Colgadera::where('colgadera',$request->colgadera)->get();
@@ -79,7 +80,7 @@ class DescripcionGeneralController extends Controller
         }
         }
         
-       return redirect()->back();
+       return view('tablagenerales.tabla',['']);
     }
 
     /**

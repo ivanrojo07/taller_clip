@@ -141,6 +141,7 @@ Route::resource('proteccion', 'Montaje\ProteccionController');
 Route::resource('marco', 'Montaje\MarcoController');
 Route::resource('maria', 'Montaje\MariaController');
 Route::resource('general', 'Montaje\GeneralController');
+Route::post('save_gen','Montaje\GeneralController@store');
 //----------------------------------------------------------------
 Route::resource('cambio', 'TipoCambio\TipoCambioController', ['except'=>'show']);
 

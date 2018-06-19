@@ -16,6 +16,8 @@ class CreateColgaderasTable extends Migration
         Schema::create('colgaderas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('colgadera');
+            $table->decimal('precio', 8, 2);
+            $table->string('proveedor');
             $table->softDeletes();
             $table->timestamps();
         });

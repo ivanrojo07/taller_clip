@@ -11,7 +11,7 @@ class Colgadera extends Model
 {
     use Sortable, SoftDeletes;
     protected $table = 'colgaderas';
-    protected $fillable=['colgadera'];
+    protected $fillable=['colgadera','precio','proveedor'];
     protected $hidden=[ 'created_at', 'updated_at','deleted_at'];
     public $sortable=['colgadera','created_at'];
 }

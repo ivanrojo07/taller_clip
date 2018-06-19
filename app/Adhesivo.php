@@ -11,7 +11,7 @@ class Adhesivo extends Model
 {
     use Sortable, SoftDeletes;
     protected $table = 'adhesivos';
-    protected $fillable=['adhesivo'];
+    protected $fillable=['adhesivo','precio','proveedor'];
     protected $hidden=[ 'created_at', 'updated_at','deleted_at'];
     public $sortable=['adhesivo','created_at'];
 }

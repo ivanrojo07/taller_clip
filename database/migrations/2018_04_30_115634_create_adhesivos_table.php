@@ -16,6 +16,8 @@ class CreateAdhesivosTable extends Migration
         Schema::create('adhesivos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('adhesivo');
+            $table->decimal('precio', 8, 2);
+            $table->string('proveedor');
             $table->softDeletes();
             $table->timestamps();
         });
