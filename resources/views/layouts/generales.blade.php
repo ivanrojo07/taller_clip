@@ -1,5 +1,6 @@
 @extends('layouts.blank')
  @section('content')
+  
 <div class="container">
  <div role="application" class="panel panel-group container-fluid">
  	<div class="panel-default">
@@ -50,7 +51,7 @@
      @isset($provedor->razonsocial)
      <option value="{{$provedor->razonsocial}}">{{$provedor->razonsocial}}</option>
      @else
-     <option value="{{$provedor->nombre}}">{{$provedor->nombre}}&nbsp;&nbsp;{{$provedor->apellidopaterno}}</option>
+     <option value="{{$provedor->nombre}}&nbsp;&nbsp;{{$provedor->apellidopaterno}}">{{$provedor->nombre}}&nbsp;&nbsp;{{$provedor->apellidopaterno}}</option>
      @endisset
     @endforeach
   </select>
@@ -59,14 +60,15 @@
  				
  					<div class="col-sm-3">
  						<br>
- 						<button class="btn btn-primary" onclick="save()"><strong>Agregar</strong></button>
+ 						<button class="btn btn-primary" onclick=" event.preventDefault(), save()"><strong>Agregar</strong></button>
  					</div>
  				</div><br><br>
  				</form>
 
 	  			{{-- Materiales --}}
- 		<div class="container " style="color: black;border-color: black;border:solid;">
-	<table class="table">
+
+ 		<div class="container " style="color: black;border-color: black;border:solid;" id="table_colgaderas">
+	<table class="table" >
     <thead class="thead-dark" style="background-color: darkblue;color: white;">
       <tr>
         <th>Nombre/Descripción</th>
@@ -76,7 +78,7 @@
         
       </tr>
     </thead>
-    <tbody id="table_colgaderas">
+    <tbody >
     	@foreach($colgaderas as $colgadera)
       <form action="" id="elim" method="POST">
         {{ csrf_field() }}
@@ -87,7 +89,7 @@
       <tr>
         <td>{{$colgadera->colgadera}}</td>
         <td>{{$colgadera->precio}}</td>
-        <td>{{$colgadera->proveedor}}&nbsp;&nbsp;{{$provedor->apellidopaterno}}</td>
+        <td>{{$colgadera->proveedor}}</td>
         <td><button class="btn btn-danger" onclick="deleteFunction('elim')"><strong>Eliminar</strong></button></td>
       </tr>
       </form>
@@ -99,7 +101,7 @@
  		</div>
  		{{-- COLGADERAS --}}
 
- 		{{-- Adhesivos --}}
+ 		{{-- ADHESIVOS --}}
  		<div class="container-fluid pull-center" id="medidas_div" style="display: none;">
  				
  				 <h4 style="background-color: grey;height: 50px;padding: 10px;
@@ -108,29 +110,29 @@
 
  				 <form role="form"  method="POST" action="{{ route('des_generales.store') }}" name="form">
 				{{ csrf_field() }}
-					<input type="hidden" name="atributo_a" value="adhesivos">
+					<input type="hidden" name="atributo_a" value="adhesivos" id="atributo_a">
 					
 	  			 <br>
 	  			 <div class="row">
 	  			 	<div class="col-sm-3">
 	  			 		<label class="control-label">Nombre/Descripción:</label>
-	  			 		<input type="text" class="form-control" name="adhesivo" required>
+	  			 		<input type="text" class="form-control" name="adhesivo" required id="adhesivo">
 	  			 	</div>
 	  			 	<div class="col-sm-2">
  						<label class="control-label">Precio:</label>
-	  			 		<input type="number" step="any" min="0" class="form-control" name="precio" placeholder="$--" required>
+	  			 		<input type="number" step="any" min="0" class="form-control" name="precio" placeholder="$--" required id="precio_a">
  					</div>
  				    <div class="col-sm-4">
           <label for="proveedor">Proveedor</label>
            <div class="input-group">
             <span class="input-group-addon" id="basic-addon3" onclick='getProveedor()'><i class="fa fa-refresh" aria-hidden="true"></i></span>
-          <select class="form-control" id="proveedor" name="proveedor" required>
+          <select class="form-control" id="proveedor_a" name="proveedor" required>
     <option value="">Seleccionar</option>
     @foreach($provedores as $provedor)
      @isset($provedor->razonsocial)
      <option value="{{$provedor->razonsocial}}">{{$provedor->razonsocial}}</option>
      @else
-     <option value="{{$provedor->nombre}}">{{$provedor->nombre}}&nbsp;&nbsp;{{$provedor->apellidopaterno}}</option>
+     <option value="{{$provedor->nombre}}&nbsp;&nbsp;{{$provedor->apellidopaterno}}">{{$provedor->nombre}}&nbsp;&nbsp;{{$provedor->apellidopaterno}}</option>
      @endisset
     @endforeach
   </select>
@@ -138,13 +140,13 @@
         </div>
  		<div class="col-sm-3">
  			<br>
- 			<button class="btn btn-primary"><strong>Agregar</strong></button>
+ 			<button class="btn btn-primary" onclick="event.preventDefault(), savea()"><strong>Agregar</strong></button>
  		</div>
  				</div><br><br>
  				</form>
 
 	  			{{-- Materiales --}}
- 		<div class="container " style="color: black;border-color: black;border:solid;">
+ 		<div class="container " style="color: black;border-color: black;border:solid;" id="table_adhesivos">
 	<table class="table">
     <thead class="thead-dark" style="background-color: darkblue;color: white;">
       <tr>
@@ -166,7 +168,7 @@
       <tr>
         <td>{{$adhesivo->adhesivo}}</td>
         <td>{{$adhesivo->precio}}</td>
-        <td>{{$adhesivo->proveedor}}&nbsp;&nbsp;{{$provedor->apellidopaterno}}</td>
+        <td>{{$adhesivo->proveedor}}</td>
         <td><button class="btn btn-danger" onclick="deleteFunction('elim')"><strong>Eliminar</strong></button></td>
       </tr>
       </form>
@@ -192,7 +194,11 @@
 
 <script type="text/javascript">
   
- 
+
+
+  
+
+
 
     function getProveedor(){
       $.ajaxSetup({
@@ -210,29 +216,8 @@
     }
 
 
-    function save(){
-    	//event.preventDefault();
-    	$.ajaxSetup({
-    		headers: {
-    			'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
-    		}
-    	});
 
-    	$.ajax({
-    		url:"{{url('/save_gen')}}",
-    		
-    		type:'POST',
-    		data:{atributo_c:atributo_c,
-    			   colgadera:colgadera,
-    			   proveedor:proveedor,
-    			   precio:precio},
-    		dataType: "html",
-
-    	}).done(function(resultado){
-          $("#table_colgaderas").html(resultado);
-      });
-
-    }
+   
 
   </script>
  @endsection

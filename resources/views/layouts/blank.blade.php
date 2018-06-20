@@ -63,104 +63,30 @@
         
         $(document).ready(function(){
             
-             $("#precio").keyup(function(){
+//              $("#precio").keyup(function(){
                 
-                var precio=document.getElementById("precio").value;
-                var cambio=document.getElementById("cambio").value;
-                var ajuste=Number(precio)*Number(cambio);
+//                 var precio=document.getElementById("precio").value;
                 
-                document.getElementById('ajuste').value = ajuste;
-             });
-//----------------------------------------------
+//                 var ajuste=Number(precio)*Number(cambio);
+                
+//                 document.getElementById('ajuste').value = ajuste;
+//              });
+// //----------------------------------------------
 
 
-//-------------------------------------------------------------------------------------------------
-       $("#nombre_proteccion").keyup(function(){
-                 
-                var nombre_proteccion=document.getElementById("nombre_proteccion").value;
-                var color_proteccion=document.getElementById("color_proteccion").value;
-                var espesor_proteccion=document.getElementById("espesor_proteccion").value;
-                var clave_proteccion=nombre_proteccion+color_proteccion+espesor_proteccion;
-                document.getElementById('clave_proteccion').value = clave_proteccion.toUpperCase();
-                 
-             });
-        $("#color_proteccion").keyup(function(){
-                var nombre_proteccion=document.getElementById("nombre_proteccion").value;
-                var color_proteccion=document.getElementById("color_proteccion").value;
-                var espesor_proteccion=document.getElementById("espesor_proteccion").value;
-                var clave_proteccion=nombre_proteccion+color_proteccion+espesor_proteccion;
-                document.getElementById('clave_proteccion').value = clave_proteccion.toUpperCase();
-        });
-         $("#espesor_proteccion").keyup(function(){
-            
-                var nombre_proteccion=document.getElementById("nombre_proteccion").value;
-                var color_proteccion=document.getElementById("color_proteccion").value;
-                var espesor_proteccion=document.getElementById("espesor_proteccion").value;
-                var clave_proteccion=nombre_proteccion+color_proteccion+espesor_proteccion;
-                document.getElementById('clave_proteccion').value = clave_proteccion.toUpperCase();
-        });
-//---------------------------------------------------------------------------------------------
 $("#atributo_1").change(function(){
       document.getElementById('descripcion_div').style.display = 'block';
       document.getElementById('medidas_div').style.display = 'none';
-      document.getElementById('espesor_div').style.display = 'none';
-      document.getElementById('color_div').style.display = 'none';
+      
 });
 $("#atributo_2").change(function(){
       document.getElementById('descripcion_div').style.display = 'none';
       document.getElementById('medidas_div').style.display = 'block';
-      document.getElementById('espesor_div').style.display = 'none';
-      document.getElementById('color_div').style.display = 'none';
+      
 });
-$("#atributo_3").change(function(){
-      document.getElementById('descripcion_div').style.display = 'none';
-      document.getElementById('medidas_div').style.display = 'none';
-      document.getElementById('espesor_div').style.display = 'block';
-      document.getElementById('color_div').style.display = 'none';
-});
-$("#atributo_4").change(function(){
-      document.getElementById('descripcion_div').style.display = 'none';
-      document.getElementById('medidas_div').style.display = 'none';
-      document.getElementById('espesor_div').style.display = 'none';
-      document.getElementById('color_div').style.display = 'block';
-});
-//-----------------------------------------------------------------------------------------------
-$("#chk_montaje").change(function(){
- document.getElementById('montajes_div').style.display = 'block';
- document.getElementById('protecciones_div').style.display = 'none';
- document.getElementById('marcos_div').style.display = 'none';
- document.getElementById('maria_div').style.display = 'none';
- document.getElementById('generales_div').style.display = 'none';
-});
-$("#chk_proteccion").change(function(){
- document.getElementById('montajes_div').style.display = 'none';
- document.getElementById('protecciones_div').style.display = 'block';
- document.getElementById('marcos_div').style.display = 'none';
- document.getElementById('maria_div').style.display = 'none';
- document.getElementById('generales_div').style.display = 'none';
-});
-$("#chk_marcos").change(function(){
- document.getElementById('montajes_div').style.display = 'none';
- document.getElementById('protecciones_div').style.display = 'none';
- document.getElementById('marcos_div').style.display = 'block';
- document.getElementById('maria_div').style.display = 'none';
- document.getElementById('generales_div').style.display = 'none';
-});
-$("#chk_maria").change(function(){
- document.getElementById('montajes_div').style.display = 'none';
- document.getElementById('protecciones_div').style.display = 'none';
- document.getElementById('marcos_div').style.display = 'none';
- document.getElementById('maria_div').style.display = 'block';
- document.getElementById('generales_div').style.display = 'none';
-});
-$("#chk_generales").change(function(){
- document.getElementById('montajes_div').style.display = 'none';
- document.getElementById('protecciones_div').style.display = 'none';
- document.getElementById('marcos_div').style.display = 'none';
- document.getElementById('maria_div').style.display = 'none';
- document.getElementById('generales_div').style.display = 'block';
-});
-//----------------------------------------------------------------
+
+//---------------------------------------------------------------------------------------
+
 
 //-----------------------------------------------------
  $(":text").keyup(function(){
@@ -191,28 +117,62 @@ $( ":input" ).keyup(function() {
     $("#alto_montaje").val()).toUpperCase()
   );
 });
-  /*
-  Descripción
-  Color
-  Espesor
-  ancho
-  x
-  alto
-  *
-  */
-
- //    var option=$("#descripcion_sel").val();
-//    document.getElementById('nombreh').innerHTML=option;
-//    document.getElementById('montaje_descripcion').value =option;
-   
+  
 
     $('#descripcion_sel').change(function(){
         $("#montaje_descripcion").val($("#descripcion_sel").val());
         $("#nombreh").text($("#descripcion_sel").val());
     });
 ///****************************************************************
+   function save(){
+     
+var ajax=new XMLHttpRequest();
+var colgadera=$('#colgadera').val();
+var proveedor=$('#proveedor').val();
+var precio=$('#precio').val();
+var atributo_c=$('#atributo_c').val();
+
+    if(colgadera==null||colgadera==''||proveedor==null||proveedor==''||precio==null||precio==''){
+
+      alert('Por favor llene todos los campos');
+    }else{
+      ajax.onreadystatechange=function(){
+              if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("table_colgaderas").innerHTML = this.responseText;
+          }
+      };
+
+     ajax.open("GET", "/save_gen?colgadera=" + colgadera + "&proveedor=" + proveedor + "&precio=" + precio + "&atributo_c=" + atributo_c , true);
+     ajax.send();
+    }
+
+}
+//------------------------------------------------------------------------------
+   function savea(){
+     
+var ajax=new XMLHttpRequest();
+var adhesivo=$('#adhesivo').val();
+var proveedor=$('#proveedor_a').val();
+var precio=$('#precio_a').val();
+var atributo_a=$('#atributo_a').val();
 
 
+
+    if(adhesivo==null||adhesivo==''||proveedor==null||proveedor==''||precio==null||precio==''){
+
+      alert('Por favor llene todos los campos');
+    }else{
+      ajax.onreadystatechange=function(){
+              if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("table_adhesivos").innerHTML = this.responseText;
+          }
+      };
+
+     ajax.open("GET", "/save_gen?adhesivo=" + adhesivo + "&proveedor=" + proveedor + "&precio=" + precio + "&atributo_a=" + atributo_a , true);
+     ajax.send();
+    }
+
+}
     </script>
 </body>
 </html>
