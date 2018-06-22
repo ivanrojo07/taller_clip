@@ -165,12 +165,9 @@
 
 					<div class="panel-heading">Dirección Fisica:</div>
 					<div class="panel-body">
-						@if (count($provedore->direccionFisicaProvedor) == 0 )
-							{{-- true expr --}}
-							<h3>Aun no tiene direccion Fisica</h3>
-						@else
-							{{-- false expr --}}
-
+						
+							
+							@isset ($provedore->direccionFisicaProvedor)
 						<div class="col-md-12 offset-md-2 mt-3">
 							<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
 		    					<label class="control-label" for="calle">Calle:</label>
@@ -217,7 +214,12 @@
 		  						<dd>{{$provedore->direccionFisicaProvedor->referencia}}</dd>
 		  					</div>
 						</div>
-						@endif
+
+							
+							
+						@else
+						<h3>Aun no tiene direccion Fisica</h3>
+						@endisset
 					</div>
 				</div>
 				<div class="panel-default pestana" id="tab3{{$provedore->id}}">
