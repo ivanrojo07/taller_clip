@@ -42,8 +42,8 @@
 						<label class="control-label" for="tipofalta" id="lbl_falta"><i class="fa fa-asterisk" aria-hidden="true"></i>Tipo de falta:</label>
 						 <div class="input-group">
 						 <span class="input-group-addon" id="basic-addon3" onclick='getFaltas()'><i class="fa fa-refresh" aria-hidden="true"></i></span>
-						<select type="select" name="tipofalta" class="form-control" id="tipofalta">
-	  							<option id="Sin Definir" value="Sin Definir" selected="selected">Sin Definir</option>
+						<select type="select" name="tipofalta" class="form-control" id="tipofalta" required>
+	  							<option id="Sin Definir" value="" selected="selected">Sin Definir</option>
 	  							@foreach($faltasp as $falta)
 	  							<option id="{{$falta->id}}" value="{{$falta->nombre}}">{{$falta->nombre}}</option>
 	  							@endforeach
@@ -54,7 +54,7 @@
 				<div class="col-xs-12 offset-md-2 mt-3">
 					<div class="form-group col-xs-4">
 	    					<label class="control-label" for="reporto">Quién lo reportó:</label>
-	    					<input type="text" class="form-control" id="reporto" name="reporto">
+	    					<input type="text" class="form-control" id="reporto" name="reporto" required>
 	  				</div>
 	  			</div>
 	  			<button type="submit" class="btn btn-success">Guardar</button>
