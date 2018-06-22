@@ -1,4 +1,6 @@
 
+
+<div class="alert alert-success" align="center"><strong>Se ha Eliminado de forma Correcta.</strong></div>
 <table class="table">
     <thead class="thead-dark" style="background-color: darkblue;color: white;">
       <tr>
@@ -11,29 +13,20 @@
     </thead>
     <tbody >
       @foreach($materiales as $material)
-      
+      <form action="" id="elim" method="POST">
+        {{ csrf_field() }}
         
-       @isset($material->colgadera)
-       <input type="hidden" name="atributo_c" value="colgaderas" id="atributo_c">
-        @endisset
-       @isset($material->adhesivo) 
-        <input type="hidden" name="atributo_a" value="adhesivos" id="atributo_a">
-        @endisset
+        <input type="hidden" name="_method" value="DELETE">
         
-      
      
-      @if($material==$first)
-      <tr class="active info">
-      @else
       <tr>
-      @endif
-
+      
+      
         @isset($material->colgadera)
         <td>{{$material->colgadera}}</td>
-        @endisset
-        @isset($material->adhesivo) 
+        @else
         <td>{{$material->adhesivo}}</td>
-        @endisset
+        @endif
         
         <td>{{$material->precio}}</td>
         <td>{{$material->proveedor}}</td>
@@ -45,11 +38,10 @@
            @isset($material->adhesivo)
            onclick="deleteTres({{$material->id}})"
            @endisset
-       
-          
-          ><strong>Eliminar</strong></button></td>
+           
+           ><strong>Eliminar</strong></button></td>
       </tr>
-      
+      </form>
       @endforeach
     </tbody>
   </table>

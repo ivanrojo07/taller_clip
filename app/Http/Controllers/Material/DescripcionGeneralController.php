@@ -62,34 +62,7 @@ class DescripcionGeneralController extends Controller
      */
     public function store(Request $request)
     {
-       
-        $materiales=null;
-
-         if($request->atributo_c=='colgaderas'){
-
-            $exist=Colgadera::where('colgadera',$request->colgadera)->get();
-            if(count($exist)!=0){Alert::error('Error Message', 'Ya existe esa Colgadera');
-            return redirect()->back();
-           }else{
-                Colgadera::create($request->all());
-            Alert::success('Success Message', 'Se Agregó un nueva Colgadera');
-            $materiales=Colgadera::orderBy('created_at','desc')->get();
-            return view('tablagenerales.tabla',['materiales'=>$materiales]);
-            }
-            
-
-        }else if($request->atributo_a=='adhesivos'){
-            $exist=Adhesivo::where('adhesivo',$request->adhesivo)->get();
-             if(count($exist)!=0){Alert::error('Error Message', 'Ya existe ese Adhesivo');
-            }else{
-            Adhesivo::create($request->all());
-            Alert::success('Success Message', 'Se Agregó un nuevo Adhesivo');
-            $materiales=Adhesivo::orderBy('created_at','desc')->get();
-            return view('tablagenerales.tabla',['materiales'=>$materiales]);
-            }
-        }
-        
-       
+     
     }
 
     /**
@@ -134,7 +107,8 @@ class DescripcionGeneralController extends Controller
      */
     public function destroy(DescripcionGeneral $descripcionGeneral)
     {
-        //
+          
+
     }
 
     public function save(Request $request){
@@ -145,25 +119,81 @@ class DescripcionGeneralController extends Controller
          if($request->atributo_c=='colgaderas'){
 
             $exist=Colgadera::where('colgadera',$request->colgadera)->get();
-            if(count($exist)!=0){Alert::error('Error Message', 'Ya existe esa Colgadera');
-            return redirect()->back();
+
+            if($exist->count()!=0){
+
+            
+                $materiales=Colgadera::orderBy('created_at','desc')->get();
+                 $first=$materiales->first();
+                return view('tablagenerales.error',['materiales'=>$materiales,
+                                                    'first'     =>$first]);
+             
+           
            }else{
+
                 Colgadera::create($request->all());
-            Alert::success('Success Message', 'Se Agregó un nueva Colgadera');
-            $materiales=Colgadera::orderBy('created_at','desc')->get();
-            return view('tablagenerales.tabla',['materiales'=>$materiales]);
+                $materiales=Colgadera::orderBy('created_at','desc')->get();
+                $first=$materiales->first();
+                return view('tablagenerales.tabla',['materiales'=>$materiales,
+                                                    'first'     =>$first]);
             }
             
 
         }else if($request->atributo_a=='adhesivos'){
-            $exist=Adhesivo::where('adhesivo',$request->adhesivo)->get();
-             if(count($exist)!=0){Alert::error('Error Message', 'Ya existe ese Adhesivo');
-            }else{
-            Adhesivo::create($request->all());
-            Alert::success('Success Message', 'Se Agregó un nuevo Adhesivo');
-            $materiales=Adhesivo::orderBy('created_at','desc')->get();
-            return view('tablagenerales.tabla',['materiales'=>$materiales]);
+
+            $exist=Adhesivo::where('Adhesivo',$request->adhesivo)->get();
+
+            if($exist->count()!=0){
+
+            
+                $materiales=Adhesivo::orderBy('created_at','desc')->get();
+                 $first=$materiales->first();
+                return view('tablagenerales.error',['materiales'=>$materiales,
+                                                    'first'     =>$first]);
+             
+           
+           }else{
+
+                Adhesivo::create($request->all());
+                $materiales=Adhesivo::orderBy('created_at','desc')->get();
+                $first=$materiales->first();
+                return view('tablagenerales.tabla',['materiales'=>$materiales,
+                                                    'first'     =>$first]);
             }
         }
     }
+
+    public function delete(Request $request){
+
+       
+
+        if($request->atributo=='colgaderas'){
+
+            $colgadera=Colgadera::where('id',$request->id)->first();
+            //dd($colgadera);
+            $colgadera->delete();
+            
+            
+            $materiales=Colgadera::orderBy('created_at','desc')->get();
+            return view('tablagenerales.eliminado',['materiales'=>$materiales]);
+            
+            
+            
+
+        }else if($request->atributo=='adhesivos'){
+            
+             
+         $adhesivo=Adhesivo::where('id',$request->id)->first();
+            
+            $adhesivo->delete();
+            
+            
+            $materiales=Adhesivo::orderBy('created_at','desc')->get();
+            return view('tablagenerales.eliminado',['materiales'=>$materiales]);
+            
+        }
+
+    }
+
+
 }

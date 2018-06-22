@@ -96,7 +96,89 @@ swal({
   }
 });
 }
-// $('li a').click(function(){
+//------------------------------------------------------------
+function deleteDos(id) {
+event.preventDefault(); // prevent form submit
+var form = event.target.form; // storing the form
+swal({
+  title: "¿Estas seguro?",
+  text: "Si eliminas, no podras recuperar tu información.",
+  type: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#DD6B55",
+  confirmButtonText: "SI",
+  cancelButtonText: "¡NO!",
+  closeOnConfirm: true,
+  closeOnCancel: false
+},function(isConfirm){
+  if (!isConfirm) {
+    
+    swal("Cancelado", "", "error");
+  } else {
+    
+    
+    var atributo=document.getElementById('atributo_c').value;
+    
+                // $.ajaxSetup({
+                //     headers: {
+                //       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                //     }
+                //   });
+                  $.ajax({
+                    url: "http://byw.from-tn.com/clip_taller/eliminar",
+                      type: "GET",
+                      dataType: "html",
+                      data:{id:id,
+                            atributo:atributo
+                            },
+                  }).done(function(resultado){
+                      $("#table_colgaderas").html(resultado);
+                  });          
+          }
+    });
+}
+//-------------------------------------------------------
+function deleteTres(id) {
+event.preventDefault(); // prevent form submit
+var form = event.target.form; // storing the form
+swal({
+  title: "¿Estas seguro?",
+  text: "Si eliminas, no podras recuperar tu información.",
+  type: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#DD6B55",
+  confirmButtonText: "SI",
+  cancelButtonText: "¡NO!",
+  closeOnConfirm: true,
+  closeOnCancel: false
+},function(isConfirm){
+  if (!isConfirm) {
+    
+    swal("Cancelado", "", "error");
+  } else {
+    
+    
+    var atributo=document.getElementById('atributo_a').value;
+    
+                // $.ajaxSetup({
+                //     headers: {
+                //       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                //     }
+                //   });
+                  $.ajax({
+                    url: "http://byw.from-tn.com/clip_taller/eliminar",
+                      type: "GET",
+                      dataType: "html",
+                      data:{id:id,
+                            atributo:atributo
+                            },
+                  }).done(function(resultado){
+                      $("#table_adhesivos").html(resultado);
+                  });          
+          }
+    });
+}
+//-------------------------------------------------------
 //     $(this.getAttribute('class')).addClass("active");
 //     $(this.getAttribute('href')).show();
 // });

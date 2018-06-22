@@ -92,8 +92,8 @@ class GeneralController extends Controller
      * @param  \App\General  $general
      * @return \Illuminate\Http\Response
      */
-    public function destroy(General $general)
+    public function destroy(General $general,Request $request)
     {
-        //
+        dd($request);
     }
 }

@@ -142,13 +142,15 @@ var atributo_c=$('#atributo_c').val();
           }
       };
 
-     ajax.open("GET", "/clip_taller/save_gen?colgadera=" + colgadera + "&proveedor=" + proveedor + "&precio=" + precio + "&atributo_c=" + atributo_c , true);
+     ajax.open("GET","/clip_taller/save_gen?colgadera="  + colgadera + "&proveedor=" + proveedor + "&precio=" + precio + "&atributo_c=" + atributo_c , true);
+     //  "{{ url('/save_gen') }}?colgadera="
      ajax.send();
+                   
     }
 
 }
 //------------------------------------------------------------------------------
-   function savea(){
+   function saveA(){
      
 var ajax=new XMLHttpRequest();
 var adhesivo=$('#adhesivo').val();
@@ -168,7 +170,8 @@ var atributo_a=$('#atributo_a').val();
           }
       };
 
-     ajax.open("GET", "/clip_taller/save_gen?adhesivo=" + adhesivo + "&proveedor=" + proveedor + "&precio=" + precio + "&atributo_a=" + atributo_a , true);
+     ajax.open("GET","/clip_taller/save_gen?adhesivo="  + adhesivo + "&proveedor=" + proveedor + "&precio=" + precio + "&atributo_a=" + atributo_a , true);
+     //  // "{{ url('/save_gen') }}?adhesivo="
      ajax.send();
     }
 

@@ -80,19 +80,18 @@
     </thead>
     <tbody >
     	@foreach($colgaderas as $colgadera)
-      <form action="" id="elim" method="POST">
-        {{ csrf_field() }}
-        
-        <input type="hidden" name="_method" value="DELETE">
-        
       
+        
+        
+        
+        <input type="hidden" name="id" value="{{$colgadera->id}}" id="id_colgadera">
       <tr>
         <td>{{$colgadera->colgadera}}</td>
         <td>{{$colgadera->precio}}</td>
         <td>{{$colgadera->proveedor}}</td>
-        <td><button class="btn btn-danger" onclick="deleteFunction('elim')"><strong>Eliminar</strong></button></td>
+        <td><button class="btn btn-danger" onclick="deleteDos({{$colgadera->id}})"><strong>Eliminar</strong></button></td>
       </tr>
-      </form>
+      
       @endforeach
     </tbody>
   </table>
@@ -140,13 +139,14 @@
         </div>
  		<div class="col-sm-3">
  			<br>
- 			<button class="btn btn-primary" onclick="event.preventDefault(), savea()"><strong>Agregar</strong></button>
+ 			<button class="btn btn-primary" onclick="event.preventDefault(), saveA()"><strong>Agregar</strong></button>
  		</div>
  				</div><br><br>
  				</form>
 
 	  			{{-- Materiales --}}
- 		<div class="container " style="color: black;border-color: black;border:solid;" id="table_adhesivos">
+ 		<div class="container " style="color: black;border-color: black;border:solid;" 
+    id="table_adhesivos">
 	<table class="table">
     <thead class="thead-dark" style="background-color: darkblue;color: white;">
       <tr>
@@ -159,17 +159,18 @@
     </thead>
     <tbody >
     	@foreach($adhesivos as $adhesivo)
-      <form action="" id="elim" method="POST">
+      <form action="" id="elim2" method="POST">
         {{ csrf_field() }}
         
-        <input type="hidden" name="_method" value="DELETE">
+       
         
+        <input type="hidden" name="id" value="{{$adhesivo->id}}" id="id_adhesivo">
       
       <tr>
         <td>{{$adhesivo->adhesivo}}</td>
         <td>{{$adhesivo->precio}}</td>
         <td>{{$adhesivo->proveedor}}</td>
-        <td><button class="btn btn-danger" onclick="deleteFunction('elim')"><strong>Eliminar</strong></button></td>
+        <td><button class="btn btn-danger" onclick="deleteTres({{$adhesivo->id}})"><strong>Eliminar</strong></button></td>
       </tr>
       </form>
       @endforeach

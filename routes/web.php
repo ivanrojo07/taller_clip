@@ -142,6 +142,7 @@ Route::resource('marco', 'Montaje\MarcoController');
 Route::resource('maria', 'Montaje\MariaController');
 Route::resource('general', 'Montaje\GeneralController');
 Route::get('save_gen','Material\DescripcionGeneralController@save');
+Route::get('eliminar','Material\DescripcionGeneralController@delete');
 //----------------------------------------------------------------
 Route::resource('cambio', 'TipoCambio\TipoCambioController', ['except'=>'show']);
 
