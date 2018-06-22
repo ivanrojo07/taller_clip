@@ -262,12 +262,10 @@
 							
 				<div class="panel-default pestana" id="tab4{{$provedore->id}}">
 				 	<div class="panel-heading">Datos Generales:</div>
-				 	@if (count($provedore->datosGeneralesProvedor) == 0)
-						<div class="panel-body">
-							<h3>Aún no tienes datos generales</h3>
-						</div>
-						@endif
-						@if (count($provedore->datosGeneralesProvedor) !=0)
+				 	
+						
+						
+						@isset($provedore->datosGeneralesProvedor)
 				 	<div class="panel-body">
 				 		<div class="col-md-12 offset-md-2 mt-3">
 				 			<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -291,7 +289,11 @@
 				 			</div>
 				 		</div>
 				 	</div>
-				 	@endif
+				 	@else
+				 	<div class="panel-body">
+							<h3>Aún no tienes datos generales</h3>
+						</div>
+				 	@endisset
 				</div>
 			</div>
 		</div>
