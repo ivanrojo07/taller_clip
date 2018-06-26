@@ -60,11 +60,15 @@
 						@endif
 					</td>
 					<td>{{ $provedore->tipopersona }}</td>
+ 				@isset($provedore->datosGeneralesProvedor)
 					@foreach($giros as $giro)
-						@if($provedore->datosGeneralesProvedor->giro_id==$giro->id)
+					 @if($provedore->datosGeneralesProvedor->giro_id==$giro->id)
 					<td>{{$giro->nombre}}</td>
 						@endif
 					@endforeach
+				 @else
+				 <td>Sin Definir</td>
+                 @endisset
 					<td>{{ $provedore->alias }}</td>
 					<td>{{ strtoupper($provedore->rfc) }}</td>
 					<td>{{$provedore->vendedor}}</td>
