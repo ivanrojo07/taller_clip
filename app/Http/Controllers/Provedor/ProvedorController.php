@@ -113,7 +113,8 @@ class ProvedorController extends Controller{
     public function buscar(Request $request){
     // dd($request);
     $query = $request->input('busqueda');
-    $wordsquery = explode(' ',$query);
+    $palabra=strtolower($query);
+    $wordsquery = explode(' ',$palabra); 
     $provedores = Provedor::where(function($q) use($wordsquery){
             foreach ($wordsquery as $word) {
                 # code...
@@ -126,7 +127,9 @@ class ProvedorController extends Controller{
                 ->orWhere('tipopersona','LIKE',    "%$word%");
             }
         })->get();
-    return view('provedores.busqueda', ['provedores'=>$provedores]);
+    $giros = Giro::get();
+    return view('provedores.busqueda', ['provedores'=>$provedores,
+                                         'giros'     =>$giros]);
         
 
     }
