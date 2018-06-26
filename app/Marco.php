@@ -20,6 +20,6 @@ class Marco extends Model
 						 'color',
 						 'proveedor',
 						 'precio'];
-    protected $hidden=[ 'updated_at','deleted_at'];
+    protected $hidden=['deleted_at'];
     public $sortable=['clave','created_at'];
 }

@@ -20,7 +20,7 @@ class General extends Model
     'sucursal_id',
     'almacen_id'];
 
-    protected $hidden=[ 'created_at', 'updated_at','deleted_at'];
+    protected $hidden=['updated_at','deleted_at'];
     public $sortable=['id','descripcion', 'monto'];
 
     public function sucursal(){

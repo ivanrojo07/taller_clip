@@ -7,8 +7,8 @@
         <th>Nombre/Descripción</th>
         <th>Precio</th>
         <th>Proveedor</th>
+        <th>Fecha de Ceación</th>
         <th>Opciones</th>
-        
       </tr>
     </thead>
     <tbody >
@@ -30,6 +30,7 @@
         
         <td>{{$material->precio}}</td>
         <td>{{$material->proveedor}}</td>
+        <td>{{$material->created_at}}</td>
         <td><button class="btn btn-danger" 
 
            @isset($material->colgadera)

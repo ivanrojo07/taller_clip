@@ -111,6 +111,7 @@
         <th>Tipo de Medidas</th>
         <th>Precio</th>
         <th>Proveedor</th>
+        <th>Fecha de Creación</th>
         <th>Operación</th>
       </tr>
     </thead>
@@ -127,6 +128,8 @@
         <td>{{$material->clave}}</td>
         <td>{{$material->tipo_medidas}}</td>
         <td>${{$material->precio}}</td>
+        <td>{{$material->proveedor}}</td>
+
         <td>{{$material->proveedor}}</td>
         <td><button class="btn btn-danger" onclick="deleteFunction('elim')"><strong>Eliminar</strong></button></td>
       </tr>

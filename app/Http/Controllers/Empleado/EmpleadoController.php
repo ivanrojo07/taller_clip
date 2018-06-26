@@ -42,9 +42,12 @@ class EmpleadoController extends Controller
     public function create()
     {
         //
-        $empleado = new Empleado;
+        $empleado = Empleado::create(); //new Empleado;
         $edit = false;
-        return view('empleado.create',['empleado'=>$empleado,'edit'=>$edit]);
+
+        
+        return view('empleado.create',['empleado'=>$empleado,
+                                       'edit'=>$edit]);
     }
 
     /**
@@ -55,10 +58,12 @@ class EmpleadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
         
-
-         $empleado = Empleado::create($request->all());
+        
+        
+         $empleado = Empleado::where('id',$request->id)->first();
+         $empleado->update($request->all());
+         
             return redirect()->route('empleados.show',['empleado'=>$empleado])->with('success','Empleado Creado');
     }
 

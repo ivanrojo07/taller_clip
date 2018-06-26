@@ -3,7 +3,21 @@
 		<div class="container" id="tab">
 			<div role="application" class="panel panel-group" >
 				<div class="panel-default">
-					<div class="panel-heading"><h4>Datos del provedor:</h4><a class="btn btn-info" href="{{ route('provedores.create') }}"><strong>Nuevo Proveedor</strong></a></div>
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-sm-3">
+								<h4>Datos del provedor:</h4>
+							</div>
+							<div class="col-sm-3">
+								<a class="btn btn-info" href="{{ route('provedores.create') }}"><strong>Nuevo Proveedor</strong></a>
+							</div>
+							<div class="col-sm-3">
+								<a class="btn btn-primary" href="{{ route('provedores.index') }}"><strong>Ver Proveedores</strong></a>
+							</div>
+						</div>
+						
+						
+					</div>
 					<div class="panel-body">
 						<div class="col-md-12 offset-md-2 mt-3">
 		  					<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">

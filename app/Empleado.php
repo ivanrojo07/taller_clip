@@ -11,9 +11,27 @@ class Empleado extends Model
     //
     protected $table = 'empleados';
 
-    protected $fillable = [
-    	'id','identificador','nombre','appaterno','apmaterno','rfc','telefono','movil','email','nss','curp','infonavit','fnac','cp','calle','numext','numint','colonia','municipio','estado','calles','referencia'
-    ];
+    protected $fillable = ['id',
+                           'nombre',
+                           'appaterno',
+                           'apmaterno',
+                           'rfc',
+                           'telefono',
+                           'movil',
+                           'email',
+                           'nss',
+                           'curp',
+                           'infonavit',
+                           'fnac',
+                           'cp',
+                           'calle',
+                           'numext',
+                           'numint',
+                           'colonia',
+                           'municipio',
+                           'estado',
+                           'calles',
+                           'referencia'];
     public $sortable = [
     	'identificador','nombre','appaterno','apmaterno','rfc'
     ];

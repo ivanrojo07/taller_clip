@@ -31,11 +31,12 @@
     <body>
 
 <!-- Navigation -->
-<div id="app">
-    <nav class="navbar navbar-default navbar-static-top" style="background-color: black;">
+<div id="app"> 
+    <nav class="navbar navbar-default navbar-static-top" style="background-color: black;">  
         <div class="container topnav" >
+          <div class="row" align="right" style="color: white;text-shadow: 2px 2px #000000;height: 0px;"><h1>{{date('d-m-Y')}}</h1></div>
             <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header" >
+           <!--  <div class="navbar-header" >
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -44,9 +45,9 @@
                 </button>
                 <a class="navbar-brand" href="{{ url('/') }}">
                         {{-- <img src="{{ asset('img/logo.jpeg') }}" height="32" width="70"> --}}
-                        {{-- {{ config('app.name', 'Arbys') }} --}}
+                        {{-- {{ config('app.name', 'Clip Taller') }} --}}
                     </a>
-            </div>
+            </div> -->
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
@@ -157,8 +158,8 @@
                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Órdenes <span class="caret"></span> </a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="#"
-                                   onclick="AgregarNuevoTab('{{ url('import-export-csv-excel') }}','Importar Excel')"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Alta por excel</a>
+                               <!--  <a href="#"
+                                   onclick="AgregarNuevoTab('{{ url('import-export-csv-excel') }}','Importar Excel')"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Alta por excel</a> -->
 
                                 <a href="#"
                                    onclick="AgregarNuevoTab('{{ url('producto/create') }}','Alta Manual')"><i class="fa fa-plus" aria-hidden="true"></i> Alta Manual</a>

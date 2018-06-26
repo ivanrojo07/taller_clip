@@ -74,6 +74,7 @@
         <th>Nombre/Descripción</th>
         <th>Precio</th>
         <th>Proveedor</th>
+        <th>Fecha de Creación</th>
         <th>Opciones</th>
         
       </tr>
@@ -89,6 +90,7 @@
         <td>{{$colgadera->colgadera}}</td>
         <td>{{$colgadera->precio}}</td>
         <td>{{$colgadera->proveedor}}</td>
+        <td>{{$colgadera->created_at}}</td>
         <td><button class="btn btn-danger" onclick="deleteDos({{$colgadera->id}})"><strong>Eliminar</strong></button></td>
       </tr>
       
@@ -153,6 +155,7 @@
         <th>Nombre/Descripción</th>
         <th>Precio</th>
         <th>Proveedor</th>
+        <th>Fecha de Creación</th>
         <th>Opciones</th>
         
       </tr>
@@ -170,6 +173,7 @@
         <td>{{$adhesivo->adhesivo}}</td>
         <td>{{$adhesivo->precio}}</td>
         <td>{{$adhesivo->proveedor}}</td>
+        <td>{{$adhesivo->created_at}}</td>
         <td><button class="btn btn-danger" onclick="deleteTres({{$adhesivo->id}})"><strong>Eliminar</strong></button></td>
       </tr>
       </form>

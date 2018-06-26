@@ -13,7 +13,9 @@
 	@else
 		{{-- false expr --}}
 		<form role="form" id="form-empleado" method="POST" action="{{ route('empleados.store') }}" name="form">
+
 			{{ csrf_field()}}
+			<input type="hidden" name="id" value="{{$empleado->id}}">
 	@endif
 		<div role="application" class="panel panel-group">
 			<div class="panel-default">
@@ -23,19 +25,19 @@
 				</h4></div>
 				<div class="panel-body">
 					<div class="col-xs-12 offset-md-2 mt-3">
-						<div class="form-group col-xs-3">
-							<label class="control-label" for="identificador"><i class="fa fa-asterisk" aria-hidden="true"></i> ID de empleado:</label>
+						<div class="form-group col-xs-2">
+							<label class="control-label" for="identificador"><i class="fa fa-asterisk" aria-hidden="true"></i> ID:(Automático)</label>
 							@if ($edit == true)
 								{{-- true expr --}}
-								<dd>{{$empleado->identificador}}</dd>
+								<dd>{{$empleado->id}}</dd>
 							@else
 								{{-- false expr --}}
 							<input class="form-control" 
 							       id="identificador" 
 							       type="text" 
-							       name="identificador" 
-							       required="required"
-							       autofocus>
+							       readonly 
+							       autofocus
+							       value="{{$empleado->id}}">
 							@endif
 						</div>
 					</div>

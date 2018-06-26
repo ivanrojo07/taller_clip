@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Provedor;
 
 use App\Provedor;
+use App\Giro;
 use UxWeb\SweetAlert\SweetAlert as Alert;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -19,8 +20,9 @@ class ProvedorController extends Controller{
     {
         //
         $provedores = Provedor::sortable()->paginate(5);
-        // Alert::message('Robots are working!');
-        return view('provedores.index', ['provedores'=>$provedores]);
+        $giros = Giro::get();
+        return view('provedores.index', ['provedores'=>$provedores,
+                                         'giros'     =>$giros]);
     }
 
     /**

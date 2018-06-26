@@ -15,9 +15,9 @@ class CreateEmpleadosTable extends Migration
     {
         Schema::create('empleados', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre');
-            $table->string('appaterno');
-            $table->string('apmaterno');
+            $table->string('nombre')->nullable();
+            $table->string('appaterno')->nullable();
+            $table->string('apmaterno')->nullable();
             $table->string('rfc')->nullable();
             $table->string('telefono')->nullable();
             $table->string('movil')->nullable();
