@@ -42,7 +42,7 @@
 			<table class="table table-striped table-bordered table-hover" style="color:rgb(51,51,51); border-collapse: collapse; margin-bottom: 0px;">
 			<thead>
 				<tr class="info">
-					<th>@sortablelink('identificador','#')</th>
+					<th>@sortablelink('id','#')</th>
 					<th>@sortablelink('nombre','Nombre')</th>
 					<th>@sortablelink('appaterno','Apellido Paterno')</th>
 					<th>@sortablelink('apmaterno','Apellido Materno')</th>
@@ -51,13 +51,13 @@
 				</tr>
 			</thead>
 			@foreach ($empleados as $empleado)
-				{{-- expr --}}
+				@isset($empleado->nombre)
 				<tr class="active"
 				    title="Has Click Aquì para Ver"
 					style="cursor: pointer"
 					href="#{{$empleado->id}}">
 					
-					<td>{{$empleado->identificador}}</td>
+					<td>{{$empleado->id}}</td>
 					<td>{{$empleado->nombre}}</td>
 					<td>{{$empleado->appaterno}}</td>
 					<td>{{$empleado->apmaterno}}</td>
@@ -67,6 +67,7 @@
 						<a class="btn btn-info btn-sm" href="{{ route('empleados.edit',['empleado'=>$empleado]) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><strong>Editar</strong></a>
 					</td>
 				</tr>
+				@endisset
 			@endforeach
 		</table>
 		{{ $empleados->links() }}

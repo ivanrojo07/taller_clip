@@ -130,7 +130,7 @@
         <td>${{$material->precio}}</td>
         <td>{{$material->proveedor}}</td>
 
-        <td>{{$material->proveedor}}</td>
+        <td>{{$material->created_at}}</td>
         <td><button class="btn btn-danger" onclick="deleteFunction('elim')"><strong>Eliminar</strong></button></td>
       </tr>
       </form>
