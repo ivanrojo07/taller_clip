@@ -20,7 +20,8 @@ function persona(elemento){
     document.getElementById('varrfc').pattern="^[A-Za-z]{4}[0-9]{6}[A-Za-z0-9]{3}";
     document.getElementById('varrfc').placeholder="Ingrese 13 caracteres";
     document.getElementById('varrfc').title="Siga el formato 4 letras seguidas por 6 digitos y 3 caracteres";
-    
+    $("#idnombre").prop('required',true);
+    $("#apellidopaterno").prop('required',true);
     
   }
   if(elemento.value =="Moral"){
@@ -29,7 +30,8 @@ function persona(elemento){
     document.getElementById('varrfc').pattern="^[A-Za-z]{3}[0-9]{6}[A-Za-z0-9]{3}";
     document.getElementById('varrfc').placeholder="Ingrese 12 caracteres";
     document.getElementById('varrfc').title="Siga el formato 3 letras seguidas por 6 digitos y 3 caracteres";
-    
+    $("#idnombre").prop('required',false);
+    $("#apellidopaterno").prop('required',false);
   }
 }
 

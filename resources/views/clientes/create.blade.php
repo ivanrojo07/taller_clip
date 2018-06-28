@@ -42,12 +42,14 @@
 			  					<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
 			    					<label class="control-label" for="tipopersona">Tipo de Persona:</label>
 			    					<select type="select" name="tipopersona" class="form-control" id="tipopersona" onchange="persona(this)">
-			    						<option id="Fisica" value="Fisica" @if ($cliente->tipopersona == 'Fisica')
-			    							{{-- expr --}}
+			    						<option id="Fisica" value="Fisica" 
+			    						@if ($cliente->tipopersona == 'Fisica')
+			    							
 			    							selected="selected" 
 			    						@endif>Fisica</option>
-			    						<option id="Moral" value="Moral" @if ($cliente->tipopersona == 'Moral')
-			    							{{-- expr --}}
+			    						<option id="Moral" value="Moral" 
+			    						@if ($cliente->tipopersona == 'Moral')
+			    							
 			    							selected="selected" 
 			    						@endif>Moral</option>
 			    					</select>
@@ -120,11 +122,11 @@
 			  						<label class="control-label" for="nombre"> 
 								<i class="fa fa-asterisk" aria-hidden="true"></i>
 							          Nombre(s):</label>
-			  						<input type="text" class="form-control" id="idnombre" name="nombre" value="{{ $cliente->nombre }}" required>
+			  						<input type="text" class="form-control" id="idnombre" name="nombre" value="{{ $cliente->nombre }}" >
 			  					</div>
 			  					<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
 			  						<label class="control-label" for="apellidopaterno"><i class="fa fa-asterisk" aria-hidden="true"></i>Apellido Paterno:</label>
-			  						<input type="text" class="form-control" id="apellidopaterno" name="apellidopaterno" value="{{ $cliente->apellidopaterno }}" required>
+			  						<input type="text" class="form-control" id="apellidopaterno" name="apellidopaterno" value="{{ $cliente->apellidopaterno }}" >
 			  					</div>
 			  					<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
 			  						<label class="control-label" for="apellidomaterno">Apellido Materno:</label>

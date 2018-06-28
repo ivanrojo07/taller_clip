@@ -1,6 +1,7 @@
 @extends('layouts.blank')
 	@section('content')
 
+
 	<div class="container" id="tab">
 		<form role="form" id="form-cambio" method="POST" name="form" >
 			<div role="application" class="panel panel-group">

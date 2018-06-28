@@ -20,8 +20,8 @@ class CreateClientesTable extends Migration
             $table->enum('prioridad',['Baja', 'Mediana', 'Alta'])->nullable();
             $table->integer('calificacion')->nullable();
             //Nombre Completo
-            $table->string('nombre');
-            $table->string('apellidopaterno');
+            $table->string('nombre')->nullable();
+            $table->string('apellidopaterno')->nullable();
             $table->string('apellidomaterno')->nullable();
             $table->string('razonsocial')->nullable();
             $table->string('mail')->nullable();
