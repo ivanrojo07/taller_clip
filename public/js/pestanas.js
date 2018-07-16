@@ -34,7 +34,7 @@ function AgregarNuevoTab(url, nombre) {
             obj[i].className = "active";
             var nombre = $(obj[i].getElementsByTagName("a")[0]).attr("href");
             var iframen = document.getElementById(nombre.replace("#", ""));
-            iframen.className = "tab-pane fade in active";
+            iframen.className = "tab-pane fade in active show";
             return false;
         }
     }
@@ -52,7 +52,7 @@ function AgregarNuevoTab(url, nombre) {
     var iframes = document.getElementById("contenedortab");
     var srcTab = document.createElement("div");
     srcTab.id = "tab" + numTab;
-    srcTab.innerHTML = " <iframe src='" + url + "' style='height:" + heigh + "px'></iframe>";
+    srcTab.innerHTML = " <iframe name='contenido' src='" + url + "' style='height:" + heigh + "px'></iframe>";
     CambiarAtributoElementosTag("div", "contenedortab", "class", "tab-pane fade");
     srcTab.className = "tab-pane fade in active";
     iframes.appendChild(srcTab);
