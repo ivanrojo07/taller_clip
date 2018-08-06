@@ -19,9 +19,8 @@
 				</div>
 				<div class="panel-body">
 					<button type="submit" class="btn btn-success">
-					<strong>Guardar</strong>
-				</button>
-					
+						<strong>Guardar</strong>
+					</button>			
 				</div>	
 			</div>
 		</form>

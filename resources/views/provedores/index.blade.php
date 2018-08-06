@@ -19,7 +19,7 @@
 					     	<a class="btn btn-info" 
 				   href="{{ route('provedores.create')}}">
 							        <strong>
-							   Agregar Proveedor</strong>
+							   Agregar Cliente</strong>
 							</a>
 					     </div>
 					 </div>
@@ -38,7 +38,7 @@
 					<th>@sortablelink('id', 'Identificador')</th>
 					<th>@sortablelink('nombre', 'Nombre/Razón Social'){{-- Nombre --}}</th>
 					<th>@sortablelink('tipopersona', 'Tipo de persona')</th>
-					<th>Giro del Proveedor</th>
+					<th>Giro del Cliente</th>
 					<th>@sortablelink('alias', 'Alias')</th>
 					<th>@sortablelink('rfc', 'RFC')</th>
 					<th>@sortablelink('vendedor', 'Vendedor') </th>

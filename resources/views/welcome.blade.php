@@ -58,7 +58,7 @@
                     <div class="col">
                         <div class="card">
                             <div id="clase1" class="card-header nave" data-toggle="collapse" data-target="#collapseExample1">
-                                <p class="mb-0" style="float: left;">Clientes&nbsp<i class="fa fa-users"></i></p>
+                                <p class="mb-0" style="float: left;">Proveedores&nbsp<i class="fa fa-users"></i></p>
                                 <p class="mb-0" style="float: right;"><i class="fa fa-angle-double-down"></i></p>
                             </div>
                             <ul id="collapseExample1" class="list-group list-group-flush collapse" data-parent="#acoreond">
@@ -125,6 +125,19 @@
                 <div class="row my-2">
                     <div class="col">
                         <div class="card">
+                            <div id="clase7" class="card-header nave" data-toggle="collapse" data-target="#collapseExample7">
+                                <p class="mb-0" style="float: left;">Cotización&nbsp<i class="fa fa-dollar" aria-hidden="true"></i></p>
+                                <p class="mb-0" style="float: right;"><i class="fa fa-angle-double-down"></i></p>
+                            </div>
+                            <ul id="collapseExample7" class="list-group list-group-flush collapse" data-parent="#acoreond">
+                                <a class="nave7" target="frame1" href="{{ url('/historial_cotizacion/') }}"><li class="list-group-item">Historial</li></a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="card">
                             <div id="clase5" class="card-header nave" data-toggle="collapse" data-target="#collapseExample5">
                                 <p class="mb-0" style="float: left;">Recursos Humanos&nbsp<i class="fa fa-briefcase" aria-hidden="true"></i></p>
                                 <p class="mb-0" style="float: right;"><i class="fa fa-angle-double-down"></i></p>
@@ -153,7 +166,7 @@
                     <div class="col">
                         <div class="card">
                             <div id="clase6" class="card-header  nave" data-toggle="collapse" data-target="#collapseExample6">
-                                <p class="mb-0" style="float: left;">Proveedores&nbsp<i class="fa fa-users" aria-hidden="true"></i></p>
+                                <p class="mb-0" style="float: left;">Clientes&nbsp<i class="fa fa-users" aria-hidden="true"></i></p>
                                 <p class="mb-0" style="float: right;"><i class="fa fa-angle-double-down"></i></p>
                             </div>
                             <ul id="collapseExample6" class="list-group list-group-flush collapse" data-parent="#acoreond">
@@ -173,19 +186,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row my-2">
-                    <div class="col">
-                        <div class="card">
-                            <div id="clase7" class="card-header nave" data-toggle="collapse" data-target="#collapseExample7">
-                                <p class="mb-0" style="float: left;">Cotización&nbsp<i class="fa fa-dollar" aria-hidden="true"></i></p>
-                                <p class="mb-0" style="float: right;"><i class="fa fa-angle-double-down"></i></p>
-                            </div>
-                            <ul id="collapseExample7" class="list-group list-group-flush collapse" data-parent="#acoreond">
-                                <a class="nave7" target="frame1" href="{{ url('/historial_cotizacion/') }}"><li class="list-group-item">Historial</li></a>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                
 
 
 
