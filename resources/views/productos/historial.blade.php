@@ -29,9 +29,6 @@
                     <td>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Ver</button>
                     <button type="button" class="btn btn-success">Editar</button>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-  Launch demo modal
-</button>
                     </td>           
                 </tr>
                 <tr>
@@ -43,17 +40,23 @@
 <div class="modal-dialog modal-dialog-centered" role="document">
 <div class="modal-content">
 <div class="modal-header">
-<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+<h5 class="modal-title" id="exampleModalLongTitle">Órden No. #</h5>
 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 <span aria-hidden="true">&times;</span>
 </button>
 </div>
 <div class="modal-body">
-...
+        <ul class="list-group">
+          <li class="list-group-item">Nombre</li>
+          <li class="list-group-item">Descripción</li>
+          <li class="list-group-item">Monto</li>
+          <li class="list-group-item">Fecha de creación</li>
+          <li class="list-group-item">Operación</li>
+        </ul>
 </div>
 <div class="modal-footer">
-<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-<button type="button" class="btn btn-primary">Save changes</button>
+<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+<button type="button" class="btn btn-primary">Cotizar</button>
 </div>
 </div>
 </div>
