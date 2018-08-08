@@ -46,7 +46,7 @@
 
         #frameg{
             width: 100%;
-            height: 1400px;
+            height: 900px;
         }
         
     </style>
