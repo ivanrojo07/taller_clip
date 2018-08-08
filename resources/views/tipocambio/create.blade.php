@@ -15,15 +15,15 @@
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 							<input type="hidden" name="_method" value="PUT">
 							
-						<div class="col-sm-3">
-							<label class="control-label" for="valor">Cantidad de Pesos por Dolar:</label>
+						<div class="col-sm-4">
+							<label class="control-label" for="valor">Tipo de cambio:</label>
 	  						<input type="number" step="any" class="form-control" id="cantidad" name="cantidad" placeholder="$--">
 						</div>
-						<div class="col-sm-3">
+						<div class="col-sm-4">
 							<label class="control-label" for="fecha">Fecha Actual:</label>
 	  						<input type="date" class="form-control" id="fecha" name="fecha"  value="{{date('Y-m-d')}}" readonly style="color: black;">
 						</div>
-						<div class="col-sm-3">
+						<div class="col-sm-4">
 							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<button type="submit" class="btn btn-warning"><strong>Agregar</strong></button>
 							

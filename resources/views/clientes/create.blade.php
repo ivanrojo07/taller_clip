@@ -118,9 +118,10 @@
 			  					</div>
 							</div>
 							<div class="col-md-12 offset-md-2 mt-3" id="perfisica">
+								
 								<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
 			  						<label class="control-label" for="nombre"> 
-								<i class="fa fa-asterisk" aria-hidden="true"></i>
+									<i class="fa fa-asterisk" aria-hidden="true"></i>
 							          Nombre(s):</label>
 			  						<input type="text" class="form-control" id="idnombre" name="nombre" value="{{ $cliente->nombre }}" >
 			  					</div>
@@ -167,7 +168,7 @@
 					<li id="lidir" class="disabled" style="display:none;" role="presentation"><a href="#" class="disabled" id="clienteli1">Direccion Fiscal:</a></li>
 					<li id="licont" class="disabled" disabled style="display:none;" role="presentation"><a href="#" class="disabled">Contactos</a></li>
 					<li id="lidat" class="disabled" id="clienteli3" style="display:none;" role="presentation"><a href="#" class="disabled">Datos Generales</a></li>
-					<li class="disabled"  role="presentation"><a href="#" class="disabled">C.R.M.</a></li>
+					<!--<li class="disabled"  role="presentation"><a href="#" class="disabled">C.R.M.</a></li>-->
 				</ul>
 					@endif
 					@if ($edit == true)

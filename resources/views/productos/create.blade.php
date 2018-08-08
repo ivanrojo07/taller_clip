@@ -2,7 +2,7 @@
 @section('content')
 
 
-<h3>Explosionado</h3>
+<h3>GENERAR ÓRDEN</h3>
 <br>
 <form action="" id="explosionadoForm"></form>
 
@@ -11,7 +11,7 @@
 				<!--Tipo de mat-->
 				<div class="input-group">
 					<div class="input-group-prepend">
-						<label class="input-group-text" for="inputGroupSelect01">Tipo de Material</label>
+						<label class="input-group-text" for="inputGroupSelect01">Sección</label>
 					</div>
 					<select class="custom-select" id="tipoMaterial" form="explosionadoForm">
 						<option value="1">opción</option>
@@ -116,8 +116,8 @@
 		<table class="table table-striped table-warning">
 			<thead>
 				<tr class="bg-warning">
-					<th>Tipo Material</th>
-					<th>Material</th>
+					<th>Nombre</th>
+					<th>Descripción</th>
 					<th>Clave</th>
 					<th># de Piezas</th>
 					<th>Monto</th>
@@ -126,8 +126,8 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td>tip</td>
-					<td>mat</td>
+					<td>Nom</td>
+					<td>Des</td>
 					<td>clav</td>
 					<td>no. p</td>
 					<td>mont</td>
