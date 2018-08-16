@@ -212,7 +212,7 @@
         }
       });
       $.ajax({
-        url: "{{ url('/getprov') }}",
+        url: "{{ url('/getclient') }}",
           type: "GET",
           dataType: "html",
       }).done(function(resultado){

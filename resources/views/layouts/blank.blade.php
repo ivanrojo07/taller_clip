@@ -31,10 +31,8 @@
 
     </head>
 <body>
-    <div id="app">
         @yield('content')
         
-    </div>
 
 
     <!-- Scripts -->

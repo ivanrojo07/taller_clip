@@ -55,7 +55,7 @@ class ProvedorController extends Controller{
         } else {
             # code...
             $provedore = Provedor::create($request->all());
-            Alert::success("Proveedor creado con exito, sigue agregando información")->persistent("Cerrar");
+            Alert::success("Cliente creado con exito, sigue agregando información")->persistent("Cerrar");
             return redirect()->route('provedores.direccionfisica.create',['provedore'=>$provedore]);
         }
         

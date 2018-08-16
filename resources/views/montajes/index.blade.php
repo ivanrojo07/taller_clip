@@ -69,6 +69,11 @@
           <label for="color_montaje">Color</label>
           <input type="text" name="color" id="color_montaje" class="form-control" required>
         </div>
+        <div class="col-sm-3">
+          <label for="color_montaje">Tipo de Material</label>
+          <input type="text" name="color" id="color_montaje" class="form-control" required>
+        </div>
+
       </div><br>
       <div class="row">
         <div class="col-sm-4">
@@ -154,7 +159,7 @@
         }
       });
       $.ajax({
-        url: "{{ url('/getprov') }}",
+        url: "{{ url('/getclient') }}",
           type: "GET",
           dataType: "html",
       }).done(function(resultado){

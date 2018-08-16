@@ -18,6 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 
+Route::post('foo/bar', 'FooController@bar');
+Route::resource('foo', 'FooController');
+
 Route::get('getareas','Area\AreaController@getAreas');
 Route::get('getcontratos','Precargas\TipoContratoController@getContratos');
 Route::get('getpuestos','Puesto\PuestoController@getPuestos');
@@ -33,6 +36,7 @@ Route::get('getprov','Provedor\ProvedorController@getProveedor');
 Route::get('prospectos', 'Personal\PersonalController@search');
 // Route::get('clientes', 'Personal\PersonalController@clientes');
 // Route::get('prospectos', 'Personal\PersonalController@prospectos');
+Route::post('getclient', 'Cliente\ClienteController@getClient');
 Route::resource('clientes', 'Cliente\ClienteController');
 Route::resource('clientes.direccion','Cliente\ClienteDireccionController');
 Route::resource('clientes.contactos','Cliente\ClienteContactosController');

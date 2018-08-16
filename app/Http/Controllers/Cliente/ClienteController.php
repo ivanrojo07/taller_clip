@@ -153,4 +153,9 @@ class ClienteController extends Controller
          } 
          return view('clientes.busqueda',['clientes'=>$clientes]);
     }
+
+    public function getClient(){
+        $clientes = Cliente::get();
+        return view('precargas.select',['precargas'=>$clientes]);
+    }
 }

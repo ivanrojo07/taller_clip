@@ -46,7 +46,7 @@
 
         #frameg{
             width: 100%;
-            height: 900px;
+            height: 1000px;
         }
         
     </style>
@@ -73,7 +73,7 @@
                                     <div class="dropdown-menu m-0 p-0 nave6" aria-labelledby="dropdownMenuButton">
                                         <a class="nave6" class="dropdown-item" target="frame1" href="{{ url('/giros') }}">Giros&nbsp<i class="fa fa-refresh" aria-hidden="true"></i> </a><br>
                                         <a class="nave6" class="dropdown-item" target="frame1" href="{{ url('/formacontactos') }}">Forma Contactos&nbsp<i class="fa fa-refresh" aria-hidden="true"></i></a><br>
-                                        <a class="nave6" class="dropdown-item" target="frame1" href="{{ url('/bancos') }}">Precargas Bancos&nbsp<i class="fa fa-refresh" aria-hidden="true"></i> </a>
+                                        <!--<a class="nave6" class="dropdown-item" target="frame1" href="{{ url('/bancos') }}">Precargas Bancos&nbsp<i class="fa fa-refresh" aria-hidden="true"></i> </a>-->
                                     </div>
                                 </li>
                             </ul>

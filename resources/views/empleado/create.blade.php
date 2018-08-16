@@ -54,6 +54,10 @@
 							<label class="control-label" for="nombre"><i class="fa fa-asterisk" aria-hidden="true"></i> Nombre(s):</label>
 							<input type="text" class="form-control" id="nombre" name="nombre" required="required" value="{{ $empleado->nombre }}">
 						</div>
+						<div class="form-group col-xs-3">
+							<label class="control-label" for="nombre"><i class="fa fa-asterisk" aria-hidden="true"></i> RFC:</label>
+							<input type="text" class="form-control" id="nombre" name="nombre" required="required" value="{{ $empleado->nombre }}">
+						</div>
 						
 					</div>
 				</div>

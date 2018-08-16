@@ -40,9 +40,7 @@
             background-color: #83c0e5;
         }
     </style>
-    <div class="container-fluid p-2" style="max-height: 300px !important;">
         @yield('content')
-    </div>
     
 </body>
 </html>
