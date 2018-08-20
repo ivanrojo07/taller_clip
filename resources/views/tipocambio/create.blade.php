@@ -17,7 +17,7 @@
 							
 						<div class="col-sm-4">
 							<label class="control-label" for="valor">Tipo de cambio:</label>
-	  						<input type="number" step="any" class="form-control" id="cantidad" name="cantidad" placeholder="$--">
+	  						<input type="number" step="any" class="form-control" id="cantidad" name="cantidad" placeholder="$--" required>
 						</div>
 						<div class="col-sm-4">
 							<label class="control-label" for="fecha">Fecha Actual:</label>

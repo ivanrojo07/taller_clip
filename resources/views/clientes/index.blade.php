@@ -21,36 +21,12 @@
 					</span> -->	
 			<div class="col-xs-3">
 
-				<input id="cli" 
-				       href="/clientes" 
-				       type="checkbox" 
-				       data-toggle="toggle" 
-				       data-on="Sí" 
-				       data-off="No" 
-				       data-style="ios" 
-				       checked="true" 
-				       name="cliente"  
-				       class="intro">
-
-				<label>&nbsp;&nbsp;Clientes
-			</label>
+				
 
 		</div>
 		<div  class="col-xs-3">
 
-				<input href="/prospectos" 
-				       id="pros" 
-				       type="checkbox" 
-				       data-toggle="toggle" 
-				       data-on="Sí" 
-				       name="prospecto" 
-				       data-off="No" 
-				       data-style="ios" 
-				       checked="true" 
-				       class="ortni">
-
-				<label>&nbsp;&nbsp;Prospectos
-			</label>
+			
 		
 					</div>	
 				</div>	
@@ -66,13 +42,18 @@
 				<tr class="info">
 					<th>@sortablelink('id','#')</th>
 					<th>@sortablelink('nombre', 'Nombre/Razón Social'){{-- Nombre --}}</th>
-					<th>@sortablelink('prioridad', 'Prioridad')</th>
+					<th>@sortablelink('Contacto Principal')</th>
+					<th>@sortablelink('Correo')</th>
+					<th>@sortablelink('Teléfono')</th>
+					<th>@sortablelink('Celular')</th>
+					
+					<!-- <th>@sortablelink('prioridad', 'Prioridad')</th>
 					<th>@sortablelink('tipo', 'Tipo de cliente')</th>
 					<th>@sortablelink('calificacion', 'Calificación')</th>
 					<th>@sortablelink('giro', 'Giro')</th>
-					<th>@sortablelink('created_at','Fecha de alta')</th>
+					<th>@sortablelink('created_at','Fecha de alta')</th> -->
 					
-					<th>Operacion</th>
+					<!-- <th>Operacion</th> -->
 				</tr>
 			</thead>
 			<tbody>

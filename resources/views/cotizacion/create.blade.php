@@ -2,43 +2,55 @@
 @section('content')
 
 <!--CLIENTE-->
-<div class="container">
+<div class="container-fluid">
 <div class="row mt-3">
         <div class="col-4">
-
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01">Clientes</label>
+            <div class="row">
+                <div class="col-12">
+                    <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Clientes</label>
+                    </div>
+                    <select class="custom-select" id="inputGroupSelect01">
+                        <option selected>elegir...</option>
+                        <option value="1">cliente1</option>
+                        <option value="2">cliente2</option>
+                        <option value="3">cliente3</option>
+                    </select>
+                    </div>
                 </div>
-                <select class="custom-select" id="inputGroupSelect01">
-                    <option selected>elegir...</option>
-                    <option value="1">cliente1</option>
-                    <option value="2">cliente2</option>
-                    <option value="3">cliente3</option>
-                </select>
+                <div class="col-12">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon3">ID</span>
+                        </div>
+                        <input type="text" class="form-control" id="id" aria-describedby="basic-addon3" form="explosionadoForm" readonly>
+                    </div>
+                </div>
             </div>
+
+            
 
         </div>
         <div class="col-8">
-    
-    <table class="table">
-        <thead>
-            <tr class="bg-primary">
-                <th scope="col">#</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Datos1</th>
-                <th scope="col">Datos2</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>1</td>
-                <td>2</td>
-            </tr>
-        </tbody>
-    </table>
+            <table class="table">
+                <thead>
+                    <tr class="bg-primary">
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Datos1</th>
+                        <th scope="col">Datos2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>1</td>
+                        <td>2</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
@@ -62,6 +74,10 @@
         <div class="form-group col-4">
             <label for="fechaEntrega">Fecha de entrega</label>
             <input type="date" class="form-control" id="fechaEntrega">
+        </div>
+        <div class="form-group col-4">
+            <label for="exampleFormControlTextarea1">Descripción</label>
+            <textarea class="form-control" id="descripcion" rows="3"></textarea>
         </div>
     </div>
     <hr>

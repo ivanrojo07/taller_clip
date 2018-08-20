@@ -52,7 +52,7 @@ class ClienteController extends Controller
                
          $cliente = Cliente::create($request->all());
             if ($request['tipo'] == 'Cliente') {
-                Alert::success('Cliente creado con éxito', 'Siga agregando información');
+                Alert::success('Proveedor creado con éxito', 'Siga agregando información');
                 return redirect()->route('clientes.direccion.index', ['cliente'=>$cliente]);
             }
             if($request['tipo'] == 'Prospecto') {

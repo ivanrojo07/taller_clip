@@ -46,12 +46,13 @@
 
         #frameg{
             width: 100%;
-            height: 1000px;
+            height: 380%;
+            z-index: unset;
         }
         
     </style>
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="overflow-y: hidden;">
         <div class="row">
             <div class="col-3 fixed-top" id="acoreond">
 
@@ -66,7 +67,7 @@
                             <ul id="collapseExample6" class="list-group list-group-flush collapse" data-parent="#acoreond">
                                 <a class="nave6" target="frame1" href="{{ url('/provedores/create')}}"><li class="list-group-item">Alta&nbsp<i class="fa fa-user-plus" aria-hidden="true"></i></li></a>
                                 <a class="nave6" target="frame1" href="{{ url('/provedores') }}"><li class="list-group-item">Búsqueda&nbsp<i class="fa fa-search" aria-hidden="true"></i></li></a>
-                                <li class="list-group-item dropright">
+                                <li class="list-group-item dropright" style="z-index: 999999;">
                                     <div class="dropdown-toggle m-0 p-0" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Precargas&nbsp<i class="fa fa-refresh" aria-hidden="true"></i> 
                                     </div>
@@ -215,7 +216,7 @@
             
             </div>
 
-            <div class="offset-3 col-9">
+            <div class="offset-3 col-9 fixed-top">
                 <div class="row">
                     <div class="col-12 mb-2">
                         <img src="{{asset('img/header.jpg')}}" class="img-fluid" alt="Clip Taller.">

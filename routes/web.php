@@ -36,7 +36,7 @@ Route::get('getprov','Provedor\ProvedorController@getProveedor');
 Route::get('prospectos', 'Personal\PersonalController@search');
 // Route::get('clientes', 'Personal\PersonalController@clientes');
 // Route::get('prospectos', 'Personal\PersonalController@prospectos');
-Route::post('getclient', 'Cliente\ClienteController@getClient');
+Route::get('getclient', 'Cliente\ClienteController@getClient');
 Route::resource('clientes', 'Cliente\ClienteController');
 Route::resource('clientes.direccion','Cliente\ClienteDireccionController');
 Route::resource('clientes.contactos','Cliente\ClienteContactosController');

@@ -1,6 +1,7 @@
 @extends('layouts.cotizacion')
 @section('content')
-<h4>Historial de cotizaciones</h4>
+<div class="container-fluid">
+    <h4>Historial de cotizaciones</h4>
 <br>
 <br>
 <br>
@@ -9,7 +10,7 @@
         <table class="table">
             <thead>
                 <tr class="bg-primary">
-                    <th scope="col">#</th>
+                    <th scope="col">ID</th>
                     <th scope="col">Clave</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Fecha</th>
@@ -63,5 +64,7 @@
         </table>
     </div>
 </div>
+</div>
+
 
 @endsection
