@@ -1,12 +1,12 @@
 @extends('layouts.infocliente')
 @section('cliente')
 <ul role="tablist" class="nav nav-tabs">
-	<li role="presentation"><a href="{{ route('clientes.show',['provedore'=>$provedore]) }}">Dirección/Domicilio:</a></li>
+	<li role="presentation"><a href="{{ route('clientes.show',['cliente'=>$cliente]) }}">Dirección/Domicilio:</a></li>
 	@if ($cliente->tipo == 'Cliente')
 		{{-- expr --}}
-	<li id="lidir" role="presentation"><a href="{{ route('clientes.direccion.index',['provedore'=>$provedore]) }}" >Direccion Fiscal:</a></li>
-	<li id="licont" class="active" role="presentation"><a href="{{ route('clientes.contactos.index',['provedore'=>$provedore]) }}">Contactos</a></li>
-	<li id="lidat" role="presentation"><a href="{{ route('clientes.datos.index',['provedore'=>$provedore]) }}">Datos Generales</a></li>
+	<li id="lidir" role="presentation"><a href="{{ route('clientes.direccion.index',['cliente'=>$cliente]) }}" >Direccion Fiscal:</a></li>
+	<li id="licont" class="active" role="presentation"><a href="{{ route('clientes.contactos.index',['cliente'=>$cliente]) }}">Contactos</a></li>
+	<li id="lidat" role="presentation"><a href="{{ route('clientes.datos.index',['cliente'=>$cliente]) }}">Datos Generales</a></li>
 	@endif
 </ul>
 <div class="panel panel-default">
@@ -15,7 +15,7 @@
 	</div>
 	<div class="panel-body">
 		<div class="form-group col-lg-offset-11">
-			<a type="button" class="btn btn-success" href="{{ route('clientes.contactos.create',['provedore'=>$provedore]) }}">
+			<a type="button" class="btn btn-success" href="{{ route('clientes.contactos.create',['cliente'=>$cliente]) }}">
 				<strong>Agregar</strong>
 			</a>
 		</div>

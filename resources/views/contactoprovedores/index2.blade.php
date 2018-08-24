@@ -1,10 +1,10 @@
-@extends('layouts.infoprovedor')
+i@extends('layouts.infoprovedor')
 	@section('cliente')
 	<ul role="tablist" class="nav nav-tabs">
-		<li class="ui-tabs-tab ui-corner-top ui-state-default ui-tab"><a href="{{ route('provedores.show',['cliente'=>$cliente]) }}">Dirección Fiscal:</a></li>
-		<li class="ui-tabs-tab ui-corner-top ui-state-default ui-tab"><a href="{{ route('provedores.direccionfisica.index',['cliente'=>$cliente]) }}">Dirección Fisica:</a></li>
-		<li class="active"><a href="{{ route('provedores.contacto.index',['cliente'=>$cliente]) }}" role="presentation" tabindex="-1" class="ui-tabs-anchor" id="ui-id-3">Contacto:</a></li>
-		<li role="presentation" tabindex="-1" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab" aria-controls="tabs-3" aria-labelledby="ui-id-3" aria-selected="false" aria-expanded="false"><a href="{{ route('provedores.datosgenerales.index', ['cliente'=>$cliente]) }}" role="presentation" tabindex="-1" class="ui-tabs-anchor" id="ui-id-3">Datos Generales:</a></li>
+		<li class="ui-tabs-tab ui-corner-top ui-state-default ui-tab"><a href="{{ route('provedores.show',['provedore'=>$provedore]) }}">Dirección Fiscal:</a></li>
+		<li class="ui-tabs-tab ui-corner-top ui-state-default ui-tab"><a href="{{ route('provedores.direccionfisica.index',['provedore'=>$provedore]) }}">Dirección Fisica:</a></li>
+		<li class="active"><a href="{{ route('provedores.contacto.index',['provedore'=>$provedore]) }}" role="presentation" tabindex="-1" class="ui-tabs-anchor" id="ui-id-3">Contacto:</a></li>
+		<li role="presentation" tabindex="-1" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab" aria-controls="tabs-3" aria-labelledby="ui-id-3" aria-selected="false" aria-expanded="false"><a href="{{ route('provedores.datosgenerales.index', ['provedore'=>$provedore]) }}" role="presentation" tabindex="-1" class="ui-tabs-anchor" id="ui-id-3">Datos Generales:</a></li>
 		
 	</ul>
 	<div class="panel panel-default">
@@ -13,7 +13,7 @@
 		</div>
 		<div class="panel-body">
 			<div class="form-group col-lg-offset-11">
-				<a type="button" class="btn btn-success" href="{{ route('provedores.contacto.create',['cliente'=>$cliente]) }}">
+				<a type="button" class="btn btn-success" href="{{ route('provedores.contacto.create',['provedore'=>$provedore]) }}">
 			<strong>Agregar</strong>	</a>
 			</div>
 		@if (count($contactos) == 0)

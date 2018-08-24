@@ -6,13 +6,13 @@
 					<div class="panel-heading">
 						<div class="row">
 							<div class="col-sm-3">
-								<h4>Datos del provedor:</h4>
+								<h4>Datos del Cliente:</h4>
 							</div>
 							<div class="col-sm-3">
-								<a class="btn btn-info" href="{{ route('provedores.create') }}"><strong>Nuevo Proveedor</strong></a>
+								<a class="btn btn-info" href="{{ route('provedores.create') }}"><strong>Nuevo Cliente</strong></a>
 							</div>
 							<div class="col-sm-3">
-								<a class="btn btn-primary" href="{{ route('provedores.index') }}"><strong>Ver Proveedores</strong></a>
+								<a class="btn btn-primary" href="{{ route('provedores.index') }}"><strong>Ver Clientes</strong></a>
 							</div>
 						</div>
 						
@@ -32,10 +32,10 @@
 		  						<label class="control-label" for="rfc">RFC:</label>
 		  						<dd>{{ $provedore->rfc }}</dd>
 		  					</div>
-		  					<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		  					<!-- <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
 		  						<label class="control-label" for="vendedor">Vendedor:</label>
 		  						<dd>{{ $provedore->vendedor }}</dd>
-		  					</div>
+		  					</div> -->
 						</div>
 					@if ($provedore->tipopersona == "Fisica")
 							{{-- true expr --}}
@@ -66,7 +66,7 @@
 					</div>
 				</div>
 
-				@yield('cliente')
+				@yield('provedore')
 			</div>
 		</div>
 	@endsection

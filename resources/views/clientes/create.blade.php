@@ -26,19 +26,6 @@
 						</div>
 						<div class="panel-body">
 							<div class="col-md-12 offset-md-2 mt-3">
-								<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
-			    					<label class="control-label" for="tipo">Tipo de Proveedor:</label>
-			    					<select type="select" name="tipo" class="form-control" id="tipo" onchange="formulario(this)">
-			    						<option id="Prospecto" value="Prospecto" @if ($cliente->tipo == 'Prospecto')
-			    							{{-- expr --}}
-			    							selected="selected" 
-			    						@endif>Prospecto</option>
-			    						<option id="Cliente" value="Cliente" @if ($cliente->tipo == 'Cliente')
-			    							{{-- expr --}}
-			    							selected="selected" 
-			    						@endif>Cliente</option>
-			    					</select>
-			  					</div>
 			  					<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
 			    					<label class="control-label" for="tipopersona">Tipo de Persona:</label>
 			    					<select type="select" name="tipopersona" class="form-control" id="tipopersona" onchange="persona(this)">
@@ -116,6 +103,10 @@
 			    						@endif>10</option>
 			    					</select>
 			  					</div>
+			  					<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+			  						<label class="control-label" for="alias">Alias:</label>
+			  						<input type="text" class="form-control" id="alias" name="alias" value="{{ $cliente->apellidopaterno }}" >
+			  					</div>
 							</div>
 							<div class="col-md-12 offset-md-2 mt-3" id="perfisica">
 								
@@ -132,6 +123,10 @@
 			  					<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
 			  						<label class="control-label" for="apellidomaterno">Apellido Materno:</label>
 			  						<input type="text" class="form-control" id="apellidomaterno" name="apellidomaterno" value="{{ $cliente->apellidomaterno }}">
+			  					</div>
+			  					<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+			  						<label class="control-label" for="contactop">Contacto Principal:</label>
+			  						<input type="text" class="form-control" id="contactop" name="contactop" value="{{ $cliente->apellidopaterno }}" >
 			  					</div>
 							</div>
 							<div class="col-md-12 offset-md-2 mt-3" id="permoral" style="display:none;">
@@ -158,6 +153,13 @@
 									<label class="control-label" for="celular">Número Celular:</label>
 									<input type="text" class="form-control" id="celular" name="celular" value="{{ $cliente->celular }}" >
 								</div>
+							</div>
+							<div class="col-md-12 offset-md-2 mt-3">
+								<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+			  						<label class="control-label" for="puesto"> 
+							          Puesto:</label>
+			  						<input type="text" class="form-control" id="puesto" name="puesto"  >
+			  					</div>
 							</div>
 						</div>
 					</div>

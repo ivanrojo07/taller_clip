@@ -29,12 +29,12 @@
 			    					</select>
 			  					</div>
 			  					<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
-			  						<label class="control-label" for="alias"> Alias:</label>
+			  						<label class="control-label" for="alias"> <i class="fa fa-asterisk" aria-hidden="true"></i> Alias:</label>
 			  						<input type="text" 
 			  						       class="form-control" 
 			  						       id="alias" 
 			  						       name="alias" 
-			  						        
+			  						        required
 			  						       autofocus>
 			  					</div>
 			  					<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">

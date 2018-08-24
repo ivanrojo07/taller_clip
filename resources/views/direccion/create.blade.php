@@ -8,7 +8,7 @@
 		<li id="licont" role="presentation"><a href="{{ route('clientes.contactos.index',['cliente'=>$cliente]) }}">Contactos</a></li>
 		<li id="lidat" role="presentation"><a href="{{ route('clientes.datos.index',['cliente'=>$cliente]) }}">Datos Generales</a></li>
 		@endif
-		<li role="presentation"><a href="{{ route('clientes.crm.index',['cliente'=>$cliente]) }}" class="disabled">C.R.M.</a></li>
+		<li role="presentation"><a href="{{ route('clientes.contactos.index',['cliente'=>$cliente]) }}" class="disabled">Contacto</a></li>
 	</ul>
 			<div class="panel panel-default">
 				@if ($edit == false)
