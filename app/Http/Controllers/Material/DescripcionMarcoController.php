@@ -37,6 +37,11 @@ class DescripcionMarcoController extends Controller
                ]);
     }
 
+
+    public function index2(){
+        return 0;
+    }
+
     /**
      * Show the form for creating a new resource.
      *

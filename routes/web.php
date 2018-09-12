@@ -17,10 +17,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
-Route::post('foo/bar', 'FooController@bar');
-Route::resource('foo', 'FooController');
-
 Route::get('getareas','Area\AreaController@getAreas');
 Route::get('getcontratos','Precargas\TipoContratoController@getContratos');
 Route::get('getpuestos','Puesto\PuestoController@getPuestos');
@@ -145,6 +141,15 @@ Route::resource('proteccion', 'Montaje\ProteccionController');
 Route::resource('marco', 'Montaje\MarcoController');
 Route::resource('maria', 'Montaje\MariaController');
 Route::resource('general', 'Montaje\GeneralController');
+
+
+Route::get('maria2','Material\DescripcionMariaController@index2');
+Route::get('proteccion2','Material\DescripcionProteccionController@index2');
+Route::get('marco2','Material\DescripcionMarcoController@index2');
+Route::get('montaje2','Material\DescripcionMontajeController@index2');
+Route::get('generales2','Material\DescripcionGeneralController@index2');
+
+
 Route::get('save_gen','Material\DescripcionGeneralController@save');
 Route::get('eliminar','Material\DescripcionGeneralController@delete');
 //----------------------------------------------------------------
@@ -161,3 +166,4 @@ Route::get('historial_orden',function(){
 
 	return View::make('productos.historial');
 });
+

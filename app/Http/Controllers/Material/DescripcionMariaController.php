@@ -37,6 +37,11 @@ class DescripcionMariaController extends Controller
                ]);
     }
 
+    public function index2(){
+        $generales = Maria::orderBy('descripcion')->get();
+        return view('layouts.material2', ['temporales'=>$generales]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

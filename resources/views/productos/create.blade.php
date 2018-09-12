@@ -58,10 +58,12 @@
 							<label class="input-group-text" for="inputGroupSelect01">Sección</label>
 						</div>
 						<select class="custom-select" id="tipoMaterial" form="explosionadoForm">
+							<option value="">SELECCIONAR</option>
 							<option value="montaje">Montaje</option>
 							<option value="proteccion">Portección</option>
 							<option value="marcos">Marcos y Bastidores</option>
 							<option value="marialuisa">Maria Luisa</option>
+							<option value="generales">Generales</option>
 						</select>
 					</div>
 				</div>
@@ -72,9 +74,6 @@
 							<label class="input-group-text" for="inputGroupSelect01">Material</label>
 						</div>
 						<select class="custom-select" id="material" form="explosionadoForm">
-							<option value="1">opción</option>
-							<option value="2">opción</option>
-							<option value="3">opción</option>
 						</select>
 					</div>
 				</div>
@@ -201,14 +200,56 @@
 			var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
 			$('#fecha').val(today);
 		});
+
 		$('#unidades1').on('change', function(){
 			$('#unidades2').val($('#unidades1').val());
 
 		});
+
 		$('#unidades2').on('change', function(){
 			$('#unidades1').val($('#unidades2').val());
 
 		});
+
+		$('#tipoMaterial').change(function(){
+
+			var a = '';
+			switch($(this).val()){
+				case 'montaje':
+					a = 'montaje2'
+					break;
+				case 'proteccion':
+					a = 'proteccion2';
+					break;
+				case 'marcos':
+					a = 'marco2';
+					break;
+				case 'marialuisa':
+					a = 'maria2';
+					break;
+				case 'generales':
+					a = 'generales2';
+					break;
+			}
+
+			$.ajaxSetup({
+		    headers: {
+		      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		    }
+			});
+			$.ajax({
+				url: a,
+			    type: "GET",
+			    dataType: "html",
+			    success: function(res){
+                    $('#material').html(res);
+                },
+                error: function (){
+                    $('#material').html('');
+                }
+			});
+		});
+
 	</script>
 </div>
 
