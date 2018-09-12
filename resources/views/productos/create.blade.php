@@ -4,7 +4,7 @@
 <div class="container pt-2">
 	<h3>GENERAR ÓRDEN</h3>
 	<br>
-	<form action="" id="explosionadoForm"></form>
+	<form action="" id="explosionadoForm1"></form>
 
 			<div class="row">
 
@@ -18,7 +18,7 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon3">Nombre</span>
 						</div>
-						<input type="text" class="form-control" id="nombre" aria-describedby="basic-addon3" form="explosionadoForm">
+						<input type="text" class="form-control" id="nombre" aria-describedby="basic-addon3" form="explosionadoForm1">
 					</div>
 				</div>
 				<div class="col-6 mb-2">
@@ -27,7 +27,7 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon3">Fecha</span>
 						</div>
-						<input type="date" class="form-control" id="fecha" aria-describedby="basic-addon3" form="explosionadoForm" readonly>
+						<input type="date" class="form-control" id="fecha" aria-describedby="basic-addon3" form="explosionadoForm1" readonly>
 					</div>
 				</div>
 				<div class="col-6 mb-2">
@@ -36,7 +36,7 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon3">ID</span>
 						</div>
-						<input type="text" class="form-control" id="id" aria-describedby="basic-addon3" form="explosionadoForm" readonly>
+						<input type="text" class="form-control" id="id" aria-describedby="basic-addon3" form="explosionadoForm1" readonly>
 					</div>
 				</div>
 				<div class="col-6 mb-2">
@@ -50,7 +50,7 @@
 					<h4>Buscar Materiales</h4>
 				</div>
 
-
+				<form action=" " id="explosionadoForm"></form>
 				<div class="col-6 mb-2">
 					<!--Tipo de mat-->
 					<div class="input-group">
@@ -142,7 +142,6 @@
 			<table class="table table-striped table-warning">
 				<thead>
 					<tr class="bg-warning">
-						<th>Nombre</th>
 						<th>Descripción</th>
 						<th>Clave</th>
 						<th># de Piezas</th>
@@ -150,17 +149,7 @@
 						<th>Operación</th>
 					</tr>
 				</thead>
-				<tbody>
-					<tr>
-						<td>Nom</td>
-						<td>Des</td>
-						<td>clav</td>
-						<td>no. p</td>
-						<td>mont</td>
-						<td>
-							<button type="button" class="btn btn-warning">Agregar</button>
-						</td>
-					</tr>
+				<tbody id='daddy'>
 				</tbody>
 			</table>
 
@@ -176,17 +165,8 @@
 						
 					</tr>
 				</thead>
-				<tbody>
-					<tr>
-						<td>tip</td>
-						<td>mat</td>
-						<td>clav</td>
-						<td>no. p</td>
-						<td>mont</td>
-						<td>
-							<button type="button" class="btn btn-warning">Quitar</button>
-						</td>
-					</tr>
+				<tbody id="daddy2">
+					
 				</tbody>
 			</table>
 
@@ -238,17 +218,19 @@
 		    }
 			});
 			$.ajax({
-				url: a,
+				url: '../'+a,
 			    type: "GET",
 			    dataType: "html",
 			    success: function(res){
-                    $('#material').html(res);
+                    $('#daddy').html(res);
                 },
                 error: function (){
-                    $('#material').html('');
+                    $('#daddy').html('');
                 }
 			});
 		});
+
+		
 
 	</script>
 </div>

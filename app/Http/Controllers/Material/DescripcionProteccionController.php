@@ -38,7 +38,8 @@ class DescripcionProteccionController extends Controller
     }
 
     public function index2(){
-        return 0;
+        $generales = Proteccion::orderBy('descripcion')->get();
+        return view('layouts.material2', ['temporales'=>$generales]);
     }
 
     /**

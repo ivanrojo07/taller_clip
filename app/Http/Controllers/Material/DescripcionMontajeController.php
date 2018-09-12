@@ -38,7 +38,8 @@ class DescripcionMontajeController extends Controller
     }
 
     public function index2(){
-        return 0;
+        $generales = Montaje::orderBy('descripcion')->get();
+        return view('layouts.material2', ['temporales'=>$generales]);
     }
 
     /**

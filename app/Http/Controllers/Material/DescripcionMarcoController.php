@@ -39,7 +39,8 @@ class DescripcionMarcoController extends Controller
 
 
     public function index2(){
-        return 0;
+        $generales = Marco::orderBy('descripcion')->get();
+        return view('layouts.material2', ['temporales'=>$generales]);
     }
 
     /**
