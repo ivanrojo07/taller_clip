@@ -16,7 +16,14 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'id','name', 'email', 'password',
+        'id',
+        'perfil_id',
+        'name',
+        'email',
+        'password',
+        'nombre',
+        'appaterno',
+        'apmaterno'
     ];
 
     /**
@@ -27,16 +34,20 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    
+
+    public function perfil() {
+        return $this->belongsTo('App\Perfil');
+    }
+
+    public function datosLab() {
+        return $this->hasOne('DatosLab\Cliente');
+    } 
 }
 
 /**
  * Send a password reset email to the user
  */
-function sendPasswordResetNotification($token)
-{
+function sendPasswordResetNotification($token) {
     $this->notify(new MailResetPasswordToken($token));
 }
-
-public function datosLab() {
-    return $this->hasOne('DatosLab\Cliente');
-} 

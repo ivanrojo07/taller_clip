@@ -12,10 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return redirect()->route('login');
 });
-
-Auth::routes();
 
 Route::get('getareas','Area\AreaController@getAreas');
 Route::get('getcontratos','Precargas\TipoContratoController@getContratos');
@@ -167,3 +165,31 @@ Route::get('historial_orden',function(){
 	return View::make('productos.historial');
 });
 
+/*
+ * Seguridad: Armando 12/09/2018
+ */
+
+Route::get('/home', function () {
+	if(Auth::check()){
+    	return view('welcome');
+
+	}else{
+		return redirect()->route('login');
+	}
+})->name('home');
+
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
+Route::get('/denegado',function(){
+	return view('errors.denegado');
+})->name('denegado');
+
+Route::resource('perfil', 'Perfil\PerfilController');
+Route::resource('usuario', 'Usuario\UsuarioController');

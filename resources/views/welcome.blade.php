@@ -56,7 +56,60 @@
         <div class="row">
             <div class="col-3 fixed-top" id="acoreond">
 
+                @auth
+                <!-- LOGIN -->
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="card">
+                            <div id="clase8" class="card-header nave" data-toggle="collapse" data-target="#collapseExample8">
+                                <p class="mb-0" style="float: left;">
+                                    {{ Auth::user()->name }}
+                                </p>
+                                <p class="mb-0" style="float: right;"><i class="fa fa-angle-double-down"></i></p>
+                            </div>
+                            <ul id="collapseExample8" class="list-group list-group-flush collapse" data-parent="#acoreond">
+                                <li class="list-group-item">
+                                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <i class="fa fa-sign-out" aria-hidden="true"></i>Logout
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- SEGURIDAD -->
+                @foreach(Auth::user()->perfil->modulos as $modulo)
+                @if($modulo->nombre == "seguridad")
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="card">
+                            <div id="clase9" class="card-header nave" data-toggle="collapse" data-target="#collapseExample9">
+                                <p class="mb-0" style="float: left;">Seguridad&nbsp<i class="fa fa-lock" aria-hidden="true"></i></p>
+                                <p class="mb-0" style="float: right;"><i class="fa fa-angle-double-down"></i></p>
+                            </div>
+                            <ul id="collapseExample9" class="list-group list-group-flush collapse" data-parent="#acoreond">
+                                <a class="nave9" target="frame1" href="{{ url('perfil')}}">
+                                    <li class="list-group-item">
+                                        Perfiles&nbsp<i class="fa fa-universal-access" aria-hidden="true"></i>
+                                    </li>
+                                </a>
+                                <a class="nave9" target="frame1" href="{{ url('usuario') }}">
+                                    <li class="list-group-item">
+                                        Usuarios&nbsp<i class="fa fa-user-circle" aria-hidden="true"></i>
+                                    </li>
+                                </a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                @endif
+                @endforeach
                 <!--Clientes-->
+                @foreach(Auth::user()->perfil->modulos as $modulo)
+                @if($modulo->nombre == "clientes")
                 <div class="row my-2">
                     <div class="col">
                         <div class="card">
@@ -81,8 +134,11 @@
                         </div>
                     </div>
                 </div>
-
+                @endif
+                @endforeach
                 <!--RH-->
+                @foreach(Auth::user()->perfil->modulos as $modulo)
+                @if($modulo->nombre == "rh")
                 <div class="row my-2">
                     <div class="col">
                         <div class="card">
@@ -110,8 +166,11 @@
                         </div>
                     </div>
                 </div>
-
+                @endif
+                @endforeach
                 <!--Materiales-->
+                @foreach(Auth::user()->perfil->modulos as $modulo)
+                @if($modulo->nombre == "materiales")
                 <div class="row my-2">
                     <div class="col">
                         <div class="card">
@@ -129,8 +188,11 @@
                         </div>
                     </div>
                 </div>
-
+                @endif
+                @endforeach
                 <!--Órdenes-->
+                @foreach(Auth::user()->perfil->modulos as $modulo)
+                @if($modulo->nombre == "ordenes")
                 <div class="row my-2">
                     <div class="col">
                         <div class="card">
@@ -146,8 +208,11 @@
                         </div>
                     </div>
                 </div>
-
+                @endif
+                @endforeach
                 <!--Cotización-->
+                @foreach(Auth::user()->perfil->modulos as $modulo)
+                @if($modulo->nombre == "cotizacion")
                 <div class="row my-2">
                     <div class="col">
                         <div class="card">
@@ -161,8 +226,11 @@
                         </div>
                     </div>
                 </div>
-
+                @endif
+                @endforeach
                 <!--Proveedores-->
+                @foreach(Auth::user()->perfil->modulos as $modulo)
+                @if($modulo->nombre == "proveedores")
                 <div class="row my-2">
                     <div class="col">
                         <div class="card">
@@ -188,8 +256,11 @@
                         </div>
                     </div>
                 </div>
-
+                @endif
+                @endforeach
                 <!--Tipo de cambio-->
+                @foreach(Auth::user()->perfil->modulos as $modulo)
+                @if($modulo->nombre == "cambio")
                 <div class="row my-2">
                     <div class="col">
                         <div class="card">
@@ -203,16 +274,9 @@
                         </div>
                     </div>
                 </div>
-
-                
-
-                
-
-                
-
-                
-
-                
+                @endif
+                @endforeach
+                @endauth
             
             </div>
 
@@ -257,6 +321,14 @@
         $('.nave7').click(function(e){
             $('.nave').removeClass("active");
             $('#clase7').addClass("active");
+        });
+        $('.nave8').click(function(e){
+            $('.nave').removeClass("active");
+            $('#clase8').addClass("active");
+        });
+        $('.nave9').click(function(e){
+            $('.nave').removeClass("active");
+            $('#clase9').addClass("active");
         });
     </script>
 
