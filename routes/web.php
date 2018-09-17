@@ -193,3 +193,16 @@ Route::get('/denegado',function(){
 
 Route::resource('perfil', 'Perfil\PerfilController');
 Route::resource('usuario', 'Usuario\UsuarioController');
+
+
+//ORDen
+Route::resource('orden', 'Orden\OrdenController');
+
+Route::get('maria22','Montaje\MariaController@index2');
+Route::get('proteccion22','Montaje\ProteccionController@index2');
+Route::get('marco22','Montaje\MarcoController@index2');
+Route::get('montaje22','Montaje\MontajeController@index2');
+Route::get('generales22','Montaje\GeneralController@index2');
+
+Route::get('/buscarparaorden','Orden\OrdenController@buscarMateriales')->name('buscarparaorden');
+

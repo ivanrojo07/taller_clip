@@ -180,10 +180,10 @@
                             </div>
                             <ul id="collapseExample3" class="list-group list-group-flush collapse" data-parent="#acoreond">
                                 <a class="nave3" target="frame1" href="{{ url('/des_montaje/create/') }}"><li class="list-group-item">Montajes&nbsp<i class="fa fa-clone"></i></li></a>
-                                    <a class="nave3" target="frame1" href="{{ url('/des_proteccion/create/') }}"><li class="list-group-item">Protección&nbsp<i class="fa fa-object-group"></i></li></a>
-                                    <a class="nave3" target="frame1" href="{{ url('/des_marco/create/') }}"><li class="list-group-item">Marcos y Bastidores&nbsp<i class="fa fa-columns"></i></li></a>
-                                    <a class="nave3" target="frame1" href="{{ url('/des_maria/create/') }}"><li class="list-group-item">Maria Luisa&nbsp<i class="fa fa-image"></i></li></a>
-                                    <a class="nave3" target="frame1" href="{{ url('/des_generales/create/') }}"><li class="list-group-item">Generales&nbsp<i class="fa fa-paperclip"></i></li></a>
+                                <a class="nave3" target="frame1" href="{{ url('/des_proteccion/create/') }}"><li class="list-group-item">Protección&nbsp<i class="fa fa-object-group"></i></li></a>
+                                <a class="nave3" target="frame1" href="{{ url('/des_marco/create/') }}"><li class="list-group-item">Marcos y Bastidores&nbsp<i class="fa fa-columns"></i></li></a>
+                                <a class="nave3" target="frame1" href="{{ url('/des_maria/create/') }}"><li class="list-group-item">Maria Luisa&nbsp<i class="fa fa-image"></i></li></a>
+                                <a class="nave3" target="frame1" href="{{ url('/des_generales/create/') }}"><li class="list-group-item">Generales&nbsp<i class="fa fa-paperclip"></i></li></a>
                             </ul>
                         </div>
                     </div>

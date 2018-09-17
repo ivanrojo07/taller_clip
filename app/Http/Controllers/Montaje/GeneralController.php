@@ -19,6 +19,18 @@ class GeneralController extends Controller
         //
     }
 
+    static function index2(Request $request){
+        $materiales=General::where([
+            ['descripcion', $request->descripcion],
+            ['alto',$request->alto],
+            ['ancho', $request->ancho],
+            ['color', $request->color],
+            ['espesor', $request->espesor]                               
+            ] )->get();
+            // dd($materiales);
+        return view('productos.tablamateriales', ['temporales'=>$materiales]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

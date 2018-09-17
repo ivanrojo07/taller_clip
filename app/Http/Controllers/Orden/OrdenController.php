@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Orden;
 use App\Orden;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Montaje\MarcoController;
+use App\Http\Controllers\Montaje\ProteccionController;
 
 class OrdenController extends Controller
 {
@@ -36,7 +38,9 @@ class OrdenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Orden::create($request->all());
+        //    return view('productos.create');
+        dd('hola');
     }
 
     /**
@@ -82,5 +86,37 @@ class OrdenController extends Controller
     public function destroy(Orden $orden)
     {
         //
+    }
+
+    public function buscarMateriales(Request $request){
+        // dd();
+        //return $request->all();
+        switch($request->seccion){
+            case 'montaje':
+                // return 'hola';
+                return MontajeController::index2($request);
+                break;
+            case 'proteccion':
+                return ProteccionController::index2($request);
+                break;
+            case 'marcos':
+                return MarcoController::index2($request);
+                break;
+            case 'marialuisa':
+                return MariaController::index2($request);
+                break;
+            case 'generales':
+                return GeneralController::index2($request);
+                break;
+            default: break;
+        }
+    }
+
+    public function cotizar(){
+        
+    }
+
+    public function getMarco(){
+        return view('productos.tablamateriales');
     }
 }

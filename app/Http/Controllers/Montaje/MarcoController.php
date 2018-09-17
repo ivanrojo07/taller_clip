@@ -14,9 +14,21 @@ class MarcoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+       
+    }
+
+    static function index2(Request $request){
+        $materiales=Marco::where([
+            ['descripcion', $request->descripcion],
+            ['alto',$request->alto],
+            ['ancho', $request->ancho],
+            ['color', $request->color],
+            ['espesor', $request->espesor]                               
+            ] )->get();
+            // dd($materiales);
+        return view('productos.tablamateriales', ['temporales'=>$materiales]);
     }
 
     /**
