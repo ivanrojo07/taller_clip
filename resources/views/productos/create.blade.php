@@ -242,7 +242,7 @@
 
 		
 		function aberalcine2(){
-			alert(this.value);
+			alert(this.value );
 		}
 
 		function aberalcine(data){
