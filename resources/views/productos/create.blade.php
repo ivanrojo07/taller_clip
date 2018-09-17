@@ -145,7 +145,7 @@
 						<th>Descripción</th>
 						<th>Clave</th>
 						<th># de Piezas</th>
-						<th>Monto</th>
+						<th>Precio</th>
 						<th>Operación</th>
 					</tr>
 				</thead>
@@ -153,11 +153,11 @@
 				</tbody>
 			</table>
 
-			<table class="table table-striped table-warning">
+			<table class="table table-striped table-warning" id="daddy2">
 				<thead>
 					<tr class="bg-warning">
 						<th>Tipo Material</th>
-						<th>Material</th>
+						<th>Descripción</th>
 						<th>Clave</th>
 						<th># de Piezas</th>
 						<th>Monto</th>
@@ -165,20 +165,25 @@
 						
 					</tr>
 				</thead>
-				<tbody id="daddy2">
-					
+				<tbody >
 				</tbody>
 			</table>
 
 			<a href="{{route('cotizacion')}}" class="btn btn-warning btn-lg btn-block" role="button" aria-pressed="true">Cotizar</a>
 
-	<script>
+	<script> 
+		var tabla2 = [];
+		var c = '';
+
+		
+
 		$(document).ready(function(){
 			var now = new Date();
 			var day = ("0" + now.getDate()).slice(-2);
 			var month = ("0" + (now.getMonth() + 1)).slice(-2);
 			var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
 			$('#fecha').val(today);
+
 		});
 
 		$('#unidades1').on('change', function(){
@@ -192,22 +197,27 @@
 		});
 
 		$('#tipoMaterial').change(function(){
-
+			
 			var a = '';
 			switch($(this).val()){
 				case 'montaje':
 					a = 'montaje2'
+					c = 'Montaje'
 					break;
 				case 'proteccion':
 					a = 'proteccion2';
+					c = 'Protección'
 					break;
 				case 'marcos':
 					a = 'marco2';
+					c = 'Marco'
 					break;
 				case 'marialuisa':
+					c = 'Maria Luisa'
 					a = 'maria2';
 					break;
 				case 'generales':
+					c = 'Generales'
 					a = 'generales2';
 					break;
 			}
@@ -222,13 +232,32 @@
 			    type: "GET",
 			    dataType: "html",
 			    success: function(res){
-                    $('#daddy').html(res);
+                    $('#daddy').html(res);		
                 },
                 error: function (){
                     $('#daddy').html('');
                 }
-			});
+			});	
 		});
+
+		
+		function aberalcine2(){
+			alert(this.value);
+		}
+
+		function aberalcine(data){
+			data.tipomaterial = c;
+			$('#daddy2 tr:last').after('<tr><td>'+data.tipomaterial+'</td><td>'+data.descripcion+'</td><td>'+data.clave+'</td><td>'+data.nop+'</td><td>'+data.precio+'</td><td><button type=\"button\" class=\"btn btn-warning bquitar\" onclick=\"aberalcine2(this)\">Quitar</button></td></tr>');
+			//alert(data.descripcion);
+			//tabla2.push(data);
+			//alert(tabla2);
+			//alert(tabla2[0].tipomaterial);
+
+		}
+
+
+
+		
 
 		
 
