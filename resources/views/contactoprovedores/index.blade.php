@@ -2,12 +2,12 @@
 @section('cliente')
 <ul role="tablist" class="nav nav-tabs">
 	<li role="presentation"><a href="{{ route('clientes.show',['provedore'=>$provedore]) }}">Dirección/Domicilio:</a></li>
-	@if ($cliente->tipo == 'Cliente')
+	
 		{{-- expr --}}
 	<li id="lidir" role="presentation"><a href="{{ route('clientes.direccion.index',['provedore'=>$provedore]) }}" >Direccion Fiscal:</a></li>
 	<li id="licont" class="active" role="presentation"><a href="{{ route('clientes.contactos.index',['provedore'=>$provedore]) }}">Contactos</a></li>
 	<li id="lidat" role="presentation"><a href="{{ route('clientes.datos.index',['provedore'=>$provedore]) }}">Datos Generales</a></li>
-	@endif
+
 </ul>
 <div class="panel panel-default">
 	<div class="panel-heading">

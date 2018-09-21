@@ -6,7 +6,10 @@
 	<td class="nop">23</td>
 	<td class="precio">{{$temporal->precio}}</td>
 	<td>
-		<button id='row{{$temporal->id}}' type="button" class="btn btn-warning botonagegar">Agregar</button>
+		<button id='row{{$temporal->id}}' onclick="preaberalcine()" type="button" class="btn btn-warning botonagegar">Agregar</button>
 	</td>
 </tr>
 @endforeach
+
+
+

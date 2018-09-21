@@ -3,31 +3,32 @@
  <div class="container">
  	
  	<div class="row">
- 		<form method="POST" action="{{route($ruta)}}">
+ 		<!-- <form method="POST" action="{{route($ruta)}}">
  			{{ csrf_field() }}
- 		<div class="col-sm-3">
- 			<label>Nombre/Descripción</label>
- 			<input type="text" class="form-control" name="descripcion" required>
- 			<input type="hidden" name="atributo" value="descripcion">
- 		</div>
- 		<div class="col-sm-3">
- 			<br>
- 			<button type="sumbit" class="btn btn-warning"><strong>Agregar</strong></button>
- 		</div>
-     </form>
+      <div class="col-sm-3">
+        <label>Nombre/Descripción</label>
+        <input type="text" class="form-control" name="descripcion" required>
+        <input type="hidden" name="atributo" value="descripcion">
+      </div>
+      <div class="col-sm-3">
+        <br>
+        <button type="sumbit" class="btn btn-warning"><strong>Agregar</strong></button>
+      </div>
+     </form> -->
      <form method="POST" action="{{route($ruta1)}}">
  		<div class="col-sm-3">
- 			<div class="form-group">
-  <label for="descripcion_sel">{{$nombre}}(Descripciones):</label>
-  <select class="form-control" id="descripcion_sel" name="descripcion_sel" required>
-    <option value="">Seleccionar</option>
-    @foreach($descripciones as $descripcion)
-    <option value="{{$descripcion->descripcion}}">{{$descripcion->descripcion}}</option>
-    @endforeach
-  </select>
-</div>
+    <div class="form-group">
+      <label for="descripcion_sel">{{$nombre}}(Descripciones):</label>
+      <select class="form-control" id="descripcion_sel" name="descripcion_sel" required>
+        <option value="">Seleccionar</option>
+        @foreach($descripciones as $descripcion)
+          <option value="{{$descripcion->descripcion}}">{{$descripcion->descripcion}}</option>
+        @endforeach
+      </select>
+    </div>
  		</div>
- 	</div><br>
+ 	</div>
+   <br>
 
  	{{--  Descripción --}}
  	

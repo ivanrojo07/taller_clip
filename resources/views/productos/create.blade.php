@@ -29,7 +29,7 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text" id="basic-addon3">Nombre</span>
 							</div>
-							<input type="text" class="form-control" id="nombre" aria-describedby="basic-addon3" form="explosionadoForm1">
+							<input required type="text" class="form-control" id="nombre" aria-describedby="basic-addon3" form="explosionadoForm1">
 						</div>
 					</div>
 					<div class="col-6 mb-2">
@@ -187,6 +187,8 @@
 	<script> 
 
 //CONFIG
+
+		var ids = 0;
 		$(document).ready(function(){
 			var now = new Date();
 			var day = ("0" + now.getDate()).slice(-2);
@@ -355,6 +357,19 @@
 				//alert('depues de');
 
 
+			});
+		}
+
+		function preaberalcine(){
+			$('.botonagegar').click(function(){
+				var fila = {
+					descripcion: $(this).parent().parent().find('.descripcion').html(),
+					clave: $(this).parent().parent().find('.clave').html(),
+					nop: $(this).parent().parent().find('.nop').html(),
+					precio: $(this).parent().parent().find('.precio').html()
+					
+				};
+				aberalcine(fila);
 			});
 		}
 

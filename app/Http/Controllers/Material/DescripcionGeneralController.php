@@ -76,9 +76,9 @@ class DescripcionGeneralController extends Controller
      * @param  \App\DescripcionGeneral  $descripcionGeneral
      * @return \Illuminate\Http\Response
      */
-    public function show(DescripcionGeneral $descripcionGeneral)
+    public function show()
     {
-        //
+        return view('layouts.descripcionmateriales');
     }
 
     /**

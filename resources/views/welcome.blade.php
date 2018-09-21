@@ -184,6 +184,7 @@
                                 <a class="nave3" target="frame1" href="{{ url('/des_marco/create/') }}"><li class="list-group-item">Marcos y Bastidores&nbsp<i class="fa fa-columns"></i></li></a>
                                 <a class="nave3" target="frame1" href="{{ url('/des_maria/create/') }}"><li class="list-group-item">Maria Luisa&nbsp<i class="fa fa-image"></i></li></a>
                                 <a class="nave3" target="frame1" href="{{ url('/des_generales/create/') }}"><li class="list-group-item">Generales&nbsp<i class="fa fa-paperclip"></i></li></a>
+                                <a class="nave3" target="frame1" href="{{ url('/des_generales/store/') }}"><li class="list-group-item">Precargas Descripciones&nbsp<i class="fa fa-refresh"></i></li></a>
                             </ul>
                         </div>
                     </div>
