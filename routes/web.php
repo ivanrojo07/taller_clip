@@ -206,3 +206,5 @@ Route::get('generales22','Montaje\GeneralController@index2');
 
 Route::get('/buscarparaorden','Orden\OrdenController@buscarMateriales')->name('buscarparaorden');
 
+Route::resource('obras','Obra\ObraController');
+

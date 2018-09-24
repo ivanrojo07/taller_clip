@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Producto;
+namespace App\Http\Controllers\Obra;
 
-use App\Producto;
-use App\Provedor;
+use App\Obra;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ProductoController extends Controller
+class ObraController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,7 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        return view('productos.create');
+        //
     }
 
     /**
@@ -26,7 +25,7 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        return view('productos.create');
+        //
     }
 
     /**
@@ -37,21 +36,16 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //TODO
-
-        /*
-            new Orden();
-        */
-
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Producto  $producto
+     * @param  \App\Obra  $obra
      * @return \Illuminate\Http\Response
      */
-    public function show(Producto $producto)
+    public function show(Obra $obra)
     {
         //
     }
@@ -59,10 +53,10 @@ class ProductoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Producto  $producto
+     * @param  \App\Obra  $obra
      * @return \Illuminate\Http\Response
      */
-    public function edit(Producto $producto)
+    public function edit(Obra $obra)
     {
         //
     }
@@ -71,10 +65,10 @@ class ProductoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Producto  $producto
+     * @param  \App\Obra  $obra
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Producto $producto)
+    public function update(Request $request, Obra $obra)
     {
         //
     }
@@ -82,15 +76,11 @@ class ProductoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Producto  $producto
+     * @param  \App\Obra  $obra
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Producto $producto)
+    public function destroy(Obra $obra)
     {
         //
-    }
-
-    public function cotizar(){
-        return view('cotizacion.create');
     }
 }

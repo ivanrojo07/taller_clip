@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Orden;
+namespace App\Http\Controllers\Material;
 
-use App\Orden;
+use App\Material;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class OrdenController extends Controller
+class MaterialController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,10 +42,10 @@ class OrdenController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Orden  $orden
+     * @param  \App\Material  $material
      * @return \Illuminate\Http\Response
      */
-    public function show(Orden $orden)
+    public function show(Material $material)
     {
         //
     }
@@ -53,10 +53,10 @@ class OrdenController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Orden  $orden
+     * @param  \App\Material  $material
      * @return \Illuminate\Http\Response
      */
-    public function edit(Orden $orden)
+    public function edit(Material $material)
     {
         //
     }
@@ -65,10 +65,10 @@ class OrdenController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Orden  $orden
+     * @param  \App\Material  $material
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Orden $orden)
+    public function update(Request $request, Material $material)
     {
         //
     }
@@ -76,10 +76,10 @@ class OrdenController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Orden  $orden
+     * @param  \App\Material  $material
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Orden $orden)
+    public function destroy(Material $material)
     {
         //
     }

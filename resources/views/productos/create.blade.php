@@ -15,55 +15,77 @@
 					<h4>Datos Órden</h4>
 				</div>
 
-				
-
-					<input type="hidden" name="montajes[]" form="explosionadoForm1">
-					<input type="hidden" name="protecciones[]" form="explosionadoForm1">
-					<input type="hidden" name="marcos[]" form="explosionadoForm1">
-					<input type="hidden" name="marias[]" form="explosionadoForm1">
-					<input type="hidden" name="generales[]" form="explosionadoForm1">
-
-					<div class="col-6 mb-2">
-						<!--espe-->
-						<div class="input-group ">
-							<div class="input-group-prepend">
-								<span class="input-group-text" id="basic-addon3">Nombre</span>
-							</div>
-							<input required type="text" class="form-control" id="nombre" aria-describedby="basic-addon3" form="explosionadoForm1">
+				<div class="col-6 mb-2">
+					<!--espe-->
+					<div class="input-group ">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon3">Nombre</span>
 						</div>
+						<input required type="text" class="form-control" id="nombre" aria-describedby="basic-addon3" form="explosionadoForm1">
 					</div>
-					<div class="col-6 mb-2">
-						<!--espe-->
-						<div class="input-group ">
-							<div class="input-group-prepend">
-								<span class="input-group-text" id="basic-addon3">Fecha</span>
-							</div>
-							<input type="date" class="form-control" id="fecha" aria-describedby="basic-addon3" form="explosionadoForm1" readonly>
+				</div>
+				<div class="col-6 mb-2">
+					<!--espe-->
+					<div class="input-group ">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon3">Fecha</span>
 						</div>
+						<input type="date" class="form-control" id="fecha" aria-describedby="basic-addon3" form="explosionadoForm1" readonly>
 					</div>
-					<div class="col-6 mb-2">
-						<!--espe-->
-						<div class="input-group ">
-							<div class="input-group-prepend">
-								<span class="input-group-text" id="basic-addon3">ID</span>
-							</div>
-							<input type="text" class="form-control" id="id" aria-describedby="basic-addon3" form="explosionadoForm1" readonly>
+				</div>
+				<div class="col-6 mb-2">
+					<!--espe-->
+					<div class="input-group ">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon3">ID</span>
 						</div>
+						<input type="text" class="form-control" id="id" aria-describedby="basic-addon3" form="explosionadoForm1" readonly>
 					</div>
-					<div class="col-6 mb-2">
-						<label for="exampleFormControlTextarea1">Descripción</label>
-						<textarea form="explosionadoForm1" class="form-control" id="descripcion" rows="3"></textarea>
-					</div>
+				</div>
+				<div class="col-6 mb-2">
+					<label for="exampleFormControlTextarea1">Descripción</label>
+					<textarea form="explosionadoForm1" class="form-control" id="descripcion" rows="3"></textarea>
+				</div>				
+			</div>
 
-				
-				
-				<div class="col-12 mb 2">
+			<div class="row">
+				<div class="col-12">
+					<div class="table-responsive" style="height: 200px;overflow-y:auto;">
+					<table class="table table-striped">
+							<thead class="thead">
+								<tr>
+									<th>Nombre</th>
+									<th>Cantidad de piezas</th>
+									<th>Sección</th>
+									<th>Descripción</th>
+									<th>Cantidad</th>
+									<th>Operación</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Picachú</td>
+									<td>1</td>
+									<td>montaje</td>
+									<td>alucob</td>
+									<td>4</td>
+									<td>
+										<button>123</button>
+										<button>321</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					
+				</div>
+			</div>
+				<!-- <div class="col-12 mb 2">
 					<h4>Buscar Materiales</h4>
 				</div>
 
 				
 					<div class="col-6 mb-2">
-						<!--Tipo de mat-->
 						<div class="input-group">
 							<div class="input-group-prepend">
 								<label class="input-group-text" for="inputGroupSelect01">Sección</label>
@@ -79,7 +101,6 @@
 						</div>
 					</div>
 					<div class="col-6 mb-2">
-						<!--mat-->
 						<div class="input-group">
 							<div class="input-group-prepend">
 								<label class="input-group-text" for="inputGroupSelect01">Material</label>
@@ -89,7 +110,6 @@
 						</div>
 					</div>
 					<div class="col-6 mb-2">
-						<!--Alto-->
 						<div class="input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text" id="basic-addon3">Alto</span>
@@ -103,7 +123,6 @@
 						</div>
 					</div>
 					<div class="col-6 mb-2">
-						<!--ancojh-->
 						<div class="input-group ">
 							<div class="input-group-prepend">
 								<span class="input-group-text" id="basic-addon3">Ancho</span>
@@ -117,7 +136,6 @@
 						</div>
 					</div>
 					<div class="col-6 mb-2">
-						<!--color-->
 						<div class="input-group ">
 							<div class="input-group-prepend">
 								<span class="input-group-text" id="basic-addon3">Color</span>
@@ -126,7 +144,6 @@
 						</div>
 					</div>
 					<div class="col-6 mb-2">
-						<!--espe-->
 						<div class="input-group ">
 							<div class="input-group-prepend">
 								<span class="input-group-text" id="basic-addon3">Espesor</span>
@@ -145,12 +162,9 @@
 				
 
 
-			</div>
+			
 		
-				<!--MEDIDAS y dalkjsdkans-->
 							<p class="h5">Medidas/Especificaciones</p>
-				
-				<!--Inputs-->
 
 			<table class="table table-striped table-warning">
 				<thead>
@@ -182,7 +196,7 @@
 				</tbody>
 			</table>
 			<button type="submit" class="btn btn-warning btn-lg btn-block" role="button" aria-pressed="true" form="explosionadoForm1">Cotizar</a>
-			<!-- <a href="{{route('cotizacion')}}" class="btn btn-warning btn-lg btn-block" role="button" aria-pressed="true">Cotizar</a> -->
+			<a href="{{route('cotizacion')}}" class="btn btn-warning btn-lg btn-block" role="button" aria-pressed="true">Cotizar</a> -->
 
 	<script> 
 
