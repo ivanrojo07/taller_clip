@@ -7,14 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Obra extends Model
 {
     protected $table = "obras";
-    protected $fillable=['nombre',
-    					 'nopiezas',
-						 'alto',
-                         'ancho',
-                         'medidas',
-                         'profundidad',
-						 'tipodematerial',
-                         'descripcion'];
+    protected $fillable = ['orden_id',
+                        'nombre',
+                        'nopiezas',
+                        'alto',
+                        'ancho',
+                        'medidas',
+                        'profundidad',
+                        'tipodematerial',
+                        'descripcion'];
         
        
     public function materiales(){

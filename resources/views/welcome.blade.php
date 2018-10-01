@@ -179,12 +179,8 @@
                                 <p class="mb-0" style="float: right;"><i class="fa fa-angle-double-down"></i></p>
                             </div>
                             <ul id="collapseExample3" class="list-group list-group-flush collapse" data-parent="#acoreond">
-                                <a class="nave3" target="frame1" href="{{ url('/des_montaje/create/') }}"><li class="list-group-item">Montajes&nbsp<i class="fa fa-clone"></i></li></a>
-                                <a class="nave3" target="frame1" href="{{ url('/des_proteccion/create/') }}"><li class="list-group-item">Protección&nbsp<i class="fa fa-object-group"></i></li></a>
-                                <a class="nave3" target="frame1" href="{{ url('/des_marco/create/') }}"><li class="list-group-item">Marcos y Bastidores&nbsp<i class="fa fa-columns"></i></li></a>
-                                <a class="nave3" target="frame1" href="{{ url('/des_maria/create/') }}"><li class="list-group-item">Maria Luisa&nbsp<i class="fa fa-image"></i></li></a>
-                                <a class="nave3" target="frame1" href="{{ url('/des_generales/create/') }}"><li class="list-group-item">Generales&nbsp<i class="fa fa-paperclip"></i></li></a>
-                                <a class="nave3" target="frame1" href="{{ url('/des_generales/store/') }}"><li class="list-group-item">Precargas Descripciones&nbsp<i class="fa fa-refresh"></i></li></a>
+                                <a class="nave3" target="frame1" href="{{ url('/descripcion/create/') }}"><li class="list-group-item">Descripciones&nbsp<i class="fa fa-clone"></i></li></a>
+                                <a class="nave3" target="frame1" href="{{ url('/material/create/') }}"><li class="list-group-item">Materiales&nbsp<i class="fa fa-object-group"></i></li></a>
                             </ul>
                         </div>
                     </div>
@@ -202,8 +198,8 @@
                                 <p class="mb-0" style="float: right;"><i class="fa fa-angle-double-down"></i></p>
                             </div>
                             <ul id="collapseExample4" class="list-group list-group-flush collapse" data-parent="#acoreond">
-                                <a class="nave4" target="frame1" href="{{ url('producto/create') }}"><li class="list-group-item">Generar órden&nbsp<i class="fa fa-plus"></i></li></a>
-                                    <a class="nave4" target="frame1" href="{{ url('historial_orden') }}"><li class="list-group-item">Historial órdenes&nbsp<i class="fa fa-plus"></i></li></a>
+                                <a class="nave4" target="frame1" href="{{ url('/orden/create') }}"><li class="list-group-item">Generar órden&nbsp<i class="fa fa-plus"></i></li></a>
+                                    <a class="nave4" target="frame1" href="{{ url('/orden') }}"><li class="list-group-item">Historial órdenes&nbsp<i class="fa fa-plus"></i></li></a>
                                     <!--<a class="nave4" target="frame1" href="{{ url('productos')}}"><li class="list-group-item">Búsqueda&nbsp<i class="fa fa-search" aria-hidden="true"></i></li></a>-->
                             </ul>
                         </div>

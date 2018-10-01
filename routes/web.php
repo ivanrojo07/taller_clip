@@ -128,32 +128,12 @@ Route::get('sucursales.index','Sucursal\SucursalController@index');
 
 Route::resource('sucursal','Empleado\EmpleadoSucursalController');
 //-------------------------------------------------------------------
-Route::resource('montaje', 'Montaje\MontajeController');
-Route::resource('producto', 'Producto\ProductoController');
-Route::resource('des_montaje', 'Material\DescripcionMontajeController');
-Route::resource('des_proteccion', 'Material\DescripcionProteccionController');
-Route::resource('des_marco', 'Material\DescripcionMarcoController');
-Route::resource('des_maria', 'Material\DescripcionMariaController');
-Route::resource('des_generales', 'Material\DescripcionGeneralController');
-Route::resource('proteccion', 'Montaje\ProteccionController');
-Route::resource('marco', 'Montaje\MarcoController');
-Route::resource('maria', 'Montaje\MariaController');
-Route::resource('general', 'Montaje\GeneralController');
 
 
-Route::get('maria2','Material\DescripcionMariaController@index2');
-Route::get('proteccion2','Material\DescripcionProteccionController@index2');
-Route::get('marco2','Material\DescripcionMarcoController@index2');
-Route::get('montaje2','Material\DescripcionMontajeController@index2');
-Route::get('generales2','Material\DescripcionGeneralController@index2');
 
-
-Route::get('save_gen','Material\DescripcionGeneralController@save');
-Route::get('eliminar','Material\DescripcionGeneralController@delete');
 //----------------------------------------------------------------
 Route::resource('cambio', 'TipoCambio\TipoCambioController', ['except'=>'show']);
 
-Route::get('cotizacion','Producto\ProductoController@cotizar') -> name("cotizacion");
 
 Route::get('historial_cotizacion',function(){
 
@@ -195,16 +175,14 @@ Route::resource('perfil', 'Perfil\PerfilController');
 Route::resource('usuario', 'Usuario\UsuarioController');
 
 
+Route::resource('material', 'Material\MaterialController');
+Route::resource('descripcion', 'Descripcion\DescripcionController');
+
 //ORDen
 Route::resource('orden', 'Orden\OrdenController');
 
-Route::get('maria22','Montaje\MariaController@index2');
-Route::get('proteccion22','Montaje\ProteccionController@index2');
-Route::get('marco22','Montaje\MarcoController@index2');
-Route::get('montaje22','Montaje\MontajeController@index2');
-Route::get('generales22','Montaje\GeneralController@index2');
 
 Route::get('/buscarparaorden','Orden\OrdenController@buscarMateriales')->name('buscarparaorden');
 
-Route::resource('obras','Obra\ObraController');
+Route::resource('obra','Obra\ObraController');
 

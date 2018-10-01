@@ -8,7 +8,7 @@ class Material extends Model
 {
     protected $table = 'materials';
     protected $fillable=['seccion',
-                         'descripcion',
+                         'descripcion_id',
                          'clave',
 						 'ancho',
                          'alto',
@@ -23,10 +23,10 @@ class Material extends Model
     }
 
     public function descripcion(){
-        return $this->hasOne('App\Descripcion');
+        return $this->belongsTo('App\Descripcion');
     }
 
-    public function proveedor(){
-        return $this->hasOne('App\Cliente');
-    }
+    // public function proveedor(){
+    //     return $this->hasOne('App\Cliente');
+    // }
 }

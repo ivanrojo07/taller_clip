@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Material;
 
 use App\Material;
+use App\Descripcion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -25,7 +26,9 @@ class MaterialController extends Controller
      */
     public function create()
     {
-        //
+        $descripciones = Descripcion::get();
+        $materiales = Material::get();
+        return view('material.create', ['materiales'=>$materiales, 'descripciones'=>$descripciones]);
     }
 
     /**
@@ -36,7 +39,20 @@ class MaterialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $material = new Material;
+        $material->seccion = $request->seccion;
+        $material->descripcion_id = $request->descripcion;
+        $material->clave = $request->clave;
+        $material->ancho = $request->ancho;
+        $material->alto = $request->alto;
+        $material->espesor = $request->espesor;
+        $material->medidas = $request->medidas;
+        $material->color = $request->color;
+        $material->proveedor_id = $request->proveedor;
+        $material->precio = $request->precio;
+        $material->tipo = 'tipo1';
+        $material->save();
+        return redirect()->route('material.create');
     }
 
     /**

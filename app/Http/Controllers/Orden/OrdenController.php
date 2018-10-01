@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Orden;
 
 use App\Orden;
+use App\Material;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,7 +16,8 @@ class OrdenController extends Controller
      */
     public function index()
     {
-        //
+        $ordenes = Orden::get();
+        return view('orden.index', ['ordenes'=>$ordenes]);
     }
 
     /**
@@ -25,7 +27,7 @@ class OrdenController extends Controller
      */
     public function create()
     {
-        //
+        return view('orden.create');
     }
 
     /**
@@ -36,7 +38,15 @@ class OrdenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $orden = new Orden;
+        $orden->nombre = $request->nombre;
+        $orden->fecha = $request->fecha;
+        $orden->noorden = $request->noorden;
+        $orden->descripcion = $request->descripcion;
+        $orden->nopiezas = $request->noobras;
+        $orden->save();
+        $materiales = Material::get();
+        return view('obra.create',['orden_id'=>$orden->id, 'nopiezas'=>$orden->nopiezas, 'materiales'=>$materiales]);
     }
 
     /**

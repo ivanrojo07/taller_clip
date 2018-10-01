@@ -8,17 +8,10 @@ class Descripcion extends Model
 {
     protected $table = 'descripcions';
     protected $fillable = ['seccion',
-                         'descripcion',
-                         'clave',
-						 'ancho',
-                         'alto',
-                         'espesor',
-                         'medidas',
-						 'color',
-						 'proveedor',
-                         'precio'];
+                         'descripcion'];
 
-    public function descripcion(){
-        return $this->belongsTo('App\Material');
+    public function material(){
+        return $this->hasOne('App\Material');
     }
+
 }

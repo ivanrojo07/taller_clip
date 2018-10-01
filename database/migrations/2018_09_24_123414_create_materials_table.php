@@ -11,26 +11,27 @@ class CreateMaterialsTable extends Migration
      *
      * @return void
      */
+
     public function up()
     {
         Schema::create('materials', function (Blueprint $table) {
             $table->increments('id');
             $table->string('clave');
+            $table->string('seccion');
             $table->integer('ancho')->unsigned();
             $table->integer('alto')->unsigned();
             $table->integer('espesor')->unsigned();
             $table->string('medidas');
             $table->string('color');
             $table->string('tipo');
-
-            $table->integer('proveedor_id')->unsigned();
-            $table->foreign('proveedor_id')->references('id')->on('clientes');
+            $table->string('proveedor_id');
+            // $table->integer('proveedor_id')->unsigned();
+            // $table->foreign('proveedor_id')->references('id')->on('clientes');
 
             $table->float('precio', 8, 2);
 
             $table->integer('descripcion_id')->unsigned();
             $table->foreign('descripcion_id')->references('id')->on('descripcions');
-            
             $table->timestamps();
         });
     }

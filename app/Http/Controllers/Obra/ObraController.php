@@ -25,7 +25,7 @@ class ObraController extends Controller
      */
     public function create()
     {
-        //
+        return view('obra.create', ['orden_id'=>1, 'nopiezas'=>1]);
     }
 
     /**

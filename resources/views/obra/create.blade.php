@@ -1,49 +1,66 @@
-<form action="">
-    <input id="nombre_obra" type="text" name="nombre">
-    <input id="no_piezas_obra" type="text" name="no_piezas">
-    <input type="number" name="alto">
-    <input type="number" name="ancho">
-    <input type="number" name="profundidad">
-    <select name="tipo_material" id="tipomaterialselect">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-    </select>
-    <textarea name="descipcion" id="descipcion_obra" ></textarea>
+@extends('layouts.cotizacion')
+	@section('content')
 
-
-
-
-
-
-
-
-
-
-    <div class="col-6 mb-2">
-						<div class="input-group">
-							<div class="input-group-prepend">
-								<label class="input-group-text" for="inputGroupSelect01">Sección</label>
-							</div>
-							<select name="seccion" required class="custom-select" id="tipoMaterial" form="explosionadoForm">
-								<option value="">SELECCIONAR</option>
-								<option value="montaje">Montaje</option>
-								<option value="proteccion">Protección</option>
-								<option value="marcos">Marcos y Bastidores</option>
-								<option value="marialuisa">Maria Luisa</option>
-								<option value="generales">Generales</option>
-							</select>
-						</div>
-					</div>
-					<div class="col-6 mb-2">
-						<div class="input-group">
-							<div class="input-group-prepend">
-								<label class="input-group-text" for="inputGroupSelect01">Material</label>
-							</div>
-							<select name="descripcion" required class="custom-select" id="materiales" form="explosionadoForm">
-							</select>
-						</div>
-					</div>
+    @for($i = 0; $i < $nopiezas; $i++)
     
-</form>
+    *********************************************************************************************************************************<br>
+    <form role="form" 
+		      method="POST" 
+		      action="{{ route('orden.store') }}">
+			{{ csrf_field() }}
+        Nombre Obra: <input type="text" name="nombre" id="nombre"><br>
+        #Piezas: <input type="number" name="nopiezas" id="nopiezas"><br>
+        Alto: <input type="number" name="alto" id="alto"><br>
+        Ancho: <input type="number" name="ancho" id="ancho"><br>
+        Profundidad: <input type="number" name="profundidad" id="profundidad"><br>
+        Descripción: <textarea name="descripcion" id="descripcion" cols="30" rows="10"></textarea><br><br>
+        <h4>Buscar Material</h4>
+        <select name="seccion" id="seccion">
+            <option value="montajes">Montajes</option>
+            <option value="proteccion">Protección</option>
+            <option value="marcos">Marcos</option>
+            <option value="maria">Maria Luisa</option>
+            <option value="generales">Generales</option>
+        </select>
+        <br>
+        <table class="table">
+            <tr>
+                <th>Descripción</th>
+                <th>Alto</th>
+                <th>Ancho</th>
+                <th>Profundidad</th>
+                <th>Color</th>
+                <th>Tipo</th>
+                <th>Operación</th>
+            </tr>
+            @foreach($materiales as $material)
+            <tr>
+                <td>{{$material->descripcion->descripcion}}</td>
+                <td>{{$material->alto}}</td>
+                <td>{{$material->ancho}}</td>
+                <td>{{$material->espesor}}</td>
+                <td>{{$material->color}}</td>
+                <td>{{$material->tipo}}</td>
+                <td><input type="text" name="cantidad" id="cantidad" placeholder="Cantidad"><button>Agregar</button><button>Ver</button></td>
+            </tr>
+            @endforeach
+        </table>
+        <h4>tabla de obra</h4>
+        <table class="table">
+            <tr>
+                <th>Descripción</th>
+                <th>Alto</th>
+                <th>Ancho</th>
+                <th>Profundidad</th>
+                <th>Color</th>
+            </tr>
+        </table>
+        <center><input type="submit" value="Agregar"></center>
+        </form>
+        *********************************************************************************************************************************<br>
+    @endfor
+
+    {{$orden_id}}
+    {{$nopiezas}}
+
+    @endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Descripcion;
 
 use App\Descripcion;
 use Illuminate\Http\Request;
+use UxWeb\SweetAlert\SweetAlert as Alert;
 use App\Http\Controllers\Controller;
 
 class DescripcionController extends Controller
@@ -25,7 +26,8 @@ class DescripcionController extends Controller
      */
     public function create()
     {
-        //
+        $descripciones = Descripcion::get();
+        return view('descripcion.create',['descripciones'=>$descripciones]);
     }
 
     /**
@@ -36,7 +38,14 @@ class DescripcionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $seccion = $request->seccion;
+        $descripcion = $request->descripcion;
+        $des = new Descripcion;
+        $des->seccion = $seccion;
+        $des->descripcion = $descripcion;
+        $des->save();
+        return redirect()->route('descripcion.create');
+
     }
 
     /**

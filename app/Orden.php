@@ -12,7 +12,7 @@ class Orden extends Model
                          'fecha',
                          'noorden',
                          'descripcion',
-                         'noobras'];
+                         'nopiezas'];
 
     public function obras(){
         return $this->hasMany('App\Obra');
