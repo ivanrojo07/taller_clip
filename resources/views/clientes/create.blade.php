@@ -16,7 +16,7 @@
 						<div class="panel-heading">
 							<div class="row">
 								<div class="col-sm-6">
-									<h4>Datos del Proveedor/Prospecto:&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-asterisk" aria-hidden="true"></i>Campos Requeridos</h4>
+									<h4>Datos del Prospecto/Cliente:&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-asterisk" aria-hidden="true"></i>Campos Requeridos</h4>
 								</div>
 								<div class="col-sm-3">
 									<a href="{{route('clientes.index')}}" class="btn btn-warning"><strong>Ver Lista</strong></a>

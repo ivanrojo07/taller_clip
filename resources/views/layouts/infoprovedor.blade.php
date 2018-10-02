@@ -1,22 +1,15 @@
 @extends('layouts.blank')
-	@section('content') 
+	@section('content')
 		<div class="container" id="tab">
 			<div role="application" class="panel panel-group" >
 				<div class="panel-default">
-					<div class="panel-heading">
-						<div class="row">
-							<div class="col-sm-3">
-								<h4>Datos del Cliente:</h4>
-							</div>
-							<div class="col-sm-3">
-								<a class="btn btn-info" href="{{ route('provedores.create') }}"><strong>Nuevo Cliente</strong></a>
-							</div>
-							<div class="col-sm-3">
-								<a class="btn btn-primary" href="{{ route('provedores.index') }}"><strong>Ver Clientes</strong></a>
-							</div>
-						</div>
-						
-						
+					<div class="panel-heading"><h4>Datos del provedor:</h4>
+						<a class="btn btn-info" 
+				           href="{{ route('provedores.create')}}">
+							 <strong>
+							   Agregar Nuevo Proveedor
+							</strong>
+							</a>
 					</div>
 					<div class="panel-body">
 						<div class="col-md-12 offset-md-2 mt-3">
@@ -32,10 +25,10 @@
 		  						<label class="control-label" for="rfc">RFC:</label>
 		  						<dd>{{ $provedore->rfc }}</dd>
 		  					</div>
-		  					<!-- <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		  					<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
 		  						<label class="control-label" for="vendedor">Vendedor:</label>
 		  						<dd>{{ $provedore->vendedor }}</dd>
-		  					</div> -->
+		  					</div>
 						</div>
 					@if ($provedore->tipopersona == "Fisica")
 							{{-- true expr --}}
@@ -66,7 +59,10 @@
 					</div>
 				</div>
 
-				@yield('provedore')
+				@yield('cliente')
 			</div>
 		</div>
+		<script src="{{ asset('js/sweetalert.js') }}"></script>
+    <!-- Include this after the sweet alert js file -->
+    @include('sweet::alert')
 	@endsection

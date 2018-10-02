@@ -4,11 +4,10 @@
 					<th>@sortablelink('id', 'Identificador')</th>
 					<th>@sortablelink('nombre', 'Nombre/Razón Social'){{-- Nombre --}}</th>
 					<th>@sortablelink('tipopersona', 'Tipo de persona')</th>
-					<th>Giro del Cliente</th>
 					<th>@sortablelink('alias', 'Alias')</th>
 					<th>@sortablelink('rfc', 'RFC')</th>
 					<th>@sortablelink('vendedor', 'Vendedor') </th>
-					<th>Operacion</th> 
+					<th>Operacion</th>
 				</tr>
 			</thead>
 
@@ -26,11 +25,6 @@
 						@endif
 					</td>
 					<td>{{ $provedore->tipopersona }}</td>
-					@foreach($giros as $giro)
-						@if($provedore->datosGeneralesProvedor->giro_id==$giro->id)
-					<td>{{$giro->nombre}}</td>
-						@endif
-					@endforeach
 					<td>{{ $provedore->alias }}</td>
 					<td>{{ strtoupper($provedore->rfc) }}</td>
 					<td>{{$provedore->vendedor}}</td>

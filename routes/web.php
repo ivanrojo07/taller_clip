@@ -25,6 +25,7 @@ Route::get('getgiros','Giro\GiroController@getGiros');
 Route::get('getformas','FormaContacto\FormaContactoController@getFormas');
 Route::get('getfaltas','Falta\FaltaController@getFaltas');
 Route::get('getprov','Provedor\ProvedorController@getProveedor');
+Route::get('getcontacto','FormaContacto\FormaContactoController@getFormas');
 
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::get('prospectos', 'Personal\PersonalController@search');
@@ -103,11 +104,10 @@ Route::resource('clientes.datosgenerales','Personal\PersonalDatosGeneralesContro
 
 //-----------------------------------------------------
 Route::resource('provedores','Provedor\ProvedorController');
-Route::get('buscarprovedor','Provedor\ProvedorController@buscar');
 Route::resource('provedores.direccionfisica','Provedor\ProvedorDireccionFisicaController');
-Route::resource('provedores.datosgenerales','Provedor\ProvedorDatosGeneralesController', ['except'=>'show']);
+Route::resource('provedores.datosgenerales','Provedor\ProvedorDatosGeneralesController');
 Route::resource('provedores.contacto','Provedor\ProvedorContactoController');
-Route::resource('provedores.crm','Provedor\ProvedorCRMController');
+Route::resource('provedores.datosbancarios','Provedor\ProveedorDatosBancariosController');
 //----------------------------------------------------------
 Route::resource('giros','Giro\GiroController', ['except'=>'show']);
 //---------------------------------------------------------------------

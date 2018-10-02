@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Provedor;
 
 use App\Provedor;
-use App\Giro;
 use UxWeb\SweetAlert\SweetAlert as Alert;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 
 class ProvedorController extends Controller{
+
  // use Alert;
     /**
      * Display a listing of the resource.
@@ -20,9 +20,8 @@ class ProvedorController extends Controller{
     {
         //
         $provedores = Provedor::sortable()->paginate(5);
-        $giros = Giro::get();
-        return view('provedores.index', ['provedores'=>$provedores,
-                                         'giros'     =>$giros]);
+        // Alert::message('Robots are working!');
+        return view('provedores.index', ['provedores'=>$provedores]);
     }
 
     /**
@@ -55,7 +54,7 @@ class ProvedorController extends Controller{
         } else {
             # code...
             $provedore = Provedor::create($request->all());
-            Alert::success("Cliente creado con exito, sigue agregando información")->persistent("Cerrar");
+            Alert::success("Proveedor creado con exito, sigue agregando información")->persistent("Cerrar");
             return redirect()->route('provedores.direccionfisica.create',['provedore'=>$provedore]);
         }
         
@@ -70,7 +69,7 @@ class ProvedorController extends Controller{
     public function show(Provedor $provedore)
     {
         
-        return view('provedores.view',['provedore'=>$provedore]);
+        return view('provedores.view', ['provedore'=>$provedore]);
     }
 
     /**
@@ -113,8 +112,7 @@ class ProvedorController extends Controller{
     public function buscar(Request $request){
     // dd($request);
     $query = $request->input('busqueda');
-    $palabra=strtolower($query);
-    $wordsquery = explode(' ',$palabra); 
+    $wordsquery = explode(' ',$query);
     $provedores = Provedor::where(function($q) use($wordsquery){
             foreach ($wordsquery as $word) {
                 # code...
@@ -127,17 +125,10 @@ class ProvedorController extends Controller{
                 ->orWhere('tipopersona','LIKE',    "%$word%");
             }
         })->get();
-    $giros = Giro::get();
-    return view('provedores.busqueda', ['provedores'=>$provedores,
-                                         'giros'     =>$giros]);
+    return view('provedores.busqueda', ['provedores'=>$provedores]);
         
 
     }
 
-
-    public function getProveedor(){
-        $provedores = Provedor::get();
-        return view('precargas.select',['precargas'=>$provedores]);
-    }
 
 }
