@@ -36,7 +36,19 @@ class ObraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $obra = new Obra;
+        $obra->orden_id = $request->orden_id;
+        $obra->nombre = $request->nombre;
+        $obra->nopiezas = $request->nopiezas;
+        $obra->alto = $request->alto;
+        $obra->ancho = $request->ancho;
+        $obra->medidas = $request->medidas;
+        $obra->profundidad = $request->profundidad;
+        $obra->tipodematerial = 'tipo de material';
+        $obra->descripcion = $request->descripcion;
+
+        
+
     }
 
     /**
