@@ -19,7 +19,7 @@ class Material extends Model
                          'precio'];
 
     public function obras(){
-        return $this->belongsToMany('App\Obra');
+        return $this->belongsToMany('App\Obra', 'material_obra');
     }
 
     public function descripcion(){

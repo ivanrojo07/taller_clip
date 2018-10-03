@@ -19,7 +19,7 @@ class Obra extends Model
         
        
     public function materiales(){
-        return $this->belongsToMany('App\Material');
+        return $this->belongsToMany('App\Material', 'material_obra');
     }
 
     public function orden(){

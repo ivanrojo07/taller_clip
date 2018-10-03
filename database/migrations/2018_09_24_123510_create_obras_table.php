@@ -22,7 +22,7 @@ class CreateObrasTable extends Migration
             $table->string('medidas');
             $table->integer('profundidad');
             $table->string('tipo_material');
-            $table->string('descipcion');
+            $table->string('descripcion');
 
             $table->integer('orden_id')->unsigned();
             $table->foreign('orden_id')->references('id')->on('ordens');

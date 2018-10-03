@@ -46,7 +46,7 @@ class OrdenController extends Controller
         $orden->nopiezas = $request->noobras;
         $orden->save();
         $materiales = Material::get();
-        return view('obra.create',['orden_id'=>$orden->id, 'nopiezas'=>$orden->nopiezas, 'materiales'=>$materiales]);
+        return view('obra.create',['orden_id'=>$orden->id, 'noabras'=>$orden->nopiezas, 'materiales'=>$materiales]);
     }
 
     /**

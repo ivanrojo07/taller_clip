@@ -3,31 +3,42 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
   
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+<h4>Registrar Descripción</h4>
 
-
-        <div class="container">
+    <div class="container my-3">
         <form role="form" 
-		      method="POST" 
-		      action="{{ route('descripcion.store') }}">
-			{{ csrf_field() }}
-            descripcion: <input type="text" name="descripcion">
-            <br>
-            seccion:
-            <select name="seccion" id="seccion">
-                <option value="maria">Maria Luisa</option>
-                <option value="montaje">Montaje</option>
-                <option value="marco">Marco</option>
-                <option value="proteccion">Protección</option>
-                <option value="proteccion">Generales</option>
-            </select>
-            <br>
-            <input type="submit" value="Guardar">
-            </form>
+            method="POST" 
+            action="{{ route('descripcion.store') }}">
+        {{ csrf_field() }}
 
-            <br>
-            Buscador:
-            <input type="text" id="buscador">
-            <table id="mitabla">
+
+
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Descripción</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="descripcion" placeholder="Descripción">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Sección</label>
+            <div class="col-sm-10">
+                <select name="seccion" class="custom-select" id="seccion">
+                    <option value="maria">Maria Luisa</option>
+                    <option value="montaje">Montaje</option>
+                    <option value="marco">Marco</option>
+                    <option value="proteccion">Protección</option>
+                    <option value="proteccion">Generales</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-4 offset-4">
+                <input type="submit" class="btn btn-primary btn-lg btn-block" value="Guardar">
+            </div>
+        </div>
+        </form>
+
+               <table id="mitabla">
                 <thead>
                     <tr>
                         <th>Descripción</th>

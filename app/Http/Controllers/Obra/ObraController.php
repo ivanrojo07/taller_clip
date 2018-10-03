@@ -36,6 +36,7 @@ class ObraController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $obra = new Obra;
         $obra->orden_id = $request->orden_id;
         $obra->nombre = $request->nombre;
@@ -44,11 +45,14 @@ class ObraController extends Controller
         $obra->ancho = $request->ancho;
         $obra->medidas = $request->medidas;
         $obra->profundidad = $request->profundidad;
-        $obra->tipodematerial = 'tipo de material';
+        $obra->tipo_material = 'tipo de material';
         $obra->descripcion = $request->descripcion;
-
-        
-
+        $obra->save();
+        for($i = 0; $i<sizeof($request->materiaids); $i++ ){
+            $obra->materiales()->attach($request->materiaids[$i], ['cantidad'=>$request->cantidades[$i]]);
+            var_dump($i);
+        }
+        dd($obra->materiales);
     }
 
     /**
@@ -59,7 +63,7 @@ class ObraController extends Controller
      */
     public function show(Obra $obra)
     {
-        //
+        
     }
 
     /**

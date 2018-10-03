@@ -1,56 +1,108 @@
 @extends('layouts.cotizacion')
 	@section('content')
-    <form role="form" 
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+  
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+  <h4>Registrar Material</h4>
+  <div class="container my-3">
+  <form role="form" 
 		      method="POST" 
 		      action="{{ route('material.store') }}">
 			{{ csrf_field() }}
-            Seccion:
-            <select name="seccion" id="seccion">
+
+            <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="seccion">Sección</label>
+            </div>
+            <select class="custom-select" name="seccion" id="seccion">
                 <option value="maria">Maria Luisa</option>
                 <option value="montaje">Montaje</option>
                 <option value="marco">Marco</option>
                 <option value="proteccion">Protección</option>
                 <option value="proteccion">Generales</option>
             </select>
-            <br>
-            Descripcion:
-            <select name="descripcion" id="descripcion">
+            </div>
+
+            <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="descripcion">Descripción</label>
+            </div>
+            <select class="custom-select" name="descripcion" id="descripcion">
                 @foreach($descripciones as $descripcion)
                     <option value="{{$descripcion->id}}">{{$descripcion->descripcion}}</option>
                 @endforeach
             </select>
-            <br>
-            Clave:
-            <input type="text" name="clave" id="clave">
-            <br>
-            Ancho:
-            <input type="number" name="ancho" id="ancho">
-            <br>
-            Alto: 
-            <input type="number" name="alto" id="alto">
-            <br>
-            Espesor:
-            <input type="number" name="espesor" id="espesor">
-            <br>
-            Tipo de medidas:
-            <input type="text" name="medidas" id="medidas">
-            <br>
-            Color:
-            <input type="text" name="color" id="color">
-            <br>
-            Proveedor:
-            <input type="text" name="proveedor" id="proveedor">
-            <!-- <select name="s" id="proveedor">
-            
-            </select> -->
-            <br>
-            Precio:
-            <input type="number" name="precio" id="precio">
-            <br>
-            <input type="submit" value="Agregar">
+            </div>
+
+            <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Clave</span>
+            </div>
+            <input type="text" name="clave" id="clave" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            </div>
+
+            <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Ancho</span>
+            </div>
+            <input type="number" name="ancho" id="ancho" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            </div>
+
+            <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Alto</span>
+            </div>
+            <input type="number" name="alto" id="alto" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            </div>
+
+            <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Espesor</span>
+            </div>
+            <input type="number" name="espesor" id="espesor" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            </div>
+
+            <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="medidas">Sección</label>
+            </div>
+            <select class="custom-select" name="medidas" id="medidas">
+                <option value="mm">mm</option>
+                <option value="cm">cm</option>
+                <option value="m">m</option>
+            </select>
+            </div>
+
+            <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Color</span>
+            </div>
+            <input type="text" name="color" id="color" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            </div>
+
+            <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Proveedor</span>
+            </div>
+            <input type="text" name="proveedor" id="proveedor" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            </div>
+
+            <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Precio $</span>
+            </div>
+            <input type="text" name="precio" id="precio" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-4 offset-4">
+                <input type="submit" class="btn btn-primary btn-lg btn-block" value="Agregar">
+                </div>
+            </div>
     </form>
-<br>
-    <input type="text" id="buscador">
+  </div>
+    
             <table id="mitabla">
                 <thead>
                     <tr>
@@ -75,14 +127,19 @@
                     @endforeach
                 </tbody>
             </table>
-    <script>
-   $(document).ready(function(){
-  $("#buscador").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#mitabla tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+<script>
+    $(document).ready(function(){
+
+        $('#mitabla').DataTable({
+            "info": false,
+            "language": {
+                "search": "Buscar:",
+                "paginate": {
+                "previous": "Anterior",
+                "next": "Siguiente"
+                }
+            }
+        });
     });
-  });
-});
 </script>
     @endsection
