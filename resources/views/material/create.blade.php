@@ -15,7 +15,7 @@
               <div class="input-group-prepend">
                   <label class="input-group-text" for="seccion">Sección</label>
               </div>
-              <select class="custom-select" name="seccion" id="seccion">
+              <select required class="custom-select" name="seccion" id="seccion">
                   <option value="maria">Maria Luisa</option>
                   <option value="montaje">Montaje</option>
                   <option value="marco">Marco</option>
@@ -28,7 +28,7 @@
               <div class="input-group-prepend">
                   <label class="input-group-text" for="descripcion">Descripción</label>
               </div>
-              <select class="custom-select" name="descripcion" id="descripcion">
+              <select required class="custom-select" name="descripcion" id="descripcion">
                   @foreach($descripciones as $descripcion)
                       <option value="{{$descripcion->id}}">{{$descripcion->descripcion}}</option>
                   @endforeach
@@ -39,35 +39,35 @@
               <div class="input-group-prepend">
                   <span class="input-group-text" id="inputGroup-sizing-default">Clave</span>
               </div>
-              <input type="text" name="clave" id="clave" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+              <input required type="text" name="clave" id="clave" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
               </div>
 
               <div class="input-group mb-3">
               <div class="input-group-prepend">
                   <span class="input-group-text" id="inputGroup-sizing-default">Ancho</span>
               </div>
-              <input type="number" name="ancho" id="ancho" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+              <input required type="number" name="ancho" id="ancho" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
               </div>
 
               <div class="input-group mb-3">
               <div class="input-group-prepend">
                   <span class="input-group-text" id="inputGroup-sizing-default">Alto</span>
               </div>
-              <input type="number" name="alto" id="alto" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+              <input required type="number" name="alto" id="alto" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
               </div>
 
               <div class="input-group mb-3">
               <div class="input-group-prepend">
                   <span class="input-group-text" id="inputGroup-sizing-default">Espesor</span>
               </div>
-              <input type="number" name="espesor" id="espesor" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+              <input required type="number" name="espesor" id="espesor" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
               </div>
 
               <div class="input-group mb-3">
               <div class="input-group-prepend">
                   <label class="input-group-text" for="medidas">Medidas:</label>
               </div>
-              <select class="custom-select" name="medidas" id="medidas">
+              <select required class="custom-select" name="medidas" id="medidas">
                   <option value="mm">mm</option>
                   <option value="cm">cm</option>
                   <option value="m">m</option>
@@ -78,21 +78,21 @@
               <div class="input-group-prepend">
                   <span class="input-group-text" id="inputGroup-sizing-default">Color</span>
               </div>
-              <input type="text" name="color" id="color" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+              <input required type="text" name="color" id="color" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
               </div>
 
               <div class="input-group mb-3">
               <div class="input-group-prepend">
                   <span class="input-group-text" id="inputGroup-sizing-default">Proveedor</span>
               </div>
-              <input type="text" name="proveedor" id="proveedor" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+              <input required type="text" name="proveedor" id="proveedor" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
               </div>
 
               <div class="input-group mb-3">
               <div class="input-group-prepend">
                   <span class="input-group-text" id="inputGroup-sizing-default">Precio $</span>
               </div>
-              <input type="text" name="precio" id="precio" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+              <input required type="text" name="precio" id="precio" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
               </div>
 
               <div class="row mb-4">
