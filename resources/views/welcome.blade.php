@@ -8,6 +8,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    .fixed-top2{
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+    }
+    </style>
 <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -54,7 +62,7 @@
 
     <div class="container-fluid" style="overflow-y: hidden;">
         <div class="row">
-            <div class="col-3 fixed-top" id="acoreond">
+            <div class="col-3 fixed-top2" id="acoreond">
 
                 @auth
                 <!-- LOGIN -->
@@ -125,8 +133,7 @@
                                         Precargas&nbsp<i class="fa fa-refresh" aria-hidden="true"></i> 
                                     </div>
                                     <div class="dropdown-menu m-0 p-0 nave6" aria-labelledby="dropdownMenuButton">
-                                        <a class="nave6" class="dropdown-item" target="frame1" href="{{ url('/giros') }}">Giros&nbsp<i class="fa fa-refresh" aria-hidden="true"></i> </a><br>
-                                        <a class="nave6" class="dropdown-item" target="frame1" href="{{ url('/formacontactos') }}">Forma Contactos&nbsp<i class="fa fa-refresh" aria-hidden="true"></i></a><br>
+                                         <a class="nave6" class="dropdown-item" target="frame1" href="{{ url('/formacontactos') }}">Forma Contactos&nbsp<i class="fa fa-refresh" aria-hidden="true"></i></a><br>
                                         <!--<a class="nave6" class="dropdown-item" target="frame1" href="{{ url('/bancos') }}">Precargas Bancos&nbsp<i class="fa fa-refresh" aria-hidden="true"></i> </a>-->
                                     </div>
                                 </li>
@@ -149,7 +156,7 @@
                             <ul id="collapseExample5" class="list-group list-group-flush collapse" data-parent="#acoreond">
                                 <a class="nave5" target="frame1" href="{{url('empleados/create')}}"><li class="list-group-item">Alta&nbsp<i class="fa fa-plus"></i></li></a>
                                 <a class="nave5" target="frame1" href="{{ url('empleados') }}"><li class="list-group-item">Búsqueda&nbsp<i class="fa fa-search" aria-hidden="true"></i></li></a>
-                                <li class="list-group-item dropright">
+                                <li class="list-group-item dropright" style="z-index: 999999;">
                                     <div class="dropdown-toggle m-0 p-0" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Precargas&nbsp<i class="fa fa-refresh" aria-hidden="true"></i> 
                                     </div>
@@ -198,7 +205,7 @@
                                 <p class="mb-0" style="float: right;"><i class="fa fa-angle-double-down"></i></p>
                             </div>
                             <ul id="collapseExample4" class="list-group list-group-flush collapse" data-parent="#acoreond">
-                                <a class="nave4" target="frame1" href="{{ url('/orden/create') }}"><li class="list-group-item">Generar órden&nbsp<i class="fa fa-plus"></i></li></a>
+                                <a class="nave4" target="frame1" href="{{ url('/orden/create') }}"><li class="list-group-item">Generar orden&nbsp<i class="fa fa-plus"></i></li></a>
                                     <a class="nave4" target="frame1" href="{{ url('/orden') }}"><li class="list-group-item">Historial órdenes&nbsp<i class="fa fa-plus"></i></li></a>
                                     <!--<a class="nave4" target="frame1" href="{{ url('productos')}}"><li class="list-group-item">Búsqueda&nbsp<i class="fa fa-search" aria-hidden="true"></i></li></a>-->
                             </ul>
@@ -238,17 +245,14 @@
                             <ul id="collapseExample1" class="list-group list-group-flush collapse" data-parent="#acoreond">
                                 <a class="nave1" target="frame1" href="{{ url('/provedores/create')}}"><li class="list-group-item">Alta&nbsp<i class="fa fa-user-plus" aria-hidden="true"></i></li></a>
                                 <a class="nave1" target="frame1" href="{{ url('/provedores') }}"><li class="list-group-item">Búsqueda&nbsp<i class="fa fa-search" aria-hidden="true"></i></li></a>
-                                <!--
-                                <li class="list-group-item dropright">
+                                <li class="list-group-item dropright" style="z-index: 999999;">
                                     <div class="dropdown-toggle m-0 p-0" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Precargas&nbsp<i class="fa fa-refresh" aria-hidden="true"></i> 
                                     </div>
                                     <div class="dropdown-menu m-0 p-0 nave1" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" target="frame1" href="{{ url('/giros') }}">Giros&nbsp<i class="fa fa-refresh"></i> </a>
-                                        <a class="dropdown-item" target="frame1" href="{{ url('/formacontactos') }}">Forma Contactos&nbsp<i class="fa fa-refresh"></i> </a>
+                                        <a class="nave6" class="dropdown-item" target="frame1" href="{{ url('/giros') }}">Giros&nbsp<i class="fa fa-refresh" aria-hidden="true"></i> </a><br>
                                     </div>
                                 </li>
-                                -->
                             </ul>
                         </div>
                     </div>

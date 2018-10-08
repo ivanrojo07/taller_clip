@@ -3,7 +3,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
   
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-<h4>Registrar Descripción</h4>
+<h4 class="m-3">Registrar Descripción</h4>
 
     <div class="container my-3">
         <form role="form" 

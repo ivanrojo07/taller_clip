@@ -177,12 +177,10 @@ Route::resource('usuario', 'Usuario\UsuarioController');
 
 Route::resource('material', 'Material\MaterialController');
 Route::resource('descripcion', 'Descripcion\DescripcionController');
-
-//ORDen
 Route::resource('orden', 'Orden\OrdenController');
-
-
-Route::get('/buscarparaorden','Orden\OrdenController@buscarMateriales')->name('buscarparaorden');
-
 Route::resource('obra','Obra\ObraController');
+
+
+Route::get('/buscarmaterialporseccion','Material\MaterialController@buscarMateriales')->name('buscarmaterialporseccion');
+
 
