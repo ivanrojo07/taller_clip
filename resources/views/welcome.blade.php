@@ -141,6 +141,20 @@
                         </div>
                     </div>
                 </div>
+                <!-- --------------- -->
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="card">
+                            <div id="clase10" class="card-header  nave" data-toggle="collapse" data-target="#collapseExample10">
+                                <p class="mb-0" style="float: left;">CRM&nbsp<i class="fa fa-calendar" aria-hidden="true"></i></p>
+                                <p class="mb-0" style="float: right;"><i class="fa fa-angle-double-down"></i></p>
+                            </div>
+                            <ul id="collapseExample10" class="list-group list-group-flush collapse" data-parent="#acoreond">
+                                <a class="nave10" target="frame1" href="{{ url('/crm/create')}}"><li class="list-group-item">CRMS&nbsp<i class="fa fa-user-plus" aria-hidden="true"></i></li></a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
                 @endif
                 @endforeach
                 <!--RH-->
@@ -330,6 +344,10 @@
         $('.nave9').click(function(e){
             $('.nave').removeClass("active");
             $('#clase9').addClass("active");
+        });
+        $('.nave10').click(function(e){
+            $('.nave').removeClass("active");
+            $('#clase10').addClass("active");
         });
     </script>
 

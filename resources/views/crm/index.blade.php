@@ -14,16 +14,10 @@
 			<div class="panel-heading">C.R.M.&nbsp;&nbsp;&nbsp;&nbsp;  <i class="fa fa-asterisk" aria-hidden="true"></i>Campos Requeridos</div>
 			<div class="panel-body">
 				<div class="panel-body">
-					<form role="form" method="POST" action="{{ route('clientes.crm.store',['cliente'=>$cliente]) }}">
+					<form id="crmdesdeanterior" role="form" method="POST" action="{{ route('clientes.crm.store',['cliente'=>$cliente]) }}">
 						{{ csrf_field() }}
 						<input type="hidden" name="cliente_id" value="{{ $cliente->id }}">
-						<div class="col-xs-4 col-xs-offset-10">
-							<a class="btn btn-warning" id="limpiar" onclick="limpiar()"><strong>Limpiar</strong></a>
-							<button id="submit" type="submit" class="btn btn-success"><strong>Guardar</strong></button>
-							<a id="modificar" class="btn btn-primary" onclick="modificar()" style="display: none;">Modificar</a>
-							
-
-						</div>
+						
 					<div class="col-md-12 offset-md-2 mt-3">
 						<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
 							<label class="control-label" for="fecha_act">Fecha Actual:</label>
@@ -39,11 +33,11 @@
 						</div>
 						<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
 							<label class="control-label" for="hora">Hora:</label>
-							<input type="text" class="form-control" id="hora" name="hora" name="hora" value="">
+							<input required type="text" class="form-control" id="hora" name="hora" name="hora" value="">
 						</div>
 						<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
 							<label class="control-label" for="tipo_cont">Forma de contacto:</label>
-							<select class="form-control" type="select" name="tipo_cont" id="tipo_cont" >
+							<select required  class="form-control" type="select" name="tipo_cont" id="tipo_cont" >
 								<option id="Mail" value="Mail">Email/Correo Electronico</option>
 								<option id="Telefono" value="Telefono">Telefono</option>
 								<option id="Cita" value="Cita">Cita</option>
@@ -53,7 +47,7 @@
 						</div>
 						<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
 							<label class="control-label" for="status">Estado:</label>
-							<select class="form-control" type="select" name="status" id="status" >
+							<select required  class="form-control" type="select" name="status" id="status" >
 								<option id="Pendiente" value="Pendiente">Pendiente</option>
 								<option id="Cotizando" value="Cotizando">En Cotización</option>
 								<option id="Cancelado" value="Cancelado">Cancelado</option>
@@ -69,17 +63,22 @@
 					<div class="col-md-12 offset-md-2 mt-3">
 						<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
 							<label class="control-label" for="acuerdos">Acuerdos: </label>
-							<textarea class="form-control" rows="5" id="acuerdos" name="acuerdos" maxlength="500"></textarea>
+							<textarea required class="form-control" rows="5" id="acuerdos" name="acuerdos" maxlength="500"></textarea>
 						</div>
 
 						<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
 							<label class="control-label" for="comentarios">Comentarios: </label>
-							<textarea class="form-control" rows="5" id="comentarios" name="comentarios" maxlength="500"></textarea>
+							<textarea required class="form-control" rows="5" id="comentarios" name="comentarios" maxlength="500"></textarea>
 						</div>
 
 						<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
 							<label class="control-label" for="observaciones">Observaciones: </label>
-							<textarea class="form-control" rows="5" id="observaciones" name="observaciones" maxlength="500"></textarea>
+							<textarea required class="form-control" rows="5" id="observaciones" name="observaciones" maxlength="500"></textarea>
+						</div>
+						<div class="col-xs-4 col-xs-offset-10">
+							<a class="btn btn-warning" id="limpiar" onclick="limpiar()"><strong>Limpiar</strong></a>
+							<button id="submit" type="submit" class="btn btn-success"><strong>Guardar</strong></button>
+							<a id="modificar" class="btn btn-primary" onclick="modificar()" style="display: none;">Nuevo</a>
 						</div>
 						
 					</div>
@@ -144,7 +143,9 @@
 				document.getElementById('limpiar').style.display = 'none';
 
 			}
+			
 			function modificar(){
+				document.getElementById("crmdesdeanterior").reset();
 				document.getElementById("fecha_cont").disabled = false;
 				document.getElementById("fecha_aviso").disabled = false;
 				document.getElementById("hora").disabled = false;

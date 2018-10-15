@@ -103,10 +103,10 @@
 			    						@endif>10</option>
 			    					</select>
 			  					</div>
-			  					<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+			  					<!-- <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
 			  						<label class="control-label" for="alias">Alias:</label>
 			  						<input type="text" class="form-control" id="alias" name="alias" value="{{ $cliente->apellidopaterno }}" >
-			  					</div>
+			  					</div> -->
 							</div>
 							<div class="col-md-12 offset-md-2 mt-3" id="perfisica">
 								
@@ -154,13 +154,13 @@
 									<input type="text" class="form-control" id="celular" name="celular" value="{{ $cliente->celular }}" >
 								</div>
 							</div>
-							<div class="col-md-12 offset-md-2 mt-3">
+							<!-- <div class="col-md-12 offset-md-2 mt-3">
 								<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
 			  						<label class="control-label" for="puesto"> 
 							          Puesto:</label>
 			  						<input type="text" class="form-control" id="puesto" name="puesto"  >
 			  					</div>
-							</div>
+							</div> -->
 						</div>
 					</div>
 					@if ($edit == false)

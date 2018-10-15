@@ -43,7 +43,7 @@ Route::resource('personals.referenciapersonales', 'Personal\PersonalRefPersonalC
 Route::resource('personals.datosbeneficiario', 'Personal\PersonalBeneficiarioController');
 Route::resource('personals.producto','Personal\PersonalProductoController');
 Route::resource('personals.crm','Personal\PersonalCRMController');
-
+Route::post('crmstore','Crm\CrmController@store')->name('crmstore');
 Route::get('buscarcliente','Cliente\ClienteController@buscar');
 
 Route::resource('personals.products.transactions', 'Personal\PersonalProductTransactionController',['only'=>'store']);
@@ -61,7 +61,7 @@ Route::resource('empleados.vacaciones','Empleado\EmpleadosVacacionesController')
 Route::resource('empleados.faltas','Empleado\EmpleadosFaltasAdministrativasController');
 Route::resource('contratos','Precargas\TipoContratoController');
 Route::resource('bajas','Precargas\TipoBajaController');
-
+Route::resource('crm','Crm\CrmController');
 Route::get('buscarempleado','Empleado\EmpleadoController@buscar');
     
 //-----  Sólo vistas  ---------------------------------------

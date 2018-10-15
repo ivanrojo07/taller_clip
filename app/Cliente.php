@@ -81,8 +81,8 @@ class Cliente extends Model
       return $this->hasOne(ClienteDatosGen::class);
     }
 
-    public function crm(){
-      return $this->hasMany(ClienteCRM::class);
-    }
+    public function crm() {
+      return $this->hasMany('App\ClienteCRM');
+  }
   
 }
