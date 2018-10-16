@@ -358,7 +358,7 @@
 
 
      {{-- Values --}}
-        @foreach($cliente as $clientes)
+        @foreach($clientes as $cliente)
         <input type="hidden" id="{{$cliente->id}}" value="{{$cliente->identificador}}">
         @endforeach
     {{-- Values --}}                        
