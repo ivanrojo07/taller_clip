@@ -1,7 +1,7 @@
 @extends('layouts.blank')
 @section('content')
 
-<script src="{{asset('js/crm.js')}}"></script>
+<!-- <script src="{{asset('js/crm.js')}}"></script>
                     @if($crms->count()==0)
         <div class="container">
             
@@ -208,7 +208,7 @@
                                                 <input type="hidden" name="am" value="{{$crm->cliente->apellidomaterno}}">
                                                 <input type="hidden" name="correo" value="{{$crm->cliente->mail}}">
                                                 <input type="hidden" name="telefono" value="{{$crm->cliente->telefono}}">
-                                                <input type="hidden" name="celular" value="{{$crm->cliente->celular}}">
+                                                <input type="hidden" name="celular" value="{{$crm->cliente->telefonocel}}">
 
                                                 <input type="hidden" name="fecha_cont" value="{{$crm->fecha_cont}}">
                                                 <input type="hidden" name="fecha_aviso" value="{{$crm->fecha_aviso}}">
@@ -250,7 +250,7 @@
                 <form role="form" id="enviadordecrm" method="POST" action="{{ route('crmstore')}}">
                     {{ csrf_field() }}
                     <div class="row">
-                        <div class="col-sm-3 form-group">
+                        <div class="col-sm-4 form-group">
                             <label class="control-label">Cliente:</label>
                             <select class="form-control" name="cliente_id" id="cliente_id_sel" required>
                                 <option value="">Seleccionar Cliente</option>
@@ -278,9 +278,8 @@
                                     <input type="text" name="" readonly value="{{$cliente->tipopersona}}"  class="form-control">
                                 </div>
                             </div>
-                         @endforeach
+                        @endforeach
                     </div>
-                    <hr>
                     <div class="row">
                         <div class="col-sm-3 form-group">
                             <label class="control-label" for="fecha_act">Fecha Actual:</label>
@@ -364,7 +363,7 @@
     {{-- Values --}}                        
                 
 
-<script type="text/javascript">
+<script>
     $(document).ready(function(){
             $("#cliente_id_sel").change(function(){
                 var id=$("#cliente_id_sel").val();
@@ -406,73 +405,13 @@
             $('#hora').attr('required', true);
             $('#vinculo').hide(function(){
                 $('#enviador').show();
+                $('#enviadordecrm').trigger('reset');
             });
             
         });
     });
 </script>
-
-<script>
-window.onload = function() {
-    if (window.jQuery) {  
-        $("#cliente_id_sel").change(function(){
-                var id=$("#cliente_id_sel").val();
-                var x = document.getElementById("cliente_id_sel");
-
-                for (i = 1; i < x.length; i++) {
-
-                     var j=x.options[i].value;
-                     if(j!=null||j!=''){
-                        name="info"+j;
-                        document.getElementById(name).style.display='none';
-                     }
-                      
-                     
-            }
-                 nombre="info"+id;
-
-                 document.getElementById(nombre).style.display='block';
-
-        });
-
-        $('#vinculo').click(function(){
-            $('#tipo_cont').removeAttr('disabled');
-            $('#status').removeAttr('disabled');
-            $('#fecha_cont').removeAttr('disabled');
-            $('#fecha_aviso').removeAttr('disabled');
-            $('#comentarios').removeAttr('disabled');
-            $('#observaciones').removeAttr('disabled');
-            $('#acuerdos').removeAttr('disabled');
-            $('#hora').removeAttr('disabled');
-
-            $('#tipo_cont').attr('required', true);
-            $('#status').attr('required', true);
-            $('#fecha_cont').attr('required', true);
-            $('#fecha_aviso').attr('required', true);
-            $('#comentarios').attr('required', true);
-            $('#observaciones').attr('required', true);
-            $('#acuerdos').attr('required', true);
-            $('#hora').attr('required', true);
-            $('#vinculo').hide(function(){
-                $('#enviador').show();
-                $('#tipo_cont').val("");
-                $('#status').val("");
-                $('#fecha_cont').val("");
-                $('#fecha_aviso').val("");
-                $('#hora').val("");
-                $('#acuerdos').val("");
-                $('#comentarios').val("");
-                $('#observaciones').val("");
-            });
-            
-        });
-    } else {
-        // jQuery is not loaded
-        alert("Doesn't Work");
-    }
-
-}
-</script>				
-					
+			
+					 -->
 
 @endsection
