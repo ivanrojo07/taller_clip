@@ -31,6 +31,7 @@ Route::get('getcontacto','FormaContacto\FormaContactoController@getFormas');
 Route::get('prospectos', 'Personal\PersonalController@search');
 // Route::get('clientes', 'Personal\PersonalController@clientes');
 // Route::get('prospectos', 'Personal\PersonalController@prospectos');
+Route::get('fecha','Crm\CrmController@porFecha')->name('fecha');
 Route::get('getclient', 'Cliente\ClienteController@getClient');
 Route::resource('clientes', 'Cliente\ClienteController');
 Route::resource('clientes.direccion','Cliente\ClienteDireccionController');

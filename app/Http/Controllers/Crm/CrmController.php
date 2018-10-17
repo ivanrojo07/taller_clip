@@ -18,10 +18,13 @@ class CrmController extends Controller
      */
     public function index()
     {
-        $crms = ClienteCrm::select('cliente_id','fecha_cont','fecha_aviso', 'fecha_act', 'hora', 'status', 'comentarios', 'acuerdos', 'observaciones','tipo_cont')->groupBy('cliente_id')->get();
-        $clientes=Cliente::orderBy('nombre','desc')->get();
-        return view('crm.index', ['crms'    =>$crms,
-                                  'clientes'=>$clientes]);
+        $crms = [];
+        foreach (Cliente::get() as $cliente) {
+            if(count($cliente->crm) != 0)
+                $crms[] = $cliente->crm->last();
+        }
+        $clientes = Cliente::orderBy('nombre','desc')->get();
+        return view('crm.indexall', ['crms' => $crms, 'clientes' => $clientes]);
     }
 
     /**
@@ -31,11 +34,14 @@ class CrmController extends Controller
      */
     public function create()
     {
-        //
-        $crms = ClienteCrm::select('cliente_id','fecha_cont','fecha_aviso', 'fecha_act', 'hora', 'status', 'comentarios', 'acuerdos', 'observaciones','tipo_cont')->groupBy('cliente_id')->get();
-        $clientes=Cliente::orderBy('nombre','desc')->get();
-        return view('crm.indexall', ['crms'    =>$crms,
-                                  'clientes'=>$clientes]);
+        $crms = [];
+        foreach (Cliente::get() as $cliente) {
+            if(count($cliente->crm) != 0)
+                $crms[] = $cliente->crm->last();
+        }
+        // dd($crms);
+        $clientes = Cliente::orderBy('nombre','desc')->get();
+        return view('crm.indexall', ['crms' => $crms, 'clientes' => $clientes]);
     }
 
     /**
@@ -46,9 +52,8 @@ class CrmController extends Controller
      */
     public function store(Request $request)
     {
-
         $crm = ClienteCRM::create($request->all());
-        return redirect()->route('crm.index'); 
+        return redirect()->route('crm.create'); 
     }
 
     /**
@@ -62,17 +67,18 @@ class CrmController extends Controller
         //
     }
 
-    public function porFecha(Request $request){
-
-        //dd($request->fechaH);
-        $crms =   ClienteCRM::whereBetween('fecha_cont', [$request->fechaD,$request->fechaH])->orderBy('fecha_cont','asc')->get();
-        $todos=   ClienteCRM::get();
-        $clientes=Cliente::orderBy('nombre','desc')->get();
-
-        return view('crm.index',['crms'    =>$crms,
-                                 'todos'   =>$todos,
-                                 'clientes'=>$clientes]);
-
+    public function porFecha(Request $request) {
+        $crms = [];
+        foreach (Cliente::get() as $cliente) {
+            if(count($cliente->crm) != 0) {
+                $tmp = $cliente->crm()->whereBetween('fecha_cont', [$request->fechaD, $request->fechaH])->orderBy('fecha_cont', 'asc')->get()->first();
+                if($tmp != null)
+                    $crms[] = $tmp;
+            }
+        }
+        $clientes = Cliente::orderBy('nombre','desc')->get();
+        $todos = ClienteCRM::get();
+        return view('crm.indexall', ['crms' => $crms, 'todos' => $todos, 'clientes' => $clientes]);
     }
     /**
      * Show the form for editing the specified resource.
