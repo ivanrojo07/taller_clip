@@ -36,24 +36,17 @@
 </div>
 
 
-	<div class="jumbotron" id="datos" name="datos">
 		<table class="table table-striped table-bordered table-hover" style="color:rgb(51,51,51); border-collapse: collapse; margin-bottom: 0px">
 			<thead>
 				<tr class="info">
 					<th>@sortablelink('id','#')</th>
 					<th>@sortablelink('nombre', 'Nombre/Razón Social'){{-- Nombre --}}</th>
-					<th>@sortablelink('Contacto Principal')</th>
+					<th>@sortablelink('Calificación')</th>
 					<th>@sortablelink('Correo')</th>
 					<th>@sortablelink('Teléfono')</th>
 					<th>@sortablelink('Celular')</th>
-					
-					<!-- <th>@sortablelink('prioridad', 'Prioridad')</th>
-					<th>@sortablelink('tipo', 'Tipo de cliente')</th>
-					<th>@sortablelink('calificacion', 'Calificación')</th>
-					<th>@sortablelink('giro', 'Giro')</th>
-					<th>@sortablelink('created_at','Fecha de alta')</th> -->
-					
-					<!-- <th>Operacion</th> -->
+					<th>@sortablelink('Creado')</th>
+					<th>Operación</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -73,14 +66,10 @@
 						@endif
 					</td>
 					<td>{{ $cliente->prioridad }}</td>
-					<td>{{ $cliente->tipo }}</td>
-					<td>{{ strtoupper($cliente->calificacion) }}</td>
-					@isset($cliente->datoGen)
-					
-					<td>{{$cliente->datoGen->giro->nombre}}</td>
-					@else
-					<td>Indefinido</td>
-					@endisset
+					<td>{{$cliente->mail}}</td>
+					<td>{{$cliente->telefono}}</td>
+					<td>{{$cliente->celular}}</td>
+
 					
 					<td>{{date('d-m-Y', strtotime($cliente->created_at))}}</td>
 					
@@ -94,8 +83,6 @@
 			@endforeach
 			</tbody>
 		</table>
-		{{ $clientes->links() }}
-	</div>
 
 
 	
