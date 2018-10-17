@@ -6,7 +6,7 @@
 					<div class="panel-heading">
 						<div class="row">
 							<div class="col-sm-3">
-								<h4>Datos del provedor:</h4>
+								<h4>Datos del cliente:</h4>
 							</div>
 							<div class="col-sm-3">
 								<a class="btn btn-info" href="{{ route('clientes.create') }}"><strong>Nuevo Proveedor</strong></a>

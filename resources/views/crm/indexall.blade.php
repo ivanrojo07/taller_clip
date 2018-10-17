@@ -61,7 +61,7 @@
                                 <td>{{ $crm->cliente->razonsocial }}{{ $crm->cliente->nombre }} {{ $crm->cliente->apellidopaterno }}</td>
                                 <td>{{ $crm->fecha_cont }}</td>
                                 <td>{{ $crm->hora }}</td>
-                                <td>{{ $crm->cliente->telefonocel }}</td>
+                                <td>{{ $crm->cliente->celular }}</td>
                                 <td>{{ $crm->cliente->mail }}</td>
                                 <td>{{ $crm->status }}</td>
                                 <td>{{ $crm->fecha_aviso }}</td>
