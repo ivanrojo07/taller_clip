@@ -167,7 +167,6 @@
             var cantidades = formulario.find('input[name="cantidad[]"]').map(function(){
                 return $(this).val();
             }).get();
-            console.log(ids);
             $.ajaxSetup({
                 headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

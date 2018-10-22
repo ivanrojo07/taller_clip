@@ -16,6 +16,7 @@
                   <label class="input-group-text" for="seccion">Sección</label>
               </div>
               <select required class="custom-select" name="seccion" id="seccion">
+                  <option value="">---</option>
                   <option value="maria">Maria Luisa</option>
                   <option value="montaje">Montaje</option>
                   <option value="marco">Marco</option>
@@ -29,9 +30,9 @@
                   <label class="input-group-text" for="descripcion">Descripción</label>
               </div>
               <select required class="custom-select" name="descripcion" id="descripcion">
-                  @foreach($descripciones as $descripcion)
+                  {{--@foreach($descripciones as $descripcion)
                       <option value="{{$descripcion->id}}">{{$descripcion->descripcion}}</option>
-                  @endforeach
+                  @endforeach--}}
               </select>
               </div>
 
@@ -128,19 +129,42 @@
               </tbody>
           </table>
 <script>
-  $(document).ready(function(){
-
-      $('#mitabla').DataTable({
-          "info": false,
-          "language": {
-              "search": "Buscar:",
-              "paginate": {
-              "previous": "Anterior",
-              "next": "Siguiente"
-              }
-          }
-      });
-  });
+$(document).ready(function(){
+    $('#mitabla').DataTable({
+        "info": false,
+        "language": {
+            "search": "Buscar:",
+            "paginate": {
+            "previous": "Anterior",
+            "next": "Siguiente"
+            }
+        }
+    });
+    $('#seccion').change(function(){
+        var eso = $(this).val();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: "{{ route('descripcion.index') }}",
+            type: "GET",
+            data: {
+                seccion: eso
+            },
+            dataType: "json",
+        }).done(function(resultado){
+            $('#descripcion').empty();
+            {{--//$('#descripcion').append('<option value="{{$descripcion->id}}">{{$descripcion->descripcion}}</option>');--}}
+            var b = JSON.stringify(resultado);
+            for(var i = 0; i < resultado.length; i++){
+                $('#descripcion').append('<option value="'+resultado[i].id+'">'+resultado[i].descripcion+'</option>');
+            }
+           //alert(b);
+        });
+    });
+});
 </script>
     </div>
     

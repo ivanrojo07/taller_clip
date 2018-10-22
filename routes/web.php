@@ -178,6 +178,7 @@ Route::resource('usuario', 'Usuario\UsuarioController');
 
 Route::resource('material', 'Material\MaterialController');
 Route::resource('descripcion', 'Descripcion\DescripcionController');
+Route::get('getdescripciones', 'Descripcion\DescripcionController@');
 Route::resource('orden', 'Orden\OrdenController');
 Route::resource('obra','Obra\ObraController');
 

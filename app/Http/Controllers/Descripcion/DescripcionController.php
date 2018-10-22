@@ -14,9 +14,10 @@ class DescripcionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $req)
     {
-        //
+        $descripciones = Descripcion::where('seccion', $req->seccion)->get();
+        return $descripciones;
     }
 
     /**
