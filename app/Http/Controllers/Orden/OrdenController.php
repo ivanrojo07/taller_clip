@@ -27,7 +27,9 @@ class OrdenController extends Controller
      */
     public function create()
     {
-        return view('orden.create');
+        
+        $preclave = Orden::get()->count();
+        return view('orden.create', ['preclave'=>$preclave]);
     }
 
     /**

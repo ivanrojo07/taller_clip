@@ -27,7 +27,7 @@
                     <option value="montaje">Montaje</option>
                     <option value="marco">Marco</option>
                     <option value="proteccion">Protección</option>
-                    <option value="proteccion">Generales</option>
+                    <option value="generales">Generales</option>
                 </select>
             </div>
         </div>
@@ -62,7 +62,8 @@
             "paginate": {
             "previous": "Anterior",
             "next": "Siguiente"
-            }
+            },
+            "emptyTable": "No hay ningún registro"
         }
      });
 

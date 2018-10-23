@@ -27,10 +27,6 @@ Route::get('getfaltas','Falta\FaltaController@getFaltas');
 Route::get('getprov','Provedor\ProvedorController@getProveedor');
 Route::get('getcontacto','FormaContacto\FormaContactoController@getFormas');
 
-// Route::get('/home', 'HomeController@index')->name('home');
-Route::get('prospectos', 'Personal\PersonalController@search');
-// Route::get('clientes', 'Personal\PersonalController@clientes');
-// Route::get('prospectos', 'Personal\PersonalController@prospectos');
 Route::get('fecha','Crm\CrmController@porFecha')->name('fecha');
 Route::get('getclient', 'Cliente\ClienteController@getClient');
 Route::resource('clientes', 'Cliente\ClienteController');
@@ -49,10 +45,6 @@ Route::get('buscarcliente','Cliente\ClienteController@buscar');
 
 Route::resource('personals.products.transactions', 'Personal\PersonalProductTransactionController',['only'=>'store']);
 Route::resource('personals.product','Personal\PersonalProductController', ['only'=>'index']);
-// Route::resource('datoslaborales','DatosLabController');
-// Route::resource('referenciapersonales','RefPersonalController');
-// Route::resource('beneficiarios', 'BeneficiariosController');
-// Route::resource('prodpersonal','ProdUsuarioController');
 Route::get('pruebas','PruebasController@create');
 Route::resource('empleados','Empleado\EmpleadoController');
 Route::resource('empleados.datoslaborales','Empleado\EmpleadosDatosLabController');
@@ -77,19 +69,8 @@ Route::get('consulta',function(){
 
 	return View::make('Empleadoconsulta.consulta');
 });
-Route::get('bonos',function(){
 
-	return View::make('Empleadobonos.bonos');
-});
-Route::get('comision',function(){
 
-	return View::make('Empleadobonos.comision');
-});
-
-Route::get('cotizacion',function(){
-
-	return View::make('cotizacion.cot');
-});
 
 //   11/Dic/2017
 //-----------------------------------------------------
@@ -136,10 +117,7 @@ Route::resource('sucursal','Empleado\EmpleadoSucursalController');
 Route::resource('cambio', 'TipoCambio\TipoCambioController', ['except'=>'show']);
 
 
-Route::get('historial_cotizacion',function(){
 
-	return View::make('cotizacion.historial');
-});
 
 Route::get('historial_orden',function(){
 
@@ -185,4 +163,4 @@ Route::resource('obra','Obra\ObraController');
 
 Route::get('/buscarmaterialporseccion','Material\MaterialController@buscarMateriales')->name('buscarmaterialporseccion');
 
-
+Route::resource('cotizacion','Cotizacion\CotizacionController');

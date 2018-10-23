@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Cotizacion;
 
 use App\Cotizacion;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CotizacionController extends Controller
 {
@@ -14,7 +15,7 @@ class CotizacionController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -24,7 +25,7 @@ class CotizacionController extends Controller
      */
     public function create()
     {
-        //
+        return view('cotizacion.create');
     }
 
     /**

@@ -239,7 +239,8 @@
                                 <p class="mb-0" style="float: right;"><i class="fa fa-angle-double-down"></i></p>
                             </div>
                             <ul id="collapseExample7" class="list-group list-group-flush collapse" data-parent="#acoreond">
-                                <a class="nave7" target="frame1" href="{{ url('/historial_cotizacion/') }}"><li class="list-group-item">Historial</li></a>
+                                <a class="nave7" target="frame1" href="{{ route('cotizacion.create') }}"><li class="list-group-item">Cotizar</li></a>
+                                <a class="nave7" target="frame1" href="{{ route('cotizacion.index') }}"><li class="list-group-item">Historial</li></a>
                             </ul>
                         </div>
                     </div>

@@ -21,7 +21,7 @@
                   <option value="montaje">Montaje</option>
                   <option value="marco">Marco</option>
                   <option value="proteccion">Protección</option>
-                  <option value="proteccion">Generales</option>
+                  <option value="generales">Generales</option>
               </select>
               </div>
 
@@ -30,6 +30,7 @@
                   <label class="input-group-text" for="descripcion">Descripción</label>
               </div>
               <select required class="custom-select" name="descripcion" id="descripcion">
+                <option value="">---</option>
                   {{--@foreach($descripciones as $descripcion)
                       <option value="{{$descripcion->id}}">{{$descripcion->descripcion}}</option>
                   @endforeach--}}
@@ -136,8 +137,9 @@ $(document).ready(function(){
             "search": "Buscar:",
             "paginate": {
             "previous": "Anterior",
-            "next": "Siguiente"
-            }
+            "next": "Siguiente"        
+            },
+            "emptyTable": "No hay ningún registro"
         }
     });
     $('#seccion').change(function(){
