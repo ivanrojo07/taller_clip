@@ -22,31 +22,31 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                             <label for="nombre">Nombre Obra:</label>
-                            <input type="text" class="form-control nombre" name="nombre" id="nombre{{$i}}" placeholder="Nombre de la obra">
+                            <input type="text" class="form-control nombre ocultable{{$i}}" name="nombre" id="nombre{{$i}}" placeholder="Nombre de la obra">
                             </div>
                             <div class="form-group col-md-6">
                             <label for="nopiezas">#Piezas:</label>
-                            <input type="number" class="form-control nopiezas" name="nopiezas"  id="nopiezas{{$i}}" placeholder="Número de piezas">
+                            <input type="number" class="form-control nopiezas ocultable{{$i}}" name="nopiezas"  id="nopiezas{{$i}}" placeholder="Número de piezas">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                             <label for="alto">Alto:</label>
-                            <input type="number" class="form-control alto" name="alto" id="alto{{$i}}" placeholder="Alto">
+                            <input type="number" class="form-control alto ocultable{{$i}}" name="alto" id="alto{{$i}}" placeholder="Alto">
                             </div>
                             <div class="form-group col-md-6">
                             <label for="ancho">Ancho:</label>
-                            <input type="number" class="form-control ancho" name="ancho"  id="ancho{{$i}}" placeholder="Ancho">
+                            <input type="number" class="form-control ancho ocultable{{$i}}" name="ancho"  id="ancho{{$i}}" placeholder="Ancho">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                             <label for="profundidad">Profundidad:</label>
-                            <input type="number" class="form-control profundidad" name="profundidad" id="profundidad{{$i}}" placeholder="Profundidad">
+                            <input type="number" class="form-control profundidad ocultable{{$i}}" name="profundidad" id="profundidad{{$i}}" placeholder="Profundidad">
                             </div>
                             <div class="form-group col-md-6">
                             <label for="medidas">Medidas:</label>
-                            <select name="medidas"  id="medidas{{$i}}" class="form-control medidas">
+                            <select name="medidas"  id="medidas{{$i}}" class="form-control medidas ocultable{{$i}}">
                             <option>cm</option>
                             <option>mm</option>
                             <option>m</option>
@@ -56,13 +56,13 @@
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label for="descripcion">Descripción:</label>
-                                <textarea class="form-control descripcion" name="descripcion" id="descripcion{{$i}}" rows="3"></textarea>
+                                <textarea class="form-control descripcion ocultable{{$i}}" name="descripcion" id="descripcion{{$i}}" rows="3"></textarea>
                             </div>
                         </div>
                         <h4>Buscar Material</h4>
                         <div id="busquedademat{{$i}}" class="form-group col-md-4 busquedademat{{$i}}">
                             <label for="seccion">Sección:</label>
-                            <select name="seccion" id="seccion" class="seccion form-control">
+                            <select name="seccion" id="seccion{{$i}}" class="seccion form-control ">
                                 <option value="">---</option>
                                 <option value="montaje">Montajes</option>
                                 <option value="proteccion">Protección</option>
@@ -82,22 +82,10 @@
                                 <th>Tipo</th>
                                 <th>Operación</th>
                             </tr>
-                            @foreach($materiales as $material)
-                            <tr id="row{{$i.'m'.$material->id}}">
-                                <td class="id">{{$material->id}}</td>
-                                <td class="descripcion">{{$material->descripcion->descripcion}}</td>
-                                <td class="alto">{{$material->alto}}</td>
-                                <td class="ancho">{{$material->ancho}}</td>
-                                <td class="profundidad">{{$material->espesor}}</td>
-                                <td class="color">{{$material->color}}</td>
-                                <td class="tipo">{{$material->tipo}}</td>
-                                <td>
-                                    <input type="number" name="cantidad" class="cantidad" placeholder="Cantidad" value="1">
-                                    <button class="btn btn-success mx-2 my-2" onclick="agregaratabla('row{{$i.'m'.$material->id}}', {{$i}})">Agregar</button>
-                                    <button class="btn btn-primary mx-2 my-2">Ver</button>
-                                </td>
-                            </tr>
-                            @endforeach
+                            <tbody id="resultadobusquedamaterial">
+
+                            </tbody>
+                            
                         </table>
                         <h4>Materiales de obra</h4>
                         <table id="tablachida" class="table">
@@ -113,11 +101,12 @@
                                 </tr>
                             </thead>
                             <tbody id="tablaconmateriales{{$i}}">
+                                <span>Selecione sección para buscar materiales</span>
                             </tbody>
                             
                             
                         </table>
-                        <center><button class="agregarF btn btn-primary" onclick="guardarObra('obra{{$i}}', {{$i}})" formulario="obra{{$i}}">Guardar Obra</button></center>
+                        <center><button class="agregarF btn btn-primary busquedademat{{$i}}" onclick="guardarObra('obra{{$i}}', {{$i}})" formulario="obra{{$i}}">Guardar Obra</button></center>
                     </div>
                 </div>
             @endfor
@@ -137,8 +126,6 @@
         });
 
         function agregaratabla(cosa, noobra){
-            // alert('cosa:'+cosa);
-            // alert('noobra:'+noobra);
             var cantidadparamulti = $('#nopiezas'+noobra).val();
             if($('#nopiezas'+noobra).val()==''){
                 swal({
@@ -211,11 +198,12 @@
                 },
                 success:function(res){
                     swal(
+                    'Éxito!',
                     'Obra ha sido registrada',
-                    'Continúe con las siguientes obras!',
                     'success'
                     );
                     $('.busquedademat'+noobra).hide();
+                    $('.ocultable'+noobra).attr('readonly', 'true');
                 },
                 error:function(){
                     swal({
@@ -228,8 +216,11 @@
 
         }
 
-        $('#seccion').change(function(){
-            alert($(this).parent().parent().attr('id'));
+        $('.seccion').change(function(){
+            $('#resultadobusquedamaterial').empty();
+            var numeroobra = $(this).attr('id').replace('seccion','');
+
+            //alert($(this).parent().parent().attr('id'));
             var eso = $(this).val();
             $.ajaxSetup({
                 headers: {
@@ -247,14 +238,23 @@
                 var b = JSON.stringify(resultado);
                 var r = '';
                  for(var i = 0; i < resultado.length; i++){
-                //     r += resultado[i].id+'\n';
-                //     r += resultado[i].descripcion.descripcion+'\n';
-                //     r += resultado[i].alto+'\n';
-                //     r += resultado[i].ancho+'\n';
-                //     r += resultado[i].profundidad+'\n';
-                //     r += resultado[i].color+'\n';
-                //     r += resultado[i].tipo+'\n';
+                    console.log(resultado[i]);
+                    r += '<tr id="row'+numeroobra+'m'+resultado[i].id+'">';
+                    r += '<td class="id">'+resultado[i].id+'</td>';
+                    r += '<td class="descripcion">'+resultado[i].descripcion.descripcion+'</td>';
+                    r += '<td class="alto">'+resultado[i].alto+'</td>';
+                    r += '<td class="ancho">'+resultado[i].ancho+'</td>';
+                    r += '<td class="profundidad">'+resultado[i].profundidad+'</td>';
+                    r += '<td class="color">'+resultado[i].color+'</td>';
+                    r += '<td class="tipo">'+resultado[i].tipo+'</td>';
+                    r += '<td><input type="number" name="cantidad" class="cantidad" placeholder="Cantidad" value="1">';
+                    r += '<button class="btn btn-success mx-2 my-2" onclick="agregaratabla(\'row'+numeroobra+'m'+resultado[i].id+'\', '+numeroobra+')">Agregar</button>';
+                    r += '<button class="btn btn-primary mx-2 my-2">Ver</button></td>';
+                    r += '</tr>';
+
+
                  }
+                 $('#resultadobusquedamaterial').append(r);
             });
         });
             
