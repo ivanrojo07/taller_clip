@@ -17,5 +17,9 @@ class Orden extends Model
     public function obras(){
         return $this->hasMany('App\Obra');
     }
+
+    public function cotizacions(){
+        return $this->belongsToMany('App\Cotizacion', 'cotizacion_orden');
+    }
 }
 

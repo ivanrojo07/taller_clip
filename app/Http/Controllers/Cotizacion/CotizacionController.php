@@ -15,7 +15,8 @@ class CotizacionController extends Controller
      */
     public function index()
     {
-
+        $cotizaciones = Cotizacion::get();
+        return view('cotizacion.index');
     }
 
     /**
