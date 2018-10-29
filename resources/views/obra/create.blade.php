@@ -82,7 +82,7 @@
                                 <th>Tipo</th>
                                 <th>Operación</th>
                             </tr>
-                            <tbody id="resultadobusquedamaterial">
+                            <tbody id="resultadobusquedamaterial{{$i}}">
 
                             </tbody>
                             
@@ -217,9 +217,9 @@
         }
 
         $('.seccion').change(function(){
-            $('#resultadobusquedamaterial').empty();
             var numeroobra = $(this).attr('id').replace('seccion','');
 
+            $('#resultadobusquedamaterial'+numeroobra).empty();
             //alert($(this).parent().parent().attr('id'));
             var eso = $(this).val();
             $.ajaxSetup({
@@ -244,7 +244,7 @@
                     r += '<td class="descripcion">'+resultado[i].descripcion.descripcion+'</td>';
                     r += '<td class="alto">'+resultado[i].alto+'</td>';
                     r += '<td class="ancho">'+resultado[i].ancho+'</td>';
-                    r += '<td class="profundidad">'+resultado[i].profundidad+'</td>';
+                    r += '<td class="profundidad">'+resultado[i].espesor+'</td>';
                     r += '<td class="color">'+resultado[i].color+'</td>';
                     r += '<td class="tipo">'+resultado[i].tipo+'</td>';
                     r += '<td><input type="number" name="cantidad" class="cantidad" placeholder="Cantidad" value="1">';
@@ -254,7 +254,7 @@
 
 
                  }
-                 $('#resultadobusquedamaterial').append(r);
+                 $('#resultadobusquedamaterial'+numeroobra).append(r);
             });
         });
             

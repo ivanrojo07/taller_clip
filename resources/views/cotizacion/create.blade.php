@@ -106,6 +106,14 @@
     <tbody id="tablamanodeobras">
     </tbody>
   </table>
+
+  <div class="row">
+    <div class="col-4 offset-4">
+      <label for="totalmanodeobra">Total mano de obra</label>
+      <input readonly type="number" class="form-control"  id="totalmanodeobra">
+    </div>
+  </div>
+
   </div>
 </div>
 
@@ -140,6 +148,12 @@
       <tbody id="tablavarios">
       </tbody>
     </table>
+    <div class="row">
+    <div class="col-4 offset-4">
+      <label for="totlavario">Total varios</label>
+      <input readonly type="number" class="form-control"  id="totalvario">
+    </div>
+  </div>
   </div>
 </div>
 
@@ -180,6 +194,12 @@
     <tbody id="tablaenvios">
     </tbody>
   </table>
+  <div class="row">
+    <div class="col-4 offset-4">
+      <label for="totalenvio">Total Envios</label>
+      <input readonly type="number" class="form-control"  id="totalenvio">
+    </div>
+  </div>
   </div>
 </div>
 
@@ -189,7 +209,7 @@
 <div class="form-row">
     <div class="form-group col col-md-4 offset-4">
       <label for="totalproyecto">Total Proyecto</label>
-      <input  form="formcotizacion" name="totalproyecto" type="number" class="form-control" id="totalproyecto">
+      <input required readonly form="formcotizacion" name="totalproyecto" type="number" class="form-control" id="totalproyecto">
     </div>
 </div>
 <div class="form-row p-5">
@@ -205,7 +225,7 @@
   <div class="form-row p-5">
     <div class="form-group col col-md-4">
       <label for="resultado">Resultado</label>
-      <input required form="formcotizacion" type="number" name="resultado" class="form-control" id="resultado">
+      <input required readonly form="formcotizacion" type="number" name="resultado" class="form-control" id="resultado">
     </div>
     <div class="form-group col pt-4 col-md-4">
       <div class="form-check">
@@ -223,7 +243,7 @@
     </div>
     <div class="form-group col col-md-4">
       <label for="totalneto">Total Neto</label>
-      <input required form="formcotizacion" type="number" name="totalneto" class="form-control" id="totalneto">
+      <input required readonly form="formcotizacion" type="number" name="totalneto" class="form-control" id="totalneto">
     </div>
   </div>
 
@@ -251,10 +271,11 @@ $('#agregarmanodeobra').click(function(){
   }
             var ht =  '<tr id="algo'+ contador+'"><td>'+ $('#nombremanodeobra').val()+'</td>'+
                    ' <td>'+ $('#puestomanodeobra').val()+'</td>'+
-                    '<td>'+ $('#montomanodeobra').val()+'</td>'+
+                    '<td class="montomanodeobra">'+ $('#montomanodeobra').val()+'</td>'+
                     '<td>'+ $('#desmanodeobra').val()+'</td>'+
                     '<td><button class="btn btn-danger" onclick="quitar('+contador+')">Eliminar</button></td></tr>';
             $('#tablamanodeobras').append(ht);
+            calcular();
 });
 
 $('#agregarvario').click(function(){
@@ -267,10 +288,11 @@ $('#agregarvario').click(function(){
                     });
                     return 0;
   }
-            var ht =  '<tr id="algo'+ contador+'"><td>'+ $('#montovario').val()+'</td>'+
+            var ht =  '<tr id="algo'+ contador+'"><td class="montovario">'+ $('#montovario').val()+'</td>'+
                    ' <td>'+ $('#desvario').val()+'</td>'+
                     '<td><button class="btn btn-danger" onclick="quitar('+contador+')">Eliminar</button></td></tr>';
             $('#tablavarios').append(ht);
+            calcular();
 });
 
 $('#agregarenvio').click(function(){
@@ -285,9 +307,14 @@ $('#agregarenvio').click(function(){
   }
             var ht =  '<tr id="algo'+ contador+'"><td>'+ $('#direccionenvio').val()+'</td>'+
                    ' <td>'+ $('#desenvio').val()+'</td>'+
-                   ' <td>'+ $('#montoenvio').val()+'</td>'+
+                   ' <td class="montoenvio">'+ $('#montoenvio').val()+'</td>'+
                     '<td><button class="btn btn-danger" onclick="quitar('+contador+')">Eliminar</button></td></tr>';
             $('#tablaenvios').append(ht);
+            calcular();
+});
+
+$('.form-check-input').change(function(){
+  calcular();
 });
 
 function agregaratabla(cosa){
@@ -300,25 +327,58 @@ function agregaratabla(cosa){
                     '<td><button class="btn btn-danger" onclick="quitar1('+cosa+')">Eliminar</button></td></td>'
                     '</tr>';
             $('#tablaordenes').append(ht);
-
+calcular();
 }
 
 function quitar(e){
 $('#algo'+e).remove();
+calcular();
 }
 function quitar1(e){
 $('#esoeso'+e.id).remove();
+calcular();
 }
 
 $('#ganacia').change(function(){
-  alert('gana c')
   $('#incremento').val('0');
+  calcular();
 });
 
 $('#incremento').change(function(){
-  alert('gana incre');
   $('#ganacia').val('0');
+  calcular();
 });
+
+function calcular(){
+  var totalmanodeobra = 0;
+  var  totalvarios = 0;
+  var totalenvio = 0;
+  $('.montomanodeobra').each(function(){
+    totalmanodeobra += parseInt($(this).text(), 10);
+  });
+  $('#totalmanodeobra').val(totalmanodeobra);
+
+  $('.montovario').each(function(){
+    totalvarios += parseInt($(this).text(), 10);
+  });
+  $('#totalvario').val(totalvarios);
+
+  $('.montoenvio').each(function(){
+    totalenvio += parseInt($(this).text(), 10);
+  });
+  $('#totalenvio').val(totalenvio);
+
+  $('#totalproyecto').val(totalmanodeobra + totalvarios + totalenvio);
+
+
+var resul = parseInt( $('#totalproyecto').val(), 10)  + parseInt($('#incremento').val(), 10) ;
+if($('#incremento').val() == 0){
+  resul = $('#totalproyecto').val() * $('#ganacia').val() / 100;
+}
+
+  $('#resultado').val(resul);
+
+}
 
 </script>
 @endsection
