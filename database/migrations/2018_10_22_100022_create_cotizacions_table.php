@@ -19,6 +19,10 @@ class CreateCotizacionsTable extends Migration
             $table->integer('nocotizacion');
             $table->date('fechaactual');
             $table->date('fechaentrega');
+            $table->double('ganancia', 8, 2);
+            $table->double('incremento', 8, 2);
+            $table->double('resultado', 8, 2);
+            $table->double('totalneto', 8, 2);
             $table->timestamps();
         });
     }

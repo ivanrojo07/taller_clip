@@ -48,9 +48,11 @@ class ObraController extends Controller
         $obra->tipo_material = 'tipo de material';
         $obra->descripcion = $request->descripcion;
         $obra->save();
-        for($i = 0; $i<sizeof($request->materiaids); $i++ ){
-            $obra->materiales()->attach($request->materiaids[$i], ['cantidad'=>$request->cantidades[$i]]);
-        }
+        // for($i = 0; $i<sizeof($request->materiaids); $i++ ){
+        //     $obra->materiales()->attach($request->materiaids[$i], ['cantidad'=>$request->cantidades[$i]]);
+        // }
+        $canti = $request->cancantidades;
+        $obra->materiales()->attach($canti);
         return response()->json(['materiales'=>$obra->materiales], 201);
     }
 

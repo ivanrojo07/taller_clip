@@ -12,7 +12,11 @@ class Cotizacion extends Model
     protected $fillable=['cliente',
                          'nocotizacion',
                          'fechaactual',
-                         'fechaentrega'];
+                         'fechaentrega',
+                        'ganancia',
+                    'incremento',
+                'resultado',
+            'totalneto'];
 
 
     public function varios(){

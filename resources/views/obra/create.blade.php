@@ -66,7 +66,7 @@
                                 <option value="">---</option>
                                 <option value="montaje">Montajes</option>
                                 <option value="proteccion">Protección</option>
-                                <option value="marcos">Marcos</option>
+                                <option value="marco">Marcos</option>
                                 <option value="maria">Maria Luisa</option>
                                 <option value="generales">Generales</option>
                             </select>

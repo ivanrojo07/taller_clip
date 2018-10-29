@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Cotizacion;
 
 use App\Cotizacion;
+use App\Orden;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,7 +17,7 @@ class CotizacionController extends Controller
     public function index()
     {
         $cotizaciones = Cotizacion::get();
-        return view('cotizacion.index');
+        return view('cotizacion.historial');
     }
 
     /**
@@ -26,7 +27,8 @@ class CotizacionController extends Controller
      */
     public function create()
     {
-        return view('cotizacion.create');
+        $ordenes = Orden::get();
+        return view('cotizacion.create',['ordenes'=>$ordenes]);
     }
 
     /**
