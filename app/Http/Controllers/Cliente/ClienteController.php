@@ -29,7 +29,7 @@ class ClienteController extends Controller
     public function create()
     {
         $edit = false;
-        $cliente= new Cliente();
+        $cliente = new Cliente();
         return view('clientes.create',['cliente'=>$cliente,'edit'=>$edit]);
     }
 
@@ -42,16 +42,8 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         
-        //$rfc = Cliente::where('rfc', $request->rfc)->get();
-        // if (count($rfc)!=0) {
-        //     # code...
-        //     return redirect()->back()->with('errors','El RFC ya existe');                               
-        // } else {
-        //     # code...
-        //        }
-               
          $cliente = Cliente::create($request->all());
-                Alert::success('Proveedor creado con éxito', 'Siga agregando información');
+                Alert::success('Cliente creado con éxito', 'Siga agregando información');
                 return redirect()->route('clientes.direccion.index', ['cliente'=>$cliente]);
             
     }

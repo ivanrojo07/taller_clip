@@ -33,11 +33,72 @@
         </button>
       </div>
       <div class="modal-body">
-        <ul class="list-group">
+
+
+
+
+       
+
+
+
+<div id="accordion">
+
+
           @foreach($orden->obras as $obra)
-          <li class="list-group-item">{{$obra->nombre}}</li>
-          @endforeach
-        </ul>
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{$obra->id}}">
+        {{$obra->nombre}}
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapse{{$obra->id}}" class="collapse collapsed show"  data-parent="#accordion">
+      <div class="card-body">
+      <ul class="list-group list-group-flush">
+        @foreach($obra->materiales as $material)
+          <li class="list-group-item">{{$material->clave}}</li>
+        @endforeach
+      </ul> 
+
+        </div>
+    </div>
+  </div>
+  @endforeach
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

@@ -9,10 +9,10 @@
 								<h4>Datos del cliente:</h4>
 							</div>
 							<div class="col-sm-3">
-								<a class="btn btn-info" href="{{ route('clientes.create') }}"><strong>Nuevo Proveedor</strong></a>
+								<a class="btn btn-info" href="{{ route('clientes.create') }}"><strong>Nuevo Cliente</strong></a>
 							</div>
 							<div class="col-sm-3">
-								<a class="btn btn-primary" href="{{ route('clientes.index') }}"><strong>Ver Proveedores</strong></a>
+								<a class="btn btn-primary" href="{{ route('clientes.index') }}"><strong>Ver Clientes</strong></a>
 							</div>
 						</div>
 						

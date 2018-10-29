@@ -9,21 +9,21 @@
   <div class="form-row">
     <div class="form-group col col-md-6">
       <label for="cliente">Cliente</label>
-      <input form="formcotizacion" required type="text" class="form-control" id="cliente" placeholder="Cliente">
+      <input form="formcotizacion" required type="text" name="cliente" class="form-control" id="cliente" placeholder="Cliente">
     </div>
     <div class="form-group col  col-md-6">
       <label for="nocotizacion">#Cotizacion</label>
-      <input form="formcotizacion" required type="number" class="form-control" id="nocotizacion" placeholder="Ejemp: 0001">
+      <input form="formcotizacion" required type="number" class="form-control" name="nocotizacion" id="nocotizacion" placeholder="Ejemp: 0001">
     </div>
   </div>
   <div class="form-row">
   <div class="form-group col col-md-6">
     <label for="fechaactual">Fecha Actual</label>
-    <input form="formcotizacion" required type="date" readonly class="form-control" id="fechaactual" value="{{date('Y-m-d')}}">
+    <input form="formcotizacion" required type="date" readonly class="form-control" name="fechaactual" id="fechaactual" value="{{date('Y-m-d')}}">
   </div>
   <div class="form-group col col-md-6">
     <label for="fechaentrega">Fecha de Entrega</label>
-    <input form="formcotizacion" required type="date" class="form-control" id="fechaentrega" placeholder="Apartment, studio, or floor">
+    <input form="formcotizacion" required type="date" class="form-control" name="fechaentrega" id="fechaentrega" placeholder="Apartment, studio, or floor">
   </div>
   </div>
 </form>
@@ -41,6 +41,7 @@
   <tbody>
     @foreach ($ordenes as $orden)
         <tr id="row{{$orden->id}}">
+          <input type="hidden" class="idere" value="orden{{$orden->id}}">
           <td class="nombre"> {{$orden->nombre}}</td><td class="fecha"> {{$orden->fecha}}</td><td class="noorden"> {{$orden->noorden}}</td><td class="descripcion"> {{$orden->descripcion}}</td><td class="nopiezas"> {{$orden->nopiezas}}</td>
           <td><button class="btn btn-success" onclick="agregaratabla('row{{$orden->id}}')">Agregar</button></td>
         </tr>
@@ -229,13 +230,13 @@
     </div>
     <div class="form-group col pt-4 col-md-4">
       <div class="form-check">
-        <input required form="formcotizacion" class="form-check-input" type="radio" name="iva" id="coniva" value="1">
+        <input required form="formcotizacion" class="form-check-input" type="radio" name="iva" id="coniva" value="1.6">
         <label class="form-check-label" for="coniva">
           con IVA
         </label>
       </div>
       <div class="form-check">
-        <input required form="formcotizacion" class="form-check-input" type="radio" name="iva" id="siniva" value="0">
+        <input required form="formcotizacion" class="form-check-input" type="radio" name="iva" id="siniva" value="1">
         <label class="form-check-label" for="siniva">
           sin IVA
         </label>
@@ -269,10 +270,10 @@ $('#agregarmanodeobra').click(function(){
                     });
                     return 0;
   }
-            var ht =  '<tr id="algo'+ contador+'"><td>'+ $('#nombremanodeobra').val()+'</td>'+
-                   ' <td>'+ $('#puestomanodeobra').val()+'</td>'+
-                    '<td class="montomanodeobra">'+ $('#montomanodeobra').val()+'</td>'+
-                    '<td>'+ $('#desmanodeobra').val()+'</td>'+
+            var ht =  '<tr id="algo'+ contador+'"><td> <input type="hidden" form="formcotizacion" name="manodeobrasn[]" value="'+ $('#nombremanodeobra').val()+'"> '+ $('#nombremanodeobra').val()+'</td>'+
+                   ' <td><input type="hidden" form="formcotizacion" name="manodeobrasp[]" value="'+ $('#puestomanodeobra').val()+'" >'+ $('#puestomanodeobra').val()+'</td>'+
+                    '<td class="montomanodeobra"> <input type="hidden" form="formcotizacion" name="manodeobrasm[]" value="'+ $('#montomanodeobra').val()+'">'+ $('#montomanodeobra').val()+'</td>'+
+                    '<td><input type="hidden" form="formcotizacion" name="manodeobrasd[]" value="'+ $('#desmanodeobra').val()+'"> '+ $('#desmanodeobra').val()+'</td>'+
                     '<td><button class="btn btn-danger" onclick="quitar('+contador+')">Eliminar</button></td></tr>';
             $('#tablamanodeobras').append(ht);
             calcular();
@@ -288,8 +289,8 @@ $('#agregarvario').click(function(){
                     });
                     return 0;
   }
-            var ht =  '<tr id="algo'+ contador+'"><td class="montovario">'+ $('#montovario').val()+'</td>'+
-                   ' <td>'+ $('#desvario').val()+'</td>'+
+            var ht =  '<tr id="algo'+ contador+'"><td class="montovario"><input type="hidden" form="formcotizacion" name="variosm[]" value="'+ $('#montovario').val()+'" > '+ $('#montovario').val()+'</td>'+
+                   ' <td> <input type="hidden" form="formcotizacion" name="variosd[]" value="'+ $('#desvario').val()+'" > '+ $('#desvario').val()+'</td>'+
                     '<td><button class="btn btn-danger" onclick="quitar('+contador+')">Eliminar</button></td></tr>';
             $('#tablavarios').append(ht);
             calcular();
@@ -305,9 +306,9 @@ $('#agregarenvio').click(function(){
                     });
                     return 0;
   }
-            var ht =  '<tr id="algo'+ contador+'"><td>'+ $('#direccionenvio').val()+'</td>'+
-                   ' <td>'+ $('#desenvio').val()+'</td>'+
-                   ' <td class="montoenvio">'+ $('#montoenvio').val()+'</td>'+
+            var ht =  '<tr id="algo'+ contador+'"><td> <input type="hidden" form="formcotizacion" name="enviosdi[]" value="'+ $('#direccionenvio').val()+'" > '+ $('#direccionenvio').val()+'</td>'+
+                   ' <td> <input type="hidden" form="formcotizacion" name="enviosd[]" value="'+ $('#desenvio').val()+'" >'+ $('#desenvio').val()+'</td>'+
+                   ' <td class="montoenvio"> <input type="hidden" form="formcotizacion" name="enviosm[]" value="'+ $('#montoenvio').val()+'"  > '+ $('#montoenvio').val()+'</td>'+
                     '<td><button class="btn btn-danger" onclick="quitar('+contador+')">Eliminar</button></td></tr>';
             $('#tablaenvios').append(ht);
             calcular();
@@ -320,7 +321,7 @@ $('.form-check-input').change(function(){
 function agregaratabla(cosa){
             var row = $('#'+cosa);
             var ht =  '<tr id="esoeso'+cosa+'"><td>'+ row.find('.nombre').text()+'</td>'+
-                   ' <td>'+ row.find('.fecha').text()+'</td>'+
+                   '<input type="hidden" form="formcotizacion" name="ordenids[]" value="'+ row.find('.idere').val().replace('orden', '')+'"> <td>'+ row.find('.fecha').text()+'</td>'+
                     '<td>'+ row.find('.noorden').text()+'</td>'+
                     '<td>'+ row.find('.descripcion').text()+'</td>'+
                     '<td>'+ row.find('.nopiezas').text()+'</td>'+
@@ -370,13 +371,15 @@ function calcular(){
 
   $('#totalproyecto').val(totalmanodeobra + totalvarios + totalenvio);
 
-
 var resul = parseInt( $('#totalproyecto').val(), 10)  + parseInt($('#incremento').val(), 10) ;
 if($('#incremento').val() == 0){
-  resul = $('#totalproyecto').val() * $('#ganacia').val() / 100;
+  resul = $('#totalproyecto').val() * (1 + ($('#ganacia').val() / 100));
 }
 
   $('#resultado').val(resul);
+if($('input[name=iva]:checked').val()){
+  $('#totalneto').val(resul * $('input[name=iva]:checked').val());
+}
 
 }
 

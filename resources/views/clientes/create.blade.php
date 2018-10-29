@@ -114,11 +114,11 @@
 			  						<label class="control-label" for="nombre"> 
 									<i class="fa fa-asterisk" aria-hidden="true"></i>
 							          Nombre(s):</label>
-			  						<input required type="text" class="form-control" id="idnombre" name="nombre" value="{{ $cliente->nombre }}" >
+			  						<input  type="text" class="form-control" id="idnombre" name="nombre" value="{{ $cliente->nombre }}" >
 			  					</div>
 			  					<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
 			  						<label class="control-label" for="apellidopaterno"><i class="fa fa-asterisk" aria-hidden="true"></i>Apellido Paterno:</label>
-			  						<input required type="text" class="form-control" id="apellidopaterno" name="apellidopaterno" value="{{ $cliente->apellidopaterno }}" >
+			  						<input type="text" class="form-control" id="apellidopaterno" name="apellidopaterno" value="{{ $cliente->apellidopaterno }}" >
 			  					</div>
 			  					<div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
 			  						<label class="control-label" for="apellidomaterno">Apellido Materno:</label>

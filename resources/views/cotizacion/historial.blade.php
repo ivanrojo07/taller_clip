@@ -9,57 +9,27 @@
     <div class="col-8 offset-2">
         <table class="table">
             <thead>
-                <tr class="bg-primary">
-                    <th scope="col">ID</th>
-                    <th scope="col">Clave</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Fecha</th>
-                    <th scope="col">Costo total</th>
-                    <th scope="col">Status</th>
+                <tr>
+                    <th>ID</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">#Cotizacion</th>
                     <th scope="col">Fecha de creación</th>
-                    <th scope="col">Operación</th>
+                    <th scope="col">Fecha de entrega</th>
+                    <th scope="col">Costo total</th>
                 </tr>
             </thead>
             <tbody>
-            <tr>
-                    <th scope="row">1</th>
-                    <td>0</td>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>
-                    <button type="button" class="btn btn-primary">Editar</button>
-                    <button type="button" class="btn btn-success">Crear</button>
-                    </td>              
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>0</td>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>
-                    <button type="button" class="btn btn-primary">Editar</button>
-                    <button type="button" class="btn btn-success">Crear</button>
-                    </td>              
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>0</td>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>
-                    <button type="button" class="btn btn-primary">Editar</button>
-                    <button type="button" class="btn btn-success">Crear</button>
-                    </td>              
-                </tr>
+                @foreach($cotizaciones as $cotizacion)
+                    <tr>
+                        <td>{{$cotizacion->id}}</td>
+                        <td>{{$cotizacion->cliente}}</td>
+                        <td>{{$cotizacion->nocotizacion}}</td>
+                        <td>{{$cotizacion->fechaactual}}</td>
+                        <td>{{$cotizacion->fechaentrega}}</td>
+                        <td>{{$cotizacion->totalneto}}</td>
+                        <td></td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
