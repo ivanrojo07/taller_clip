@@ -56,7 +56,7 @@
 						</div>
 						<div class="form-group col-xs-3">
 							<label class="control-label" for="nombre"><i class="fa fa-asterisk" aria-hidden="true"></i> RFC:</label>
-							<input type="text" class="form-control" id="nombre" name="nombre" required="required" value="{{ $empleado->nombre }}">
+							<input type="text" class="form-control" id="rfc" name="rfc" required="required" value="{{ $empleado->rfc }}">
 						</div>
 						
 					</div>
