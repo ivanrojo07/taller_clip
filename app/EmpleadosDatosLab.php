@@ -12,53 +12,53 @@ class EmpleadosDatosLab extends Model
 
     protected $table='empleadosdatoslab';
 
-    protected $fillable=[
-     'id',
-     'empleado_id',
-     'fechacontratacion',
-     'fechaactualizacion',
-     'contrato_id',
-     'salarionom',
-     'salariodia',
-     'periodopaga',
-     'prestaciones',
-     'regimen',
-     'hentrada',
-     'hsalida',
-     'hcomida',
-     'lugartrabajo',
-     'banco',
-     'cuenta',
-     'clabe',
-     'fechabaja',
-     'tipobaja_id',
-     'comentariobaja',
-     'bonopuntualidad',
-     'area_id',
-     'puesto_id',
-     'sucursal_id'];
+    protected $fillable = [
+        'id',
+        'empleado_id',
+        'fechacontratacion',
+        'fechaactualizacion',
+        'contrato_id',
+        'salarionom',
+        'salariodia',
+        'periodopaga',
+        'prestaciones',
+        'regimen',
+        'hentrada',
+        'hsalida',
+        'hcomida',
+        'banco',
+        'cuenta',
+        'clabe',
+        'fechabaja',
+        'tipobaja_id',
+        'comentariobaja',
+        'bonopuntualidad',
+        'area_id',
+        'puesto_id',
+    ];
 
     protected $hidden=['created_at','updated_at'];
 
     public $sortable=['id'];
 
-    public function empleado(){
+    public function empleado() {
     	return $this->belongsTo('App\Empleado', 'empleado_id');
     }
-    public function tipocontrato(){
+
+    public function tipocontrato() {
     	return $this->hasOne('App\TipoContrato', 'contrato_id');
     }
-    public function tipobaja(){
+
+    public function tipobaja() {
     	return $this->hasOne('App\TipoBaja','tipobaja_id');
     }
-    public function areas(){
+
+    public function areas() {
         return $this->hasOne('App\Area','area_id');
     }
-    public function puestos(){ 
+
+    public function puestos() {
         return $this->hasOne('App\Puesto','puesto_id');
-    }
-      public function sucursal(){
-        return $this->belongsTo('App\Sucursal', 'sucursal_id');
     }
 
 }

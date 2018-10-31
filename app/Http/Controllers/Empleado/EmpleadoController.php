@@ -18,20 +18,8 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        
-       $empleados = Empleado::sortable()->paginate(10);
-        $areas=Area::get();
-        $puestos=Puesto::get();
-        $sucursales=Sucursal::get();
-        
-        return view('empleado.index',[
-            'empleados' => $empleados,
-            'areas'     =>     $areas,
-            'puestos'   =>   $puestos,
-            'sucursales'=>$sucursales
-            ]);
-    
-
+        $empleados = Empleado::sortable()->paginate(10);
+        return view('empleado.index', ['empleados' => $empleados]);
     }
 
     /**
@@ -41,13 +29,9 @@ class EmpleadoController extends Controller
      */
     public function create()
     {
-        //
-        $empleado = Empleado::create(); //new Empleado;
+        $empleado = new Empleado();
         $edit = false;
-
-        
-        return view('empleado.create',['empleado'=>$empleado,
-                                       'edit'=>$edit]);
+        return view('empleado.create', ['empleado' => $empleado, 'edit' => $edit]);
     }
 
     /**
@@ -58,13 +42,8 @@ class EmpleadoController extends Controller
      */
     public function store(Request $request)
     {
-        
-        
-        
-         $empleado = Empleado::where('id',$request->id)->first();
-         $empleado->update($request->all());
-         
-            return redirect()->route('empleados.show',['empleado'=>$empleado])->with('success','Empleado Creado');
+        $empleado = Empleado::create($request->all());
+        return redirect()->route('empleados.show', ['empleado' => $empleado])->with('success', 'Empleado Creado');
     }
 
     /**

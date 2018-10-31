@@ -12,8 +12,8 @@ class Obra extends Model
                         'nopiezas',
                         'alto',
                         'ancho',
-                        'medidas',
                         'profundidad',
+                        'unidad',
                         'tipodematerial',
                         'descripcion'];
         

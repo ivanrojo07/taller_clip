@@ -29,9 +29,6 @@ class CreateMaterialsTable extends Migration
             // $table->foreign('proveedor_id')->references('id')->on('clientes');
 
             $table->float('precio', 8, 2);
-
-            $table->integer('descripcion_id')->unsigned();
-            $table->foreign('descripcion_id')->references('id')->on('descripcions');
             $table->timestamps();
         });
     }

@@ -19,7 +19,7 @@ class CreateOrdensTable extends Migration
             $table->date('fecha');
             $table->integer('noorden');
             $table->string('descripcion');
-            $table->integer('nopiezas');         
+            $table->integer('noobras');         
             $table->timestamps();
         });
     }

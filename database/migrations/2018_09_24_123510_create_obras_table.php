@@ -17,10 +17,10 @@ class CreateObrasTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->integer('nopiezas');
-            $table->integer('alto');
-            $table->integer('ancho');
-            $table->string('medidas');
-            $table->integer('profundidad');
+            $table->decimal('alto');
+            $table->decimal('ancho');
+            $table->decimal('profundidad');
+            $table->string('unidad');
             $table->string('tipo_material');
             $table->string('descripcion');
 
