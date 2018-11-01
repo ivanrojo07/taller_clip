@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Material;
 
-use App\Material;
 use App\Descripcion;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Material;
+use App\Provedor;
+use Illuminate\Http\Request;
 
 class MaterialController extends Controller
 {
@@ -16,8 +17,10 @@ class MaterialController extends Controller
      */
     public function index(Request $req)
     {
-        $materiales = Material::where('seccion', $req->seccion)->with(['descripcion'])->get();
-        return $materiales;
+        $materiales = Material::paginate(10);
+
+        return view('material.index',['materiales'=>$materiales]);
+       
     }
 
     /**
@@ -27,9 +30,10 @@ class MaterialController extends Controller
      */
     public function create()
     {
-        $descripciones = Descripcion::get();
-        $materiales = Material::get();
-        return view('material.create', ['materiales'=>$materiales, 'descripciones'=>$descripciones]);
+        $edit=false;
+        $proveedores = Provedor::get();
+        $alert = null;
+        return view('material.create', ['edit'=>$edit, 'alert'=>$alert, "provedores"=>$proveedores]);
     }
 
     /**
@@ -42,7 +46,7 @@ class MaterialController extends Controller
     {
         $material = new Material;
         $material->seccion = $request->seccion;
-        $material->descripcion_id = $request->descripcion;
+        $material->descripcion = $request->descripcion;
         $material->clave = $request->clave;
         $material->ancho = $request->ancho;
         $material->alto = $request->alto;
@@ -51,9 +55,14 @@ class MaterialController extends Controller
         $material->color = $request->color;
         $material->proveedor_id = $request->proveedor;
         $material->precio = $request->precio;
+        $material->costo = $request->costo;
+        $material->ganancia = $request->ganancia;
+        // ¿por que tipo1?
         $material->tipo = 'tipo1';
+
         $material->save();
-        return redirect()->route('material.create');
+        $alert = ['message'=>"Material ".$material->clave." registrado", 'class'=>'success'];
+        return redirect()->route('material.create')->with('alert',$alert);
     }
 
     /**
@@ -76,6 +85,11 @@ class MaterialController extends Controller
     public function edit(Material $material)
     {
         //
+        $edit=true;
+        $proveedores = Provedor::get();
+        // dd($material);
+        $alert= null;
+        return view('material.create', ['edit'=>$edit,'alert'=>$alert, "material"=>$material, "provedores"=>$proveedores]);
     }
 
     /**
@@ -88,6 +102,20 @@ class MaterialController extends Controller
     public function update(Request $request, Material $material)
     {
         //
+        $material->seccion = $request->seccion;
+        $material->descripcion = $request->descripcion;
+        $material->clave = $request->clave;
+        $material->ancho = $request->ancho;
+        $material->alto = $request->alto;
+        $material->espesor = $request->espesor;
+        $material->medidas = $request->medidas;
+        $material->color = $request->color;
+        $material->proveedor_id = $request->proveedor;
+        $material->precio = $request->precio;
+        $material->costo = $request->costo;
+        $material->ganancia = $request->ganancia;
+        $material->save();
+        return redirect()->route('material.index');
     }
 
     /**
@@ -101,7 +129,8 @@ class MaterialController extends Controller
         //
     }
 
-    public function buscarMateriales(){
-        
+    public function buscarMateriales(Request $req){
+         $materiales = Material::where('seccion', $req->seccion)->with(['descripcion'])->get();
+            return $materiales;
     }
 }
