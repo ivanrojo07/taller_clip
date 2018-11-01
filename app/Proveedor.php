@@ -2,57 +2,54 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Kyslik\ColumnSortable\Sortable;
 
-class Provedor extends Model
+class Proveedor extends Model
 {
-    use Sortable, SoftDeletes;
+    use Sortable;
 
     protected $table='proveedores';
 
     protected $fillable = [
         'id',
-        'tipopersona',
         'nombre',
         'apellidopaterno',
         'apellidomaterno',
         'razonsocial',
-        'alias',
+        'tipopersona',
         'rfc',
-        'vendedor',
         'email',
         'calle',
         'numext',
         'numinter',
+        'cp',
         'colonia',
         'municipio',
         'ciudad',
         'estado',
-        'calle1',
-        'calle2',
+        'calles',
         'referencia'
     ];
     
     public $sortable = ['id', 'nombre','apellidopaterno','apellidomaterno', 'razonsocial', 'email'];
 
     protected $hidden = [
-        'updated_at', 'created_at', 'deleted_at'
+        'updated_at', 'created_at'
     ];
 
-    public function direccionFisicaProvedor(){
-        return $this->hasOne('App\DireccionFisicaProvedor');
+    public function fiscal() {
+        return $this->hasOne('App\DireccionFisicaProveedor');
     }
 
-    public function contactosProvedor(){
-        return $this->hasMany('App\ContactoProvedor');
+    public function contactos() {
+        return $this->hasMany('App\ContactoProveedor');
     }
 
-    public function datosGeneralesProvedor(){
-        return $this->hasOne('App\DatosGeneralesProvedor');
+    public function generales() {
+        return $this->hasOne('App\DatosGeneralesProveedor');
     }
 
-    public function datosBancarios(){
+    public function bancarios() {
         return $this->hasOne('App\DatosBancariosProveedor');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Provedor;
+namespace App\Http\Controllers\Proveedor;
 
 use App\DatosBancariosProveedor;
 use App\Provedor;

@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Provedor;
+namespace App\Http\Controllers\Proveedor;
 
-use App\Provedor;
+use App\Proveedor;
 use UxWeb\SweetAlert\SweetAlert as Alert;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 
-class ProvedorController extends Controller{
+class ProveedorController extends Controller{
 
  // use Alert;
     /**
@@ -18,10 +18,8 @@ class ProvedorController extends Controller{
      */
     public function index()
     {
-        //
-        $provedores = Provedor::sortable()->paginate(5);
-        // Alert::message('Robots are working!');
-        return view('provedores.index', ['provedores'=>$provedores]);
+        $proveedores = Proveedor::sortable()->paginate(5);
+        return view('proveedores.index', ['proveedores' => $proveedores]);
     }
 
     /**
@@ -31,8 +29,7 @@ class ProvedorController extends Controller{
      */
     public function create()
     {
-        //
-        return view('provedores.create');
+        return view('proveedores.create');
     }
 
     /**
@@ -43,21 +40,13 @@ class ProvedorController extends Controller{
      */
     public function store(Request $request)
     {
-        //
-        $provedore = Provedor::where('rfc',$request->rfc)->get();
-        // dd(count($provedore));
-        if (count($provedore) != 0) {
-            # code...
-            // alert()->error('Error Message', 'Optional Title');
-            // return redirect()->route('clientes.create');
+        // dd($request->all());
+        $proveedor = Proveedor::where('rfc', $request->rfc)->get();
+        if (count($proveedor) > 0)
             return redirect()->back()->with('errors', 'El RFC ya existe');
-        } else {
-            # code...
-            $provedore = Provedor::create($request->all());
-            Alert::success("Proveedor creado con exito, sigue agregando información")->persistent("Cerrar");
-            return redirect()->route('provedores.direccionfisica.create',['provedore'=>$provedore]);
-        }
-        
+        $proveedor = Proveedor::create($request->all());
+        Alert::success("Proveedor agregado con éxito.");
+        return redirect()->route('proveedores.show', ['proveedor' => $proveedor]);
     }
 
     /**
@@ -66,10 +55,10 @@ class ProvedorController extends Controller{
      * @param  \App\provedore  $provedore
      * @return \Illuminate\Http\Response
      */
-    public function show(Provedor $provedore)
+    public function show($id)
     {
-        
-        return view('provedores.view', ['provedore'=>$provedore]);
+        $proveedor = Proveedor::find($id);
+        return view('proveedores.view', ['proveedor' => $proveedor]);
     }
 
     /**
@@ -78,10 +67,10 @@ class ProvedorController extends Controller{
      * @param  \App\Personal  $personal
      * @return \Illuminate\Http\Response
      */
-    public function edit(Provedor $provedore)
+    public function edit(Proveedor $proveedor)
     {
-        //
-        return view('provedores.edit',['provedore'=>$provedore]);
+        dd($proveedor);
+        return view('proveedores.edit', ['proveedor' => $proveedor]);
     }
 
     /**
@@ -91,7 +80,7 @@ class ProvedorController extends Controller{
      * @param  \App\Personal  $personal
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Provedor $provedore)
+    public function update(Request $request, Proveedor $provedore)
     {
         
         $provedore->update($request->all());

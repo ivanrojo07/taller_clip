@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Provedor;
+namespace App\Http\Controllers\Proveedor;
 use UxWeb\SweetAlert\SweetAlert as Alert;
 use App\DireccionFisicaProvedor;
 use App\Http\Controllers\Controller;
 use App\Provedor;
 use Illuminate\Http\Request;
 
-class ProvedorDireccionFisicaController extends Controller
+class ProveedorDireccionFisicaController extends Controller
 {
     /**
      * Display a listing of the resource.

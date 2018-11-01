@@ -24,7 +24,7 @@ Route::get('getbajas','Precargas\TipoBajaController@getBajas');
 Route::get('getgiros','Giro\GiroController@getGiros');
 Route::get('getformas','FormaContacto\FormaContactoController@getFormas');
 Route::get('getfaltas','Falta\FaltaController@getFaltas');
-Route::get('getprov','Provedor\ProvedorController@getProveedor');
+Route::get('getprov','Proveedor\ProveedorController@getProveedor');
 Route::get('getcontacto','FormaContacto\FormaContactoController@getFormas');
 
 Route::get('fecha','Crm\CrmController@porFecha')->name('fecha');
@@ -80,11 +80,11 @@ Route::resource('formacontactos','FormaContacto\FormaContactoController');
 //Route::resource('clientes','Personal\PersonalController');
 
 //-----------------------------------------------------
-Route::resource('provedores','Provedor\ProvedorController');
-Route::resource('provedores.direccionfisica','Provedor\ProvedorDireccionFisicaController');
-Route::resource('provedores.datosgenerales','Provedor\ProvedorDatosGeneralesController');
-Route::resource('provedores.contacto','Provedor\ProvedorContactoController');
-Route::resource('provedores.datosbancarios','Provedor\ProveedorDatosBancariosController');
+Route::resource('proveedores','Proveedor\ProveedorController');
+Route::resource('proveedores.direccionFiscal','Proveedor\ProveedorDireccionFisicaController');
+Route::resource('proveedores.datosGenerales','Proveedor\ProveedorDatosGeneralesController');
+Route::resource('proveedores.contacto','Proveedor\ProveedorContactoController');
+Route::resource('proveedores.datosBancarios','Proveedor\ProveedorDatosBancariosController');
 //----------------------------------------------------------
 Route::resource('giros','Giro\GiroController', ['except'=>'show']);
 //---------------------------------------------------------------------
