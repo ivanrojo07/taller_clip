@@ -2,18 +2,16 @@
 
 namespace App;
 
-use App\Cliente;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ClienteCRM extends Model
-{
-    //
+class ClienteCRM extends Model {
+
     use SoftDeletes;
 
-    protected $table='cliente_crm';
+    protected $table = 'cliente_crm';
 
-    protected $fillable=[
+    protected $fillable = [
     	'id',
     	'cliente_id',
     	'fecha_act',
@@ -27,13 +25,14 @@ class ClienteCRM extends Model
     	'tipo_cont'
     ];
 
-    protected $hidden=[
+    protected $hidden = [
     	'updated_at',
     	'created_at',
     	'deleted_at'
     ];
 
-    public function cliente(){
-    	return $this->belongsTo(Cliente::class,'cliente_id');
+    public function cliente() {
+    	return $this->belongsTo('App\Cliente');
     }
+
 }

@@ -2,87 +2,69 @@
 
 namespace App;
 
-use App\Beneficiarios;
-use App\ClienteCRM;
-use App\ClienteContactos;
-use App\ClienteDatosGen;
-use App\ClienteDireccion;
-use App\DatosLab;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Kyslik\ColumnSortable\Sortable;
 
-class Cliente extends Model
-{
-    use Sortable, SoftDeletes;
-    //
-    protected $table='clientes';
+class Cliente extends Model {
 
-   protected $fillable = [
-     	'id',
-      'tipopersona',
-      'tipo',
-      'prioridad',
-      'calificacion',
-      'nombre',
-      'apellidopaterno',
-      'apellidomaterno',
-      'razonsocial',
-      'mail',
-      'rfc',
-      'telefono',
-      'celular',
-      'calle',
-      'numext',
-      'numinter',
-      'cp',
-      'colonia',
-      'municipio',
-      'ciudad',
-      'estado',
-      'referencia',
-      'calle1',
-      'calle2'
-    ];
-   /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    public $Sortable = [
-    	'id',
-    	'nombre',
-      'apellidopaterno',
-      'apellidomaterno',
-      'razonsocial',
-      'rfc'
-    ];
+	use Sortable;
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'created_at',
-        'updated_at',
-        'deleted_at'
-    ];
+	protected $table='clientes';
 
-    public function direccion(){
-      return $this->hasOne(ClienteDireccion::class);
-    }
+	protected $fillable = [
+		'id',
+		'nombre',
+		'apellidopaterno',
+		'apellidomaterno',
+		'razonsocial',
+		'tipopersona',
+		'contactop',
+		'mail',
+		'rfc',
+		'tel_casa',
+		'tel_oficina',
+		'tel_celular',
+		'calle',
+		'numext',
+		'numinter',
+		'cp',
+		'colonia',
+		'municipio',
+		'ciudad',
+		'estado',
+		'referencia',
+		'calles',
+	];
 
-    public function contactos(){
-      return $this->hasMany(ClienteContactos::class);
-    }
+	public $Sortable = [
+	 	'id',
+	 	'nombre',
+	 	'apellidopaterno',
+	 	'apellidomaterno',
+	 	'razonsocial',
+		'rfc'
+ 	];
 
-    public function datoGen(){
-      return $this->hasOne(ClienteDatosGen::class);
-    }
+	protected $hidden = [
+		'created_at',
+		'updated_at',
+		'deleted_at'
+	];
 
-    public function crm() {
-      return $this->hasMany('App\ClienteCRM');
-  }
-  
+	public function fiscal() {
+		return $this->hasOne('App\ClienteDireccionFiscal');
+	}
+
+	public function entrega() {
+		return $this->hasOne('App\ClienteDireccionEntrega');
+	}
+
+	public function descuentos() {
+		return $this->hasMany('App\ClienteDescuento');
+	}
+
+	public function crm() {
+		return $this->hasMany('App\ClienteCRM');
+	}
+
 }

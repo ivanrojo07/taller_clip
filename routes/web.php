@@ -30,9 +30,9 @@ Route::get('getcontacto','FormaContacto\FormaContactoController@getFormas');
 Route::get('fecha','Crm\CrmController@porFecha')->name('fecha');
 Route::get('getclient', 'Cliente\ClienteController@getClient');
 Route::resource('clientes', 'Cliente\ClienteController');
-Route::resource('clientes.direccion','Cliente\ClienteDireccionController');
-Route::resource('clientes.contactos','Cliente\ClienteContactosController');
-Route::resource('clientes.datos','Cliente\ClienteDatosGenController');
+Route::resource('clientes.direccionFiscal','Cliente\ClienteDireccionFiscalController')->except(['show', 'destroy']);
+Route::resource('clientes.direccionEntrega','Cliente\ClienteDireccionEntregaController')->except(['show', 'destroy']);
+Route::resource('clientes.descuentos','Cliente\ClienteDescuentoController');
 Route::resource('clientes.crm','Cliente\ClienteCRMController');
 Route::resource('personals', 'Personal\PersonalController');
 Route::resource('personals.datoslaborales', 'Personal\PersonalDatosLabController');
@@ -78,11 +78,6 @@ Route::get('consulta',function(){
 Route::resource('formacontactos','FormaContacto\FormaContactoController');
 
 //Route::resource('clientes','Personal\PersonalController');
-Route::resource('clientes','Cliente\ClienteController');
-Route::resource('clientes.direccionfisica','Provedor\ProvedorDireccionFisicaController');
-Route::resource('clientes.contacto','Personal\PersonalContactoController');
-Route::resource('clientes.datosgenerales','Personal\PersonalDatosGeneralesController', ['except'=>'show']);
-
 
 //-----------------------------------------------------
 Route::resource('provedores','Provedor\ProvedorController');

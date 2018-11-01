@@ -16,9 +16,8 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        //
-        $clientes = Cliente::sortable()->paginate(5);
-        return view('clientes.index',['clientes'=>$clientes]);
+        $clientes = Cliente::sortable()->paginate(8);
+        return view('clientes.index', ['clientes' => $clientes]);
     }
 
     /**
@@ -28,9 +27,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        $edit = false;
-        $cliente = new Cliente();
-        return view('clientes.create',['cliente'=>$cliente,'edit'=>$edit]);
+        return view('clientes.create');
     }
 
     /**
@@ -41,11 +38,9 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        
-         $cliente = Cliente::create($request->all());
-                Alert::success('Cliente creado con éxito', 'Siga agregando información');
-                return redirect()->route('clientes.direccion.index', ['cliente'=>$cliente]);
-            
+        $cliente = Cliente::create($request->all());
+        Alert::success('Cliente creado con éxito', 'Siga agregando información');
+        return redirect()->route('clientes.direccion.index', ['cliente' => $cliente]);
     }
 
     /**
@@ -56,8 +51,7 @@ class ClienteController extends Controller
      */
     public function show(Cliente $cliente)
     {
-        //
-        return view('clientes.view',['cliente'=>$cliente]);
+        return view('clientes.view', ['cliente' => $cliente]);
     }
 
     /**
@@ -68,9 +62,7 @@ class ClienteController extends Controller
      */
     public function edit(Cliente $cliente)
     {
-        //
-        $edit=true;
-        return view('clientes.create',['cliente'=>$cliente,'edit'=>$edit]);
+        return view('clientes.edit', ['cliente' => $cliente]);
     }
 
     /**
@@ -82,10 +74,9 @@ class ClienteController extends Controller
      */
     public function update(Request $request, Cliente $cliente)
     {
-        //
         $cliente->update($request->all());
         Alert::success('Datos actualizados');
-        return redirect()->route('clientes.show',['cliente'=>$cliente]);
+        return redirect()->route('clientes.show', ['cliente' => $cliente]);
 
     }
 

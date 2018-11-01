@@ -25,7 +25,7 @@ class CreateClienteCrmTable extends Migration
             $table->text('comentarios')->nullable();
             $table->text('acuerdos')->nullable();
             $table->text('observaciones')->nullable();
-            $table->enum('tipo_cont',['Mail','Telefono','Cita','Whatsapp','Otro']);
+            $table->enum('tipo_cont', ['Mail', 'Telefono', 'Cita', 'Whatsapp', 'Otro']);
             $table->softDeletes();
             $table->timestamps();
         });

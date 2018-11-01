@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClienteDireccionTable extends Migration
+class CreateClienteDireccionFiscalsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,20 @@ class CreateClienteDireccionTable extends Migration
      */
     public function up()
     {
-        Schema::create('cliente_direccion', function (Blueprint $table) {
+        Schema::create('cliente_direccion_fiscals', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('cliente_id')->unsigned();
             $table->foreign('cliente_id')->references('id')->on('clientes');
-            $table->string('calle');
-            $table->string('numext');
-            $table->string('numint')->nullable();
+            $table->string('calle')->nullable();
+            $table->string('numext')->nullable();
+            $table->string('numinter')->nullable();
             $table->string('cp')->nullable();
-            $table->string('colonia');
-            $table->string('municipio');
-            $table->string('ciudad');
-            $table->string('estado');
+            $table->string('colonia')->nullable();
+            $table->string('municipio')->nullable();
+            $table->string('ciudad')->nullable();
+            $table->string('estado')->nullable();
             $table->string('referencia')->nullable();
-            $table->string('calle1')->nullable();
-            $table->string('calle2')->nullable();
+            $table->string('calles')->nullable();
             $table->timestamps();
         });
     }
@@ -39,6 +38,6 @@ class CreateClienteDireccionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cliente_direccion');
+        Schema::dropIfExists('cliente_direccion_fiscals');
     }
 }

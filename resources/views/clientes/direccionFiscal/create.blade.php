@@ -78,73 +78,92 @@
 			</div>
 		</div>
 		<ul role="tablist" class="nav nav-tabs">
-			<li class="active"><a href="{{ route('clientes.show', ['cliente' => $cliente]) }}">Dirección Física</a></li>
-			<li><a href="{{ route('clientes.direccionFiscal.index', ['cliente' => $cliente]) }}" >Dirección Fiscal</a></li>
+			<li><a href="{{ route('clientes.show', ['cliente' => $cliente]) }}">Dirección Física</a></li>
+			<li class="active"><a href="{{ route('clientes.direccionFiscal.index', ['cliente' => $cliente]) }}" >Dirección Fiscal</a></li>
 			<li><a href="{{ route('clientes.direccionEntrega.index', ['cliente' => $cliente]) }}">Dirección de Entregas</a></li>
 			<li><a href="{{ route('clientes.descuentos.index', ['cliente' => $cliente]) }}">Descuentos</a></li>
 			<li><a href="{{ route('clientes.crm.index', ['cliente' => $cliente]) }}">CRM</a></li>
 		</ul>
-		<div class="panel-default">
-			<div class="panel-body">
-				<div class="row">
-					<div class="form-group col-sm-3">	
-						<label class="control-label" for="calle">Calle:</label>
-						<dd>{{ $cliente->calle }}</dd>
+		<form action="{{ route('clientes.direccionFiscal.store', ['cliente' => $cliente]) }}" method="post">
+			{{ csrf_field() }}
+			<div class="panel-default">
+				<div class="panel-body">
+					<div class="row">
+					    <div class="col-sm-4 form-group">
+							<label class="control-label">¿Usar Dirección Física?</label>
+							<br>
+							<input type="checkbox" data-toggle="toggle" onclick="alert()">
+					    </div>
 					</div>
-					<div class="form-group col-sm-3">	
-						<label class="control-label" for="numext" >Número Exterior:</label>
-						<dd>{{ $cliente->numext }}</dd>
+					<div class="row">
+						<div class="form-group col-sm-3">	
+							<label class="control-label" for="calle" id="lbl_calle">Calle:</label>
+							<input type="text" class="form-control" id="calle" name="calle">
+						</div>
+						<div class="form-group col-sm-3">	
+							<label class="control-label" for="numext" id="lbl_numext">Número Exterior:</label>
+							<input type="number" class="form-control" id="numext" name="numext">
+						</div>
+						<div class="form-group col-sm-3">
+							<label class="control-label" for="numinter">Número Interior:</label>
+							<input type="number" class="form-control" id="numinter" name="numinter">
+						</div>
+						<div class="form-group col-sm-3">
+							<label class="control-label" for="cp" id="lbl_cp">Código Postal:</label>
+							<input type="number" class="form-control" id="cp" name="cp">
+						</div>
 					</div>
-					<div class="form-group col-sm-3">
-						<label class="control-label" for="numinter">Número Interior:</label>
-						<dd>{{ $cliente->numinter }}</dd>
+					<div class="row">
+						<div class="form-group col-sm-3">
+							<label class="control-label" for="colonia" id="lbl_colonia">Colonia:</label>
+							<input type="text" class="form-control" id="colonia" name="colonia">
+						</div>
+						<div class="form-group col-sm-3">
+							<label class="control-label" for="municipio" id="lbl_municipio">Municipio/Delegación:</label>
+							<input type="text" class="form-control" id="municipio" name="municipio">
+						</div>
+						<div class="form-group col-sm-3">
+							<label class="control-label" for="ciudad" id="lbl_ciudad">Ciudad:</label>
+							<input type="text" class="form-control" id="ciudad" name="ciudad">
+						</div>
+						<div class="form-group col-sm-3">
+							<label class="control-label" for="estado" id="lbl_estado">Estado:</label>
+							<input type="text" class="form-control" id="estado" name="estado">
+						</div>
 					</div>
-					<div class="form-group col-sm-3">
-						<label class="control-label" for="cp">Código Postal:</label>
-						<dd>{{ $cliente->cp }}</dd>
+					<div class="row">
+						<div class="col-sm-3">
+							<label class="control-label" for="calle1">Entre calles:</label>
+							<input type="text" class="form-control" id="calle1" name="calles" placeholder="Calle 1, Calle 2">
+						</div>
+						<div class="col-sm-3">
+							<label class="control-label" for="referencia">Referencia:</label>
+							<input type="text" class="form-control" id="referencia" name="referencia">
+						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="form-group col-sm-3">
-						<label class="control-label" for="colonia">Colonia:</label>
-						<dd>{{ $cliente->colonia }}</dd>
-					</div>
-					<div class="form-group col-sm-3">
-						<label class="control-label" for="municipio">Municipio/Delegación:</label>
-						<dd>{{ $cliente->municipio }}</dd>
-					</div>
-					<div class="form-group col-sm-3">
-						<label class="control-label" for="ciudad">Ciudad:</label>
-						<dd>{{ $cliente->ciudad }}</dd>
-					</div>
-					<div class="form-group col-sm-3">
-						<label class="control-label" for="estado">Estado:</label>
-						<dd>{{ $cliente->estado }}</dd>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm-3">
-						<label class="control-label" for="calle1">Entre calles:</label>
-						<dd>{{ $cliente->calles }}</dd>
-					</div>
-					<div class="col-sm-3">
-						<label class="control-label" for="referencia">Referencia:</label>
-						<dd>{{ $cliente->referencia }}</dd>
+				<div class="panel-footer">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+							<button type="submit" class="btn btn-success"><i class="fa fa-check-circle" aria-hidden="true"></i> Guardar</button>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="panel-footer">
-				<div class="row">
-					<div class="col-sm-12 text-center">
-						<a class="btn btn-danger btn-md" href="{{ route('clientes.edit', ['cliente' => $cliente]) }}">
-							<i class="fa fa-check-pencil" aria-hidden="true"></i> Editar
-						</a>
-					</div>
-				</div>
-			</div>
-
-		</div>
+		</form>
 	</div>
 </div>
+
+<script type="text/javascript">
+
+	
+  $(function() {
+    $('#toggle-two').bootstrapToggle({
+      on: 'Sí',
+      off: 'No'
+    });
+  });
+
+</script>
 
 @endsection
