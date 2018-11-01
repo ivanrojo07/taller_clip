@@ -1,173 +1,145 @@
 @extends('layouts.cotizacion')
 	@section('content')
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h5>Registrar Material</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                @if (session("alert"))
+                    {{-- expr --}}
+                    {{-- {{dd(session("alert"))}} --}}
+                    <div class="alert alert-{{session("alert")['class']}} alert-dismissible fade show" role="alert">
+                       {{session('alert')['message']}}
+                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+
+                @endif
+                <form role="form" method="POST" action="{{ $edit ? route('material.update',['material'=>$material]) : route('material.store') }}">
+                    {{ csrf_field() }}
+                    @if ($edit)
+                        {{ method_field('PUT') }}
+                        {{-- expr --}}
+                    @endif
+                    <div class="row">
+                        <div class="col-sm-3 form-group">
+                            <label class="control-label">Sección:</label>
+                            <select required class="custom-select" name="seccion" id="seccion">
+                                <option value="">---</option>
+                                <option value="Maria Luisa" {{($edit && $material->seccion == "Maria Luisa") ? "selected" : ""}}>Maria Luisa</option>
+                                <option value="Montaje" {{($edit && $material->seccion == "Montaje") ? "selected" : ""}}>Montaje</option>
+                                <option value="Marco" {{($edit && $material->seccion == "Marco") ? "selected" : ""}}>Marco</option>
+                                <option value="Protección" {{($edit && $material->seccion == "Protección") ? "selected" : ""}}>Protección</option>
+                                <option value="Generales" {{($edit && $material->seccion == "Generales") ? "selected" : ""}}>Generales</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-3 form-group">
+                            <label class="control-label">Descripción:</label>
+                            <input required type="text" name="descripcion" value="{{($edit && $material) ? $material->descripcion : ""}}" id="descripcion" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div class="col-sm-3 form-group">
+                            <label class="control-label">Clave:</label>
+                            <input required type="text" name="clave" value="{{($edit && $material) ? $material->clave : ""}}" id="clave" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div class="col-sm-3 form-group">
+                            <label class="control-label">Ancho:</label>
+                            <input required type="number" name="ancho" id="ancho" value="{{($edit && $material) ? $material->ancho : ""}}" class="form-control" step="0.01" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 form-group">
+                            <label class="control-label">Alto:</label>
+                            <input required type="number" name="alto" id="alto" value="{{($edit && $material) ? $material->alto : ""}}" class="form-control" step="0.01" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div class="col-sm-3 form-group">
+                            <label class="control-label">Espesor:</label>
+                            <input required type="number" name="espesor" id="espesor" value="{{($edit && $material) ? $material->espesor : ""}}" class="form-control" step="0.01" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div class="col-sm-3 form-group">
+                            <label class="control-label">Medidas:</label>
+                            <select required class="custom-select" name="medidas" id="medidas">
+                                <option value="mm" {{($edit && $material->medidas == "mm") ? "selected" : ""}}>mm</option>
+                                <option value="cm" {{($edit && $material->medidas == "cm") ? "selected" : ""}}>cm</option>
+                                <option value="m" {{($edit && $material->medidas == "m") ? "selected" : ""}}>m</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-3 form-group">
+                            <label class="control-label">Color:</label>
+                            <input required type="text" name="color" id="color" value="{{($edit && $material) ? $material->color : ""}}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 form-group">
+                            <label class="control-label">Proveedor:</label>
+                            <select required class="custom-select" name="proveedor" id="descripcion">
+                                <option value="">---</option>
+                                    @foreach($provedores as $provedor)
+                                        <option value="{{$provedor->id}}" {{($edit && $material->proveedor_id == $provedor->id) ? "selected" : ""}}>{{$provedor->razonsocial ? $provedor->alias : $provedor->nombre." ".$provedor->apellidopaterno." ".$provedor->apellidomaterno }}</option>
+                                    @endforeach
+                            </select>
+                        </div>
+                        <div class="col-sm-3 form-group">
+                            <label class="control-label">Costo:</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                    <input type="number" step="0.01" value="{{($edit && $material) ? $material->costo : ""}}" class="form-control" name="costo" id="costo" required>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">MXN</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 form-group">
+                            <label class="control-label">Ganancia:</label>
+                            <div class="input-group mb-3">
+                                    <input type="number" step="0.01" class="form-control" value="{{($edit && $material) ? $material->ganancia : ""}}" name="ganancia" id="ganancia" required>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 form-group">
+                            <label class="control-label">Precio venta(al publico):</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                    <input type="number" step="0.01" class="form-control" name="precio" id="precio" value="{{($edit && $material) ? $material->precio : ""}}"readonly required>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">MXN</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 text-center form-group">
+                        <button id="submit" type="submit" class="btn btn-success"><strong>Guardar</strong></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <div class="container my-3">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-  
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-  <h4>Registrar Material</h4>
-  <div class="container my-3">
-  <form role="form" 
-              method="POST" 
-              action="{{ route('material.store') }}">
-              {{ csrf_field() }}
+    <script>
+    $(document).ready(function(){
 
-              <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                  <label class="input-group-text" for="seccion">Sección</label>
-              </div>
-              <select required class="custom-select" name="seccion" id="seccion">
-                  <option value="">---</option>
-                  <option value="maria">Maria Luisa</option>
-                  <option value="montaje">Montaje</option>
-                  <option value="marco">Marco</option>
-                  <option value="proteccion">Protección</option>
-                  <option value="generales">Generales</option>
-              </select>
-              </div>
-
-              <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                  <label class="input-group-text" for="descripcion">Descripción</label>
-              </div>
-              <select required class="custom-select" name="descripcion" id="descripcion">
-                <option value="">---</option>
-                  {{--@foreach($descripciones as $descripcion)
-                      <option value="{{$descripcion->id}}">{{$descripcion->descripcion}}</option>
-                  @endforeach--}}
-              </select>
-              </div>
-
-              <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-default">Clave</span>
-              </div>
-              <input required type="text" name="clave" id="clave" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-              </div>
-
-              <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-default">Ancho</span>
-              </div>
-              <input required type="number" name="ancho" id="ancho" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-              </div>
-
-              <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-default">Alto</span>
-              </div>
-              <input required type="number" name="alto" id="alto" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-              </div>
-
-              <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-default">Espesor</span>
-              </div>
-              <input required type="number" name="espesor" id="espesor" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-              </div>
-
-              <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                  <label class="input-group-text" for="medidas">Medidas:</label>
-              </div>
-              <select required class="custom-select" name="medidas" id="medidas">
-                  <option value="mm">mm</option>
-                  <option value="cm">cm</option>
-                  <option value="m">m</option>
-              </select>
-              </div>
-
-              <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-default">Color</span>
-              </div>
-              <input required type="text" name="color" id="color" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-              </div>
-
-              <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-default">Proveedor</span>
-              </div>
-              <input required type="text" name="proveedor" id="proveedor" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-              </div>
-
-              <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-default">Precio $</span>
-              </div>
-              <input required type="text" name="precio" id="precio" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-              </div>
-
-              <div class="row mb-4">
-                  <div class="col-4 offset-4">
-                  <input type="submit" class="btn btn-primary btn-lg btn-block" value="Agregar">
-                  </div>
-              </div>
-      </form>
-  </div>
-  
-          <table id="mitabla">
-              <thead>
-                  <tr>
-                      <th>Sección</th>
-                      <th>Descripción</th>
-                      <th>Alto</th>
-                      <th>Ancho</th>
-                      <th>Espesor</th>
-                      <th>Color</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  @foreach($materiales as $material)
-                  <tr>
-                      <td>{{$material->seccion}}</td>
-                      <td>{{$material->descripcion->descripcion}}</td>
-                      <td>{{$material->alto}}</td>
-                      <td>{{$material->ancho}}</td>
-                      <td>{{$material->espesor}}</td>
-                      <td>{{$material->color}}</td>
-                  </tr>
-                  @endforeach
-              </tbody>
-          </table>
-<script>
-$(document).ready(function(){
-    $('#mitabla').DataTable({
-        "info": false,
-        "language": {
-            "search": "Buscar:",
-            "paginate": {
-            "previous": "Anterior",
-            "next": "Siguiente"        
-            },
-            "emptyTable": "No hay ningún registro"
-        }
+        $("#ganancia").change(function(){
+            costo =parseFloat($("#costo").val());
+            ganancia_por=parseFloat($("#ganancia").val());
+            ganancia = costo*(ganancia_por/100);
+            // console.log(ganancia);
+            precio_pub = parseFloat(+costo+ +ganancia);
+            // console.log(precio_pub);
+            $('#precio').val(precio_pub);
+        })
     });
-    $('#seccion').change(function(){
-        var eso = $(this).val();
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $.ajax({
-            url: "{{ route('descripcion.index') }}",
-            type: "GET",
-            data: {
-                seccion: eso
-            },
-            dataType: "json",
-        }).done(function(resultado){
-            $('#descripcion').empty();
-            {{--//$('#descripcion').append('<option value="{{$descripcion->id}}">{{$descripcion->descripcion}}</option>');--}}
-            var b = JSON.stringify(resultado);
-            for(var i = 0; i < resultado.length; i++){
-                $('#descripcion').append('<option value="'+resultado[i].id+'">'+resultado[i].descripcion+'</option>');
-            }
-           //alert(b);
-        });
-    });
-});
-</script>
+    </script>
     </div>
     
     @endsection

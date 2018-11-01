@@ -18,17 +18,23 @@ class CreateMaterialsTable extends Migration
             $table->increments('id');
             $table->string('clave');
             $table->string('seccion');
-            $table->integer('ancho')->unsigned();
-            $table->integer('alto')->unsigned();
-            $table->integer('espesor')->unsigned();
+            $table->decimal('ancho')->unsigned();
+            $table->decimal('alto')->unsigned();
+            $table->decimal('espesor')->unsigned();
             $table->string('medidas');
             $table->string('color');
             $table->string('tipo');
-            $table->string('proveedor_id');
-            // $table->integer('proveedor_id')->unsigned();
-            // $table->foreign('proveedor_id')->references('id')->on('clientes');
+            // $table->string('proveedor_id');
+            // $table->integer('descripcion_id')->unsigned();
+            // $table->foreign('descripcion_id')->references('id')->on('descripcions');
+            $table->string('descripcion');
+            $table->integer('proveedor_id')->unsigned();
+            $table->foreign('proveedor_id')->references('id')->on('proveedores');
 
-            $table->float('precio', 8, 2);
+            $table->decimal('costo', 8, 2);
+            $table->decimal('ganancia', 5, 2);
+            $table->decimal('precio',8,2);
+            
             $table->timestamps();
         });
     }
