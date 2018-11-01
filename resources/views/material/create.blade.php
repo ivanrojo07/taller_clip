@@ -137,6 +137,15 @@
             precio_pub = parseFloat(+costo+ +ganancia);
             // console.log(precio_pub);
             $('#precio').val(precio_pub);
+        });
+        $("#costo").change(function(){
+            costo =parseFloat($("#costo").val());
+            ganancia_por=parseFloat($("#ganancia").val());
+            ganancia = costo*(ganancia_por/100);
+            // console.log(ganancia);
+            precio_pub = parseFloat(+costo+ +ganancia);
+            // console.log(precio_pub);
+            $('#precio').val(precio_pub);
         })
     });
     </script>
