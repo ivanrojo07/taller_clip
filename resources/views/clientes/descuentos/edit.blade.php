@@ -78,71 +78,40 @@
 			</div>
 		</div>
 		<ul role="tablist" class="nav nav-tabs">
-			<li class="active"><a href="{{ route('clientes.show', ['cliente' => $cliente]) }}">Dirección Física</a></li>
+			<li><a href="{{ route('clientes.show', ['cliente' => $cliente]) }}">Dirección Física</a></li>
 			<li><a href="{{ route('clientes.direccionFiscal.index', ['cliente' => $cliente]) }}" >Dirección Fiscal</a></li>
 			<li><a href="{{ route('clientes.direccionEntrega.index', ['cliente' => $cliente]) }}">Dirección de Entrega</a></li>
-			<li><a href="{{ route('clientes.descuentos.index', ['cliente' => $cliente]) }}">Descuentos</a></li>
+			<li class="active"><a href="{{ route('clientes.descuentos.index', ['cliente' => $cliente]) }}">Descuentos</a></li>
 			<li><a href="{{ route('clientes.crm.index', ['cliente' => $cliente]) }}">CRM</a></li>
 		</ul>
-		<div class="panel-default">
-			<div class="panel-body">
-				<div class="row">
-					<div class="form-group col-sm-3">	
-						<label class="control-label" for="calle">Calle:</label>
-						<dd>{{ $cliente->calle }}</dd>
-					</div>
-					<div class="form-group col-sm-3">	
-						<label class="control-label" for="numext" >Número Exterior:</label>
-						<dd>{{ $cliente->numext }}</dd>
-					</div>
-					<div class="form-group col-sm-3">
-						<label class="control-label" for="numinter">Número Interior:</label>
-						<dd>{{ $cliente->numinter }}</dd>
-					</div>
-					<div class="form-group col-sm-3">
-						<label class="control-label" for="cp">Código Postal:</label>
-						<dd>{{ $cliente->cp }}</dd>
+		<form action="{{ route('clientes.descuentos.update', ['cliente' => $cliente, 'descuento' => $descuento]) }}" method="post">
+			{{ csrf_field() }}
+			<input type="hidden" name="_method" value="PUT">
+			<div class="panel-default">
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-sm-3">	
+							<label class="control-label" for="nombre">✱Nombre del Descuento:</label>
+							<input type="text" class="form-control" id="nombre" name="nombre" required="" value="{{ $descuento->nombre }}">
+						</div>
+						<div class="col-sm-3">	
+							<label class="control-label" for="descuento">✱Descuento(%):</label>
+							<input type="number" class="form-control" id="descuento" name="descuento" required="" value="{{ $descuento->descuento }}">
+						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="form-group col-sm-3">
-						<label class="control-label" for="colonia">Colonia:</label>
-						<dd>{{ $cliente->colonia }}</dd>
-					</div>
-					<div class="form-group col-sm-3">
-						<label class="control-label" for="municipio">Municipio/Delegación:</label>
-						<dd>{{ $cliente->municipio }}</dd>
-					</div>
-					<div class="form-group col-sm-3">
-						<label class="control-label" for="ciudad">Ciudad:</label>
-						<dd>{{ $cliente->ciudad }}</dd>
-					</div>
-					<div class="form-group col-sm-3">
-						<label class="control-label" for="estado">Estado:</label>
-						<dd>{{ $cliente->estado }}</dd>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm-3">
-						<label class="control-label" for="calle1">Entre calles:</label>
-						<dd>{{ $cliente->calles }}</dd>
-					</div>
-					<div class="col-sm-3">
-						<label class="control-label" for="referencia">Referencia:</label>
-						<dd>{{ $cliente->referencia }}</dd>
+				<div class="panel-footer">
+					<div class="row">
+						<div class="col-sm-4 col-sm-offset-4 text-center">
+							<button type="submit" class="btn btn-success"><i class="fa fa-check-circle" aria-hidden="true"></i> Guardar</button>
+						</div>
+						<div class="col-sm-4 text-right text-danger">
+							<h5>✱Campos Requeridos</h5>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="panel-footer">
-				<div class="row">
-					<div class="col-sm-12 text-center">
-						<a class="btn btn-danger btn-md" href="{{ route('clientes.edit', ['cliente' => $cliente]) }}">
-							<i class="fa fa-check-pencil" aria-hidden="true"></i> Editar
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
+		</form>
 	</div>
 </div>
 

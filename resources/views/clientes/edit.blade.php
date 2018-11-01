@@ -84,6 +84,13 @@
 					</div>
 				</div>
 			</div>
+			<ul role="tablist" class="nav nav-tabs">
+				<li class="active"><a href="{{ route('clientes.show', ['cliente' => $cliente]) }}">Dirección Física</a></li>
+				<li><a href="{{ route('clientes.direccionFiscal.index', ['cliente' => $cliente]) }}" >Dirección Fiscal</a></li>
+				<li><a href="{{ route('clientes.direccionEntrega.index', ['cliente' => $cliente]) }}">Dirección de Entrega</a></li>
+				<li><a href="{{ route('clientes.descuentos.index', ['cliente' => $cliente]) }}">Descuentos</a></li>
+				<li><a href="{{ route('clientes.crm.index', ['cliente' => $cliente]) }}">CRM</a></li>
+			</ul>
 			<div class="panel-default">
 				<div class="panel-heading">
 					<div class="row">

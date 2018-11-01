@@ -78,9 +78,9 @@
 			</div>
 		</div>
 		<ul role="tablist" class="nav nav-tabs">
-			<li class="active"><a href="{{ route('clientes.show', ['cliente' => $cliente]) }}">Dirección Física</a></li>
+			<li><a href="{{ route('clientes.show', ['cliente' => $cliente]) }}">Dirección Física</a></li>
 			<li><a href="{{ route('clientes.direccionFiscal.index', ['cliente' => $cliente]) }}" >Dirección Fiscal</a></li>
-			<li><a href="{{ route('clientes.direccionEntrega.index', ['cliente' => $cliente]) }}">Dirección de Entrega</a></li>
+			<li class="active"><a href="{{ route('clientes.direccionEntrega.index', ['cliente' => $cliente]) }}">Dirección de Entrega</a></li>
 			<li><a href="{{ route('clientes.descuentos.index', ['cliente' => $cliente]) }}">Descuentos</a></li>
 			<li><a href="{{ route('clientes.crm.index', ['cliente' => $cliente]) }}">CRM</a></li>
 		</ul>
@@ -89,54 +89,54 @@
 				<div class="row">
 					<div class="form-group col-sm-3">	
 						<label class="control-label" for="calle">Calle:</label>
-						<dd>{{ $cliente->calle }}</dd>
+						<dd>{{ $cliente->entrega->calle }}</dd>
 					</div>
 					<div class="form-group col-sm-3">	
 						<label class="control-label" for="numext" >Número Exterior:</label>
-						<dd>{{ $cliente->numext }}</dd>
+						<dd>{{ $cliente->entrega->numext }}</dd>
 					</div>
 					<div class="form-group col-sm-3">
 						<label class="control-label" for="numinter">Número Interior:</label>
-						<dd>{{ $cliente->numinter }}</dd>
+						<dd>{{ $cliente->entrega->numinter }}</dd>
 					</div>
 					<div class="form-group col-sm-3">
 						<label class="control-label" for="cp">Código Postal:</label>
-						<dd>{{ $cliente->cp }}</dd>
+						<dd>{{ $cliente->entrega->cp }}</dd>
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group col-sm-3">
 						<label class="control-label" for="colonia">Colonia:</label>
-						<dd>{{ $cliente->colonia }}</dd>
+						<dd>{{ $cliente->entrega->colonia }}</dd>
 					</div>
 					<div class="form-group col-sm-3">
 						<label class="control-label" for="municipio">Municipio/Delegación:</label>
-						<dd>{{ $cliente->municipio }}</dd>
+						<dd>{{ $cliente->entrega->municipio }}</dd>
 					</div>
 					<div class="form-group col-sm-3">
 						<label class="control-label" for="ciudad">Ciudad:</label>
-						<dd>{{ $cliente->ciudad }}</dd>
+						<dd>{{ $cliente->entrega->ciudad }}</dd>
 					</div>
 					<div class="form-group col-sm-3">
 						<label class="control-label" for="estado">Estado:</label>
-						<dd>{{ $cliente->estado }}</dd>
+						<dd>{{ $cliente->entrega->estado }}</dd>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-sm-3">
 						<label class="control-label" for="calle1">Entre calles:</label>
-						<dd>{{ $cliente->calles }}</dd>
+						<dd>{{ $cliente->entrega->calles }}</dd>
 					</div>
 					<div class="col-sm-3">
 						<label class="control-label" for="referencia">Referencia:</label>
-						<dd>{{ $cliente->referencia }}</dd>
+						<dd>{{ $cliente->entrega->referencia }}</dd>
 					</div>
 				</div>
 			</div>
 			<div class="panel-footer">
 				<div class="row">
 					<div class="col-sm-12 text-center">
-						<a class="btn btn-danger btn-md" href="{{ route('clientes.edit', ['cliente' => $cliente]) }}">
+						<a class="btn btn-danger btn-md" href="{{ route('clientes.direccionEntrega.edit', ['cliente' => $cliente, 'entrega' => $cliente->entrega]) }}">
 							<i class="fa fa-check-pencil" aria-hidden="true"></i> Editar
 						</a>
 					</div>
