@@ -11,7 +11,7 @@
 			</div>
 			<div class="card-body">
 				<div class="mt-1">
-					<table class="table table-striped table-responsive table-bordered">
+					<table class="table table-striped table-bordered">
 						<thead>
 							<tr class="table-info">
 								<th scope="col" style="width: 130px;" >Clave</th>

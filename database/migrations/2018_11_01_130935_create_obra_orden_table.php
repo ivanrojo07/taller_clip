@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDescripcionMarcosTable extends Migration
+class CreateObraOrdenTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateDescripcionMarcosTable extends Migration
      */
     public function up()
     {
-        Schema::create('descripcion_marcos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('descripcion');
-            $table->softDeletes();
-            $table->timestamps();
+        Schema::table('obra_orden', function (Blueprint $table) {
+            //
         });
     }
 
@@ -28,6 +25,8 @@ class CreateDescripcionMarcosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('descripcion_marcos');
+        Schema::table('obra_orden', function (Blueprint $table) {
+            //
+        });
     }
 }

@@ -17,15 +17,13 @@ class CreateObrasTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->integer('nopiezas');
-            $table->decimal('alto');
-            $table->decimal('ancho');
-            $table->decimal('profundidad');
-            $table->string('unidad');
-            $table->string('tipo_material');
-            $table->string('descripcion');
+            $table->decimal('alto_obra');
+            $table->decimal('ancho_obra');
+            $table->decimal('profundidad_obra');
+            $table->string('unidad_obra');
+            $table->string('tipo_material_obra');
+            $table->text('descripcion_obra');
 
-            $table->integer('orden_id')->unsigned();
-            $table->foreign('orden_id')->references('id')->on('ordens');
             
             $table->timestamps();
         });

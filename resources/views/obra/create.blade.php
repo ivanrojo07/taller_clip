@@ -1,267 +1,164 @@
 @extends('layouts.cotizacion')
 	@section('content')
-    <div class="container my-3">
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>Alerta!</strong> <br> No cierre ni cambie esta pestaña si quiere que se guarden correctamente las obras de la orden.
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-            @for($i = 0; $i < $noabras; $i++)
-                <li class="nav-item">
-                    <a class="nav-link @if ($i==0) active @endif" id="pills-{{$i}}-tab" data-toggle="pill" href="#pills-{{$i}}" role="tab"  >Obra {{$i+1}}</a>
-                </li>
-            @endfor
-        </ul>
-        <div class="tab-content" id="pills-tabContent">
-            @for($i = 0; $i < $noabras; $i++)
-               
-                <div class="tab-pane fade @if ($i==0) show active @endif" id="pills-{{$i}}" role="tabpanel" >
-                    <div class="obra" id="obra{{$i}}">
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                            <label for="nombre">Nombre Obra:</label>
-                            <input type="text" class="form-control nombre ocultable{{$i}}" name="nombre" id="nombre{{$i}}" placeholder="Nombre de la obra">
-                            </div>
-                            <div class="form-group col-md-6">
-                            <label for="nopiezas">#Piezas:</label>
-                            <input type="number" class="form-control nopiezas ocultable{{$i}}" name="nopiezas"  id="nopiezas{{$i}}" placeholder="Número de piezas">
-                            </div>
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <h5>Registrar Obra:</h5>
+                </div>
+            </div>
+            <div class="card-body">
+                @if (session("alert"))
+                    {{-- expr --}}
+                    {{-- {{dd(session("alert"))}} --}}
+                    <div class="alert alert-{{session("alert")['class']}} alert-dismissible fade show" role="alert">
+                       {{session('alert')['message']}}
+                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                @endif
+                <form role="form" method="POST" action="{{ $edit ? route('obra.update',['obra'=>$obra]) : route('obra.store') }}">
+                    {{csrf_field()}}
+                    @if ($edit)
+                        {{ method_field('PUT') }}
+                    @endif
+                    <div class="row">
+                        <div class="col-sm-3 form-group">
+                            <label class="control-label">Nombre de la obra:</label>
+                            <input required type="text" name="nombre" value="{{($edit && $obra) ? $obra->nombre : ""}}" id="nombre" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
                         </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                            <label for="alto">Alto:</label>
-                            <input type="number" class="form-control alto ocultable{{$i}}" name="alto" id="alto{{$i}}" placeholder="Alto">
-                            </div>
-                            <div class="form-group col-md-6">
-                            <label for="ancho">Ancho:</label>
-                            <input type="number" class="form-control ancho ocultable{{$i}}" name="ancho"  id="ancho{{$i}}" placeholder="Ancho">
-                            </div>
+                        <div class="col-sm-3 form-group">
+                            <label class="control-label">Número de piezas:</label>
+                            <input required type="number" step="1" min="1" name="nopiezas" value="{{($edit && $obra) ? $obra->nopiezas : "1"}}" id="nopiezas" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
                         </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                            <label for="profundidad">Profundidad:</label>
-                            <input type="number" class="form-control profundidad ocultable{{$i}}" name="profundidad" id="profundidad{{$i}}" placeholder="Profundidad">
-                            </div>
-                            <div class="form-group col-md-6">
-                            <label for="medidas">Medidas:</label>
-                            <select name="medidas"  id="medidas{{$i}}" class="form-control medidas ocultable{{$i}}">
-                            <option>cm</option>
-                            <option>mm</option>
-                            <option>m</option>
+                        <div class="col-sm-3 form-group">
+                            <label class="control-label">Alto de la obra:</label>
+                            <input required type="number" step="0.01" min="0" name="alto_obra" value="{{($edit && $obra) ? $obra->alto_obra : ""}}" id="alto_obra" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                        </div>
+                        <div class="col-sm-3 form-group">
+                            <label class="control-label">Ancho de la obra:</label>
+                            <input required type="number" step="0.01" min="0" name="ancho_obra" value="{{($edit && $obra) ? $obra->ancho_obra : ""}}" id="ancho_obra" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 form-group">
+                            <label class="control-label">Profundidad de la obra:</label>
+                            <input required type="number" step="0.01" min="0" name="profundidad_obra" value="{{($edit && $obra) ? $obra->profundidad_obra : ""}}" id="profundidad_obra" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                        </div>
+                        <div class="col-sm-3 form-group">
+                            <label class="control-label">Medidas de la obra:</label>
+                            <select required class="custom-select" name="unidad_obra" id="unidad_obra">
+                                <option value="mm" {{($edit && $material->unidad_obra == "mm") ? "selected" : ""}}>mm</option>
+                                <option value="cm" {{($edit && $material->unidad_obra == "cm") ? "selected" : ""}}>cm</option>
+                                <option value="m" {{($edit && $material->unidad_obra == "m") ? "selected" : ""}}>m</option>
                             </select>
-                            </div>
                         </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="descripcion">Descripción:</label>
-                                <textarea class="form-control descripcion ocultable{{$i}}" name="descripcion" id="descripcion{{$i}}" rows="3"></textarea>
-                            </div>
+                        <div class="col-sm-6 form-group">
+                            <label class="control-label">Descripción de la obra:</label>
+                            <textarea name="descripcion_obra" id="descripcion_obra" class="form-control">{{($edit && $obra) ? $obra->descripcion_obra : ""}}</textarea>
                         </div>
-                        <h4>Buscar Material</h4>
-                        <div id="busquedademat{{$i}}" class="form-group col-md-4 busquedademat{{$i}}">
-                            <label for="seccion">Sección:</label>
-                            <select name="seccion" id="seccion{{$i}}" class="seccion form-control ">
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 form-group">
+                            <label class="control-label">Sección:</label>
+                            <select required class="custom-select" id="seccion" required>
                                 <option value="">---</option>
-                                <option value="montaje">Montajes</option>
-                                <option value="proteccion">Protección</option>
-                                <option value="marco">Marcos</option>
-                                <option value="maria">Maria Luisa</option>
-                                <option value="generales">Generales</option>
+                                <option value="Maria Luisa">Maria Luisa</option>
+                                <option value="Montaje">Montaje</option>
+                                <option value="Marco">Marco</option>
+                                <option value="Protección">Protección</option>
+                                <option value="Generales">Generales</option>
                             </select>
                         </div>
-                        <table class="table busquedademat{{$i}}">
-                            <tr>
-                                <th>ID</th>
-                                <th>Descripción</th>
-                                <th>Alto</th>
-                                <th>Ancho</th>
-                                <th>Profundidad</th>
-                                <th>Color</th>
-                                <th>Tipo</th>
-                                <th>Operación</th>
-                            </tr>
-                            <tbody id="resultadobusquedamaterial{{$i}}">
-
-                            </tbody>
-                            
-                        </table>
-                        <h4>Materiales de obra</h4>
-                        <table id="tablachida" class="table">
+                    </div>
+                    <div class="row">
+                        <table class="table table-striped table-bordered">
                             <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Cantidad</th>
-                                    <th>Descripción</th>
-                                    <th>Alto</th>
-                                    <th>Ancho</th>
-                                    <th>Profundidad</th>
-                                    <th>Color</th>
+                                <tr class="table-info">
+                                    <th scope="col">Clave</th>
+                                    <th scope="col">Descripcion</th>
+                                    <th scope="col">Alto</th>
+                                    <th scope="col">Ancho</th>
+                                    <th scope="col">Profundidad</th>
+                                    <th scope="col">Color</th>
+                                    <th scope="col">Precio Venta</th>
+                                    <th scope="col">Acción</th>
                                 </tr>
                             </thead>
-                            <tbody id="tablaconmateriales{{$i}}">
-                                <span>Selecione sección para buscar materiales</span>
-                            </tbody>
-                            
-                            
+                            <tbody id="listaM"></tbody>
                         </table>
-                        <center><button class="agregarF btn btn-primary busquedademat{{$i}}" onclick="guardarObra('obra{{$i}}', {{$i}})" formulario="obra{{$i}}">Guardar Obra</button></center>
                     </div>
-                </div>
-            @endfor
+                    <div class="row">
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr class="table-info">
+                                    <th scope="col">Clave</th>
+                                    <th scope="col">Descripcion</th>
+                                    <th scope="col">Alto</th>
+                                    <th scope="col">Ancho</th>
+                                    <th scope="col">Profundidad</th>
+                                    <th scope="col">Color</th>
+                                    <th scope="col">Precio Venta</th>
+                                    <th>Cantidad</th>
+                                    <th scope="col">Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody id="myMaterials"></tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm-12 text-center form-group">
+                        <button id="submit" type="submit" class="btn btn-success"><strong>Guardar</strong></button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-
-
-    <script>
-        var vaci = true;
-        $(document).ready(function(){
-            $("input.nombre").change(function(){
-                var id = $(this).parent().parent().parent().attr('id');
-                var idfinal = id.split("obra")[1];
-                var nombre = $(this).val();
-                $('#pills-'+idfinal+'-tab').text(nombre);
-            });
-        });
-
-        function agregaratabla(cosa, noobra){
-            var cantidadparamulti = $('#nopiezas'+noobra).val();
-            if($('#nopiezas'+noobra).val()==''){
-                swal({
-                    type: 'error',
-                    title: 'Ups...',
-                    text: 'Ingresa el número de piezas!'
-                    });
-                return 0;
-            }
-                
-                
-            var row = $('#'+cosa);
-            var ht = '<tr><td><input type="text"  class="form-control" name="materialid[]" readonly value='+ row.find('.id').text()+'></td>'+
-                    '<td><input type="number" class="form-control" name="cantidad[]" readonly value='+ row.find('.cantidad').val()*cantidadparamulti+'></td>'+
-                    '<td>'+ row.find('.descripcion').text()+'</td>'+
-                   ' <td>'+ row.find('.alto').text()+'</td>'+
-                    '<td>'+ row.find('.ancho').text()+'</td>'+
-                    '<td>'+ row.find('.profundidad').text()+'</td>'+
-                    '<td>'+ row.find('.color').text()+'</td></tr>';
-            $('#tablaconmateriales'+noobra+':last-child').append(ht);
-            vaci = false;
-        }
-    
-        function guardarObra(idofrmulario, noobra){
-            if(vaci){
-                swal({
-                    type: 'error',
-                    title: 'Ups...',
-                    text: 'Tienes que elegir al menos un material!'
-                    });
-                return 0;
-            }
-             var formulario = $('#'+idofrmulario);
-            var orden_id = '{{$orden_id}}';
-            var nombre = formulario.find('.nombre').val();
-            var nopiezas = formulario.find('.nopiezas').val();
-            var alto = formulario.find('.alto').val();
-            var ancho = formulario.find('.ancho').val();
-            var medidas = formulario.find('.medidas').val();
-            var profundidad = formulario.find('.profundidad').val();
-            var tipomaterial = 'tipo1';
-            var descripcion = formulario.find('.descripcion').val();
-            var ids = formulario.find('input[name="materialid[]"]').map(function(){
-                return $(this).val();
-            }).get();
-            var cantidades = formulario.find('input[name="cantidad[]"]').map(function(){
-                return $(this).val();
-            }).get();
-            $.ajaxSetup({
-                headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
+    <script type="text/javascript">
+        $("#seccion").change(function(){
+            seccion = $("#seccion").val();
             $.ajax({
-                url: "{{ route('obra.store') }}",
-                type: "POST",
-                dataType: "html",
-                data: {
-                    orden_id: orden_id,
-                    nombre:nombre,
-                    nopiezas:nopiezas,
-                    alto:alto,
-                    ancho:ancho,
-                    medidas:medidas,
-                    profundidad:profundidad,
-                    tipomaterial:tipomaterial,
-                    descripcion:descripcion,
-                    materiaids:ids,
-                    cantidades: cantidades
-                },
-                success:function(res){
-                    swal(
-                    'Éxito!',
-                    'Obra ha sido registrada',
-                    'success'
-                    );
-                    $('.busquedademat'+noobra).hide();
-                    $('.ocultable'+noobra).attr('readonly', 'true');
-                },
-                error:function(){
-                    swal({
-                    type: 'error',
-                    title: 'Ups...',
-                    text: 'Asegúrate que llenaste todos los campos!'
-                    });
-                },
-            });
-
-        }
-
-        $('.seccion').change(function(){
-            var numeroobra = $(this).attr('id').replace('seccion','');
-
-            $('#resultadobusquedamaterial'+numeroobra).empty();
-            //alert($(this).parent().parent().attr('id'));
-            var eso = $(this).val();
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                url: '../buscarMaterial/'+seccion,
+                type:"GET",
+                success: function(res){
+                    $("#listaM").html(res);
                 }
-            });
-            $.ajax({
-                url: "{{ route('material.index') }}",
-                type: "GET",
-                data: {
-                    seccion: eso
-                },
-                dataType: "json",
-            }).done(function(resultado){
-                var b = JSON.stringify(resultado);
-                var r = '';
-                 for(var i = 0; i < resultado.length; i++){
-                    console.log(resultado[i]);
-                    r += '<tr id="row'+numeroobra+'m'+resultado[i].id+'">';
-                    r += '<td class="id">'+resultado[i].id+'</td>';
-                    r += '<td class="descripcion">'+resultado[i].descripcion.descripcion+'</td>';
-                    r += '<td class="alto">'+resultado[i].alto+'</td>';
-                    r += '<td class="ancho">'+resultado[i].ancho+'</td>';
-                    r += '<td class="profundidad">'+resultado[i].espesor+'</td>';
-                    r += '<td class="color">'+resultado[i].color+'</td>';
-                    r += '<td class="tipo">'+resultado[i].tipo+'</td>';
-                    r += '<td><input type="number" name="cantidad" class="cantidad" placeholder="Cantidad" value="1">';
-                    r += '<button class="btn btn-success mx-2 my-2" onclick="agregaratabla(\'row'+numeroobra+'m'+resultado[i].id+'\', '+numeroobra+')">Agregar</button>';
-                    r += '<button class="btn btn-primary mx-2 my-2">Ver</button></td>';
-                    r += '</tr>';
-
-
-                 }
-                 $('#resultadobusquedamaterial'+numeroobra).append(r);
-            });
-        });
-            
-
+            })
+        })
+        function addMaterial(material){
+            console.log(material);
+            var rowHTML = 
+            `<tr id="row${material.id}">
+                <td scope="row">
+                    ${material.clave}
+                </td>
+                <td>${material.descripcion}</td>
+                <td>${material.alto} ${material.medidas}</td>
+                <td>${material.ancho} ${material.medidas} </td>
+                <td>${material.espesor} ${material.medidas}</td>
+                <td>${material.color}</td>
+                <td>$${material.precio}</td>
+                <td>
+                    <input type="hidden" name="materiales[]" value="${material.id}">
+                    <input required type="number" step="0.01" min="0" name="cantidad[]" value="1" id="profundidad_obra" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                </td>
+                <td>
+                    <div class="row mt-1 mb-1 justify-content-md-center">
+                        <a href="#" onclick="removeMaterial('row${material.id}')" class="btn btn-success remove_button">
+                            Eliminar
+                        </a>
+                    </div>
+                </td>
+                
+            </tr>`;
+            $("#myMaterials").append(rowHTML);
+        }
+        function removeMaterial(id) {
+            console.log()
+            console.log($(`#${id}`).parent());
+            $(`#${id}`).remove();
+            // body...
+        }
     </script>
-
-    {{--$orden_id--}}
-    {{--$noabras--}}
-
+    
     @endsection

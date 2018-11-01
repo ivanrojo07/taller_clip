@@ -156,6 +156,6 @@ Route::resource('orden', 'Orden\OrdenController');
 Route::resource('obra','Obra\ObraController');
 
 
-Route::get('/buscarmaterialporseccion','Material\MaterialController@buscarMateriales')->name('buscarmaterialporseccion');
+Route::get('/buscarMaterial/{seccion}','Material\MaterialController@buscarMateriales')->name('buscarmaterialporseccion');
 
 Route::resource('cotizacion','Cotizacion\CotizacionController');

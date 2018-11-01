@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Obra;
 
 use App\Obra;
+use App\Material;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,6 +17,8 @@ class ObraController extends Controller
     public function index()
     {
         //
+        $obras = Obra::get();
+        return view('obra.index',['obras'=>$obras]);
     }
 
     /**
@@ -25,7 +28,10 @@ class ObraController extends Controller
      */
     public function create()
     {
-        return view('obra.create', ['orden_id'=>1, 'nopiezas'=>1]);
+        $materiales = Material::get();
+        return view ('obra.create',['edit'=>false,'materiales'=>$materiales]);
+        // orden=>1 ???
+        // return view('obra.create', ['orden_id'=>1, 'nopiezas'=>1]);
     }
 
     /**
@@ -38,20 +44,26 @@ class ObraController extends Controller
     {
         // dd($request->all());
         $obra = new Obra;
-        $obra->orden_id = $request->orden_id;
-        $obra->nombre = $request->nombre;
-        $obra->nopiezas = $request->nopiezas;
-        $obra->alto = $request->alto;
-        $obra->ancho = $request->ancho;
-        $obra->medidas = $request->medidas;
-        $obra->profundidad = $request->profundidad;
-        $obra->tipo_material = 'tipo de material';
-        $obra->descripcion = $request->descripcion;
-        $obra->save();
-        for($i = 0; $i<sizeof($request->materiaids); $i++ ){
-            $obra->materiales()->attach($request->materiaids[$i], ['cantidad'=>$request->cantidades[$i]]);
+        $obra = Obra::create($request->all());
+        for ($i = 0; $i < sizeof($request->materiales) ; $i++) {
+            $obra->materiales()->attach($request->materiales[$i],['cantidad'=>$request->cantidad[$i]]);
         }
-        return response()->json(['materiales'=>$obra->materiales], 201);
+        // $obra->orden_id = $request->orden_id;
+        // $obra->nombre = $request->nombre;
+        // $obra->nopiezas = $request->nopiezas;
+        // $obra->alto = $request->alto;
+        // $obra->ancho = $request->ancho;
+        // $obra->medidas = $request->medidas;
+        // $obra->profundidad = $request->profundidad;
+        // $obra->tipo_material = 'tipo de material';
+        // $obra->descripcion = $request->descripcion;
+        // $obra->save();
+        // for($i = 0; $i<sizeof($request->materiaids); $i++ ){
+        //     $obra->materiales()->attach($request->materiaids[$i], ['cantidad'=>$request->cantidades[$i]]);
+        // }
+        $alert = ['message'=>"Obra ".$obra->nombre." registrado", 'class'=>'success'];
+        return redirect()->route('obra.create')->with('alert',$alert);
+        // return response()->json(['materiales'=>$obra->materiales], 201);
     }
 
     /**

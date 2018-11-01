@@ -30,7 +30,7 @@
                     <div class="row">
                         <div class="col-sm-3 form-group">
                             <label class="control-label">Sección:</label>
-                            <select required class="custom-select" name="seccion" id="seccion">
+                            <select required class="custom-select" name="seccion" id="seccion" required>
                                 <option value="">---</option>
                                 <option value="Maria Luisa" {{($edit && $material->seccion == "Maria Luisa") ? "selected" : ""}}>Maria Luisa</option>
                                 <option value="Montaje" {{($edit && $material->seccion == "Montaje") ? "selected" : ""}}>Montaje</option>
@@ -41,25 +41,25 @@
                         </div>
                         <div class="col-sm-3 form-group">
                             <label class="control-label">Descripción:</label>
-                            <input required type="text" name="descripcion" value="{{($edit && $material) ? $material->descripcion : ""}}" id="descripcion" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            <input required type="text" name="descripcion" value="{{($edit && $material) ? $material->descripcion : ""}}" id="descripcion" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
                         </div>
                         <div class="col-sm-3 form-group">
                             <label class="control-label">Clave:</label>
-                            <input required type="text" name="clave" value="{{($edit && $material) ? $material->clave : ""}}" id="clave" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            <input required type="text" name="clave" value="{{($edit && $material) ? $material->clave : ""}}" id="clave" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
                         </div>
                         <div class="col-sm-3 form-group">
                             <label class="control-label">Ancho:</label>
-                            <input required type="number" name="ancho" id="ancho" value="{{($edit && $material) ? $material->ancho : ""}}" class="form-control" step="0.01" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            <input required type="number" name="ancho" id="ancho" value="{{($edit && $material) ? $material->ancho : ""}}" class="form-control" step="0.01" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-3 form-group">
                             <label class="control-label">Alto:</label>
-                            <input required type="number" name="alto" id="alto" value="{{($edit && $material) ? $material->alto : ""}}" class="form-control" step="0.01" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            <input required type="number" name="alto" id="alto" value="{{($edit && $material) ? $material->alto : ""}}" class="form-control" step="0.01" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
                         </div>
                         <div class="col-sm-3 form-group">
                             <label class="control-label">Espesor:</label>
-                            <input required type="number" name="espesor" id="espesor" value="{{($edit && $material) ? $material->espesor : ""}}" class="form-control" step="0.01" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            <input required type="number" name="espesor" id="espesor" value="{{($edit && $material) ? $material->espesor : ""}}" class="form-control" step="0.01" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
                         </div>
                         <div class="col-sm-3 form-group">
                             <label class="control-label">Medidas:</label>
@@ -71,13 +71,13 @@
                         </div>
                         <div class="col-sm-3 form-group">
                             <label class="control-label">Color:</label>
-                            <input required type="text" name="color" id="color" value="{{($edit && $material) ? $material->color : ""}}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            <input required type="text" name="color" id="color" value="{{($edit && $material) ? $material->color : ""}}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-3 form-group">
                             <label class="control-label">Proveedor:</label>
-                            <select required class="custom-select" name="proveedor" id="descripcion">
+                            <select required class="custom-select" name="proveedor" id="descripcion" required>
                                 <option value="">---</option>
                                     @foreach($provedores as $provedor)
                                         <option value="{{$provedor->id}}" {{($edit && $material->proveedor_id == $provedor->id) ? "selected" : ""}}>{{$provedor->razonsocial ? $provedor->alias : $provedor->nombre." ".$provedor->apellidopaterno." ".$provedor->apellidomaterno }}</option>
@@ -150,5 +150,4 @@
     });
     </script>
     </div>
-    
     @endsection
