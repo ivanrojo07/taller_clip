@@ -84,65 +84,67 @@
 			<li><a href="{{ route('clientes.descuentos.index', ['cliente' => $cliente]) }}">Descuentos</a></li>
 			<li><a href="{{ route('clientes.crm.index', ['cliente' => $cliente]) }}">CRM</a></li>
 		</ul>
-		<div class="panel-default">
-			<div class="panel-body">
-				<div class="row">
-					<div class="form-group col-sm-3">	
-						<label class="control-label" for="calle">Calle:</label>
-						<dd>{{ $cliente->fiscal->calle }}</dd>
+		<form action="{{ route('clientes.direccionFiscal.update', ['cliente' => $cliente, 'fiscal' => $cliente->fiscal]) }}" method="post">
+			{{ csrf_field() }}
+			<input type="hidden" name="_method" value="PUT">
+			<div class="panel-default">
+				<div class="panel-body">
+					<div class="row">
+						<div class="form-group col-sm-3">	
+							<label class="control-label" for="calle" id="lbl_calle">Calle:</label>
+							<input type="text" class="form-control" id="calle" name="calle" value="{{ $cliente->fiscal->calle }}">
+						</div>
+						<div class="form-group col-sm-3">	
+							<label class="control-label" for="numext" id="lbl_numext">Número Exterior:</label>
+							<input type="number" class="form-control" id="numext" name="numext" value="{{ $cliente->fiscal->numext }}">
+						</div>
+						<div class="form-group col-sm-3">
+							<label class="control-label" for="numinter">Número Interior:</label>
+							<input type="number" class="form-control" id="numinter" name="numinter" value="{{ $cliente->fiscal->numinter }}">
+						</div>
+						<div class="form-group col-sm-3">
+							<label class="control-label" for="cp" id="lbl_cp">Código Postal:</label>
+							<input type="number" class="form-control" id="cp" name="cp" value="{{ $cliente->fiscal->cp }}">
+						</div>
 					</div>
-					<div class="form-group col-sm-3">	
-						<label class="control-label" for="numext" >Número Exterior:</label>
-						<dd>{{ $cliente->fiscal->numext }}</dd>
+					<div class="row">
+						<div class="form-group col-sm-3">
+							<label class="control-label" for="colonia" id="lbl_colonia">Colonia:</label>
+							<input type="text" class="form-control" id="colonia" name="colonia" value="{{ $cliente->fiscal->colonia }}">
+						</div>
+						<div class="form-group col-sm-3">
+							<label class="control-label" for="municipio" id="lbl_municipio">Municipio/Delegación:</label>
+							<input type="text" class="form-control" id="municipio" name="municipio" value="{{ $cliente->fiscal->municipio }}">
+						</div>
+						<div class="form-group col-sm-3">
+							<label class="control-label" for="ciudad" id="lbl_ciudad">Ciudad:</label>
+							<input type="text" class="form-control" id="ciudad" name="ciudad" value="{{ $cliente->fiscal->ciudad }}">
+						</div>
+						<div class="form-group col-sm-3">
+							<label class="control-label" for="estado" id="lbl_estado">Estado:</label>
+							<input type="text" class="form-control" id="estado" name="estado" value="{{ $cliente->fiscal->estado }}">
+						</div>
 					</div>
-					<div class="form-group col-sm-3">
-						<label class="control-label" for="numinter">Número Interior:</label>
-						<dd>{{ $cliente->fiscal->numinter }}</dd>
-					</div>
-					<div class="form-group col-sm-3">
-						<label class="control-label" for="cp">Código Postal:</label>
-						<dd>{{ $cliente->fiscal->cp }}</dd>
+					<div class="row">
+						<div class="col-sm-3">
+							<label class="control-label" for="calle1">Entre calles:</label>
+							<input type="text" class="form-control" id="calle1" name="calles" placeholder="Calle 1, Calle 2" value="{{ $cliente->fiscal->calles }}">
+						</div>
+						<div class="col-sm-3">
+							<label class="control-label" for="referencia">Referencia:</label>
+							<input type="text" class="form-control" id="referencia" name="referencia" value="{{ $cliente->fiscal->referencia }}">
+						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="form-group col-sm-3">
-						<label class="control-label" for="colonia">Colonia:</label>
-						<dd>{{ $cliente->fiscal->colonia }}</dd>
-					</div>
-					<div class="form-group col-sm-3">
-						<label class="control-label" for="municipio">Municipio/Delegación:</label>
-						<dd>{{ $cliente->fiscal->municipio }}</dd>
-					</div>
-					<div class="form-group col-sm-3">
-						<label class="control-label" for="ciudad">Ciudad:</label>
-						<dd>{{ $cliente->fiscal->ciudad }}</dd>
-					</div>
-					<div class="form-group col-sm-3">
-						<label class="control-label" for="estado">Estado:</label>
-						<dd>{{ $cliente->fiscal->estado }}</dd>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm-3">
-						<label class="control-label" for="calle1">Entre calles:</label>
-						<dd>{{ $cliente->fiscal->calles }}</dd>
-					</div>
-					<div class="col-sm-3">
-						<label class="control-label" for="referencia">Referencia:</label>
-						<dd>{{ $cliente->fiscal->referencia }}</dd>
+				<div class="panel-footer">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+							<button type="submit" class="btn btn-success"><i class="fa fa-check-circle" aria-hidden="true"></i> Guardar</button>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="panel-footer">
-				<div class="row">
-					<div class="col-sm-12 text-center">
-						<a class="btn btn-danger btn-md" href="{{ route('clientes.direccionFiscal.edit', ['cliente' => $cliente, 'fiscal' => $cliente->fiscal]) }}">
-							<i class="fa fa-check-pencil" aria-hidden="true"></i> Editar
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
+		</form>
 	</div>
 </div>
 

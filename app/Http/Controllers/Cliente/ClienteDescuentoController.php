@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Cliente;
 
 use Illuminate\Http\Request;
+use App\Cliente;
+use App\ClienteDescuento;
 use App\Http\Controllers\Controller;
 
 class ClienteDescuentoController extends Controller
@@ -12,9 +14,11 @@ class ClienteDescuentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Cliente $cliente)
     {
-        //
+        if(count($cliente->descuentos) > 0)
+            return view('clientes.descuentos.index', ['cliente' => $cliente]);
+        return redirect()->route('clientes.descuentos.create', ['cliente' => $cliente]);
     }
 
     /**
@@ -22,9 +26,9 @@ class ClienteDescuentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Cliente $cliente)
     {
-        //
+        return view('clientes.descuentos.create', ['cliente' => $cliente]);
     }
 
     /**
@@ -33,9 +37,11 @@ class ClienteDescuentoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Cliente $cliente)
     {
-        //
+        $descuento = new ClienteDescuento($request->all());
+        $cliente->entrega()->save($descuento);
+        return redirect()->route('clientes.descuentos.index', ['cliente' => $cliente]);
     }
 
     /**
@@ -44,9 +50,9 @@ class ClienteDescuentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(ClienteDescuento $cliente)
     {
-        //
+        return view('clientes.descuentos.view', ['cliente' => $cliente->cliente, 'descuento' => $cliente]);
     }
 
     /**
@@ -55,9 +61,9 @@ class ClienteDescuentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(ClienteDescuento $cliente)
     {
-        //
+        return view('clientes.descuentos.edit', ['cliente' => $cliente->cliente, 'descuento' => $cliente]);
     }
 
     /**
@@ -67,19 +73,10 @@ class ClienteDescuentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, ClienteDescuento $cliente)
     {
-        //
+        $cliente->update($request->all());
+        return redirect()->route('clientes.descuentos.index', ['cliente' => $cliente]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

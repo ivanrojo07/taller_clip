@@ -16,7 +16,7 @@ class ClienteDireccionFiscalController extends Controller
      */
     public function index(Cliente $cliente)
     {
-        if($cliente->direccionFiscal != null)
+        if($cliente->fiscal != null)
             return view('clientes.direccionFiscal.index', ['cliente' => $cliente]);
         return redirect()->route('clientes.direccionFiscal.create', ['cliente' => $cliente]);
     }
@@ -39,18 +39,9 @@ class ClienteDireccionFiscalController extends Controller
      */
     public function store(Request $request, Cliente $cliente)
     {
-        dd($request->all());
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        $fiscal = new ClienteDireccionFiscal($request->all());
+        $cliente->fiscal()->save($fiscal);
+        return redirect()->route('clientes.direccionFiscal.index', ['cliente' => $cliente]);
     }
 
     /**
@@ -59,9 +50,9 @@ class ClienteDireccionFiscalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Cliente $cliente)
     {
-        //
+        return view('clientes.direccionFiscal.edit', ['cliente' => $cliente]);
     }
 
     /**
@@ -71,19 +62,10 @@ class ClienteDireccionFiscalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Cliente $cliente)
     {
-        //
+        $cliente->fiscal()->update($request->except(['_method', '_token']));
+        return redirect()->route('clientes.direccionFiscal.index', ['cliente' => $cliente]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

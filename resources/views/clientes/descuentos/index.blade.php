@@ -15,7 +15,7 @@
 						</a>
 					</div>
 					<div class="col-sm-4 text-center">
-						<a href="{{ route('clientes.index') }}" class="btn btn-warning">
+						<a href="{{ route('clientes.index') }}" class="btn btn-primary">
 							<i class="fa fa-bars" aria-hidden="true"></i><strong> Lista de Clientes</strong>
 						</a>
 					</div>
@@ -78,67 +78,44 @@
 			</div>
 		</div>
 		<ul role="tablist" class="nav nav-tabs">
-			<li class="active"><a href="{{ route('clientes.show', ['cliente' => $cliente]) }}">Dirección Física</a></li>
+			<li><a href="{{ route('clientes.show', ['cliente' => $cliente]) }}">Dirección Física</a></li>
 			<li><a href="{{ route('clientes.direccionFiscal.index', ['cliente' => $cliente]) }}" >Dirección Fiscal</a></li>
 			<li><a href="{{ route('clientes.direccionEntrega.index', ['cliente' => $cliente]) }}">Dirección de Entrega</a></li>
-			<li><a href="{{ route('clientes.descuentos.index', ['cliente' => $cliente]) }}">Descuentos</a></li>
+			<li class="active"><a href="{{ route('clientes.descuentos.index', ['cliente' => $cliente]) }}">Descuentos</a></li>
 			<li><a href="{{ route('clientes.crm.index', ['cliente' => $cliente]) }}">CRM</a></li>
 		</ul>
 		<div class="panel-default">
 			<div class="panel-body">
 				<div class="row">
-					<div class="form-group col-sm-3">	
-						<label class="control-label" for="calle">Calle:</label>
-						<dd>{{ $cliente->calle }}</dd>
-					</div>
-					<div class="form-group col-sm-3">	
-						<label class="control-label" for="numext" >Número Exterior:</label>
-						<dd>{{ $cliente->numext }}</dd>
-					</div>
-					<div class="form-group col-sm-3">
-						<label class="control-label" for="numinter">Número Interior:</label>
-						<dd>{{ $cliente->numinter }}</dd>
-					</div>
-					<div class="form-group col-sm-3">
-						<label class="control-label" for="cp">Código Postal:</label>
-						<dd>{{ $cliente->cp }}</dd>
-					</div>
-				</div>
-				<div class="row">
-					<div class="form-group col-sm-3">
-						<label class="control-label" for="colonia">Colonia:</label>
-						<dd>{{ $cliente->colonia }}</dd>
-					</div>
-					<div class="form-group col-sm-3">
-						<label class="control-label" for="municipio">Municipio/Delegación:</label>
-						<dd>{{ $cliente->municipio }}</dd>
-					</div>
-					<div class="form-group col-sm-3">
-						<label class="control-label" for="ciudad">Ciudad:</label>
-						<dd>{{ $cliente->ciudad }}</dd>
-					</div>
-					<div class="form-group col-sm-3">
-						<label class="control-label" for="estado">Estado:</label>
-						<dd>{{ $cliente->estado }}</dd>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm-3">
-						<label class="control-label" for="calle1">Entre calles:</label>
-						<dd>{{ $cliente->calles }}</dd>
-					</div>
-					<div class="col-sm-3">
-						<label class="control-label" for="referencia">Referencia:</label>
-						<dd>{{ $cliente->referencia }}</dd>
-					</div>
-				</div>
-			</div>
-			<div class="panel-footer">
-				<div class="row">
-					<div class="col-sm-12 text-center">
-						<a class="btn btn-danger btn-md" href="{{ route('clientes.edit', ['cliente' => $cliente]) }}">
-							<i class="fa fa-check-pencil" aria-hidden="true"></i> Editar
+					<div class="col-sm-12 text-center form-group">
+						<a class="btn btn-success" href="{{ route('clientes.descuentos.create', ['cliente' => $cliente]) }}">
+							<i class="fa fa-plus" aria-hidden="true"></i> Agregar Descuento
 						</a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<table class="table table-stripped table-hover table-bordered" style="margin-bottom: 0px;">
+							<tr class="info">
+								<th class="col-sm-5">Nombre</th>
+								<th class="col-sm-5">Descuento</th>
+								<th class="col-sm-2">Acción</th>
+							</tr>
+							@foreach($cliente->descuentos as $descuento)
+								<tr>
+									<td>{{ $descuento->nombre }}</td>
+									<td>%{{ $descuento->descuento }}</td>
+									<td class="text-center">
+										<a class="btn btn-small btn-primary" href="{{ route('clientes.descuentos.show', ['cliente' => $cliente, 'descuento' => $descuento]) }}">
+											<i class="fa fa-eye" aria-hidden="true"></i> Ver
+										</a>
+										<a class="btn btn-small btn-danger" href="{{ route('clientes.descuentos.edit', ['cliente' => $cliente, 'descuento' => $descuento]) }}">
+											<i class="fa fa-pencil" aria-hidden="true"></i> Editar
+										</a>
+									</td>
+								</tr>
+							@endforeach
+						</table>
 					</div>
 				</div>
 			</div>

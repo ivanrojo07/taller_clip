@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Provedor;
+namespace App\Http\Controllers\Proveedor;
 
 
 use App\ContactoProvedor;
@@ -9,7 +9,7 @@ use App\Provedor;
 use Illuminate\Http\Request;
 use UxWeb\SweetAlert\SweetAlert as Alert;
 
-class ProvedorContactoController extends Controller
+class ProveedorContactoController extends Controller
 {
     /**
      * Display a listing of the resource.

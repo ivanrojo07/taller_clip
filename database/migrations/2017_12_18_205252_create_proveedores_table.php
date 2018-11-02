@@ -15,26 +15,23 @@ class CreateProveedoresTable extends Migration
     {
         Schema::create('proveedores', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('tipopersona',['Fisica','Moral']);
             $table->string('nombre')->nullable();
             $table->string('apellidopaterno')->nullable();
             $table->string('apellidomaterno')->nullable();
             $table->string('razonsocial')->nullable();
+            $table->enum('tipopersona',['Fisica','Moral'])->nullable();
             $table->string('email')->nullable();
-            $table->string('alias');
             $table->string('rfc')->nullable();
-            $table->string('vendedor')->nullable();
             $table->string('calle')->nullable();
             $table->string('numext')->nullable();
             $table->string('numinter')->nullable();
+            $table->string('cp')->nullable();
             $table->string('colonia')->nullable();
             $table->string('municipio')->nullable();
             $table->string('ciudad')->nullable();
             $table->string('estado')->nullable();
-            $table->string('calle1')->nullable();
-            $table->string('calle2')->nullable();
+            $table->string('calles')->nullable();
             $table->string('referencia')->nullable();
-            $table->softDeletes();
             $table->timestamps();
         });
     }

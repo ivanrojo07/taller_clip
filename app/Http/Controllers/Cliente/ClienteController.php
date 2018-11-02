@@ -40,7 +40,7 @@ class ClienteController extends Controller
     {
         $cliente = Cliente::create($request->all());
         Alert::success('Cliente creado con éxito', 'Siga agregando información');
-        return redirect()->route('clientes.direccion.index', ['cliente' => $cliente]);
+        return redirect()->route('clientes.show', ['cliente' => $cliente]);
     }
 
     /**

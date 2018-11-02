@@ -17,6 +17,10 @@ function persona(elemento) {
 	$("#idnombre").prop('required', false);
 	$("#apellidopaterno").prop('required', false);
 	$("#razonsocial").prop('required', false);
+	$("#idnombre").val('');
+	$("#apellidopaterno").val('');
+	$("#apellidomaterno").val('');
+	$("#razonsocial").val('');
 	if(elemento.value == "Fisica") {
 		document.getElementById('perfisica').style.display = 'block';
 		document.getElementById('permoral').style.display = 'none';

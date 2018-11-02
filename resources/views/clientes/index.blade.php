@@ -33,10 +33,9 @@
 							<table class="table table-striped table-bordered table-hover" style="color:rgb(51,51,51); border-collapse: collapse; margin-bottom: 0px">
 								<tr class="info">
 									<th>@sortablelink('nombre', 'Nombre/Razón Social')</th>
-									<th>@sortablelink('Calificación')</th>
+									<th>@sortablelink('RFC')</th>
 									<th>@sortablelink('Correo')</th>
-									<th>@sortablelink('Teléfono')</th>
-									<th>@sortablelink('Celular')</th>
+									<th>@sortablelink('Teléfono de Casa')</th>
 									<th>Acción</th>
 								</tr>
 								@foreach($clientes as $cliente)
@@ -48,10 +47,9 @@
 												{{ $cliente->razonsocial }}
 											@endif
 										</td>
-										<td>{{ $cliente->prioridad }}</td>
-										<td>{{ $cliente->mail }}</td>
-										<td>{{ $cliente->telefono }}</td>
-										<td>{{ $cliente->celular }}</td>
+										<td>{{ $cliente->rfc == null ? 'N/A' : $cliente->rfc }}</td>
+										<td>{{ $cliente->mail == null ? 'N/A' : $cliente->mail }}</td>
+										<td>{{ $cliente->tel_celular == null ? 'N/A' : $cliente->tel_celular }}</td>
 										<td class="text-center">
 											<a class="btn btn-info btn-sm" href="{{ route('clientes.show',$cliente) }}">
 												<i class="fa fa-eye" aria-hidden="true"></i> Ver
