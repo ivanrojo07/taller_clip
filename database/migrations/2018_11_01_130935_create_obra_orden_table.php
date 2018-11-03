@@ -13,8 +13,13 @@ class CreateObraOrdenTable extends Migration
      */
     public function up()
     {
-        Schema::table('obra_orden', function (Blueprint $table) {
+        Schema::create('obra_orden', function (Blueprint $table) {
             //
+            $table->increments('id');
+            $table->integer('obra_id')->unsigned();
+            $table->foreign('obra_id')->references('id')->on('obras');
+            $table->integer('orden_id')->references('id')->on('ordens');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +30,6 @@ class CreateObraOrdenTable extends Migration
      */
     public function down()
     {
-        Schema::table('obra_orden', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('obra_orden');
     }
 }

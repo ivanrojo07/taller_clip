@@ -144,7 +144,7 @@
                 </td>
                 <td>
                     <div class="row mt-1 mb-1 justify-content-md-center">
-                        <a href="#" onclick="removeMaterial('row${material.id}')" class="btn btn-success remove_button">
+                        <a href="#" onclick="removeMaterial('row${material.id}')" class="btn btn-danger remove_button">
                             Eliminar
                         </a>
                     </div>
@@ -154,8 +154,7 @@
             $("#myMaterials").append(rowHTML);
         }
         function removeMaterial(id) {
-            console.log()
-            console.log($(`#${id}`).parent());
+          
             $(`#${id}`).remove();
             // body...
         }

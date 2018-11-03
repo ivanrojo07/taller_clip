@@ -110,4 +110,9 @@ class ObraController extends Controller
     {
         //
     }
+    public function getObra(Obra $obra)
+    {
+        $obra->materiales;
+        return response()->json(['obra'=>$obra],200);
+    }
 }

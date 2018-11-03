@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Orden;
 
 use App\Orden;
+use App\Obra;
 use App\Material;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -29,7 +30,9 @@ class OrdenController extends Controller
     {
         
         $preclave = Orden::get()->count();
-        return view('orden.create', ['preclave'=>$preclave]);
+        $obras = Obra::get();
+        $edit=false;
+        return view('orden.create', ['edit'=>$edit,'preclave'=>$preclave,'obras'=>$obras]);
     }
 
     /**
@@ -40,14 +43,21 @@ class OrdenController extends Controller
      */
     public function store(Request $request)
     {
-        $orden = new Orden;
-        $orden->nombre = $request->nombre;
-        $orden->fecha = $request->fecha;
-        $orden->noorden = $request->noorden;
-        $orden->descripcion = $request->descripcion;
-        $orden->nopiezas = $request->noobras;
-        $orden->save();
-        $materiales = Material::get();
+        // dd($request->all());
+        $orden = Orden::create($request->all());
+        for ($i = 0; $i < sizeof($request->obra_id); $i++) {
+            $orden->obras()->attach($request->obra_id[$i]);
+        }
+        $alert = ['message'=>"Orden ".$orden->nombre." registrado", 'class'=>'success'];
+        return redirect()->route('orden.create')->with('alert',$alert);
+        // $orden = new Orden;
+        // $orden->nombre = $request->nombre;
+        // $orden->fecha = $request->fecha;
+        // $orden->noorden = $request->noorden;
+        // $orden->descripcion = $request->descripcion;
+        // $orden->noobras = $request->noobras;
+        // $orden->save();
+        // $materiales = Material::get();
         return view('obra.create',['orden_id'=>$orden->id, 'noabras'=>$orden->nopiezas, 'materiales'=>$materiales]);
     }
 

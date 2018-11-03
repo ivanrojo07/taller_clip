@@ -30,7 +30,7 @@ class Material extends Model
      // }
      public function proveedor()
      {
-         return $this->belongsTo('App\Provedor','proveedor_id','id');
+         return $this->belongsTo('App\Proveedor','proveedor_id','id');
      }
 
     public function obras(){

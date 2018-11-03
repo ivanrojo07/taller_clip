@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Material;
 use App\Descripcion;
 use App\Http\Controllers\Controller;
 use App\Material;
-use App\Provedor;
+use App\Proveedor;
 use Illuminate\Http\Request;
 
 class MaterialController extends Controller
@@ -31,7 +31,7 @@ class MaterialController extends Controller
     public function create()
     {
         $edit=false;
-        $proveedores = Provedor::get();
+        $proveedores = Proveedor::get();
         $alert = null;
         return view('material.create', ['edit'=>$edit, 'alert'=>$alert, "provedores"=>$proveedores]);
     }
@@ -86,7 +86,7 @@ class MaterialController extends Controller
     {
         //
         $edit=true;
-        $proveedores = Provedor::get();
+        $proveedores = Proveedor::get();
         // dd($material);
         $alert= null;
         return view('material.create', ['edit'=>$edit,'alert'=>$alert, "material"=>$material, "provedores"=>$proveedores]);

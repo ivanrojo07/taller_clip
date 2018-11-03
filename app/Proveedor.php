@@ -52,4 +52,8 @@ class Proveedor extends Model
     public function bancarios() {
         return $this->hasOne('App\DatosBancariosProveedor');
     }
+    public function materiales()
+    {
+        return $this->hasMany('App\Material');
+    }
 }
