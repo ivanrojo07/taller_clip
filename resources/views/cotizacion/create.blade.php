@@ -1,5 +1,187 @@
 @extends('layouts.cotizacion')
 @section('content')
+<div class="container-fluid">
+  <div class="card">
+    <div class="card-header">
+      <div class="row">
+        <h5>Crear Cotización:</h5>
+      </div>
+    </div>
+    <div class="card-body">
+      @if (session("alert"))
+          <div class="alert alert-{{session("alert")['class']}} alert-dismissible fade show" role="alert">
+             {{session('alert')['message']}}
+             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+      @endif
+      <form role="form" method="POST" action="{{$edit ? route('cotizacion.update',['cotizacion'=>$cotizacion]) : route('cotizacion.store')}}">
+        {{csrf_field()}}
+        @if ($edit)
+            {{method_field('PUT')}}
+        @endif
+        <div class="row">
+          <div class="col-sm-3 form-group">
+            <label class="control-label">Cliente:</label>
+            <select class="form-control" id="cliente_id" name="cliente_id">
+              <option value="">Selecciona el cliente</option>
+              @foreach ($clientes as $cliente)
+                <option value="{{$cliente->id}}">{{($cliente->tipopersona == "Moral" ? $cliente->razonsocial : $cliente->nombre." ".$cliente->apellidopaterno." ".$cliente->apellidomaterno)}}</option>
+              @endforeach
+            </select>
+          </div>
+          <div class="col-sm-3 form-group">
+            <label class="control-label">Número de cotización:</label>
+            <input required type="number" class="form-control" name="nocotizacion" id="nocotizacion" placeholder="Ejemp: 0001">
+          </div>
+          <div class="col-sm-3 form-group">
+            <label class="control-label">Fecha:</label>
+            <input required type="date" readonly class="form-control" name="fechaactual" id="fechaactual" value="{{date('Y-m-d')}}">
+          </div>
+          <div class="col-sm-3 form-group">
+            <label class="control-label">Fecha de entrega:</label>
+            <input required type="date" class="form-control" name="fechaentrega" id="fechaentrega" min="{{date('Y-m-d')}}">
+          </div>
+        </div>
+        <div class="row">
+          <table class="table table-striped table-bordered">
+            <tbody>
+              @foreach ($ordenes as $orden)
+                {{-- expr --}}
+                <tr class="table-info">
+                  <th scope="col" colspan="7">Orden</th>
+                </tr>
+                <tr class="table-info">
+                  <th scope="col">Número</th>
+                  <th scope="col">Orden</th>
+                  <th scope="col">Fecha</th>
+                  <th scope="col" colspan="2">Descripción</th>
+                  <th scope="col">Precio</th>
+                  <th scope="col">Acción</th>
+                </tr>
+                <tr>
+                  <td scope="row">{{$orden->noorden}}</td>
+                  <td>{{$orden->nombre}}</td>
+                  <td>{{$orden->fecha}}</td>
+                  <td colspan="2">{{$orden->descripcion}}</td>
+                  <td>${{$orden->precio_orden}}MXN</td>
+                  <td>
+                    <div class="row mt-1 mb-1 justify-content-md-center">
+                      <a href="#" onclick="addOrden({{json_encode($orden)}})" class="btn btn-success">
+                        Agregar
+                      </a>
+                    </div>
+                    <div class="row mt-1 mb-1 justify-content-md-center">
+                      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".collapse{{$orden->id}}" aria-expanded="false" aria-controls="collapseExample">
+                        Más detalles
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                @foreach ($orden->obras as $index=>$obra)
+                <tr class="table-success collapse collapse{{$orden->id}}">
+                  <th scope="col" colspan="7">Obra(s) de {{$orden->nombre}}</th>
+                </tr>
+                <tr class="table-success collapse collapse{{$orden->id}}">
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Piezas</th>
+                  <th scope="col" colspan="2">Descripción</th>
+                  <th scope="col">Alto</th>
+                  <th scope="col">Ancho</th>
+                  <th scope="col">Profundidad</th>
+                </tr> 
+                <tr class="collapse collapse{{$orden->id}}">
+                  <td scope="row">
+                    {{$obra->nombre}}
+                  </td>
+                  <td>{{$obra->nopiezas}}</td>
+                  <td colspan="2">{{$obra->descripcion_obra}}</td>
+                  <td>{{$obra->alto_obra}} {{$obra->unidad_obra}}</td>
+                  <td>{{$obra->ancho_obra}} {{$obra->unidad_obra}}</td>
+                  <td>{{$obra->profundidad_obra}} {{$obra->unidad_obra}}</td>
+                </tr>
+                <tr class="table-secondary collapse collapse{{$orden->id}}">
+                  <th scope="col" colspan="7">Material(es) de {{$obra->nombre}}</th>
+                </tr>
+                <tr class="table-secondary collapse collapse{{$orden->id}}">
+                  <th scope="col">Clave</th>
+                  <th scope="col">Sección</th>
+                  <th scope="col">Color</th>
+                  <th scope="col">Alto</th>
+                  <th scope="col">Ancho</th>
+                  <th scope="col">Espesor</th>
+                  <th scope="col">Precio</th>
+                </tr>
+                @foreach ($obra->materiales as $material)
+                <tr class="collapse collapse{{$orden->id}}">
+                  <td scope="row">{{$material->clave}}</td>
+                  <td>{{$material->seccion}}</td>
+                  <td>{{$material->color}}</td>
+                  <td>{{$material->alto}} {{$material->medidas}}</td>
+                  <td>{{$material->ancho}} {{$material->medidas}}</td>
+                  <td>{{$material->espesor}} {{$material->medidas}}</td>
+                  <td>${{$material->precio}}MXN</td>
+                </tr>
+                @endforeach
+                @endforeach
+              @endforeach
+            </tbody>
+          </table>
+        </div>
+        <div class="row">
+          <table class="table table-striped table-bordered">
+            <thead>
+              <tr class="table-info">
+                  <th scope="col" colspan="7">Orden en cotización</th>
+                </tr>
+                <tr class="table-info">
+                  <th scope="col">Número</th>
+                  <th scope="col">Orden</th>
+                  <th scope="col">Fecha</th>
+                  <th scope="col" colspan="2">Descripción</th>
+                  <th scope="col">Precio</th>
+                  <th scope="col">Acción</th>
+                </tr>
+                <tr>
+            </thead>
+            <tbody id="myOrdenes"></tbody>
+          </table>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  function addOrden(orden){
+            console.log(orden);
+            var rowHTML = 
+            `<tr id="row${orden.id}">
+                <td scope="row">
+                    ${orden.noorden}
+                </td>
+                <td>${orden.nombre}</td>
+                <td>${orden.fecha}</td>
+                <td colspan="2">${orden.descripcion}</td>
+                <td>$${orden.precio_orden}</td>
+                <td>
+                  <input type="hidden" name="ordenes[]" value="${orden.id}">
+                    <div class="row mt-1 mb-1 justify-content-md-center">
+                        <a href="#" onclick="removeOrden('row${orden.id}')" class="btn btn-danger remove_button">
+                            Eliminar
+                        </a>
+                    </div>
+                </td>
+                
+            </tr>`;
+            $("#myOrdenes").append(rowHTML);
+        }
+        function removeOrden(id) {
+          
+            $(`#${id}`).remove();
+            // body...
+        }
+</script>
 
 
 <div class="container-fluid ">

@@ -48,6 +48,8 @@ class OrdenController extends Controller
         for ($i = 0; $i < sizeof($request->obra_id); $i++) {
             $orden->obras()->attach($request->obra_id[$i]);
         }
+        $orden->precio_orden=$orden->total();
+        $orden->save();
         $alert = ['message'=>"Orden ".$orden->nombre." registrado", 'class'=>'success'];
         return redirect()->route('orden.create')->with('alert',$alert);
         // $orden = new Orden;

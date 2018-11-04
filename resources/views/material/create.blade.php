@@ -80,7 +80,7 @@
                             <select required class="custom-select" name="proveedor" id="descripcion" required>
                                 <option value="">---</option>
                                     @foreach($provedores as $provedor)
-                                        <option value="{{$provedor->id}}" {{($edit && $material->proveedor_id == $provedor->id) ? "selected" : ""}}>{{$provedor->razonsocial ? $provedor->alias : $provedor->nombre." ".$provedor->apellidopaterno." ".$provedor->apellidomaterno }}</option>
+                                        <option value="{{$provedor->id}}" {{($edit && $material->proveedor_id == $provedor->id) ? "selected" : ""}}>{{$provedor->razonsocial ? $provedor->razonsocial : $provedor->nombre." ".$provedor->apellidopaterno." ".$provedor->apellidomaterno }}</option>
                                     @endforeach
                             </select>
                         </div>

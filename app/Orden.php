@@ -12,7 +12,9 @@ class Orden extends Model
                          'fecha',
                          'noorden',
                          'descripcion',
-                         'noobras'];
+                         'noobras',
+                         'precio_orden'
+                     ];
 
     public function obras(){
         return $this->belongsToMany('App\Obra','obra_orden');
@@ -20,6 +22,16 @@ class Orden extends Model
 
     public function cotizacions(){
         return $this->belongsToMany('App\Cotizacion', 'cotizacion_orden');
+    }
+
+    public function total(){
+        $obras = $this->obras;
+        $total = 0;
+        foreach ($obras as $obra) {
+            $total = $total + $obra->precio_obra;
+
+        }
+        return $total;
     }
 }
 

@@ -7,6 +7,7 @@ use App\Vario;
 use App\Manodeobra;
 use App\Envio;
 use App\Orden;
+use App\Cliente;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -31,7 +32,9 @@ class CotizacionController extends Controller
     public function create()
     {
         $ordenes = Orden::get();
-        return view('cotizacion.create',['ordenes'=>$ordenes]);
+        $clientes = Cliente::get();
+        $edit=false;
+        return view('cotizacion.create',['ordenes'=>$ordenes,'clientes'=>$clientes,'edit'=>$edit]);
     }
 
     /**

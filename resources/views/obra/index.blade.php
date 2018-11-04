@@ -19,6 +19,7 @@
 								<th scope="col">Descripción</th>
 								<th scope="col" >Medidas</th>
 								<th scope="col" >Materiales</th>
+								<th scope="col">Precio</th>
 								<th style="width: 115px;" scope="col" >Accion</th>
 								
 							</tr>
@@ -86,7 +87,7 @@
 													        	</div>
 													        	<div class="col-sm-6 form-group">
 													        		<label class="control-label">Proveedor:</label>
-													        		<label class="form-control">{{$material->proveedor->razonsocial ? $material->proveedor->alias : $material->proveedor->nombre." ".$material->proveedor->apellidopaterno." ".$material->proveedor->apellidomaterno}}</label>
+													        		<label class="form-control">{{$material->proveedor->razonsocial ? $material->proveedor->razonsocial : $material->proveedor->nombre." ".$material->proveedor->apellidopaterno." ".$material->proveedor->apellidomaterno}}</label>
 													        	</div>
 													        </div>
 													        <div class="row">
@@ -111,6 +112,7 @@
 											</div>
 										@endforeach
 									</td>
+									<td>${{$obra->precio_obra}}MXN</td>
 									<td></td>
 									
 								</tr>

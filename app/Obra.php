@@ -14,7 +14,8 @@ class Obra extends Model
         'ancho_obra',
         'profundidad_obra',
         'unidad_obra',
-        'descripcion_obra'
+        'descripcion_obra',
+        'precio_obra'
     ];
         
        
@@ -24,5 +25,18 @@ class Obra extends Model
 
     public function ordenes(){
         return $this->belongsToMany('App\Orden', 'obra_orden');
+    }
+
+    public function total(){
+        $materiales = $this->materiales;
+        // return $materiales;
+        $total = 0;
+        foreach ($materiales as $material) {
+            $total = $total +($material->precio *$material->pivot->cantidad);
+
+        }
+        $total = $total*$this->nopiezas;
+
+        return $total;
     }
 }

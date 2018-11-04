@@ -90,11 +90,15 @@
                             <label class="control-label">Número de piezas:</label>
                             <input readonly class="form-control" type="text" id="nopiezas${i}">
                         </div>
-                        <div class="col-sm-4 form-group">
+                        <div class="col-sm-3 form-group">
+                            <label class="control-label">Precio:</label>
+                            <input readonly class="form-control" type="text" id="precio_obra${i}">
+                        </div>
+                        <div class="col-sm-3 form-group">
                             <label class="control-label">Descripción:</label>
                             <textarea readonly id="descripcion_obra${i}" class="form-control"></textarea>
                         </div>
-                        <div class="col-sm-5 form-group">
+                        <div class="col-sm-3 form-group">
                             <label class="control-label">Materiales</label>
                             <textarea readonly id="materiales_obra${i}" class="form-control"></textarea>
                         </div>
@@ -116,6 +120,7 @@
                         $("#ancho_obra"+index).val(obra.ancho_obra+" "+obra.unidad_obra);
                         $("#profundidad_obra"+index).val(obra.profundidad_obra+" "+obra.unidad_obra);
                         $("#nopiezas"+index).val(obra.nopiezas+" pz(s)");
+                        $("#precio_obra"+index).val("$"+obra.precio_obra+"MXN");
                         $("#descripcion_obra"+index).val(obra.descripcion_obra);
                         descripcion_material = "";
                         obra.materiales.forEach(function(material){
@@ -123,7 +128,7 @@
                         })
                         // console.log(descripcion_material);
 
-                        $("#materiales_obra"+index).val(descripcion_material)
+                        $("#materiales_obra"+index).val(descripcion_material);
                     }
                 }
             });

@@ -36,7 +36,7 @@
 											<a  href="{{ route('material.edit',['material'=>$material->id]) }}" class="btn btn-info">Editar</a>
 										</div>
 									</td>
-									<td>{{$material->seccion}} / {{$material->descripcion}} / {{$material->proveedor->razonsocial ? $material->proveedor->alias : $material->proveedor->nombre." ".$material->proveedor->apellidopaterno." ".$material->proveedor->apellidomaterno}}</td>
+									<td>{{$material->seccion}} / {{$material->descripcion}} / {{$material->proveedor->razonsocial ? $material->proveedor->razonsocial : $material->proveedor->nombre." ".$material->proveedor->apellidopaterno." ".$material->proveedor->apellidomaterno}}</td>
 									<td>{{$material->alto}} X {{$material->ancho}} X {{$material->espesor}} {{$material->medidas}}</td>
 									<td>{{$material->color}}</td>
 									<td>${{$material->costo}} <br> {{$material->ganancia}}%</td>

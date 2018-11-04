@@ -43,11 +43,14 @@ class ObraController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        $obra = new Obra;
+        // $obra = new Obra;
         $obra = Obra::create($request->all());
         for ($i = 0; $i < sizeof($request->materiales) ; $i++) {
             $obra->materiales()->attach($request->materiales[$i],['cantidad'=>$request->cantidad[$i]]);
         }
+        $obra->precio_obra = $obra->total();
+        // dd($obra->total());
+        $obra->save();
         // $obra->orden_id = $request->orden_id;
         // $obra->nombre = $request->nombre;
         // $obra->nopiezas = $request->nopiezas;

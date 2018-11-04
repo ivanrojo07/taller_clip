@@ -15,7 +15,8 @@ class CreateCotizacionsTable extends Migration
     {
         Schema::create('cotizacions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('cliente');
+            $table->integer('cliente_id')->unsigned();
+            $table->foreign('cliente_id')->references('id')->on('clientes');
             $table->integer('nocotizacion');
             $table->date('fechaactual');
             $table->date('fechaentrega');

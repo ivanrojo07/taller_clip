@@ -23,6 +23,7 @@ class CreateObrasTable extends Migration
             $table->string('unidad_obra');
             $table->string('tipo_material_obra');
             $table->text('descripcion_obra');
+            $table->decimal('precio_obra',12,2)->default(0);
 
             
             $table->timestamps();

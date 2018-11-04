@@ -19,7 +19,8 @@ class CreateOrdensTable extends Migration
             $table->date('fecha');
             $table->integer('noorden');
             $table->string('descripcion');
-            $table->integer('noobras');         
+            $table->integer('noobras');   
+            $table->decimal('precio_orden',12,2)->default(0);  
             $table->timestamps();
         });
     }
