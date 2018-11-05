@@ -57,10 +57,10 @@
 			<li>
 				<a href="{{ route('proveedores.show', ['proveedor' => $proveedor]) }}">Dirección Física:</a>
 			</li>
-			<li class="active">
+			<li>
 				<a href="{{ route('proveedores.direccionFiscal.index', ['proveedor' => $proveedor]) }}">Dirección Fiscal:</a>
 			</li>
-			<li>
+			<li class="active">
 				<a href="{{ route('proveedores.contacto.index', ['proveedor' => $proveedor]) }}">Contactos:</a>
 			</li>
 			<li>

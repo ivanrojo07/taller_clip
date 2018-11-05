@@ -71,11 +71,11 @@ class ProveedorContactoController extends Controller
      * @param  \App\Personal  $personal
      * @return \Illuminate\Http\Response
      */
-    public function edit(Proveedor $proveedor, $contacto)
+    public function edit($proveedor, $contacto)
     {
-        //
-        $contacto = ContactoProveedor::findOrFail($contacto);
-        return view('provedores.contacto.edit',['proveedor'=>$proveedor, 'contacto'=>$contacto]);
+        $proveedor = Proveedor::find($proveedor);
+        $contacto = ContactoProveedor::find($contacto);
+        return view('proveedores.contactos.edit', ['proveedor' => $proveedor, 'contacto' => $contacto]);
     }
 
     /**
@@ -85,13 +85,12 @@ class ProveedorContactoController extends Controller
      * @param  \App\Personal  $personal
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Proveedor $proveedor, $contacto)
+    public function update(Request $request, $proveedor, $contacto)
     {
-        //
-        $contacto = ContactoProveedor::findOrFail($contacto);
+        $proveedor = Proveedor::find($proveedor);
+        $contacto = ContactoProveedor::find($contacto);
         $contacto->update($request->all());
-        Alert::success('Contacto actualizado con éxito');
-        return redirect()->route('provedores.contacto.index',['proveedor'=>$proveedor]);
+        return redirect()->route('proveedores.contacto.index', ['proveedor' => $proveedor]);
     }
 
     /**

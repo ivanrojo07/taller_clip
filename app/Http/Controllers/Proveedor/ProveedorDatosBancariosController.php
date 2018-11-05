@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Proveedor;
 
 use App\DatosBancariosProveedor;
-use App\Provedor;
+use App\Proveedor;
 use App\Banco;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -11,50 +11,47 @@ use App\Http\Controllers\Controller;
 class ProveedorDatosBancariosController extends Controller
 {
 
-    public function index(Provedor $provedore)
+    public function index($proveedor)
     {
-        $bancario = $provedore->datosBancarios;
-        if(!$bancario) {
+        $proveedor = Proveedor::find($proveedor);
+        $bancario = $proveedor->bancarios;
+        if($bancario == null) {
             $bancos = Banco::get();
-            return view('provedores.bancarios.create', ['provedore' => $provedore, 'bancos' => $bancos]);
+            return view('proveedores.datosBancarios.create', ['proveedor' => $proveedor, 'bancos' => $bancos]);
         }
-        return view('provedores.bancarios.view', ['provedore' => $provedore, 'bancario' => $bancario]);
+        return view('proveedores.datosBancarios.view', ['proveedor' => $proveedor, 'bancario' => $bancario]);
     }
 
-    public function create(Provedor $provedore)
+    public function create(Proveedor $proveedor)
     {
         $bancos = Banco::get();
-        return view('provedores.bancarios.create', ['provedore' => $provedore, 'bancos' => $bancos]);
+        return view('proveedores.datosBancarios.create', ['proveedor' => $proveedor, 'bancos' => $bancos]);
     }
 
-    public function store(Request $request, Provedor $provedore)
+    public function store(Request $request, Proveedor $proveedor)
     {
         $bancario = new DatosBancariosProveedor();
         $bancario->banco_id = $request->banco_id;
-        $bancario->provedor_id = $provedore->id;
+        $bancario->provedor_id = $proveedor->id;
         $bancario->cuenta = $request->cuenta;
         $bancario->clabe = $request->clabe;
         $bancario->beneficiario = $request->beneficiario;
         $bancario->save();
-        return view('provedores.bancarios.view', ['provedore' => $provedore, 'bancario' => $bancario]);
+        return redirect()->route('proveedores.datosBancarios.index', ['proveedor' => $proveedor]);
     }
 
-    public function view() {
-
-    }
-
-    public function edit(Provedor $provedore)
+    public function edit(Proveedor $proveedor)
     {
-        $bancario = $provedore->datosBancarios;
+        $bancario = $proveedor->datosBancarios;
         $bancos = Banco::get();
-        return view('provedores.bancarios.edit', ['provedore' => $provedore, 'bancario' => $bancario, 'bancos' => $bancos]);
+        return view('proveedores.datosBancarios.edit', ['proveedor' => $proveedor, 'bancario' => $bancario, 'bancos' => $bancos]);
     }
 
-    public function update(Request $request, Provedor $provedore)
+    public function update(Request $request, Proveedor $proveedor)
     {
-        $bancario = $provedore->datosBancarios;
+        $bancario = $proveedor->bancarios;
         $bancario->update($request->all());
-        return $this->index($provedore);
+        return $this->index($proveedor);
     }
 
     public function destroy() {

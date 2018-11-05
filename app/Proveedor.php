@@ -50,7 +50,7 @@ class Proveedor extends Model
     }
 
     public function bancarios() {
-        return $this->hasOne('App\DatosBancariosProveedor');
+        return $this->hasOne('App\DatosBancariosProveedor', 'provedor_id');
     }
     public function materiales()
     {

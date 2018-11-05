@@ -1,84 +1,77 @@
 @extends('layouts.blank')
 @section('content')
 
-<div class="container" id="tab">
-	<form role="form" id="form-cliente" method="POST" action="{{ route('provedores.datosbancarios.store', ['provedore' => $provedore]) }}" name="form">
+<div class="container-fluid" id="tab">
+	<form method="POST" action="{{ route('proveedores.datosBancarios.store', ['proveedor' => $proveedor]) }}">
 		{{ csrf_field() }}
 		<div role="application" class="panel panel-group" >
-			<div class="panel-default">
-				<div class="panel-heading">
-					<div class="row">
-						<div class="col-sm-4">
-							<h4>Datos del Proveedor:</h4>
-						</div>
-						<div class="col-sm-4 text-center">
-							<a class="btn btn-success" href="{{ route('provedores.create')}}">
-								<strong>Agregar Proveedor</strong>
-							</a>
-						</div>
+		<div class="panel-default">
+			<div class="panel-heading">
+				<div class="row">
+					<div class="col-sm-4">
+						<h4>Datos del Proveedor:</h4>
+					</div>
+					<div class="col-sm-4 text-center">
+						<a class="btn btn-success" href="{{ route('proveedores.create') }}">
+							<i class="fa fa-plus" aria-hidden="true"></i><strong> Agregar Proveedor</strong>
+						</a>
+					</div>
+					<div class="col-sm-4 text-center">
+						<a class="btn btn-primary" href="{{ route('proveedores.index') }}">
+							<i class="fa fa-bars" aria-hidden="true"></i><strong> Lista de Proveedores</strong>
+						</a>
 					</div>
 				</div>
-				<div class="panel-body">
-					<div class="row">
-	  					<div class="form-group col-sm-3">
-	    					<label class="control-label" for="tipopersona">Tipo de Persona:</label>
-	    					<dd>{{ $provedore->tipopersona }}</dd>
-	  					</div>
-	  					<div class="form-group col-sm-3">
-	  						<label class="control-label" for="alias">Alias:</label>
-	  						<dd>{{ $provedore->alias }}</dd>
-	  					</div>
-	  					<div class="form-group col-sm-3">
-	  						<label class="control-label" for="rfc">RFC:</label>
-	  						<dd>{{ $provedore->rfc }}</dd>
-	  					</div>
-	  					<div class="form-group col-sm-3">
-	  						<label class="control-label" for="vendedor">Vendedor:</label>
-	  						<dd>{{ $provedore->vendedor }}</dd>
-	  					</div>
-					</div>
-					@if ($provedore->tipopersona == "Fisica")
-					<div class="row" id="perfisica">
+			</div>
+			<div class="panel-body">
+				<div class="row">
+  					<div class="form-group col-sm-3">
+    					<label class="control-label" for="tipopersona">Tipo de Persona:</label>
+    					<dd>{{ $proveedor->tipopersona }}</dd>
+  					</div>
+					@if($proveedor->tipopersona == "Fisica")
 						<div class="form-group col-sm-3">
 	  						<label class="control-label" for="nombre">Nombre(s):</label>
-	  						<dd>{{ $provedore->nombre }}</dd>
+	  						<dd>{{ $proveedor->nombre }}</dd>
 	  					</div>
 	  					<div class="form-group col-sm-3">
 	  						<label class="control-label" for="apellidopaterno">Apellido Paterno:</label>
-	  						<dd>{{ $provedore->apellidopaterno }}</dd>
+	  						<dd>{{ $proveedor->apellidopaterno }}</dd>
 	  					</div>
 	  					<div class="form-group col-sm-3">
 	  						<label class="control-label" for="apellidomaterno">Apellido Materno:</label>
-	  						<dd>{{ $provedore->apellidomaterno }}</dd>
+	  						<dd>{{ $proveedor->apellidomaterno }}</dd>
 	  					</div>
-					</div>
 					@else
-					<div class="row" id="permoral">
 						<div class="form-group col-sm-3">
 	  						<label class="control-label" for="razonsocial">Razon Social:</label>
-	  						<dd>{{ $provedore->razonsocial }}</dd>
+	  						<dd>{{ $proveedor->razonsocial }}</dd>
 	  					</div>
-					</div>
 					@endif
+  					<div class="form-group col-sm-3">
+  						<label class="control-label" for="rfc">RFC:</label>
+  						<dd>{{ $proveedor->rfc }}</dd>
+  					</div>
 				</div>
 			</div>
-			<ul role="tablist" class="nav nav-tabs">
-				<li class="ui-tabs-tab ui-corner-top ui-state-default ui-tab">
-					<a href="{{ route('provedores.show',['provedore'=>$provedore]) }}">Dirección Fìsica:</a>
-				</li>
-				<li role="presentation" tabindex="-1" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab" aria-controls="tabs-2" aria-labelledby="ui-id-2" aria-selected="false" aria-expanded="false">
-					<a href="{{ route('provedores.direccionfisica.index', ['provedore'=>$provedore]) }}" role="presentation" tabindex="-1" class="ui-tabs-anchor" id="ui-id-2">Dirección Fiscal:</a>
-				</li>
-				<li role="presentation" tabindex="-1" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab" aria-controls="tabs-3" aria-labelledby="ui-id-3" aria-selected="false" aria-expanded="false">
-					<a href="{{ route('provedores.contacto.index', ['provedore'=>$provedore]) }}" role="presentation" tabindex="-1" class="ui-tabs-anchor" id="ui-id-3">Contacto:</a>
-				</li>
-				<li role="presentation" tabindex="-1" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab" aria-controls="tabs-3" aria-labelledby="ui-id-3" aria-selected="false" aria-expanded="false">
-					<a href="{{ route('provedores.datosgenerales.index', ['provedore'=>$provedore]) }}" role="presentation" tabindex="-1" class="ui-tabs-anchor" id="ui-id-3">Datos Generales:</a>
-				</li>
-				<li class="active">
-					<a href="#tab4">Datos Bancarios:</a>
-				</li>
-			</ul>
+		</div>
+		<ul class="nav nav-tabs">
+			<li>
+				<a href="{{ route('proveedores.show', ['proveedor' => $proveedor]) }}">Dirección Física:</a>
+			</li>
+			<li>
+				<a href="{{ route('proveedores.direccionFiscal.index', ['proveedor' => $proveedor]) }}">Dirección Fiscal:</a>
+			</li>
+			<li class="active">
+				<a href="{{ route('proveedores.contacto.index', ['proveedor' => $proveedor]) }}">Contactos:</a>
+			</li>
+			<li>
+				<a href="{{ route('proveedores.datosGenerales.index', ['proveedor' => $proveedor]) }}">Datos Generales:</a>
+			</li>
+			<li>
+				<a href="{{ route('proveedores.datosBancarios.index', ['proveedor' => $proveedor]) }}">Datos Bancarios:</a>
+			</li>
+		</ul>
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<div class="row">
