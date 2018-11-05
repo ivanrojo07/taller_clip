@@ -208,6 +208,25 @@
                 </div>
                 @endif
                 @endforeach
+                <!--Obras-->
+                @foreach(Auth::user()->perfil->modulos as $modulo)
+                @if($modulo->nombre == "obras")
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="card">
+                            <div id="clase3" class="card-header nave" data-toggle="collapse" data-target="#obras">
+                                <p class="mb-0" style="float: left;">Obras&nbsp<i class="fa fa-cubes"></i></p>
+                                <p class="mb-0" style="float: right;"><i class="fa fa-angle-double-down"></i></p>
+                            </div>
+                            <ul id="obras" class="list-group list-group-flush collapse" data-parent="#acoreond">
+                                <a class="nave3" target="frame1" href="{{ url('obra') }}"><li class="list-group-item">Obras&nbsp<i class="fa fa-clone"></i></li></a>
+                                <a class="nave3" target="frame1" href="{{ url('/obra/create/') }}"><li class="list-group-item">Crear obra&nbsp<i class="fa fa-object-group"></i></li></a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                @endif
+                @endforeach
                 <!--Órdenes-->
                 @foreach(Auth::user()->perfil->modulos as $modulo)
                 @if($modulo->nombre == "ordenes")
