@@ -153,7 +153,6 @@
 					<tr class="info">
 						<th>Área</th>
 						<th>Puesto</th>
-						<th>Sucursal</th>
 						
 						<th>Salario Nominal</th>
 						<th>Tipo de Contrato</th>
@@ -193,19 +192,6 @@
 							@endforeach
 						@endif
 
-
- 						@if($dato->sucursal_id==null)
-						<td>NO DEFINIDO</td>
-						@else
-						 <?php $s='';?>
-							@foreach($sucursales as $sucursal)
-								@if($dato->sucursal_id==$sucursal->id)
-								<?php $s=$sucursal->nombre; ?>
-								<td>{{$s}}</td>
-								@endif
-							@endforeach
-						@endif
-
 						
 
 						<td>{{$dato->salarionom}}</td>
@@ -224,7 +210,7 @@
 							@endforeach
 						@endif
 
-						<td>{{$dato->fechaactualizacion}}</td>  
+						<td>{{$dato->updated_at}}</td>  
 						</tr>
 
 					</tbody>
@@ -250,7 +236,7 @@
 			<div class="form-group col-xs-3">
 					<label class="control-label" for="fechaactualizacion">Fecha de Actualización:</label>
 					
-					<dd><strong> {{ $dato->fechaactualizacion }}</strong></dd>
+					<dd><strong> {{ $dato->updated_at }}</strong></dd>
 				</div>
 				
 				<div class="form-group col-xs-3">

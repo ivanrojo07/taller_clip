@@ -128,15 +128,6 @@
                             <ul id="collapseExample6" class="list-group list-group-flush collapse" data-parent="#acoreond">
                                 <a class="nave6" target="frame1" href="{{ url('/clientes/create')}}"><li class="list-group-item">Alta&nbsp<i class="fa fa-user-plus" aria-hidden="true"></i></li></a>
                                 <a class="nave6" target="frame1" href="{{ url('/clientes') }}"><li class="list-group-item">Búsqueda&nbsp<i class="fa fa-search" aria-hidden="true"></i></li></a>
-                                <li class="list-group-item dropright" style="z-index: 999999;">
-                                    <div class="dropdown-toggle m-0 p-0" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Precargas&nbsp<i class="fa fa-refresh" aria-hidden="true"></i> 
-                                    </div>
-                                    <div class="dropdown-menu m-0 p-0 nave6" aria-labelledby="dropdownMenuButton">
-                                         <a class="nave6" class="dropdown-item" target="frame1" href="{{ url('/formacontactos') }}">Forma Contactos&nbsp<i class="fa fa-refresh" aria-hidden="true"></i></a><br>
-                                        <!--<a class="nave6" class="dropdown-item" target="frame1" href="{{ url('/bancos') }}">Precargas Bancos&nbsp<i class="fa fa-refresh" aria-hidden="true"></i> </a>-->
-                                    </div>
-                                </li>
                             </ul>
                         </div>
                     </div>
@@ -170,19 +161,6 @@
                             <ul id="collapseExample5" class="list-group list-group-flush collapse" data-parent="#acoreond">
                                 <a class="nave5" target="frame1" href="{{url('empleados/create')}}"><li class="list-group-item">Alta&nbsp<i class="fa fa-plus"></i></li></a>
                                 <a class="nave5" target="frame1" href="{{ url('empleados') }}"><li class="list-group-item">Búsqueda&nbsp<i class="fa fa-search" aria-hidden="true"></i></li></a>
-                                <li class="list-group-item dropright" style="z-index: 999999;">
-                                    <div class="dropdown-toggle m-0 p-0" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Precargas&nbsp<i class="fa fa-refresh" aria-hidden="true"></i> 
-                                    </div>
-                                    <div class="dropdown-menu m-0 p-0 nave5" aria-labelledby="dropdownMenuButton">
-                                        <a class="nave5" target="frame1" class="dropdown-item" href="{{ url('bajas') }}">Bajas&nbsp<i class="fa fa-refresh" aria-hidden="true"></i> </a><br>
-                                        <a class="nave5" target="frame1" class="dropdown-item" href="{{ url('contratos') }}">Contratos&nbsp<i class="fa fa-refresh" aria-hidden="true"></i> </a><br>
-                                        <a class="nave5" target="frame1" class="dropdown-item" href="{{ url('/areas') }}">Precargas Áreas&nbsp<i class="fa fa-refresh" aria-hidden="true"></i> </a><br>
-                                        <a class="nave5" target="frame1" class="dropdown-item" href="{{ url('/puestos') }}">Precargas Puestos&nbsp<i class="fa fa-refresh" aria-hidden="true"></i> </a><br>
-                                        <a class="nave5" target="frame1" class="dropdown-item" href="{{ url('/bancos') }}">Precargas Bancos&nbsp<i class="fa fa-refresh" aria-hidden="true"></i> </a><br>
-                                        <a class="nave5" target="frame1" class="dropdown-item" href="{{ url('/faltas') }}">Precargas Faltas&nbsp<i class="fa fa-refresh" aria-hidden="true"></i> </a>
-                                    </div>
-                                </li>
                             </ul>
                         </div>
                     </div>
@@ -279,14 +257,6 @@
                             <ul id="collapseExample1" class="list-group list-group-flush collapse" data-parent="#acoreond">
                                 <a class="nave1" target="frame1" href="{{ url('/proveedores/create')}}"><li class="list-group-item">Alta&nbsp<i class="fa fa-user-plus" aria-hidden="true"></i></li></a>
                                 <a class="nave1" target="frame1" href="{{ url('/proveedores') }}"><li class="list-group-item">Búsqueda&nbsp<i class="fa fa-search" aria-hidden="true"></i></li></a>
-                                <li class="list-group-item dropright" style="z-index: 999999;">
-                                    <div class="dropdown-toggle m-0 p-0" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Precargas&nbsp<i class="fa fa-refresh" aria-hidden="true"></i> 
-                                    </div>
-                                    <div class="dropdown-menu m-0 p-0 nave1" aria-labelledby="dropdownMenuButton">
-                                        <a class="nave6" class="dropdown-item" target="frame1" href="{{ url('/giros') }}">Giros&nbsp<i class="fa fa-refresh" aria-hidden="true"></i> </a><br>
-                                    </div>
-                                </li>
                             </ul>
                         </div>
                     </div>
@@ -311,8 +281,27 @@
                 </div>
                 @endif
                 @endforeach
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="card">
+                            <div id="clase11" class="card-header nave" data-toggle="collapse" data-target="#collapseExample11">
+                                <p class="mb-0" style="float: left;">Precargas <i class="fa fa-refresh" aria-hidden="true"></i></p>
+                                <p class="mb-0" style="float: right;"><i class="fa fa-angle-double-down"></i></p>
+                            </div>
+                            <ul id="collapseExample11" class="list-group list-group-flush collapse" data-parent="#acoreond">
+                                <a class="nave11" target="frame1" href="{{ url('/giros') }}"><li class="list-group-item">Giros</li></a>
+                                <a class="nave11" target="frame1" href="{{ url('bajas') }}"><li class="list-group-item">Bajas</li></a>
+                                <a class="nave11" target="frame1" href="{{ url('contratos') }}"><li class="list-group-item">Contratos</li></a>
+                                <a class="nave11" target="frame1" href="{{ url('/areas') }}"><li class="list-group-item">Áreas</li></a>
+                                <a class="nave11" target="frame1" href="{{ url('/puestos') }}"><li class="list-group-item">Puestos</li></a>
+                                <a class="nave11" target="frame1" href="{{ url('/bancos') }}"><li class="list-group-item">Bancos</li></a>
+                                <a class="nave11" target="frame1" href="{{ url('/faltas') }}"><li class="list-group-item">Faltas</li></a>
+                                         <a class="nave6" class="dropdown-item" target="frame1" href="{{ url('/formacontactos') }}"><li class="list-group-item">Forma de Contacto</li></a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
                 @endauth
-            
             </div>
 
             <div class="offset-3 col-9 fixed-top">
