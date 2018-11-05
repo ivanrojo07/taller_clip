@@ -31,10 +31,11 @@ class CotizacionController extends Controller
      */
     public function create()
     {
+        $nocotizacion = Cotizacion::count() + 1;
         $ordenes = Orden::get();
         $clientes = Cliente::get();
         $edit=false;
-        return view('cotizacion.create',['ordenes'=>$ordenes,'clientes'=>$clientes,'edit'=>$edit]);
+        return view('cotizacion.create',['ordenes'=>$ordenes,'clientes'=>$clientes,'edit'=>$edit, 'nocotizaciones'=>$nocotizacion]);
     }
 
     /**

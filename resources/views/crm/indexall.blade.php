@@ -222,7 +222,7 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-sm-4 form-group">
-                            <label class="control-label">Cliente:</label>
+                            <label class="control-label">✱Cliente:</label>
                             <select class="form-control" name="cliente_id" id="cliente_id_sel" required>
                                 <option value="">Seleccionar Cliente</option>
                                 @foreach($clientes as $cliente)
@@ -240,7 +240,7 @@
                         <div id="info{{ $cliente->id }}" style="display: none;"> 
                             <div class="col-sm-4 form-group">
                                 <label class="control-label">ID:</label>
-                                <input type="text" name="" readonly value="{{ $cliente->identificador }}"  class="form-control">
+                                <input type="text" name="" readonly value="{{ $cliente->id }}"  class="form-control">
                             </div>
                             <div class="col-sm-4 form-group">
                                 <label class="control-label">R.F.C:</label>
@@ -259,18 +259,18 @@
                             <input type="date" class="form-control" id="fecha_act" name="fecha_act" value="{{ date('Y-m-d') }}" readonly>
                         </div>
                         <div class="col-sm-4 form-group">
-                            <label class="control-label" for="fecha_aviso"><i class="fa fa-asterisk" aria-hidden="true"></i> Fecha Aviso:</label>
+                            <label class="control-label" for="fecha_aviso">✱Fecha Aviso:</label>
                             <input type="date" class="form-control" id="fecha_uno" name="fecha_aviso" required="required" min="{{ date('Y-m-d') }}" max="{{ date('Y-m-d',strtotime('+2 Months')) }}">
                         </div>
                         <div class="col-sm-4 form-group">
-                            <label class="control-label" for="fecha_cont"><i class="fa fa-asterisk" aria-hidden="true"></i> Fecha Contacto:</label>
+                            <label class="control-label" for="fecha_cont">✱Fecha Contacto:</label>
                             <input type="date" class="form-control" id="fecha_dos" name="fecha_cont" required="required" min="{{ date('Y-m-d',strtotime('+2 Days')) }}" max="{{ date('Y-m-d',strtotime('+2 Months')) }}" disabled>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-4 form-group">
-                            <label class="control-label" for="hora">Hora:</label>
-                            <input type="text" class="form-control" id="hora" name="hora" name="hora" value="">
+                            <label class="control-label" for="hora">✱Hora:</label>
+                            <input type="text" class="form-control" id="hora" name="hora" name="hora" value="" required="">
                         </div>
                         <div class="col-sm-4 form-group">
                             <label class="control-label" for="tipo_cont">Forma de contacto:</label>

@@ -33,7 +33,7 @@
           </div>
           <div class="col-sm-3 form-group">
             <label class="control-label">Número de cotización:</label>
-            <input required type="number" class="form-control" name="nocotizacion" id="nocotizacion" placeholder="Ejemp: 0001">
+            <input required readonly type="number" class="form-control" name="nocotizacion" id="nocotizacion" value="{{$nocotizaciones}}" placeholder="Ejemp: 0001">
           </div>
           <div class="col-sm-3 form-group">
             <label class="control-label">Fecha:</label>

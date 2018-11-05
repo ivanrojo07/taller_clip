@@ -16,7 +16,7 @@ class CreateTipobajaTable extends Migration
         Schema::create('tipobaja', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->string('descripcion')->nullable();
+            $table->string('abreviatura')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

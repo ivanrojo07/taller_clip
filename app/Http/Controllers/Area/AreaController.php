@@ -66,7 +66,8 @@ class AreaController extends Controller
     public function edit(Area $area)
     {
         //
-        return view('areas.edit',['Area'=>$area]);
+       // dd($area);
+        return view('areas.edit',['area'=>$area]);
     }
 
     /**

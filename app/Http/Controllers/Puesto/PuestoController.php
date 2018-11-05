@@ -66,7 +66,7 @@ class PuestoController extends Controller
     public function edit(Puesto $puesto)
     {
         //
-        return view('puestos.edit',['Puesto'=>$puesto]);
+        return view('puestos.edit',['puesto'=>$puesto]);
     }
 
     /**
