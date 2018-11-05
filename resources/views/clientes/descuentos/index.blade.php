@@ -97,9 +97,9 @@
 					<div class="col-sm-12">
 						<table class="table table-stripped table-hover table-bordered" style="margin-bottom: 0px;">
 							<tr class="info">
-								<th class="col-sm-5">Nombre</th>
-								<th class="col-sm-5">Descuento</th>
-								<th class="col-sm-2">Acción</th>
+								<th class="col-sm-4">Nombre</th>
+								<th class="col-sm-4">Descuento</th>
+								<th class="col-sm-4">Acción</th>
 							</tr>
 							@foreach($cliente->descuentos as $descuento)
 								<tr>

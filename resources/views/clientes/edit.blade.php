@@ -36,11 +36,11 @@
 						<div id="perfisica" @if($cliente->tipopersona == "Moral") style="display: none;" @endif>
 							<div class="form-group col-sm-3">
 		  						<label class="control-label" for="nombre">✱Nombre(s):</label>
-		  						<input  type="text" class="form-control" id="idnombre" name="nombre" required="" value="{{ $cliente->nombre }}">
+		  						<input  type="text" class="form-control" id="idnombre" name="nombre" @if($cliente->tipopersona == "Fisica") required="" @endif value="{{ $cliente->nombre }}">
 		  					</div>
 		  					<div class="form-group col-sm-3">
 		  						<label class="control-label" for="apellidopaterno">✱Apellido Paterno:</label>
-		  						<input type="text" class="form-control" id="apellidopaterno" name="apellidopaterno" required="" value="{{ $cliente->apellidopaterno }}">
+		  						<input type="text" class="form-control" id="apellidopaterno" name="apellidopaterno" @if($cliente->tipopersona == "Fisica") required="" @endif value="{{ $cliente->apellidopaterno }}">
 		  					</div>
 		  					<div class="form-group col-sm-3">
 		  						<label class="control-label" for="apellidomaterno">Apellido Materno:</label>
@@ -50,7 +50,7 @@
 						<div id="permoral" @if($cliente->tipopersona == "Fisica") style="display: none;" @endif>
 							<div class="form-group col-sm-3">
 		  						<label class="control-label" for="razonsocial">✱Razon Social:</label>
-		  						<input type="text" class="form-control" id="razonsocial" name="razonsocial" value="{{ $cliente->razonsocial }}">
+		  						<input type="text" class="form-control" id="razonsocial" name="razonsocial" @if($cliente->tipopersona == "Moral") required="" @endif value="{{ $cliente->razonsocial }}">
 		  					</div>
 						</div>
 					</div>
