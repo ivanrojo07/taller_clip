@@ -33,24 +33,24 @@
 	    						<option id="Moral" value="Moral" @if($proveedor->tipopersona == "Moral") selected="selected" @endif>Moral</option>
 	    					</select>
 	  					</div>
-						<div id="perfisica">
+						<div id="perfisica" @if($proveedor->tipopersona == "Moral") style="display: none;" @endif>
 							<div class="form-group col-sm-3">
 		  						<label class="control-label" for="nombre">✱Nombre(s):</label>
-		  						<input type="text" class="form-control" id="nombre" name="nombre" value="{{ $proveedor->nombre }}" required="">
+		  						<input type="text" class="form-control" id="nombre" name="nombre" value="{{ $proveedor->nombre }}" @if($proveedor->tipopersona == "Fisica") required="" @endif>
 		  					</div>
 		  					<div class="form-group col-sm-3">
 		  						<label class="control-label" for="apellidopaterno">✱Apellido Paterno:</label>
-		  						<input type="text" class="form-control" id="apellidopaterno" name="apellidopaterno" value="{{ $proveedor->apellidopaterno }}" required="">
+		  						<input type="text" class="form-control" id="apellidopaterno" name="apellidopaterno" value="{{ $proveedor->apellidopaterno }}" @if($proveedor->tipopersona == "Fisica") required="" @endif>
 		  					</div>
 		  					<div class="form-group col-sm-3">
 		  						<label class="control-label" for="apellidomaterno">Apellido Materno:</label>
 		  						<input type="text" class="form-control" id="apellidomaterno" name="apellidomaterno" value="{{ $proveedor->apellidomaterno }}">
 		  					</div>
 						</div>
-						<div id="permoral" style="display: none;">
+						<div id="permoral" @if($proveedor->tipopersona == "Fisica") style="display: none;" @endif>
 							<div class="form-group col-sm-3">
 		  						<label class="control-label" for="razonsocial">✱Razon Social:</label>
-		  						<input type="text" class="form-control" id="razonsocial" name="razonsocial" value="{{ $proveedor->razonsocial }}">
+		  						<input type="text" class="form-control" id="razonsocial" name="razonsocial" value="{{ $proveedor->razonsocial }}" @if($proveedor->tipopersona == "Moral") required="" @endif>
 		  					</div>
 						</div>
 	  					<div class="form-group col-sm-3">

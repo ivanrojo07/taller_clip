@@ -63,14 +63,6 @@
 					<dd>{{ $puesto->nombre }}</dd>
 					@endif
 				</div>
-				<div class="form-group col-xs-3">
-					<label class="control-label" for="sucursal">Sucursal:</label>
-					@if($sucursal==null)
-					<dd>NO DEFINIDO</dd>
-					@else
-					<dd>{{ $sucursal->nombre }}</dd>
-					@endif
-				</div>
 				
 				
 				
@@ -306,22 +298,6 @@
 								@if($dato->puesto_id==$puesto->id)
 								<?php $p=$puesto->nombre; ?>
 								<dd>{{$p}}</dd>
-								@endif
-							@endforeach
-						@endif
-
-				</div>
-				<div class="form-group col-xs-3">
-					<label class="control-label" for="sucursal">Sucursal:</label>
-
-					@if($dato->sucursal_id==null)
-						<dd>NO DEFINIDO</dd>
-						@else
-						 <?php $s='';?>
-							@foreach($sucursales as $sucursal)
-								@if($dato->sucursal_id==$sucursal->id)
-								<?php $s=$sucursal->nombre; ?>
-								<dd>{{$s}}</dd>
 								@endif
 							@endforeach
 						@endif
