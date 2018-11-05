@@ -1,5 +1,6 @@
 @extends('layouts.blank')
 @section('content')
+
 <div class="container-fluid">
 	<div role="application" class="panel panel-group">
 		<div class="panel-default">
@@ -136,17 +137,17 @@
 					</div>
 					<div class="row">
 						<div class="form-group col-sm-4">
-							<label class="control-label" for="acuerdos">Acuerdos: </label>
+							<label class="control-label" for="acuerdos">✱Acuerdos: </label>
 							<textarea required class="form-control" rows="5" id="acuerdos" name="acuerdos" maxlength="500"></textarea>
 						</div>
 
 						<div class="form-group col-sm-4">
-							<label class="control-label" for="comentarios">Comentarios: </label>
+							<label class="control-label" for="comentarios">✱Comentarios: </label>
 							<textarea required class="form-control" rows="5" id="comentarios" name="comentarios" maxlength="500"></textarea>
 						</div>
 
 						<div class="form-group col-sm-4">
-							<label class="control-label" for="observaciones">Observaciones: </label>
+							<label class="control-label" for="observaciones">✱Observaciones: </label>
 							<textarea required class="form-control" rows="5" id="observaciones" name="observaciones" maxlength="500"></textarea>
 						</div>
 					</div>
@@ -205,6 +206,7 @@
 </div>
 
 <script type="text/javascript">
+	
 	function crm(elemento) {
 		document.getElementById("fecha_cont").value = elemento.fecha_cont;
 		document.getElementById("fecha_cont").disabled = true;
@@ -252,6 +254,7 @@
 		document.getElementById('comentarios').value = '';
 		document.getElementById('observaciones').value = '';
 	}
+
 </script>
 
 @endsection

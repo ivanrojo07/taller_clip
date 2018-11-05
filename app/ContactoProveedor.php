@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
 use Laravel\Scout\Searchable;
 
-class ContactoProvedor extends Model
+class ContactoProveedor extends Model
 {
 	use Sortable;
 
@@ -35,7 +35,7 @@ class ContactoProvedor extends Model
     
     public $sortable = ['nombre', 'apater', 'amater','area','email1','email2'];
 
-    public function provedores() {
-    	return $this->belongsTo(Provedor::class,'provedor_id');
+    public function proveedor() {
+    	return $this->belongsTo('App\Proveedor');
     }
 }

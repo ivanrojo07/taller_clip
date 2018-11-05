@@ -81,7 +81,7 @@ Route::resource('formacontactos','FormaContacto\FormaContactoController');
 
 //-----------------------------------------------------
 Route::resource('proveedores','Proveedor\ProveedorController');
-Route::resource('proveedores.direccionFiscal','Proveedor\ProveedorDireccionFisicaController');
+Route::resource('proveedores.direccionFiscal','Proveedor\ProveedorDireccionFiscalController');
 Route::resource('proveedores.datosGenerales','Proveedor\ProveedorDatosGeneralesController');
 Route::resource('proveedores.contacto','Proveedor\ProveedorContactoController');
 Route::resource('proveedores.datosBancarios','Proveedor\ProveedorDatosBancariosController');

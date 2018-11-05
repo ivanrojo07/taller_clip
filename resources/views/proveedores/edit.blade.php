@@ -1,7 +1,8 @@
 @extends('layouts.blank')
 @section('content')
-<div class="container" id="tab">
-	<form role="form" id="form-cliente" method="POST" action="{{ route('provedores.update', ['provedore' => $provedore]) }}" name="form">
+
+<div class="container-fluid" id="tab">
+	<form role="form" id="form-cliente" method="POST" action="{{ route('proveedores.update', ['proveedor' => $proveedor]) }}" name="form">
 		{{ csrf_field() }}
 		<input type="hidden" name="_method" value="PUT">
 		<div role="application" class="panel panel-group" >
@@ -9,11 +10,16 @@
 				<div class="panel-heading">
 					<div class="row">
 						<div class="col-sm-4">
-							<h4>Datos del Proveedor:&nbsp;<small><small><i class="fa fa-asterisk" aria-hidden="true"></i>Campos Requeridos</small></small></h4>
+							<h4>Datos del Proveedor:</h4>
 						</div>
 						<div class="col-sm-4 text-center">
-							<a class="btn btn-success" href="{{ route('provedores.create')}}">
-								<strong>Agregar Proveedor</strong>
+							<a class="btn btn-success" href="{{ route('proveedores.create') }}">
+								<i class="fa fa-plus" aria-hidden="true"></i><strong> Agregar Proveedor</strong>
+							</a>
+						</div>
+						<div class="col-sm-4 text-center">
+							<a class="btn btn-primary" href="{{ route('proveedores.index') }}">
+								<i class="fa fa-bars" aria-hidden="true"></i><strong> Lista de Proveedores</strong>
 							</a>
 						</div>
 					</div>
@@ -21,130 +27,123 @@
 				<div class="panel-body">
 					<div class="row">
 	  					<div class="form-group col-sm-3">
-	    					<label class="control-label" for="tipopersona"><i class="fa fa-asterisk" aria-hidden="true"></i>Tipo de Persona:</label>
-	    					<select type="select" name="tipopersona" class="form-control" id="tipopersona" onchange="persona(this)">
-	    						<option id="Fisica" value="Fisica" @if ($provedore->tipopersona == "Fisica")
-	    							{{-- expr --}}
-	    							selected="selected" 
-	    						@endif>Fisica</option>
-	    						<option id="Moral" value="Moral" @if ($provedore->tipopersona == "Moral")
-	    							{{-- expr --}}
-	    							selected="selected" 
-	    						@endif>Moral</option>
+	    					<label class="control-label" for="tipopersona">✱Tipo de Persona:</label>
+	    					<select type="select" name="tipopersona" class="form-control" id="tipopersona" onchange="persona(this)" required="">
+	    						<option id="Fisica" value="Fisica" @if($proveedor->tipopersona == "Fisica") selected="selected" @endif>Fisica</option>
+	    						<option id="Moral" value="Moral" @if($proveedor->tipopersona == "Moral") selected="selected" @endif>Moral</option>
 	    					</select>
 	  					</div>
+						<div id="perfisica">
+							<div class="form-group col-sm-3">
+		  						<label class="control-label" for="nombre">✱Nombre(s):</label>
+		  						<input type="text" class="form-control" id="nombre" name="nombre" value="{{ $proveedor->nombre }}" required="">
+		  					</div>
+		  					<div class="form-group col-sm-3">
+		  						<label class="control-label" for="apellidopaterno">✱Apellido Paterno:</label>
+		  						<input type="text" class="form-control" id="apellidopaterno" name="apellidopaterno" value="{{ $proveedor->apellidopaterno }}" required="">
+		  					</div>
+		  					<div class="form-group col-sm-3">
+		  						<label class="control-label" for="apellidomaterno">Apellido Materno:</label>
+		  						<input type="text" class="form-control" id="apellidomaterno" name="apellidomaterno" value="{{ $proveedor->apellidomaterno }}">
+		  					</div>
+						</div>
+						<div id="permoral" style="display: none;">
+							<div class="form-group col-sm-3">
+		  						<label class="control-label" for="razonsocial">✱Razon Social:</label>
+		  						<input type="text" class="form-control" id="razonsocial" name="razonsocial" value="{{ $proveedor->razonsocial }}">
+		  					</div>
+						</div>
 	  					<div class="form-group col-sm-3">
-	  						<label class="control-label" for="alias"><small><small><i class="fa fa-asterisk" aria-hidden="true"></i></small></small> Alias:</label>
-	  						<input type="text" class="form-control" id="alias" name="alias" value="{{ $provedore->alias }}" required autofocus>
+	  						<label class="control-label" for="rfc">RFC:</label>
+	  						<input type="text" class="form-control" id="varrfc" name="rfc" minlength="12" maxlength="13" pattern="^[A-Za-z]{4}[0-9]{6}[A-Za-z0-9]{3}" placeholder="Ingrese 13 caracteres" title="Siga el formato 4 letras seguidas por 6 digitos y 3 caracteres" value="{{ $proveedor->rfc }}">
 	  					</div>
 	  					<div class="form-group col-sm-3">
-	  						<label class="control-label" for="rfc"><small><small><i class="fa fa-asterisk" aria-hidden="true"></i></small></small> RFC:</label>
-	  						<input type="text" class="form-control" id="rfc" name="rfc" value="{{ $provedore->rfc }}" required>
-	  					</div>
-	  					<div class="form-group col-sm-3">
-	  						<label class="control-label" for="vendedor">Vendedor:</label>
-	  						<input type="text" class="form-control" id="vendedor" name="vendedor" value="{{ $provedore->vendedor }}">
-	  					</div>
-					</div>
-					<div class="row" id="perfisica">
-						<div class="form-group col-sm-3">
-	  						<label class="control-label" for="nombre"><small><small><i class="fa fa-asterisk" aria-hidden="true"></i></small></small> Nombre(s):</label>
-	  						<input type="text" class="form-control" id="nombre" name="nombre" value="{{ $provedore->nombre }}">
-	  					</div>
-	  					<div class="form-group col-sm-3">
-	  						<label class="control-label" for="apellidopaterno"><small><small><i class="fa fa-asterisk" aria-hidden="true"></i></small></small> Apellido Paterno:</label>
-	  						<input type="text" class="form-control" id="apellidopaterno" name="apellidopaterno" value="{{ $provedore->apellidomaterno }}">
-	  					</div>
-	  					<div class="form-group col-sm-3">
-	  						<label class="control-label" for="apellidomaterno">Apellido Materno:</label>
-	  						<input type="text" class="form-control" id="apellidomaterno" name="apellidomaterno" value="{{ $provedore->apellidomaterno }}">
-	  					</div>
-					</div>
-					<div class="row" id="permoral" style="display:none;">
-						<div class="form-group col-sm-3">
-	  						<label class="control-label" for="razonsocial"><small><small><i class="fa fa-asterisk" aria-hidden="true"></i></small></small> Razon Social:</label>
-	  						<input type="text" class="form-control" id="razonsocial" name="razonsocial" value="{{ $provedore->razonsocial }}">
+	  						<label class="control-label" for="rfc">Correo Electrónico:</label>
+	  						<input type="email" class="form-control" id="email" name="email" value="{{ $proveedor->email }}">
 	  					</div>
 					</div>
 				</div>
 			</div>
-			<ul role="tablist" class="nav nav-tabs">
+			<ul class="nav nav-tabs">
 				<li class="active">
-					<a href="#tab1">Dirección Fìsica:</a>
+					<a href="{{ route('proveedores.show', ['proveedor' => $proveedor]) }}">Dirección Física:</a>
 				</li>
-				<li role="presentation" tabindex="-1" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab" aria-controls="tabs-2" aria-labelledby="ui-id-2" aria-selected="false" aria-expanded="false">
-					<a href="{{ route('provedores.direccionfisica.index', ['provedore'=>$provedore]) }}" role="presentation" tabindex="-1" class="ui-tabs-anchor" id="ui-id-2">Dirección Fiscal:</a>
+				<li>
+					<a href="{{ route('proveedores.direccionFiscal.index', ['proveedor' => $proveedor]) }}">Dirección Fiscal:</a>
 				</li>
-				<li role="presentation" tabindex="-1" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab" aria-controls="tabs-3" aria-labelledby="ui-id-3" aria-selected="false" aria-expanded="false">
-					<a href="{{ route('provedores.contacto.index', ['provedore'=>$provedore]) }}" role="presentation" tabindex="-1" class="ui-tabs-anchor" id="ui-id-3">Contacto:</a>
+				<li>
+					<a href="{{ route('proveedores.contacto.index', ['proveedor' => $proveedor]) }}">Contactos:</a>
 				</li>
-				<li role="presentation" tabindex="-1" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab" aria-controls="tabs-3" aria-labelledby="ui-id-3" aria-selected="false" aria-expanded="false">
-					<a href="{{ route('provedores.datosgenerales.index', ['provedore'=>$provedore]) }}" role="presentation" tabindex="-1" class="ui-tabs-anchor" id="ui-id-3">Datos Generales:</a>
+				<li>
+					<a href="{{ route('proveedores.datosGenerales.index', ['proveedor' => $proveedor]) }}">Datos Generales:</a>
 				</li>
-				<li role="presentation" tabindex="-1" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab" aria-controls="tabs-3" aria-labelledby="ui-id-4" aria-selected="false" aria-expanded="false">
-					<a href="{{ route('provedores.datosbancarios.index', ['provedore'=>$provedore]) }}" role="presentation" tabindex="-1" class="ui-tabs-anchor" id="ui-id-4">Datos Bancarios:</a>
+				<li>
+					<a href="{{ route('proveedores.datosBancarios.index', ['proveedor' => $proveedor]) }}">Datos Bancarios:</a>
 				</li>
 			</ul>
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<div class="row">
 						<div class="col-sm-4">
-							<h5>Dirección Física:&nbsp;<small><small><i class="fa fa-asterisk" aria-hidden="true"></i>Campos Requeridos</small></small></h5>
+							<h5>Dirección Física:</h5>
 						</div>
 					</div>
 				</div>
 				<div class="panel-body">
 					<div class="row">
 						<div class="form-group col-sm-3">
-	    					<label class="control-label" for="calle"><small><small><i class="fa fa-asterisk" aria-hidden="true"></i></small></small> Calle:</label>
-	    					<input type="text" class="form-control" id="calle" name="calle" value="{{ $provedore->calle }}" required>
+	    					<label class="control-label" for="calle">Calle:</label>
+	    					<input type="text" class="form-control" id="calle" name="calle" value="{{ $proveedor->calle }}">
 	  					</div>
 	  					<div class="form-group col-sm-3">
-	    					<label class="control-label" for="numext"><small><small><i class="fa fa-asterisk" aria-hidden="true"></i></small></small> Numero exterior:</label>
-	    					<input type="text" class="form-control" id="numext" name="numext" value="{{ $provedore->numext }}" required>
+	    					<label class="control-label" for="numext">Número exterior:</label>
+	    					<input type="text" class="form-control" id="numext" name="numext" value="{{ $proveedor->numext }}">
 	  					</div>	
 	  					<div class="form-group col-sm-3">
-	    					<label class="control-label" for="numinter">Numero interior:</label>
-	    					<input type="text" class="form-control" id="numinter" name="numinter" value="{{ $provedore->numinter }}">
-	  					</div>	
-					</div>
-					<div class="row" id="perfisica">
-						<div class="form-group col-sm-3">
-	  						<label class="control-label" for="colonia"><small><small><i class="fa fa-asterisk" aria-hidden="true"></i></small></small> Colonia:</label>
-	  						<input type="text" class="form-control" id="colonia" name="colonia" value="{{ $provedore->colonia }}" required>
+	    					<label class="control-label" for="numinter">Número interior:</label>
+	    					<input type="text" class="form-control" id="numinter" name="numinter" value="{{ $proveedor->numinter }}">
 	  					</div>
 	  					<div class="form-group col-sm-3">
-	  						<label class="control-label" for="municipio"><small><small><i class="fa fa-asterisk" aria-hidden="true"></i></small></small> Delegación o Municipio:</label>
-	  						<input type="text" class="form-control" id="municipio" name="municipio" value="{{ $provedore->municipio }}" required>
-	  					</div>
-	  					<div class="form-group col-sm-3">
-	  						<label class="control-label" for="ciudad"><small><small><i class="fa fa-asterisk" aria-hidden="true"></i></small></small> Ciudad:</label>
-	  						<input type="text" class="form-control" id="ciudad" name="ciudad" value="{{ $provedore->ciudad }}" required>
-	  					</div>
-	  					<div class="form-group col-sm-3">
-	  						<label class="control-label" for="estado"><small><small><i class="fa fa-asterisk" aria-hidden="true"></i></small></small> Estado:</label>
-	  						<input type="text" class="form-control" id="estado" name="estado" value="{{ $provedore->estado }}" required>
-	  					</div>
-					</div>
-					<div class="row" id="perfisica">
-						<div class="form-group col-sm-3">
-	  						<label class="control-label" for="calle1">Entre calle:</label>
-	  						<input type="text" class="form-control" id="calle1" name="calle1" value="{{ $provedore->calle1 }}">
-	  					</div>
-	  					<div class="form-group col-sm-3">
-	  						<label class="control-label" for="calle2">Y calle:</label>
-	  						<input type="text" class="form-control" id="calle2" name="calle2" value="{{ $provedore->calle2 }}">
-	  					</div>
-	  					<div class="form-group col-sm-3">
-	  						<label class="control-label" for="referencia">Referencia:</label>
-	  						<input type="text" class="form-control" id="referencia" name="referencia" value="{{ $provedore->referencia }}">
+	    					<label class="control-label" for="numinter">Código Postal:</label>
+	    					<input type="number" class="form-control" id="cp" name="cp" value="{{ $proveedor->cp }}">
 	  					</div>
 					</div>
 					<div class="row">
-						<div class="col-sm-12 text-center">
-							<button type="submit" class="btn btn-success">
-						        <strong>Guardar</strong>
-							</button>
+						<div class="form-group col-sm-3">
+	  						<label class="control-label" for="colonia">Colonia:</label>
+	  						<input type="text" class="form-control" id="colonia" name="colonia" value="{{ $proveedor->colonia }}">
+	  					</div>
+	  					<div class="form-group col-sm-3">
+	  						<label class="control-label" for="municipio">Delegación o Municipio:</label>
+	  						<input type="text" class="form-control" id="municipio" name="municipio" value="{{ $proveedor->municipio }}">
+	  					</div>
+	  					<div class="form-group col-sm-3">
+	  						<label class="control-label" for="ciudad">Ciudad:</label>
+	  						<input type="text" class="form-control" id="ciudad" name="ciudad" value="{{ $proveedor->ciudad }}">
+	  					</div>
+	  					<div class="form-group col-sm-3">
+	  						<label class="control-label" for="estado">Estado:</label>
+	  						<input type="text" class="form-control" id="estado" name="estado" value="{{ $proveedor->estado }}">
+	  					</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-sm-3">
+	  						<label class="control-label" for="calle1">Entre calles:</label>
+	  						<input type="text" class="form-control" id="calles" placeholder="Calle 1, Calle 2" name="calles" value="{{ $proveedor->calles }}">
+	  					</div>
+	  					<div class="form-group col-sm-3">
+	  						<label class="control-label" for="referencia">Referencia:</label>
+	  						<input type="text" class="form-control" id="referencia" name="referencia" value="{{ $proveedor->referencia }}">
+	  					</div>
+					</div>
+				</div>
+				<div class="panel-footer">
+					<div class="row">
+						<div class="col-sm-4 col-sm-offset-4 text-center">
+							<button type="submit" class="btn btn-success"><i class="fa fa-check-circle" aria-hidden="true"></i> Guardar</button>
+						</div>
+						<div class="col-sm-4 text-right text-danger">
+							<h5>✱Campos Requeridos</h5>
 						</div>
 					</div>
 				</div>
@@ -152,4 +151,5 @@
 		</div>
 	</form>
 </div>
+
 @endsection

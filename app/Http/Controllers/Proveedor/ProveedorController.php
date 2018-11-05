@@ -40,10 +40,6 @@ class ProveedorController extends Controller{
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        $proveedor = Proveedor::where('rfc', $request->rfc)->get();
-        if (count($proveedor) > 0)
-            return redirect()->back()->with('errors', 'El RFC ya existe');
         $proveedor = Proveedor::create($request->all());
         Alert::success("Proveedor agregado con éxito.");
         return redirect()->route('proveedores.show', ['proveedor' => $proveedor]);
@@ -67,9 +63,9 @@ class ProveedorController extends Controller{
      * @param  \App\Personal  $personal
      * @return \Illuminate\Http\Response
      */
-    public function edit(Proveedor $proveedor)
+    public function edit($id)
     {
-        dd($proveedor);
+        $proveedor = Proveedor::find($id);
         return view('proveedores.edit', ['proveedor' => $proveedor]);
     }
 
@@ -80,12 +76,12 @@ class ProveedorController extends Controller{
      * @param  \App\Personal  $personal
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Proveedor $provedore)
+    public function update(Request $request, $id)
     {
-        
-        $provedore->update($request->all());
+        $proveedor = Proveedor::find($id);
+        $proveedor->update($request->all());
         Alert::success('Proveedor actualizado')->persistent("Cerrar");
-        return redirect()->route('provedores.show',['provedore'=>$provedore]);
+        return redirect()->route('proveedores.show', ['proveedor' => $proveedor]);
     }
 
     /**

@@ -38,11 +38,11 @@ class Proveedor extends Model
     ];
 
     public function fiscal() {
-        return $this->hasOne('App\DireccionFisicaProveedor');
+        return $this->hasOne('App\ProveedorDireccionFiscal');
     }
 
     public function contactos() {
-        return $this->hasMany('App\ContactoProveedor');
+        return $this->hasMany('App\ContactoProveedor', 'provedor_id');
     }
 
     public function generales() {
