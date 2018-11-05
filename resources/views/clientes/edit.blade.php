@@ -29,8 +29,8 @@
 	  					<div class="form-group col-sm-3">
 	    					<label class="control-label" for="tipopersona">Tipo de Persona:</label>
 	    					<select type="select" name="tipopersona" class="form-control" id="tipopersona" onchange="persona(this)">
-	    						<option id="Fisica" value="Fisica" selected="">Fisica</option>
-	    						<option id="Moral" value="Moral">Moral</option>
+	    						<option id="Fisica" value="Fisica" @if($cliente->tipopersona == "Fisica") selected="" @endif>Fisica</option>
+	    						<option id="Moral" value="Moral" @if($cliente->tipopersona == "Moral") selected="" @endif>Moral</option>
 	    					</select>
 	  					</div>
 						<div id="perfisica" @if($cliente->tipopersona == "Moral") style="display: none;" @endif>
