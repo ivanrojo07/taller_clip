@@ -127,6 +127,7 @@
     </div>
     <div class="container my-3">
     <script>
+        var precio_pub = 0;
     $(document).ready(function(){
 
         $("#ganancia").change(function(){
@@ -136,16 +137,17 @@
             // console.log(ganancia);
             precio_pub = parseFloat(+costo+ +ganancia);
             // console.log(precio_pub);
-            $('#precio').val(precio_pub);
+            $('#precio').val(precio_pub.toFixed(2));
         });
         $("#costo").change(function(){
             costo =parseFloat($("#costo").val());
             ganancia_por=parseFloat($("#ganancia").val());
-            ganancia = costo*(ganancia_por/100);
+            ganancia = parseFloat(costo*(ganancia_por/100));
             // console.log(ganancia);
-            precio_pub = parseFloat(+costo+ +ganancia);
-            // console.log(precio_pub);
-            $('#precio').val(precio_pub);
+            var precio_pub = +costo+ +ganancia;
+            precio_pub = parseFloat(precio_pub);
+            console.log(precio_pub.toFixed(2));
+            $('#precio').val(precio_pub.toFixed(2));
         })
     });
     </script>

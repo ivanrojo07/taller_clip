@@ -26,6 +26,7 @@ Route::get('getformas','FormaContacto\FormaContactoController@getFormas');
 Route::get('getfaltas','Falta\FaltaController@getFaltas');
 Route::get('getprov','Proveedor\ProveedorController@getProveedor');
 Route::get('getcontacto','FormaContacto\FormaContactoController@getFormas');
+Route::get('getDescuentos/{cliente}','Cliente\ClienteController@getDescuentos');
 
 Route::get('fecha','Crm\CrmController@porFecha')->name('fecha');
 Route::get('getclient', 'Cliente\ClienteController@getClient');

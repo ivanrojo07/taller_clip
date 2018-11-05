@@ -24,7 +24,7 @@
         <div class="row">
           <div class="col-sm-3 form-group">
             <label class="control-label">Cliente:</label>
-            <select class="form-control" id="cliente_id" name="cliente_id">
+            <select class="form-control" id="cliente_id" onchange="searchDescuentos(this.value)" name="cliente_id">
               <option value="">Selecciona el cliente</option>
               @foreach ($clientes as $cliente)
                 <option value="{{$cliente->id}}">{{($cliente->tipopersona == "Moral" ? $cliente->razonsocial : $cliente->nombre." ".$cliente->apellidopaterno." ".$cliente->apellidomaterno)}}</option>
@@ -42,6 +42,14 @@
           <div class="col-sm-3 form-group">
             <label class="control-label">Fecha de entrega:</label>
             <input required type="date" class="form-control" name="fechaentrega" id="fechaentrega" min="{{date('Y-m-d')}}">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4 offset-4">
+            <label for="totalordenes">Descuento al cliente:</label>
+            <select class="form-control" id="clienteDescuento">
+              <option value="">Selecciona el descuento</option>
+            </select>
           </div>
         </div>
         <div class="row"><h5>Ordenes:</h5></div>
@@ -404,6 +412,27 @@
   </div>
 </div>
 <script type="text/javascript">
+
+  function searchDescuentos(usuario_id) {
+    // body...
+    $("#clienteDescuento").empty();
+    
+    $.ajax({
+      url:'../getDescuentos/'+usuario_id,
+      type:'GET',
+      success: function(res){
+        console.log(res);
+        $("#clienteDescuento").append('<option value="">Selecciona el descuento</option>');
+        for (var i = res.descuentos.length - 1; i >= 0; i--) {
+          optiondesc= `<option value="${res.descuentos[i].descuento}">${res.descuentos[i].nombre}</option>`;
+          $("#clienteDescuento").append(optiondesc);
+        }
+
+      },
+
+    })
+  }
+
   var totalcotizacion=0.00;
   function addOrden(orden){
       console.log(orden);
