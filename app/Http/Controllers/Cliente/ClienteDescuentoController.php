@@ -51,10 +51,9 @@ class ClienteDescuentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(ClienteDescuento $cliente)
+    public function show(Cliente $cliente, ClienteDescuento $descuento)
     {
-        dd($cliente);
-        return view('clientes.descuentos.view', ['cliente' => $cliente->cliente, 'descuento' => $cliente]);
+        return view('clientes.descuentos.view', ['cliente' => $cliente, 'descuento' => $descuento]);
     }
 
     /**
@@ -63,9 +62,9 @@ class ClienteDescuentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(ClienteDescuento $cliente)
+    public function edit(Cliente $cliente, ClienteDescuento $descuento)
     {
-        return view('clientes.descuentos.edit', ['cliente' => $cliente->cliente, 'descuento' => $cliente]);
+        return view('clientes.descuentos.edit', ['cliente' => $cliente, 'descuento' => $descuento]);
     }
 
     /**
@@ -75,9 +74,9 @@ class ClienteDescuentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ClienteDescuento $cliente)
+    public function update(Request $request, Cliente $cliente, ClienteDescuento $descuento)
     {
-        $cliente->update($request->all());
+        $descuento->update($request->all());
         return redirect()->route('clientes.descuentos.index', ['cliente' => $cliente]);
     }
 
