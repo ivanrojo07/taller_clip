@@ -15,7 +15,7 @@ class CreateVarios extends Migration
     {
         Schema::create('varios', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('descripcion');
+            $table->text('descripcion');
             $table->double('monto',8,2);
 
             $table->integer('cotizacion_id')->unsigned();

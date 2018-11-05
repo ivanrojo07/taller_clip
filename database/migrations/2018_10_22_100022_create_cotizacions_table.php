@@ -20,10 +20,15 @@ class CreateCotizacionsTable extends Migration
             $table->integer('nocotizacion');
             $table->date('fechaactual');
             $table->date('fechaentrega');
+            $table->decimal('totalordenes',12,2);
+            $table->decimal('totalmanodeobra',12,2);
+            $table->decimal('totalvarios',12,2);
+            $table->decimal('totalenvios',12,2);
             $table->double('ganancia', 8, 2);
             $table->double('incremento', 8, 2);
-            $table->double('resultado', 8, 2);
-            $table->double('totalneto', 8, 2);
+            $table->decimal('totalproyecto',12,2);
+            $table->double('resultado', 12, 2);
+            $table->double('totalneto', 12, 2);
             $table->timestamps();
         });
     }

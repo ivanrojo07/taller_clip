@@ -9,14 +9,22 @@ class Cotizacion extends Model
 
     protected $table = 'cotizacions';
 
-    protected $fillable=['cliente',
-                         'nocotizacion',
-                         'fechaactual',
-                         'fechaentrega',
-                        'ganancia',
-                    'incremento',
-                'resultado',
-            'totalneto'];
+    protected $fillable=[
+        "id",
+        "cliente_id",
+        "nocotizacion",
+        "fechaactual",
+        "fechaentrega",
+        "totalordenes",
+        "totalmanodeobra",
+        "totalvarios",
+        "totalenvios",
+        "ganancia",
+        "incremento",
+        "totalproyecto",
+        "resultado",
+        "totalneto"
+    ];
 
 
     public function varios(){

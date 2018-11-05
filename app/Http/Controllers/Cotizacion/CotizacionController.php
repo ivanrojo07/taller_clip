@@ -45,48 +45,76 @@ class CotizacionController extends Controller
      */
     public function store(Request $request)
     {   
-        $cotizaciones = Cotizacion::get();
-        $cotizacion = new Cotizacion($request->all());
-        $cotizacion->save();
+        // dd($request->all());
+        $cotizacion = Cotizacion::create($request->all());
+        for($i = 0; $i < sizeof($request->manodeobrasd); $i++){
+            $cotizacion->manodeobras()->   create([
+                'descripcion'=>$request->manodeobrasd[$i],
+                'monto'=>$request->manodeobrasm[$i],
+                'nombre'=>$request->manodeobrasn[$i],
+                'puesto'=>$request->manodeobrasp[$i]
+            ]);
+        }
+        for ($i = 0; $i < sizeof($request->variosm) ; $i++) {
+            $cotizacion->varios()->create([
+                'descripcion'=>$request->variosd[$i],
+                'monto'=>$request->variosm[$i]
+            ]);
+        }
+        for ($i = 0; $i < sizeof($request->enviosdi) ; $i++) {
+            $cotizacion->envios()->create([
+                'descripcion'=>$request->enviosd[$i],
+                'monto'=>$request->enviosm[$i],
+                'direccion'=>$request->enviosdi[$i]
+            ]);
+        }
+        for ($i = 0; $i < sizeof($request->ordenes) ; $i++) {
+            $cotizacion->ordens()->attach($request->ordenes[$i]);
+        }
+        $alert = ['message'=>"Cotizacion ".$cotizacion->nocotizacion." registrado", 'class'=>'success'];
+        return redirect()->route('cotizacion.create')->with('alert',$alert);
+        // $cotizaciones = Cotizacion::get();
+        // $cotizacion = new Cotizacion($request->all());
+        // $cotizacion->save();
         
 
-        $variosm = $request->variosm;
-        $variosd = $request->variosd;
+        // $variosm = $request->variosm;
+        // $variosd = $request->variosd;
 
-        $manodeobrasd = $request->manodeobrasd;
-        $manodeobrasn = $request->manodeobrasn;
-        $manodeobrasp = $request->manodeobrasp;
-        $manodeobrasm = $request->manodeobrasm;
-
-
-        $enviosd = $request->enviosd;
-        $enviosdi = $request->enviosdi;
-        $enviosm = $request->enviosm;
-
-        $ordenids = $request->ordenids;
-
-        for($i = 0; $i < sizeof($variosm); $i++){
-            $variot = new Vario([ 'descripcion'=>$variosd[$i], 'monto'=>$variosm[$i]]);
-            $cotizacion->varios()->save($variot);
-        }
-
-        for($i = 0; $i < sizeof($manodeobrasd); $i++){
-            $manodeobrat = new Manodeobra([ 'descripcion'=>$manodeobrasd[$i], 'monto'=>$manodeobrasn[$i] , 'nombre'=>$manodeobrasn[$i], 'puesto'=>$manodeobrasp[$i]]);
-            $cotizacion->manodeobras()->save($manodeobrat);
-        }
-
-        for($i = 0; $i < sizeof($enviosd); $i++){
-            $enviot = new Envio([ 'descripcion'=>$enviosd[$i], 'monto'=>$enviosm[$i] , 'direccion'=>$enviosdi[$i]]);
-            $cotizacion->envios()->save($enviot);
-        }
-
-        for($i = 0; $i < sizeof($ordenids); $i++){
-
-            $cotizacion->ordens()->attach($ordenids[$i]);
-        }
+        // $manodeobrasd = $request->manodeobrasd;
+        // $manodeobrasn = $request->manodeobrasn;
+        // $manodeobrasp = $request->manodeobrasp;
+        // $manodeobrasm = $request->manodeobrasm;
 
 
-        return view('cotizacion.historial',['cotizaciones'=>$cotizaciones]);
+        // $enviosd = $request->enviosd;
+        // $enviosdi = $request->enviosdi;
+        // $enviosm = $request->enviosm;
+
+        // $ordenids = $request->ordenids;
+
+        // for($i = 0; $i < sizeof($variosm); $i++){
+        //     $variot = new Vario([ 'descripcion'=>$variosd[$i], 'monto'=>$variosm[$i]]);
+        //     $cotizacion->varios()->save($variot);
+        // }
+
+        // for($i = 0; $i < sizeof($manodeobrasd); $i++){
+        //     $manodeobrat = new Manodeobra([ 'descripcion'=>$manodeobrasd[$i], 'monto'=>$manodeobrasn[$i] , 'nombre'=>$manodeobrasn[$i], 'puesto'=>$manodeobrasp[$i]]);
+        //     $cotizacion->manodeobras()->save($manodeobrat);
+        // }
+
+        // for($i = 0; $i < sizeof($enviosd); $i++){
+        //     $enviot = new Envio([ 'descripcion'=>$enviosd[$i], 'monto'=>$enviosm[$i] , 'direccion'=>$enviosdi[$i]]);
+        //     $cotizacion->envios()->save($enviot);
+        // }
+
+        // for($i = 0; $i < sizeof($ordenids); $i++){
+
+        //     $cotizacion->ordens()->attach($ordenids[$i]);
+        // }
+
+
+        // return view('cotizacion.historial',['cotizaciones'=>$cotizaciones]);
     }
 
     /**
