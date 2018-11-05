@@ -22,36 +22,34 @@ class ProveedorDatosBancariosController extends Controller
         return view('proveedores.datosBancarios.view', ['proveedor' => $proveedor, 'bancario' => $bancario]);
     }
 
-    public function create(Proveedor $proveedor)
+    public function create($proveedor)
     {
+        $proveedor = Proveedor::find($proveedor);
         $bancos = Banco::get();
         return view('proveedores.datosBancarios.create', ['proveedor' => $proveedor, 'bancos' => $bancos]);
     }
 
-    public function store(Request $request, Proveedor $proveedor)
+    public function store(Request $request, $proveedor)
     {
-        $bancario = new DatosBancariosProveedor();
-        $bancario->banco_id = $request->banco_id;
-        $bancario->provedor_id = $proveedor->id;
-        $bancario->cuenta = $request->cuenta;
-        $bancario->clabe = $request->clabe;
-        $bancario->beneficiario = $request->beneficiario;
-        $bancario->save();
+        $proveedor = Proveedor::find($proveedor);
+        $bancarios = new DatosBancariosProveedor($request->all());
+        $proveedor->bancarios()->save($bancarios);
         return redirect()->route('proveedores.datosBancarios.index', ['proveedor' => $proveedor]);
     }
 
-    public function edit(Proveedor $proveedor)
+    public function edit($proveedor)
     {
-        $bancario = $proveedor->datosBancarios;
+        $proveedor = Proveedor::find($proveedor);
+        $bancario = $proveedor->bancarios;
         $bancos = Banco::get();
         return view('proveedores.datosBancarios.edit', ['proveedor' => $proveedor, 'bancario' => $bancario, 'bancos' => $bancos]);
     }
 
-    public function update(Request $request, Proveedor $proveedor)
+    public function update(Request $request, $proveedor)
     {
-        $bancario = $proveedor->bancarios;
-        $bancario->update($request->all());
-        return $this->index($proveedor);
+        $proveedor = Proveedor::find($proveedor);
+        $proveedor->bancarios()->update($request->except(['_method', '_token']));
+        return redirect()->route('proveedores.datosBancarios.index', ['proveedor' => $proveedor]);
     }
 
     public function destroy() {

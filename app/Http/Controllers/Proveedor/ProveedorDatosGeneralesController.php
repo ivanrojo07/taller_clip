@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Proveedor;
 
-
-use App\DatosGeneralesProvedor;
+use App\DatosGeneralesProveedor;
 use App\FormaContacto;
 use App\Giro;
 use App\Http\Controllers\Controller;
-use App\Provedor;
+use App\Proveedor;
 use Illuminate\Http\Request;
 use UxWeb\SweetAlert\SweetAlert as Alert;
 
@@ -18,21 +17,15 @@ class ProveedorDatosGeneralesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Provedor $provedore)
+    public function index($proveedor)
     {
-        //
-        $datos = $provedore->datosGeneralesProvedor;
-        if ($datos==null) {
-            # code...
-            return redirect()->route('provedores.datosgenerales.create',['provedore'=>$provedore]);;
-        }
-        else{
-            $giro = Giro::find($datos->giro_id);
-            $formaContacto = FormaContacto::find($datos->forma_contacto_id);
-            // dd($giro);
-            return view('provedores.generales.view',['datos'=>$datos, 'provedore'=>$provedore, 'giro'=>$giro, 'formaContacto'=>$formaContacto]);
-            
-        }
+        $proveedor = Proveedor::find($proveedor);
+        $datos = $proveedor->generales;
+        if($datos == null)
+            return redirect()->route('proveedores.datosGenerales.create', ['proveedor' => $proveedor]);;
+        $giro = Giro::find($datos->giro_id);
+        $formaContacto = FormaContacto::find($datos->forma_contacto_id);
+        return view('proveedores.datosGenerales.view',['datos' => $datos, 'proveedor' => $proveedor, 'giro' => $giro, 'formaContacto' => $formaContacto]);
     }
 
     /**
@@ -40,13 +33,12 @@ class ProveedorDatosGeneralesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Provedor $provedore)
+    public function create($proveedor)
     {
-        //
+        $proveedor = Proveedor::find($proveedor);
         $giros = Giro::get();
         $formaContactos = FormaContacto::get();
-        // dd($giros);}
-        return view('provedores.generales.create',['provedore'=>$provedore, 'giros'=>$giros, 'formaContactos'=>$formaContactos]);
+        return view('proveedores.datosGenerales.create', ['proveedor' => $proveedor, 'giros' => $giros, 'formaContactos' => $formaContactos]);
     }
 
     /**
@@ -55,16 +47,12 @@ class ProveedorDatosGeneralesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Provedor $provedore)
+    public function store(Request $request, $proveedor)
     {
-        //
-        // dd($request->all());
-
-        
-        $datos = DatosGeneralesProvedor::create($request->all());
-        Alert::success('Datos generales creados con éxito');
-        return redirect()->route('provedores.datosgenerales.index',['provedore'=>$provedore]);;
-
+        $proveedor = Proveedor::find($proveedor);
+        $datos = new DatosGeneralesProveedor($request->all());
+        $proveedor->generales()->save($datos);
+        return redirect()->route('proveedores.datosGenerales.index', ['proveedor' => $proveedor]);
     }
 
     /**
@@ -73,10 +61,10 @@ class ProveedorDatosGeneralesController extends Controller
      * @param  \App\Personal  $personal
      * @return \Illuminate\Http\Response
      */
-    public function show(Provedor $provedore)
+    public function show(Proveedor $proveedor)
     {
         
-        $datos = $provedore->datosGeneralesProvedor;
+        $datos = $proveedor->datosGeneralesProvedor;
         
         $giro='';
       if($datos->giro_id==null){
@@ -97,8 +85,8 @@ class ProveedorDatosGeneralesController extends Controller
 
         
        
-        return view('provedores.generales.view',
-        ['datos'=>$datos, 'provedore'=>$provedore, 'giro'=>$giro, 'formaContacto'=>$formaContacto]);
+        return view('proveedores.datosGenerales.view',
+        ['datos' => $datos, 'proveedor' => $proveedor, 'giro' => $giro, 'formaContacto' => $formaContacto]);
 
     }
 
@@ -108,16 +96,13 @@ class ProveedorDatosGeneralesController extends Controller
      * @param  \App\Personal  $personal
      * @return \Illuminate\Http\Response
      */
-    public function edit(Provedor $provedore)
-    {
-         
-        $datos = $provedore->datosGeneralesProvedor;
-        
+    public function edit($proveedor)
+    {   
+        $proveedor = Proveedor::find($proveedor);
+        $datos = $proveedor->generales;
         $giros = Giro::get();
-        
         $formaContactos = FormaContacto::get();
-        return view('provedores.generales.edit',
-        ['provedore'=>$provedore, 'datos'=>$datos, 'giros'=>$giros, 'formaContactos'=>$formaContactos]);
+        return view('proveedores.datosGenerales.edit', ['proveedor' => $proveedor, 'datos' => $datos, 'giros' => $giros, 'formaContactos' => $formaContactos]);
     }
 
     /**
@@ -127,37 +112,11 @@ class ProveedorDatosGeneralesController extends Controller
      * @param  \App\Personal  $personal
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Provedor $provedore, DatosGeneralesProvedor $datosgenerale)
+    public function update(Request $request, $proveedor, $generales)
     {
-        //
-        //dd($request->all());
-        $datosgenerale->update($request->all());
-
-
-        //$giro = Giro::findorFail($datosgenerale->giro_id);
-
-       $giro='';
-      if($request->giro_id==null){
-        $giro='NO DEFINIDO';
-      }else{
-        $giros=Giro::where('id',$datosgenerale->giro_id);
-      $giro=$giros->nombre;
-      }
- 
-//$formaContacto = FormaContacto::findorFail($datosgenerale->
-//forma_contacto_id);
-
- $formaContacto='';
-      if($request->forma_contacto_id==null){
-        $formaContacto='NO DEFINIDO';
-      }else{
-        $formaContactos=FormaContacto::where('id',$datosgenerale->forma_contacto_id);
-      $formaContacto=$formaContactos->nombre;
-      }
-          
-        Alert::success('Datos generales actualizados con éxito');
-        return view('provedores.generales.view',['datos'=>$datosgenerale,'provedore'=>$provedore, 'giro'=>$giro, 'formaContacto'=>$formaContacto]);
-
+        $proveedor = Proveedor::find($proveedor);
+        $proveedor->generales()->update($request->except(['_method', '_token']));
+        return redirect()->route('proveedores.datosGenerales.index', ['proveedor' => $proveedor]);
     }
 
     /**
@@ -166,7 +125,7 @@ class ProveedorDatosGeneralesController extends Controller
      * @param  \App\Personal  $personal
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Provedor $provedore)
+    public function destroy(Proveedor $proveedor)
     {
         //
     }

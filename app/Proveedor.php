@@ -46,14 +46,14 @@ class Proveedor extends Model
     }
 
     public function generales() {
-        return $this->hasOne('App\DatosGeneralesProveedor');
+        return $this->hasOne('App\DatosGeneralesProveedor', 'provedor_id');
     }
 
     public function bancarios() {
         return $this->hasOne('App\DatosBancariosProveedor', 'provedor_id');
     }
-    public function materiales()
-    {
+
+    public function materiales() {
         return $this->hasMany('App\Material');
     }
 }
