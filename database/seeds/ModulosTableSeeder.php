@@ -20,7 +20,8 @@ class ModulosTableSeeder extends Seeder
     		array('nombre' => 'ordenes'),
     		array('nombre' => 'cotizacion'),
             array('nombre' => 'proveedores'),
-            array('nombre' => 'cambio')
+            array('nombre' => 'cambio'),
+            array('nombre'=>'obras')
     	);
 
     	Modulo::insert($modulos);
