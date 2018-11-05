@@ -51,6 +51,11 @@ class Cliente extends Model {
 		'deleted_at'
 	];
 
+	public function cotizaciones()
+	{
+		return $this->hasMany('App\Cotizacion');
+	}
+
 	public function fiscal() {
 		return $this->hasOne('App\ClienteDireccionFiscal');
 	}

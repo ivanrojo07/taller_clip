@@ -42,4 +42,9 @@ class Cotizacion extends Model
     public function ordens(){
         return $this->belongsToMany('App\Orden', 'cotizacion_orden');
     }
+
+    public function cliente()
+    {
+        return $this->belongsTo('App\Cliente');
+    }
 }
