@@ -277,8 +277,8 @@
                                 <p class="mb-0" style="float: right;"><i class="fa fa-angle-double-down"></i></p>
                             </div>
                             <ul id="collapseExample1" class="list-group list-group-flush collapse" data-parent="#acoreond">
-                                <a class="nave1" target="frame1" href="{{ url('/provedores/create')}}"><li class="list-group-item">Alta&nbsp<i class="fa fa-user-plus" aria-hidden="true"></i></li></a>
-                                <a class="nave1" target="frame1" href="{{ url('/provedores') }}"><li class="list-group-item">Búsqueda&nbsp<i class="fa fa-search" aria-hidden="true"></i></li></a>
+                                <a class="nave1" target="frame1" href="{{ url('/proveedores/create')}}"><li class="list-group-item">Alta&nbsp<i class="fa fa-user-plus" aria-hidden="true"></i></li></a>
+                                <a class="nave1" target="frame1" href="{{ url('/proveedores') }}"><li class="list-group-item">Búsqueda&nbsp<i class="fa fa-search" aria-hidden="true"></i></li></a>
                                 <li class="list-group-item dropright" style="z-index: 999999;">
                                     <div class="dropdown-toggle m-0 p-0" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Precargas&nbsp<i class="fa fa-refresh" aria-hidden="true"></i> 

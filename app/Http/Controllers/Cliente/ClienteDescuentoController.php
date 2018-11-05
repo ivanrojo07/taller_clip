@@ -16,6 +16,7 @@ class ClienteDescuentoController extends Controller
      */
     public function index(Cliente $cliente)
     {
+        // dd($cliente->descuentos);
         if(count($cliente->descuentos) > 0)
             return view('clientes.descuentos.index', ['cliente' => $cliente]);
         return redirect()->route('clientes.descuentos.create', ['cliente' => $cliente]);
@@ -52,6 +53,7 @@ class ClienteDescuentoController extends Controller
      */
     public function show(ClienteDescuento $cliente)
     {
+        dd($cliente);
         return view('clientes.descuentos.view', ['cliente' => $cliente->cliente, 'descuento' => $cliente]);
     }
 
