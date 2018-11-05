@@ -127,6 +127,8 @@ class CotizacionController extends Controller
     public function show(Cotizacion $cotizacion)
     {
         //
+        // dd($cotizacion);
+        return view('cotizacion.show',['cotizacion'=>$cotizacion]);
     }
 
     /**
