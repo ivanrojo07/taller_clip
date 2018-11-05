@@ -16,7 +16,7 @@ class CreateTipocontratoTable extends Migration
         Schema::create('tipocontrato', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->string('descripcion')->nullable();
+            $table->string('abreviatura')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
