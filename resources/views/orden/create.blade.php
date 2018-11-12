@@ -40,12 +40,16 @@
                         </div>
                     </div>
                     <div class="row">
-                        <select required class="form-control col-sm-3" name="cliente_id" id="cliente_id">
-                            <option value="">---</option>
-                            @foreach($clientes as $cliente)
-                                <option value="{{$cliente->id}}">{{$cliente->nombre}}</option>
-                            @endforeach
-                        </select>
+                        <div class="col-sm-3">
+                            <label class="control-label">Cliente:</label>
+                            <select required class="form-control" name="cliente_id" id="cliente_id">
+                                <option value="">---</option>
+                                @foreach($clientes as $cliente)
+                                    <option value="{{$cliente->id}}">{{$cliente->nombre}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        
                         <div class=" col-sm-6">
                             <label class="control-label">Descripción:</label>
                             <textarea required class="form-control" name="descripcion" id="descripcion">{{ ($edit && $orden) ? $orden->descripcion : ""}}</textarea>

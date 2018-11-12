@@ -22,9 +22,9 @@
             {{method_field('PUT')}}
         @endif
         <div class="row">
-          <div class="col-sm-3 form-group">
-            <label class="control-label">Cliente:</label>
-            <select class="form-control" id="cliente_id" onchange="searchDescuentos(this.value)" name="cliente_id">
+        <div class="col-sm-3 form-group">
+            <label class="control-label">Cliente destino:</label>
+            <select required class="form-control"  name="cliente_id" onchange="searchDescuentos(this.value)">
               <option value="">Selecciona el cliente</option>
               @foreach ($clientes as $cliente)
                 <option value="{{$cliente->id}}">{{($cliente->tipopersona == "Moral" ? $cliente->razonsocial : $cliente->nombre." ".$cliente->apellidopaterno." ".$cliente->apellidomaterno)}}</option>
@@ -45,96 +45,32 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-4 offset-4">
-            <label for="totalordenes">Descuento al cliente:</label>
-            <select class="form-control" id="clienteDescuento">
-              <option value="">Selecciona el descuento</option>
+        <div class="col-sm-4 form-group">
+            <label class="control-label">Órdenes de Cliente:</label>
+            <select required class="form-control" id="cliente_id" >
+              <option value="">Selecciona el cliente</option>
+              @foreach ($clientes as $cliente)
+                <option value="{{$cliente->id}}">{{($cliente->tipopersona == "Moral" ? $cliente->razonsocial : $cliente->nombre." ".$cliente->apellidopaterno." ".$cliente->apellidomaterno)}}</option>
+              @endforeach
             </select>
+          </div>
+          <div class="col-4">
+            <label for="totalordenes">Descuento al cliente:</label>
+            <select required class="form-control" id="clienteDescuento">
+              <option value="">Selecciona el descuento</option>
+              <option value="0">Sin descuento</option>
+            </select>
+          </div>
+          <div class="col-sm-4 form-group">
+            <label class="control-label">Correo de cliente:</label>
+            <input required type="text" class="form-control" name="correo" id="correo"  placeholder="Sin correo">
           </div>
         </div>
         <div class="row"><h5>Ordenes:</h5></div>
         <div class="row">
           <table class="table table-striped table-bordered">
             <tbody id="ordenesdelcliente">
-              @foreach ($ordenes as $orden)
-                {{-- expr --}}
-                <tr class="table-info">
-                  <th scope="col" colspan="7">Orden</th>
-                </tr>
-                <tr class="table-info">
-                  <th scope="col">Número</th>
-                  <th scope="col">Orden</th>
-                  <th scope="col">Fecha</th>
-                  <th scope="col" colspan="2">Descripción</th>
-                  <th scope="col">Precio</th>
-                  <th scope="col">Acción</th>
-                </tr>
-                <tr>
-                  <td scope="row">{{$orden->noorden}}</td>
-                  <td>{{$orden->nombre}}</td>
-                  <td>{{$orden->fecha}}</td>
-                  <td colspan="2">{{$orden->descripcion}}</td>
-                  <td>${{$orden->precio_orden}}MXN</td>
-                  <td>
-                    <div class="row mt-1 mb-1 justify-content-md-center">
-                      <a href="#" onclick="addOrden({{json_encode($orden)}})" class="btn btn-success">
-                        Agregar
-                      </a>
-                    </div>
-                    <div class="row mt-1 mb-1 justify-content-md-center">
-                      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".collapse{{$orden->id}}" aria-expanded="false" aria-controls="collapseExample">
-                        Más detalles
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-                @foreach ($orden->obras as $index=>$obra)
-                <tr class="table-success collapse collapse{{$orden->id}}">
-                  <th scope="col" colspan="7">Obra(s) de {{$orden->nombre}}</th>
-                </tr>
-                <tr class="table-success collapse collapse{{$orden->id}}">
-                  <th scope="col">Nombre</th>
-                  <th scope="col">Piezas</th>
-                  <th scope="col" colspan="2">Descripción</th>
-                  <th scope="col">Alto</th>
-                  <th scope="col">Ancho</th>
-                  <th scope="col">Profundidad</th>
-                </tr> 
-                <tr class="collapse collapse{{$orden->id}}">
-                  <td scope="row">
-                    {{$obra->nombre}}
-                  </td>
-                  <td>{{$obra->nopiezas}}</td>
-                  <td colspan="2">{{$obra->descripcion_obra}}</td>
-                  <td>{{$obra->alto_obra}} {{$obra->unidad_obra}}</td>
-                  <td>{{$obra->ancho_obra}} {{$obra->unidad_obra}}</td>
-                  <td>{{$obra->profundidad_obra}} {{$obra->unidad_obra}}</td>
-                </tr>
-                <tr class="table-secondary collapse collapse{{$orden->id}}">
-                  <th scope="col" colspan="7">Material(es) de {{$obra->nombre}}</th>
-                </tr>
-                <tr class="table-secondary collapse collapse{{$orden->id}}">
-                  <th scope="col">Clave</th>
-                  <th scope="col">Sección</th>
-                  <th scope="col">Color</th>
-                  <th scope="col">Alto</th>
-                  <th scope="col">Ancho</th>
-                  <th scope="col">Espesor</th>
-                  <th scope="col">Precio</th>
-                </tr>
-                @foreach ($obra->materiales as $material)
-                <tr class="collapse collapse{{$orden->id}}">
-                  <td scope="row">{{$material->clave}}</td>
-                  <td>{{$material->seccion}}</td>
-                  <td>{{$material->color}}</td>
-                  <td>{{$material->alto}} {{$material->medidas}}</td>
-                  <td>{{$material->ancho}} {{$material->medidas}}</td>
-                  <td>{{$material->espesor}} {{$material->medidas}}</td>
-                  <td>${{$material->precio}}MXN</td>
-                </tr>
-                @endforeach
-                @endforeach
-              @endforeach
+              
             </tbody>
           </table>
         </div>
@@ -404,7 +340,7 @@
         </div>
         <div class="row">
           <div class="col-sm-12 text-center form-group">
-            <button id="submit" type="submit" class="btn btn-success"><strong>Guardar</strong></button>
+            <button id="submit" type="submit" onclick="checar()"class="btn btn-success"><strong>Guardar</strong></button>
           </div>
         </div>
       </form>
@@ -412,7 +348,17 @@
   </div>
 </div>
 <script type="text/javascript">
-
+function checar(){
+  if($('#myOrdenes').children().length == 0){
+    swal({
+        type: 'error',
+        title: 'Ups...',
+        text: 'Ingresa por lo menos una orden!'
+      });
+    return false;
+  }
+  return false;
+}
 $('#cliente_id').change(function(){
   $('#ordenesdelcliente').empty();
   var cliente = $(this).val();
@@ -429,7 +375,7 @@ $('#cliente_id').change(function(){
 		    type: "GET",
 		    dataType: "html",
 		  }).done(function(resultado){
-		    $("#ordenesdelcliente").html(resultado);
+        $("#ordenesdelcliente").html(resultado);
 		  });
 
 });
@@ -441,8 +387,9 @@ $('#cliente_id').change(function(){
       url:'../getDescuentos/'+usuario_id,
       type:'GET',
       success: function(res){
-        console.log(res);
-        $("#clienteDescuento").append('<option value="">Selecciona el descuento</option>');
+        console.log(res.correo);
+        $('#correo').val(res.correo);
+        $("#clienteDescuento").append('<option value="0">Sin descuento</option>');
         for (var i = res.descuentos.length - 1; i >= 0; i--) {
           optiondesc= `<option value="${res.descuentos[i].descuento}">${res.descuentos[i].nombre}</option>`;
           $("#clienteDescuento").append(optiondesc);

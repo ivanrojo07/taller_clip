@@ -29,6 +29,7 @@ class CreateCotizacionsTable extends Migration
             $table->decimal('totalproyecto',12,2);
             $table->double('resultado', 12, 2);
             $table->double('totalneto', 12, 2);
+            $table->string('correo');
             $table->timestamps();
         });
     }

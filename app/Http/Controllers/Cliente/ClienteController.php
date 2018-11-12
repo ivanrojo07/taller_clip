@@ -140,7 +140,8 @@ class ClienteController extends Controller
     public function getDescuentos(Cliente $cliente)
     {
         $descuentos = $cliente->descuentos;
+        $correo = $cliente->mail;
 
-        return response()->json(['descuentos'=>$descuentos],200);
+        return response()->json(['descuentos'=>$descuentos, 'correo'=>$correo],200);
     }
 }

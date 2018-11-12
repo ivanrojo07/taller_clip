@@ -23,7 +23,8 @@ class Cotizacion extends Model
         "incremento",
         "totalproyecto",
         "resultado",
-        "totalneto"
+        "totalneto",
+        "correo"
     ];
 
 

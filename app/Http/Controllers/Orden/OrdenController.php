@@ -24,8 +24,8 @@ class OrdenController extends Controller
 
     public function buscarporcliente(Request $req){
         $ordenes = Orden::where('cliente_id', $req->cliente_id)->get();
-
-        return view('orden.ordenporcliente', ['ordenes'=>$ordenes]);
+        $cliente = Cliente::where('id', $req->cliente_id)->get();
+        return view('orden.ordenporcliente', ['ordenes'=>$ordenes, 'cliente'=>$cliente]);
     }
 
     /**
