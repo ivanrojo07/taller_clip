@@ -15,7 +15,7 @@
                 <table class="table table-striped table-bordered">
                     <thead>
                         <tr class="table-info">
-                            <th scope="col">Cliente</th>
+                            <th scope="col">Cliente / Correo</th>
                             <th scope="col">Número de cotización</th>
                             <th scope="col">fecha de creación</th>
                             <th scope="col">Fecha de entrega</th>
@@ -34,7 +34,7 @@
                         @foreach ($cotizaciones as $cotizacion)
                             {{-- expr --}}
                             <tr>
-                                <td scope="row">{{ ($cotizacion->cliente->tipopersona == "Fisica" ? $cotizacion->cliente->nombre." ".$cotizacion->cliente->apellidopaterno." ".$cotizacion->cliente->apellidomaterno : $cotizacion->cliente->razonsocial )}}</td>
+                                <td scope="row">{{ ($cotizacion->cliente->tipopersona == "Fisica" ? $cotizacion->cliente->nombre." ".$cotizacion->cliente->apellidopaterno." ".$cotizacion->cliente->apellidomaterno : $cotizacion->cliente->razonsocial ) }} / {{$cotizacion->correo}}</td>
                                 <td>{{ $cotizacion->nocotizacion }}</td>
                                 <td>{{$cotizacion->fechaactual}}</td>
                                 <td>{{$cotizacion->fechaentrega}}</td>
