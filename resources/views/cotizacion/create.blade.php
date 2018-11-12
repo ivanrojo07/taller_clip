@@ -55,7 +55,7 @@
         <div class="row"><h5>Ordenes:</h5></div>
         <div class="row">
           <table class="table table-striped table-bordered">
-            <tbody>
+            <tbody id="ordenesdelcliente">
               @foreach ($ordenes as $orden)
                 {{-- expr --}}
                 <tr class="table-info">
@@ -413,6 +413,26 @@
 </div>
 <script type="text/javascript">
 
+$('#cliente_id').change(function(){
+  $('#ordenesdelcliente').empty();
+  var cliente = $(this).val();
+      $.ajaxSetup({
+		    headers: {
+		      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		    }
+		  });
+		  $.ajax({
+        url: "{{ url('/buscarordenporcliente') }}",
+        data: {
+          cliente_id: cliente
+        },
+		    type: "GET",
+		    dataType: "html",
+		  }).done(function(resultado){
+		    $("#ordenesdelcliente").html(resultado);
+		  });
+
+});
   function searchDescuentos(usuario_id) {
     // body...
     $("#clienteDescuento").empty();

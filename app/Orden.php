@@ -13,8 +13,14 @@ class Orden extends Model
                          'noorden',
                          'descripcion',
                          'noobras',
-                         'precio_orden'
+                         'precio_orden',
+                         'cliente_id'
                      ];
+
+    public function cliente()
+    {
+        return $this->belongsTo('App\Cliente');
+    }
 
     public function obras(){
         return $this->belongsToMany('App\Obra','obra_orden');

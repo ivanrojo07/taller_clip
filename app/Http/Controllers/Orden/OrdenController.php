@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Orden;
 use App\Orden;
 use App\Obra;
 use App\Material;
+use App\Cliente;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -21,6 +22,12 @@ class OrdenController extends Controller
         return view('orden.index', ['ordenes'=>$ordenes]);
     }
 
+    public function buscarporcliente(Request $req){
+        $ordenes = Orden::where('cliente_id', $req->cliente_id)->get();
+
+        return view('orden.ordenporcliente', ['ordenes'=>$ordenes]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -28,11 +35,11 @@ class OrdenController extends Controller
      */
     public function create()
     {
-        
+        $clientes = Cliente::get();
         $preclave = Orden::get()->count();
         $obras = Obra::get();
         $edit=false;
-        return view('orden.create', ['edit'=>$edit,'preclave'=>$preclave,'obras'=>$obras]);
+        return view('orden.create', ['edit'=>$edit,'preclave'=>$preclave,'obras'=>$obras, 'clientes'=>$clientes]);
     }
 
     /**

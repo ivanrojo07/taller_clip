@@ -20,7 +20,9 @@ class CreateOrdensTable extends Migration
             $table->integer('noorden');
             $table->string('descripcion');
             $table->integer('noobras');   
-            $table->decimal('precio_orden',12,2)->default(0);  
+            $table->decimal('precio_orden',12,2)->default(0);
+            $table->integer('cliente_id')->unsigned();
+            $table->foreign('cliente_id')->references('id')->on('clientes');
             $table->timestamps();
         });
     }

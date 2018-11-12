@@ -9,7 +9,7 @@
       </div>
       <div class="card-body">
         <div class="mt-1">
-          <table class="table table-striped table-bordered">
+          <table id="tablaordenes" class="table table-striped table-bordered">
             <thead>
               <tr class="table-info">
                 <th scope="col">Número de orden</th>
@@ -17,7 +17,8 @@
                 <th scope="col">Fecha</th>
                 <th scope="col">Descripción</th>
                 <th scope="col">Obras</th>
-                <th scope="col">Acción</th>
+                <!-- <th scope="col">Acción</th> -->
+                <th scope="col">Cliente</th>
               </tr>
             </thead>
             <tbody>
@@ -109,7 +110,7 @@
                   </div>
                 </td>
                 <td>
-                  
+                  {{$orden->cliente->nombre}}
                 </td>
               </tr>
               @endforeach
@@ -119,4 +120,14 @@
       </div>
     </div>
   </div>
+  <script>
+    $(document).ready( function () {
+        $('#tablaordenes').DataTable({
+          "language": {
+            "search": "Buscar:",
+            "emptyTable":     "Tabla vacía",
+          }
+        });
+    } );
+  </script>
   @endsection

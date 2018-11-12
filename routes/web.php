@@ -161,3 +161,4 @@ Route::get('/buscarMaterial/{seccion}','Material\MaterialController@buscarMateri
 Route::get('getObra/{obra}','Obra\ObraController@getObra');
 
 Route::resource('cotizacion','Cotizacion\CotizacionController');
+Route::get('buscarordenporcliente', 'Orden\OrdenController@buscarporcliente');

@@ -56,6 +56,11 @@ class Cliente extends Model {
 		return $this->hasMany('App\Cotizacion');
 	}
 
+	public function ordens()
+	{
+		return $this->hasMany('App\Orden');
+	}
+
 	public function fiscal() {
 		return $this->hasOne('App\ClienteDireccionFiscal');
 	}

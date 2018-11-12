@@ -24,7 +24,7 @@
                     <div class="row">
                         <div class="col-sm-3 form-group">
                             <label class="control-label">Nombre:</label>
-                            <input class="form-control" type="text" name="nombre" id="nombre" value="{{($edit && $orden) ? $orden->nombre : ""}}">
+                            <input required class="form-control" type="text" name="nombre" id="nombre" value="{{($edit && $orden) ? $orden->nombre : ""}}">
                         </div>
                         <div class="col-sm-3 form-group">
                             <label class="control-label">Fecha:</label>
@@ -32,17 +32,23 @@
                         </div>
                         <div class="col-sm-3 form-group">
                             <label class="control-label">Número de orden:</label>
-                            <input type="number" step="1" name="noorden" id="noorden" class="form-control" value="{{ ($edit && $orden) ? $orden->noorden : ++$preclave}}" readonly>
+                            <input required type="number" step="1" name="noorden" id="noorden" class="form-control" value="{{ ($edit && $orden) ? $orden->noorden : ++$preclave}}" readonly>
                         </div>
                         <div class="col-sm-3 form-group">
                             <label class="control-label">Número de obras:</label>
-                            <input type="number" step="1" min="1" name="noobras" id="noobras" class="form-control" value="{{ ($edit && $orden) ? $orden->noobras : ""}}" onchange="setHTML(this.value)">
+                            <input required type="number" step="1" min="1" name="noobras" id="noobras" class="form-control" value="{{ ($edit && $orden) ? $orden->noobras : ""}}" onchange="setHTML(this.value)">
                         </div>
                     </div>
                     <div class="row">
-                        <div class="offset-sm-3 col-sm-6">
+                        <select required class="form-control col-sm-3" name="cliente_id" id="cliente_id">
+                            <option value="">---</option>
+                            @foreach($clientes as $cliente)
+                                <option value="{{$cliente->id}}">{{$cliente->nombre}}</option>
+                            @endforeach
+                        </select>
+                        <div class=" col-sm-6">
                             <label class="control-label">Descripción:</label>
-                            <textarea class="form-control" name="descripcion" id="descripcion">{{ ($edit && $orden) ? $orden->descripcion : ""}}</textarea>
+                            <textarea required class="form-control" name="descripcion" id="descripcion">{{ ($edit && $orden) ? $orden->descripcion : ""}}</textarea>
                         </div>
                     </div>
                     <div id="obras"></div>
