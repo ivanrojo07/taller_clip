@@ -54,15 +54,24 @@
 
         #frameg{
             width: 100%;
-            height: 380%;
+            height: 360%;
             z-index: unset;
         }
         
     </style>
 
-    <div class="container-fluid" style="overflow-y: hidden;">
-        <div class="row">
+    <div class="container-fluid" style=" height: 600px;">
+    <button class="btn btn-primary m-3" style="display: none;" id="mostrador">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+    </button>
+    <button class="btn btn-danger m-3" id="ocultador">
+        <i class="fa fa-window-close" aria-hidden="true"></i>
+    </button>
+        <div class="row" id="acoreond2">
+        
             <div class="col-3 fixed-top2" id="acoreond">
+
+            
 
                 @auth
                 <!-- LOGIN -->
@@ -304,12 +313,12 @@
                 @endauth
             </div>
 
-            <div class="offset-3 col-9 fixed-top">
+            <div id="principal" class="offset-3 col-9 fixed-top">
                 <div class="row">
                     <div class="col-12 mb-2">
                         <img src="{{asset('img/header.jpg')}}" class="img-fluid" alt="Clip Taller.">
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 pb-5">
                         <iframe id="frameg" name="frame1" src=""></iframe>
                     </div>
                 </div>
@@ -364,7 +373,31 @@
 
     <script src="{{ asset('js/pestanas.js') }}"></script>
     <script src="{{ asset('js/forms.js') }}"></script>
+    <script>
+    var lawidth = 0;
+    $('#ocultador').click(function(){
+        $(this).hide();
+        $('#mostrador').show();
+        // lawidth = $('#acoreond').width();
+        // alert('adios');
+        // $('#acoreond').removeClass('col-3 fixed-top2');
+        // $('#acoreond').width(0);
+        $('#acoreond').hide();
+        $('#principal').removeClass('offset-3 col-9 fixed-top');
+    });
 
+    $('#mostrador').click(function(){
+        $(this).hide();
+        $('#ocultador').show();
+        // alert('hola');
+        // $('#acoreond').addClass('col-3 fixed-top2');
+        // $('#acoreond').width(lawidth);
+
+        $('#acoreond').show();
+        $('#principal').addClass('offset-3 col-9 fixed-top');
+    });
+        
+    </script>
 </body>
 
 </html>
