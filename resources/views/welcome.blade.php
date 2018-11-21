@@ -22,9 +22,9 @@
 <title>{{ config('app.name', 'Laravel') }}</title>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
 </head>
 
@@ -108,12 +108,12 @@
                                 <p class="mb-0" style="float: right;"><i class="fa fa-angle-double-down"></i></p>
                             </div>
                             <ul id="collapseExample9" class="list-group list-group-flush collapse" data-parent="#acoreond">
-                                <a class="nave9" target="frame1" href="{{ url('perfil')}}">
+                                <a class="nave9" onclick="AgregarNuevoTab('{{ url('perfil')}}', 'Perfiles')" href="#">
                                     <li class="list-group-item">
                                         Perfiles&nbsp<i class="fa fa-universal-access" aria-hidden="true"></i>
                                     </li>
                                 </a>
-                                <a class="nave9" target="frame1" href="{{ url('usuario') }}">
+                                <a class="nave9" onclick="AgregarNuevoTab('{{ url('usuario') }}', 'Usuario')" href="#">
                                     <li class="list-group-item">
                                         Usuarios&nbsp<i class="fa fa-user-circle" aria-hidden="true"></i>
                                     </li>
@@ -135,8 +135,8 @@
                                 <p class="mb-0" style="float: right;"><i class="fa fa-angle-double-down"></i></p>
                             </div>
                             <ul id="collapseExample6" class="list-group list-group-flush collapse" data-parent="#acoreond">
-                                <a class="nave6" target="frame1" href="{{ url('/clientes/create')}}"><li class="list-group-item">Alta&nbsp<i class="fa fa-user-plus" aria-hidden="true"></i></li></a>
-                                <a class="nave6" target="frame1" href="{{ url('/clientes') }}"><li class="list-group-item">Búsqueda&nbsp<i class="fa fa-search" aria-hidden="true"></i></li></a>
+                                <a class="nave6" onclick="AgregarNuevoTab('{{ url('/clientes/create')}}', 'Alta Cliente')" href="#"><li class="list-group-item">Alta&nbsp<i class="fa fa-user-plus" aria-hidden="true"></i></li></a>
+                                <a class="nave6" onclick="AgregarNuevoTab('{{ url('/clientes') }}', 'Búsqueda Cliente')" href="#"><li class="list-group-item">Búsqueda&nbsp<i class="fa fa-search" aria-hidden="true"></i></li></a>
                             </ul>
                         </div>
                     </div>
@@ -150,7 +150,7 @@
                                 <p class="mb-0" style="float: right;"><i class="fa fa-angle-double-down"></i></p>
                             </div>
                             <ul id="collapseExample10" class="list-group list-group-flush collapse" data-parent="#acoreond">
-                                <a class="nave10" target="frame1" href="{{ url('/crm/create')}}"><li class="list-group-item">CRMS&nbsp<i class="fa fa-user-plus" aria-hidden="true"></i></li></a>
+                                <a class="nave10"  onclick="AgregarNuevoTab('{{ url('/crm/create')}}', 'CRMS')" href="#"><li class="list-group-item">CRMS&nbsp<i class="fa fa-user-plus" aria-hidden="true"></i></li></a>
                             </ul>
                         </div>
                     </div>
@@ -168,8 +168,8 @@
                                 <p class="mb-0" style="float: right;"><i class="fa fa-angle-double-down"></i></p>
                             </div>
                             <ul id="collapseExample5" class="list-group list-group-flush collapse" data-parent="#acoreond">
-                                <a class="nave5" target="frame1" href="{{url('empleados/create')}}"><li class="list-group-item">Alta&nbsp<i class="fa fa-plus"></i></li></a>
-                                <a class="nave5" target="frame1" href="{{ url('empleados') }}"><li class="list-group-item">Búsqueda&nbsp<i class="fa fa-search" aria-hidden="true"></i></li></a>
+                                <a class="nave5"  onclick="AgregarNuevoTab('{{url('empleados/create')}}', 'Alta RH')" href="#"><li class="list-group-item">Alta&nbsp<i class="fa fa-plus"></i></li></a>
+                                <a class="nave5"  onclick="AgregarNuevoTab('{{ url('empleados') }}', 'Búsqueda RH')" href="#"><li class="list-group-item">Búsqueda&nbsp<i class="fa fa-search" aria-hidden="true"></i></li></a>
                             </ul>
                         </div>
                     </div>
@@ -187,8 +187,8 @@
                                 <p class="mb-0" style="float: right;"><i class="fa fa-angle-double-down"></i></p>
                             </div>
                             <ul id="collapseExample3" class="list-group list-group-flush collapse" data-parent="#acoreond">
-                                <a class="nave3" target="frame1" href="{{ url('material') }}"><li class="list-group-item">Materiales&nbsp<i class="fa fa-clone"></i></li></a>
-                                <a class="nave3" target="frame1" href="{{ url('/material/create/') }}"><li class="list-group-item">Crear material&nbsp<i class="fa fa-object-group"></i></li></a>
+                                <a class="nave3"  onclick="AgregarNuevoTab('{{ url('material') }}', 'Materiales')" href="#"><li class="list-group-item">Materiales&nbsp<i class="fa fa-clone"></i></li></a>
+                                <a class="nave3"  onclick="AgregarNuevoTab('{{ url('/material/create/') }}', 'Crear Materiales')" href="#"><li class="list-group-item">Crear material&nbsp<i class="fa fa-object-group"></i></li></a>
                             </ul>
                         </div>
                     </div>
@@ -206,8 +206,8 @@
                                 <p class="mb-0" style="float: right;"><i class="fa fa-angle-double-down"></i></p>
                             </div>
                             <ul id="obras" class="list-group list-group-flush collapse" data-parent="#acoreond">
-                                <a class="nave3" target="frame1" href="{{ url('obra') }}"><li class="list-group-item">Obras&nbsp<i class="fa fa-clone"></i></li></a>
-                                <a class="nave3" target="frame1" href="{{ url('/obra/create/') }}"><li class="list-group-item">Crear obra&nbsp<i class="fa fa-object-group"></i></li></a>
+                                <a class="nave3"  onclick="AgregarNuevoTab('{{ url('obra') }}', 'Obras')" href="#"><li class="list-group-item">Obras&nbsp<i class="fa fa-clone"></i></li></a>
+                                <a class="nave3"  onclick="AgregarNuevoTab('{{ url('/obra/create/') }}', 'Crear Obras')" href="#"><li class="list-group-item">Crear obra&nbsp<i class="fa fa-object-group"></i></li></a>
                             </ul>
                         </div>
                     </div>
@@ -225,9 +225,9 @@
                                 <p class="mb-0" style="float: right;"><i class="fa fa-angle-double-down"></i></p>
                             </div>
                             <ul id="collapseExample4" class="list-group list-group-flush collapse" data-parent="#acoreond">
-                                <a class="nave4" target="frame1" href="{{ url('/orden/create') }}"><li class="list-group-item">Generar orden&nbsp<i class="fa fa-plus"></i></li></a>
-                                    <a class="nave4" target="frame1" href="{{ url('/orden') }}"><li class="list-group-item">Historial órdenes&nbsp<i class="fa fa-plus"></i></li></a>
-                                    <!--<a class="nave4" target="frame1" href="{{ url('productos')}}"><li class="list-group-item">Búsqueda&nbsp<i class="fa fa-search" aria-hidden="true"></i></li></a>-->
+                                <a class="nave4"  onclick="AgregarNuevoTab('{{ url('/orden/create') }}', 'Generar Orden')" href="#"><li class="list-group-item">Generar orden&nbsp<i class="fa fa-plus"></i></li></a>
+                                    <a class="nave4"  onclick="AgregarNuevoTab('{{ url('/orden') }}', 'Historial Ordenes')" href="#"><li class="list-group-item">Historial órdenes&nbsp<i class="fa fa-plus"></i></li></a>
+                                    <!--<a class="nave4"  onclick="AgregarNuevoTab('{{ url('/clientes') }}', 'Clientes')" href="#"{{ url('productos')}}"><li class="list-group-item">Búsqueda&nbsp<i class="fa fa-search" aria-hidden="true"></i></li></a>-->
                             </ul>
                         </div>
                     </div>
@@ -245,8 +245,8 @@
                                 <p class="mb-0" style="float: right;"><i class="fa fa-angle-double-down"></i></p>
                             </div>
                             <ul id="collapseExample7" class="list-group list-group-flush collapse" data-parent="#acoreond">
-                                <a class="nave7" target="frame1" href="{{ route('cotizacion.create') }}"><li class="list-group-item">Cotizar</li></a>
-                                <a class="nave7" target="frame1" href="{{ route('cotizacion.index') }}"><li class="list-group-item">Historial</li></a>
+                                <a class="nave7"  onclick="AgregarNuevoTab('{{ route('cotizacion.create') }}', 'Cotizar')" href="#"><li class="list-group-item">Cotizar</li></a>
+                                <a class="nave7"  onclick="AgregarNuevoTab('{{ route('cotizacion.index') }}', 'Historial Cotización')" href="#"><li class="list-group-item">Historial</li></a>
                             </ul>
                         </div>
                     </div>
@@ -264,8 +264,8 @@
                                 <p class="mb-0" style="float: right;"><i class="fa fa-angle-double-down"></i></p>
                             </div>
                             <ul id="collapseExample1" class="list-group list-group-flush collapse" data-parent="#acoreond">
-                                <a class="nave1" target="frame1" href="{{ url('/proveedores/create')}}"><li class="list-group-item">Alta&nbsp<i class="fa fa-user-plus" aria-hidden="true"></i></li></a>
-                                <a class="nave1" target="frame1" href="{{ url('/proveedores') }}"><li class="list-group-item">Búsqueda&nbsp<i class="fa fa-search" aria-hidden="true"></i></li></a>
+                                <a class="nave1"  onclick="AgregarNuevoTab('{{ url('/proveedores/create')}}', 'Alta Proveedores')" href="#"><li class="list-group-item">Alta&nbsp<i class="fa fa-user-plus" aria-hidden="true"></i></li></a>
+                                <a class="nave1"  onclick="AgregarNuevoTab('{{ url('/proveedores') }}', 'Historial Proveedores')" href="#"><li class="list-group-item">Búsqueda&nbsp<i class="fa fa-search" aria-hidden="true"></i></li></a>
                             </ul>
                         </div>
                     </div>
@@ -283,7 +283,7 @@
                                 <p class="mb-0" style="float: right;"><i class="fa fa-angle-double-down"></i></p>
                             </div>
                             <ul id="collapseExample2" class="list-group list-group-flush collapse" data-parent="#acoreond">
-                                <a class="nave2" target="frame1" href="{{ url('/cambio/create') }}"><li class="list-group-item">Gestión de tipo de cambio&nbsp<i class="fa fa-dollar" aria-hidden="true"></i></li></a>
+                                <a class="nave2"  onclick="AgregarNuevoTab('{{ url('/cambio/create') }}', 'Tipo de Cambio')" href="#"><li class="list-group-item">Gestión de tipo de cambio&nbsp<i class="fa fa-dollar" aria-hidden="true"></i></li></a>
                             </ul>
                         </div>
                     </div>
@@ -298,14 +298,14 @@
                                 <p class="mb-0" style="float: right;"><i class="fa fa-angle-double-down"></i></p>
                             </div>
                             <ul id="collapseExample11" class="list-group list-group-flush collapse" data-parent="#acoreond">
-                                <a class="nave11" target="frame1" href="{{ url('/giros') }}"><li class="list-group-item">Giros</li></a>
-                                <a class="nave11" target="frame1" href="{{ url('bajas') }}"><li class="list-group-item">Bajas</li></a>
-                                <a class="nave11" target="frame1" href="{{ url('contratos') }}"><li class="list-group-item">Contratos</li></a>
-                                <a class="nave11" target="frame1" href="{{ url('/areas') }}"><li class="list-group-item">Áreas</li></a>
-                                <a class="nave11" target="frame1" href="{{ url('/puestos') }}"><li class="list-group-item">Puestos</li></a>
-                                <a class="nave11" target="frame1" href="{{ url('/bancos') }}"><li class="list-group-item">Bancos</li></a>
-                                <a class="nave11" target="frame1" href="{{ url('/faltas') }}"><li class="list-group-item">Faltas</li></a>
-                                         <a class="nave6" class="dropdown-item" target="frame1" href="{{ url('/formacontactos') }}"><li class="list-group-item">Forma de Contacto</li></a>
+                                <a class="nave11"  onclick="AgregarNuevoTab('{{ url('/giros') }}', 'Giros')" href="#"><li class="list-group-item">Giros</li></a>
+                                <a class="nave11"  onclick="AgregarNuevoTab('{{ url('bajas') }}', 'Bajas')" href="#"><li class="list-group-item">Bajas</li></a>
+                                <a class="nave11"  onclick="AgregarNuevoTab('{{ url('contratos') }}', 'Contratos')" href="#"><li class="list-group-item">Contratos</li></a>
+                                <a class="nave11"  onclick="AgregarNuevoTab('{{ url('/areas') }}', 'Áreas')" href="#"><li class="list-group-item">Áreas</li></a>
+                                <a class="nave11"  onclick="AgregarNuevoTab('{{ url('/puestos') }}', 'Puestos')" href="#"><li class="list-group-item">Puestos</li></a>
+                                <a class="nave11"  onclick="AgregarNuevoTab('{{ url('/bancos') }}', 'Bancos')" href="#"><li class="list-group-item">Bancos</li></a>
+                                <a class="nave11"  onclick="AgregarNuevoTab('{{ url('/faltas') }}', 'Faltas')" href="#"><li class="list-group-item">Faltas</li></a>
+                                <a class="nave11" class="dropdown-item"  onclick="AgregarNuevoTab('{{ url('/formacontactos') }}', 'Forma de contacto')" href="#"><li class="list-group-item">Forma de Contacto</li></a>
                             </ul>
                         </div>
                     </div>
@@ -319,7 +319,11 @@
                         <img src="{{asset('img/header.jpg')}}" class="img-fluid" alt="Clip Taller.">
                     </div>
                     <div class="col-12 pb-5">
-                        <iframe id="frameg" name="frame1" src=""></iframe>
+                        <div class="container" style="width: 100%; height: 100%;">
+                            <ul id="tabsApp" class="nav nav-tabs"></ul>
+                            <div id="contenedortab" class="tab-content"></div>
+                        </div>
+                        <!-- <iframe id="frameg" name="frame1" src=""></iframe> -->
                     </div>
                 </div>
             </div>
