@@ -298,14 +298,14 @@
                                 <p class="mb-0" style="float: right;"><i class="fa fa-angle-double-down"></i></p>
                             </div>
                             <ul id="collapseExample11" class="list-group list-group-flush collapse" data-parent="#acoreond">
-                                <a class="nave11"  onclick="AgregarNuevoTab('{{ url('/giros') }}', 'Giros')" href="#"><li class="list-group-item">Giros</li></a>
-                                <a class="nave11"  onclick="AgregarNuevoTab('{{ url('bajas') }}', 'Bajas')" href="#"><li class="list-group-item">Bajas</li></a>
-                                <a class="nave11"  onclick="AgregarNuevoTab('{{ url('contratos') }}', 'Contratos')" href="#"><li class="list-group-item">Contratos</li></a>
-                                <a class="nave11"  onclick="AgregarNuevoTab('{{ url('/areas') }}', 'Áreas')" href="#"><li class="list-group-item">Áreas</li></a>
-                                <a class="nave11"  onclick="AgregarNuevoTab('{{ url('/puestos') }}', 'Puestos')" href="#"><li class="list-group-item">Puestos</li></a>
-                                <a class="nave11"  onclick="AgregarNuevoTab('{{ url('/bancos') }}', 'Bancos')" href="#"><li class="list-group-item">Bancos</li></a>
-                                <a class="nave11"  onclick="AgregarNuevoTab('{{ url('/faltas') }}', 'Faltas')" href="#"><li class="list-group-item">Faltas</li></a>
-                                <a class="nave11" class="dropdown-item"  onclick="AgregarNuevoTab('{{ url('/formacontactos') }}', 'Forma de contacto')" href="#"><li class="list-group-item">Forma de Contacto</li></a>
+                                <a class="nave11"  onclick="AgregarNuevoTab('{{ url('/giros') }}', 'Giros')" href="#"><li class="list-group-item">Giros <b>Proveedores</b> </li></a>
+                                <a class="nave11"  onclick="AgregarNuevoTab('{{ url('bajas') }}', 'Bajas')" href="#"><li class="list-group-item">Bajas <b>RH</b></li></a>
+                                <a class="nave11"  onclick="AgregarNuevoTab('{{ url('contratos') }}', 'Contratos')" href="#"><li class="list-group-item">Contratos <b>RH</b></li></a>
+                                <a class="nave11"  onclick="AgregarNuevoTab('{{ url('/areas') }}', 'Áreas')" href="#"><li class="list-group-item">Áreas <b>RH</b></li></a>
+                                <a class="nave11"  onclick="AgregarNuevoTab('{{ url('/puestos') }}', 'Puestos')" href="#"><li class="list-group-item">Puestos <b>RH</b></li></a>
+                                <a class="nave11"  onclick="AgregarNuevoTab('{{ url('/bancos') }}', 'Bancos')" href="#"><li class="list-group-item">Bancos <b>Proveedores</b></li></a>
+                                <a class="nave11"  onclick="AgregarNuevoTab('{{ url('/faltas') }}', 'Faltas')" href="#"><li class="list-group-item">Faltas <b>RH</b></li></a>
+                                <a class="nave11" class="dropdown-item"  onclick="AgregarNuevoTab('{{ url('/formacontactos') }}', 'Forma de contacto')" href="#"><li class="list-group-item">Forma de Contacto <b>Clientes</b></li></a>
                             </ul>
                         </div>
                     </div>

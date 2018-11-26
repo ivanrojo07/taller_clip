@@ -126,8 +126,8 @@
 	  						<input type="text" class="form-control" id="ext2" name="ext2" value="">
 	  					</div>
 	  					<div class="form-group col-sm-3">
-	  						<label class="control-label" for="telefonodir">✱Telefono directo:</label>
-	  						<input type="text" class="form-control" id="telefonodir" name="telefonodir" value="" required>
+	  						<label class="control-label" for="telefonodir">Telefono directo:</label>
+	  						<input type="text" class="form-control" id="telefonodir" name="telefonodir" value="">
 	  					</div>
 	  					<div class="form-group col-sm-3">
 	  						<label class="control-label" for="celular1">Celular:</label>
@@ -138,8 +138,8 @@
 	  						<input type="text" class="form-control" id="celular2" name="celular2" value="">
 	  					</div>
 	  					<div class="form-group col-sm-3">
-	  						<label class="control-label" for="email1">✱Correo electronico:</label>
-	  						<input type="email" class="form-control" id="email1" name="email1" value="" required>
+	  						<label class="control-label" for="email1">Correo electronico:</label>
+	  						<input type="email" class="form-control" id="email1" name="email1" value="">
 	  					</div>
 
 	  					<div class="form-group col-sm-3">

@@ -101,12 +101,7 @@
 							</select>
 			 			</div>
 			 			<div class="form-group col-sm-4">
-			 				<label class="control-label" for="forma_contacto_id"><i class="fa fa-asterisk" aria-hidden="true"></i>Forma de contacto:</label>
-							<select type="select" name="forma_contacto_id" class="form-control" id="forma_contacto_id">
-								@foreach ($formaContactos as $formaContacto)
-									<option id="{{$formaContacto->id}}" value="{{ $formaContacto->id }}" @if ($datos->forma_contacto_id == $formaContacto->id) selected="selected" @endif>{{ $formaContacto->nombre }}</option>
-								@endforeach
-							</select>
+			 				
 			 			</div>
 			 		</div>
 			 		<div class="row">

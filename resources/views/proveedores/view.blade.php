@@ -50,6 +50,10 @@
   						<label class="control-label" for="rfc">RFC:</label>
   						<dd>{{ $proveedor->rfc }}</dd>
   					</div>
+					<div class="form-group col-sm-3">
+						<label class="control-label" for="rfc">Correo Electrónico:</label>
+						<dd> {{ $proveedor->email }}</dd>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -105,16 +105,7 @@
 							</select>
 			 			</div>
 			 			<div class="form-group col-sm-4">
-			 			<label class="control-label" for="forma_contacto_id">✱Forma de contacto:</label>
-			 				<div class="input-group">
-		  						<span class="input-group-addon" id="basic-addon3" onclick='getContacto()'><i class="fa fa-refresh" aria-hidden="true"></i></span>
-								<select type="select" name="forma_contacto_id" class="form-control" id="forma_contacto_id" required>
-									<option id="sin_definir" value="">Sin Definir</option>
-									@foreach ($formaContactos as $formaContacto)
-										<option id="{{$formaContacto->id}}" value="{{ $formaContacto->id }}">{{ $formaContacto->nombre }}</option>
-									@endforeach
-								</select>
-							</div>
+			 				
 			 			</div>
 			 		</div>
 			 		<div class="row">

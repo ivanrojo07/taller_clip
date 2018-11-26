@@ -55,7 +55,7 @@
 						</div>
 	  					<div class="form-group col-sm-3">
 	  						<label class="control-label" for="rfc">RFC:</label>
-	  						<input type="text" class="form-control" id="varrfc" name="rfc" minlength="12" maxlength="13" pattern="^[A-Za-z]{4}[0-9]{6}[A-Za-z0-9]{3}" placeholder="Ingrese 13 caracteres" title="Siga el formato 4 letras seguidas por 6 digitos y 3 caracteres" value="{{ $proveedor->rfc }}">
+	  						<input type="text" class="form-control" id="varrfc" name="rfc" minlength="12" maxlength="13" @if($proveedor->tipopersona == "Fisica") pattern="^[A-Za-z]{4}[0-9]{6}[A-Za-z0-9]{3}" @else pattern="^[A-Za-z]{3}[0-9]{6}[A-Za-z0-9]{3}" @endif  placeholder="Ingrese 13 caracteres" title="Siga el formato 4 letras seguidas por 6 digitos y 3 caracteres" value="{{ $proveedor->rfc }}">
 	  					</div>
 	  					<div class="form-group col-sm-3">
 	  						<label class="control-label" for="rfc">Correo Electrónico:</label>

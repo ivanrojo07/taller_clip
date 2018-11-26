@@ -93,12 +93,7 @@
 						@endif
 		 			</div>
 		 			<div class="form-group col-sm-4">
-		 				<label class="control-label" for="nombre">Forma de contacto:</label>
-		 				@if($datos->forma_contacto_id == null)
-		 					<dd>No tiene forma de contacto</dd>
-		 				@else
-		 					<dd>{{ $formaContacto->nombre }}</dd>
-		 				@endif
+		 				
 		 			</div>
 		 		</div>
 		 		<div class="row">
