@@ -14,7 +14,6 @@ class DatosGeneralesProveedor extends Model
     	'provedor_id',
     	'giro_id',
         'tamano', 
-    	'forma_contacto_id', 
     	'web',
         'comentario', 
     	'fechacontacto',
