@@ -349,6 +349,14 @@
 </div>
 <script type="text/javascript">
 function checar(){
+  if ($('#tablamanodeobras').children().length == 0){
+    swal({
+        type: 'error',
+        title: 'Ups...',
+        text: 'Ingresa por lo menos una mano de obra!'
+      });
+    return false;
+}
   if($('#myOrdenes').children().length == 0){
     swal({
         type: 'error',
