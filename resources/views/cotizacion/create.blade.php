@@ -54,13 +54,13 @@
               @endforeach
             </select>
           </div>
-          <div class="col-4">
+          <!-- <div class="col-4">
             <label for="totalordenes">Descuento al cliente:</label>
             <select required class="form-control" id="clienteDescuento">
               <option value="">Selecciona el descuento</option>
               <option value="0">Sin descuento</option>
             </select>
-          </div>
+          </div> -->
           <div class="col-sm-4 form-group">
             <label class="control-label">Correo de cliente:</label>
             <input required type="text" class="form-control" name="correo" id="correo"  placeholder="Sin correo">
@@ -298,7 +298,7 @@
             </div>
           </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
           <div class="form-group col col-md-6">
             <label for="ganacia">Porcentaje de ganancia</label>
             <input required form="formcotizacion" name="ganancia" type="number" step="0.01" class="form-control" id="ganacia">
@@ -307,7 +307,7 @@
             <label for="incremento">Incremento</label>
             <input required form="formcotizacion" name="incremento" type="number" step="0.01" class="form-control" id="incremento">
           </div>
-        </div>
+        </div> -->
         <div class="row">
           <div class="form-group col col-md-4 offset-4">
             <label for="totalproyecto">Costo Proyecto</label>
@@ -379,7 +379,7 @@ $('#cliente_id').change(function(){
 		  });
 
 });
-  function searchDescuentos(usuario_id) {
+  /*function searchDescuentos(usuario_id) {
     // body...
     $("#clienteDescuento").empty();
     
@@ -398,7 +398,7 @@ $('#cliente_id').change(function(){
       },
 
     })
-  }
+  }*/
 
   var totalcotizacion=0.00;
   function addOrden(orden){
@@ -596,10 +596,10 @@ $('#cliente_id').change(function(){
     costo =totalcotizacion + totalmo + totalva + totalenvio;
     $('#totalproyecto').val(costo.toFixed(2));
 
-    var resul = parseFloat( $('#totalproyecto').val(), 10)  + parseFloat($('#incremento').val(), 10) ;
-    if($('#incremento').val() == 0){
-      resul = $('#totalproyecto').val() * (1 + ($('#ganacia').val() / 100));
-    }
+    var resul = parseFloat( $('#totalproyecto').val(), 10);//  + parseFloat($('#incremento').val(), 10) ;
+    // if($('#incremento').val() == 0){
+    //   resul = $('#totalproyecto').val() * (1 + ($('#ganacia').val() / 100));
+    // }
 
     $('#resultado').val(resul.toFixed(2));
     if($('input[name=iva]:checked').val()){
