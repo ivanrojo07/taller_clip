@@ -81,6 +81,10 @@
 							<label class="control-label" for="telefono">Teléfono Celular:</label>
 							<input type="number" class="form-control" name="tel_celular" value="{{ $cliente->tel_celular }}">
 						</div>
+						<div class="col-sm-3">
+							<label class="control-label" for="formac">Forma de contacto:</label>
+							<input type="text" class="form-control" name="formac" >
+						</div>
 					</div>
 				</div>
 			</div>

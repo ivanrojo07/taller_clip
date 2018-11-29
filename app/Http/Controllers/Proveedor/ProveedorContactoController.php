@@ -99,8 +99,11 @@ class ProveedorContactoController extends Controller
      * @param  \App\Personal  $personal
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Proveedor $provedor)
+    public function destroy($proveedor, $contacto)
     {
-        //
+        $contacto = ContactoProveedor::find($contacto);
+        $proveedor = Proveedor::find($proveedor);
+        $contacto->delete();
+        return redirect()->route('proveedores.contacto.index', ['proveedor' => $proveedor]);
     }
 }

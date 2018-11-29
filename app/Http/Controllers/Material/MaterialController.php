@@ -56,7 +56,6 @@ class MaterialController extends Controller
         $material->proveedor_id = $request->proveedor;
         $material->precio = $request->precio;
         $material->costo = $request->costo;
-        $material->ganancia = $request->ganancia;
         // ¿por que tipo1?
         $material->tipo = 'tipo1';
 

@@ -18,8 +18,7 @@
 								<th scope="col" >Sección / descripción / Proveedor</th>
 								<th scope="col" >Medidas</th>
 								<th scope="col" >Color</th>
-								<th scope="col" >Costo / Ganancia</th>
-								<th scope="col" >Precio venta</th>
+								<th scope="col" >Precio venta(metro cuadrado)</th>
 								<th style="width: 115px;" scope="col" >Fecha</th>
 								
 							</tr>
@@ -39,7 +38,7 @@
 									<td>{{$material->seccion}} / {{$material->descripcion}} / {{$material->proveedor->razonsocial ? $material->proveedor->razonsocial : $material->proveedor->nombre." ".$material->proveedor->apellidopaterno." ".$material->proveedor->apellidomaterno}}</td>
 									<td>{{$material->alto}} X {{$material->ancho}} X {{$material->espesor}} {{$material->medidas}}</td>
 									<td>{{$material->color}}</td>
-									<td>${{$material->costo}} <br> {{$material->ganancia}}%</td>
+									<td>${{$material->costo}}</td>
 									<td>${{$material->precio}}</td>
 									<td>{{date('d-m-Y', strtotime($material->created_at))}}</td>
 									

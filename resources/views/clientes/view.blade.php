@@ -74,6 +74,10 @@
 						<label class="control-label" for="celular">Telefono Celular:</label>
 						<dd>{{ $cliente->tel_celular }}</dd>
 					</div>
+					<div class="col-sm-3">
+						<label class="control-label" for="celular">Forma de contacto:</label>
+						<dd>{{ $cliente->formac }}</dd>
+					</div>
 				</div>
 			</div>
 		</div>

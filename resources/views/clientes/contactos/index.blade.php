@@ -2,7 +2,8 @@
 @section('content')
 
 <div class="container-fluid" id="tab">
-	
+	<form method="POST" action="{{ route('proveedores.direccionFiscal.store', ['proveedor' => $proveedor]) }}">
+		{{ csrf_field() }}
 		<div role="application" class="panel panel-group" >
 			<div class="panel-default">
 				<div class="panel-heading">
@@ -109,14 +110,6 @@
 										<a class="btn btn-info btn-sm" href="{{ route('proveedores.contacto.edit', ['proveedor' => $proveedor, 'contacto' => $contacto]) }}">
 											<strong>Editar</strong>
 										</a>
-
-										<form role="form" method="POST" action="{{ route('proveedores.contacto.destroy', ['proveedor' => $proveedor, 'contactoid' => $contacto]) }}">
-											{{ csrf_field() }}
-											<input type="hidden" name="_method" value="DELETE">
-											<button type="submit" class="btn btn-danger btn-sm" >
-												<strong>Borrar</strong>
-											</button>
-										</form>
 									</td>
 								</tr>
 							@endforeach
@@ -125,6 +118,7 @@
 				</div>
 			</div>
 		</div>
+	</form>
 </div>
 
 @endsection

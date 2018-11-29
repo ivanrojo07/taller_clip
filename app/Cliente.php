@@ -34,6 +34,7 @@ class Cliente extends Model {
 		'estado',
 		'referencia',
 		'calles',
+		'formac'
 	];
 
 	public $Sortable = [

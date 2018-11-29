@@ -97,21 +97,12 @@
                             </div>
                         </div>
                         <div class="col-sm-3 form-group">
-                            <label class="control-label">Ganancia:</label>
-                            <div class="input-group mb-3">
-                                    <input type="number" step="0.01" class="form-control" value="{{($edit && $material) ? $material->ganancia : ""}}" name="ganancia" id="ganancia" required>
-                                <div class="input-group-append">
-                                    <span class="input-group-text">%</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 form-group">
-                            <label class="control-label">Precio venta(al publico):</label>
+                            <label class="control-label">Precio(metro cuadrado):</label>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
                                 </div>
-                                    <input type="number" step="0.01" class="form-control" name="precio" id="precio" value="{{($edit && $material) ? $material->precio : ""}}"readonly required>
+                                    <input type="number" step="0.01" class="form-control" name="precio" id="precio" value="{{($edit && $material) ? $material->precio : ""}}" required>
                                 <div class="input-group-append">
                                     <span class="input-group-text">MXN</span>
                                 </div>
