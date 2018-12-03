@@ -52,6 +52,11 @@ class Cliente extends Model {
 		'deleted_at'
 	];
 
+
+	public function contactos() {
+        return $this->hasMany('App\ContactoCliente', 'cliente_id');
+    }
+
 	public function cotizaciones()
 	{
 		return $this->hasMany('App\Cotizacion');
@@ -69,6 +74,10 @@ class Cliente extends Model {
 	public function entrega() {
 		return $this->hasOne('App\ClienteDireccionEntrega');
 	}
+
+	public function generales() {
+        return $this->hasOne('App\ClienteDatosGenerales', 'cliente_id');
+    }
 
 	public function descuentos() {
 		return $this->hasMany('App\ClienteDescuento');

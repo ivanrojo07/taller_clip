@@ -14,7 +14,8 @@ class Orden extends Model
                          'descripcion',
                          'noobras',
                          'precio_orden',
-                         'cliente_id'
+                         'cliente_id',
+                         'total'
                      ];
 
     public function cliente()

@@ -54,6 +54,11 @@
                             <label class="control-label">Descripción:</label>
                             <textarea required class="form-control" name="descripcion" id="descripcion">{{ ($edit && $orden) ? $orden->descripcion : ""}}</textarea>
                         </div>
+
+                        <div class="col-sm-3 form-group">
+                            <label class="control-label">Precio total de venta:</label>
+                            <input required readonly type="number" step="1" min="1" name="total" id="total" class="form-control" value="23">
+                        </div>
                     </div>
                     <div id="obras"></div>
                     <div class="col-sm-12 mt-2 text-center form-group">
@@ -75,7 +80,7 @@
                     <div class="row">
                         <div class="col-sm-3 form-group">
                             <label class="control-label">Nombre de la obra:</label>
-                            <select required class="custom-select" id="obra_id${i}" onchange="getObra(this.value,${i})" name="obra_id[]">
+                            <select required class="custom-select selectorchido" id="obra_id${i}" onchange="getObra(this.value,${i})" name="obra_id[]">
                                 <option value="">Seleccione su obra</option>
                                 @foreach ($obras as $obra)
                                     <option value="{{$obra->id}}">{{$obra->nombre}}</option>
@@ -102,7 +107,7 @@
                         </div>
                         <div class="col-sm-3 form-group">
                             <label class="control-label">Precio:</label>
-                            <input readonly class="form-control" type="text" id="precio_obra${i}">
+                            <input readonly class="form-control precioese" type="text" id="precio_obra${i}">
                         </div>
                         <div class="col-sm-3 form-group">
                             <label class="control-label">Descripción:</label>
@@ -116,8 +121,11 @@
                 `;
                 console.log(rowHTML);
                 $("#obras").append(rowHTML);
+                
             }
         }
+
+        
         function getObra(obra_id,index){
             $.ajax({
                 url:"../getObra/"+obra_id,
@@ -139,9 +147,21 @@
                         // console.log(descripcion_material);
 
                         $("#materiales_obra"+index).val(descripcion_material);
+                       
                     }
                 }
             });
+            alert('j');
+            var totaltemp = 0;
+                        $('.precioese').each(function(){
+                            alert($(this).html());
+                            //alert($(this).val().replace('$','').replace('MXN',''));
+                            totaltemp += parseFloat($(this).val().replace('$','').replace('MXN',''));
+                        });
+                        alert(totaltemp);
+                        //alert($('#total').val());
+                        //$('#total').val(totaltemo);
+                        //alert('gol');
         }
     </script>
     @endsection

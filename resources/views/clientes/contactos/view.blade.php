@@ -7,16 +7,16 @@
 			<div class="panel-heading">
 				<div class="row">
 					<div class="col-sm-4">
-						<h4>Datos del Proveedor:</h4>
+						<h4>Datos del cliente:</h4>
 					</div>
 					<div class="col-sm-4 text-center">
-						<a class="btn btn-success" href="{{ route('proveedores.create') }}">
-							<i class="fa fa-plus" aria-hidden="true"></i><strong> Agregar Proveedor</strong>
+						<a class="btn btn-success" href="{{ route('clientes.create') }}">
+							<i class="fa fa-plus" aria-hidden="true"></i><strong> Agregar cliente</strong>
 						</a>
 					</div>
 					<div class="col-sm-4 text-center">
-						<a class="btn btn-primary" href="{{ route('proveedores.index') }}">
-							<i class="fa fa-bars" aria-hidden="true"></i><strong> Lista de Proveedores</strong>
+						<a class="btn btn-primary" href="{{ route('clientes.index') }}">
+							<i class="fa fa-bars" aria-hidden="true"></i><strong> Lista de clientes</strong>
 						</a>
 					</div>
 				</div>
@@ -25,49 +25,47 @@
 				<div class="row">
   					<div class="form-group col-sm-3">
     					<label class="control-label" for="tipopersona">Tipo de Persona:</label>
-    					<dd>{{ $proveedor->tipopersona }}</dd>
+    					<dd>{{ $cliente->tipopersona }}</dd>
   					</div>
-					@if($proveedor->tipopersona == "Fisica")
+					@if($cliente->tipopersona == "Fisica")
 						<div class="form-group col-sm-3">
 	  						<label class="control-label" for="nombre">Nombre(s):</label>
-	  						<dd>{{ $proveedor->nombre }}</dd>
+	  						<dd>{{ $cliente->nombre }}</dd>
 	  					</div>
 	  					<div class="form-group col-sm-3">
 	  						<label class="control-label" for="apellidopaterno">Apellido Paterno:</label>
-	  						<dd>{{ $proveedor->apellidopaterno }}</dd>
+	  						<dd>{{ $cliente->apellidopaterno }}</dd>
 	  					</div>
 	  					<div class="form-group col-sm-3">
 	  						<label class="control-label" for="apellidomaterno">Apellido Materno:</label>
-	  						<dd>{{ $proveedor->apellidomaterno }}</dd>
+	  						<dd>{{ $cliente->apellidomaterno }}</dd>
 	  					</div>
 					@else
 						<div class="form-group col-sm-3">
 	  						<label class="control-label" for="razonsocial">Razon Social:</label>
-	  						<dd>{{ $proveedor->razonsocial }}</dd>
+	  						<dd>{{ $cliente->razonsocial }}</dd>
 	  					</div>
 					@endif
   					<div class="form-group col-sm-3">
   						<label class="control-label" for="rfc">RFC:</label>
-  						<dd>{{ $proveedor->rfc }}</dd>
+  						<dd>{{ $cliente->rfc }}</dd>
   					</div>
 				</div>
 			</div>
 		</div>
 		<ul class="nav nav-tabs">
 			<li>
-				<a href="{{ route('proveedores.show', ['proveedor' => $proveedor]) }}">Dirección Física:</a>
+				<a href="{{ route('clientes.show', ['cliente' => $cliente]) }}">Dirección Física:</a>
 			</li>
 			<li>
-				<a href="{{ route('proveedores.direccionFiscal.index', ['proveedor' => $proveedor]) }}">Dirección Fiscal:</a>
+				<a href="{{ route('clientes.direccionFiscal.index', ['cliente' => $cliente]) }}">Dirección Fiscal:</a>
 			</li>
+			<li><a href="{{ route('clientes.crm.index', ['cliente' => $cliente]) }}">CRM</a></li>
 			<li class="active">
-				<a href="{{ route('proveedores.contacto.index', ['proveedor' => $proveedor]) }}">Contactos:</a>
+				<a href="{{ route('clientes.contacto.index', ['cliente' => $cliente]) }}">Contactos:</a>
 			</li>
 			<li>
-				<a href="{{ route('proveedores.datosGenerales.index', ['proveedor' => $proveedor]) }}">Datos Generales:</a>
-			</li>
-			<li>
-				<a href="{{ route('proveedores.datosBancarios.index', ['proveedor' => $proveedor]) }}">Datos Bancarios:</a>
+				<a href="{{ route('clientes.datosGenerales.index', ['cliente' => $cliente]) }}">Datos Generales:</a>
 			</li>
 		</ul>
 		<div class="panel panel-default">
@@ -148,7 +146,7 @@
 			<div class="panel-footer">
 				<div class="row">
 					<div class="col-sm-12 text-center">
-						<a class="btn btn-danger" href="{{ route('proveedores.contacto.edit', ['proveedor' => $proveedor, 'contacto' => $contacto]) }}">
+						<a class="btn btn-danger" href="{{ route('clientes.contacto.edit', ['cliente' => $cliente, 'contacto' => $contacto]) }}">
 							<strong>Editar</strong>
 						</a>
 					</div>

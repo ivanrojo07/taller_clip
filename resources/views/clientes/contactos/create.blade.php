@@ -2,23 +2,23 @@
 @section('content')
 
 <div class="container-fluid" id="tab">
-	<form method="POST" action="{{ route('proveedores.contacto.store', ['proveedor' => $proveedor]) }}">
+	<form method="POST" action="{{ route('clientes.contacto.store', ['cliente' => $cliente]) }}">
 		{{ csrf_field() }}
 		<div role="application" class="panel panel-group" >
 			<div class="panel-default">
 				<div class="panel-heading">
 					<div class="row">
 						<div class="col-sm-4">
-							<h4>Datos del Proveedor:</h4>
+							<h4>Datos del cliente:</h4>
 						</div>
 						<div class="col-sm-4 text-center">
-							<a class="btn btn-success" href="{{ route('proveedores.create') }}">
-								<i class="fa fa-plus" aria-hidden="true"></i><strong> Agregar Proveedor</strong>
+							<a class="btn btn-success" href="{{ route('clientes.create') }}">
+								<i class="fa fa-plus" aria-hidden="true"></i><strong> Agregar cliente</strong>
 							</a>
 						</div>
 						<div class="col-sm-4 text-center">
-							<a class="btn btn-primary" href="{{ route('proveedores.index') }}">
-								<i class="fa fa-bars" aria-hidden="true"></i><strong> Lista de Proveedores</strong>
+							<a class="btn btn-primary" href="{{ route('clientes.index') }}">
+								<i class="fa fa-bars" aria-hidden="true"></i><strong> Lista de clientes</strong>
 							</a>
 						</div>
 					</div>
@@ -27,49 +27,47 @@
 					<div class="row">
 	  					<div class="form-group col-sm-3">
 	    					<label class="control-label" for="tipopersona">Tipo de Persona:</label>
-	    					<dd>{{ $proveedor->tipopersona }}</dd>
+	    					<dd>{{ $cliente->tipopersona }}</dd>
 	  					</div>
-						@if($proveedor->tipopersona == "Fisica")
+						@if($cliente->tipopersona == "Fisica")
 							<div class="form-group col-sm-3">
 		  						<label class="control-label" for="nombre">Nombre(s):</label>
-		  						<dd>{{ $proveedor->nombre }}</dd>
+		  						<dd>{{ $cliente->nombre }}</dd>
 		  					</div>
 		  					<div class="form-group col-sm-3">
 		  						<label class="control-label" for="apellidopaterno">Apellido Paterno:</label>
-		  						<dd>{{ $proveedor->apellidopaterno }}</dd>
+		  						<dd>{{ $cliente->apellidopaterno }}</dd>
 		  					</div>
 		  					<div class="form-group col-sm-3">
 		  						<label class="control-label" for="apellidomaterno">Apellido Materno:</label>
-		  						<dd>{{ $proveedor->apellidomaterno }}</dd>
+		  						<dd>{{ $cliente->apellidomaterno }}</dd>
 		  					</div>
 						@else
 							<div class="form-group col-sm-3">
 		  						<label class="control-label" for="razonsocial">Razon Social:</label>
-		  						<dd>{{ $proveedor->razonsocial }}</dd>
+		  						<dd>{{ $cliente->razonsocial }}</dd>
 		  					</div>
 						@endif
 	  					<div class="form-group col-sm-3">
 	  						<label class="control-label" for="rfc">RFC:</label>
-	  						<dd>{{ $proveedor->rfc }}</dd>
+	  						<dd>{{ $cliente->rfc }}</dd>
 	  					</div>
 					</div>
 				</div>
 			</div>
 			<ul class="nav nav-tabs">
 				<li>
-					<a href="{{ route('proveedores.show', ['proveedor' => $proveedor]) }}">Dirección Fìsica:</a>
+					<a href="{{ route('clientes.show', ['cliente' => $cliente]) }}">Dirección Fìsica:</a>
 				</li>
 				<li>
-					<a href="{{ route('proveedores.direccionFiscal.index', ['proveedor' => $proveedor]) }}">Dirección Fiscal:</a>
+					<a href="{{ route('clientes.direccionFiscal.index', ['cliente' => $cliente]) }}">Dirección Fiscal:</a>
 				</li>
+				<li><a href="{{ route('clientes.crm.index', ['cliente' => $cliente]) }}">CRM</a></li>
 				<li class="active">
-					<a href="{{ route('proveedores.contacto.index', ['proveedor' => $proveedor]) }}">Contacto:</a>
+					<a href="{{ route('clientes.contacto.index', ['cliente' => $cliente]) }}">Contacto:</a>
 				</li>
 				<li>
-					<a href="{{ route('proveedores.datosGenerales.index', ['proveedor' => $proveedor]) }}">Datos Generales:</a>
-				</li>
-				<li>
-					<a href="{{ route('proveedores.datosBancarios.index', ['proveedor' => $proveedor]) }}">Datos Bancarios:</a>
+					<a href="{{ route('clientes.datosgenerales.index', ['cliente' => $cliente]) }}">Datos Generales:</a>
 				</li>
 			</ul>
 		</ul>
@@ -81,7 +79,7 @@
 					</div>
 				</div>
 			</div>
-			<form role="form" method="POST" action="{{ route('proveedores.contacto.store', ['proveedor' => $proveedor]) }}">
+			<form role="form" method="POST" action="{{ route('clientes.contacto.store', ['cliente' => $cliente]) }}">
 				<div class="panel-body">
 					{{ csrf_field() }}
 					<div class="row">
@@ -127,7 +125,7 @@
 	  					</div>
 	  					<div class="form-group col-sm-3">
 	  						<label class="control-label" for="telefonodir">Telefono directo:</label>
-	  						<input type="text" class="form-control" id="telefonodir" name="telefonodir" value="">
+	  						<input required type="text" class="form-control" id="telefonodir" name="telefonodir" value="">
 	  					</div>
 	  					<div class="form-group col-sm-3">
 	  						<label class="control-label" for="celular1">Celular:</label>
@@ -139,7 +137,7 @@
 	  					</div>
 	  					<div class="form-group col-sm-3">
 	  						<label class="control-label" for="email1">Correo electronico:</label>
-	  						<input type="email" class="form-control" id="email1" name="email1" value="">
+	  						<input required type="email" class="form-control" id="email1" name="email1" value="">
 	  					</div>
 
 	  					<div class="form-group col-sm-3">

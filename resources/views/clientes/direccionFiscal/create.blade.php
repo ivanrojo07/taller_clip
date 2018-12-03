@@ -83,6 +83,7 @@
 			<li><a href="{{ route('clientes.direccionEntrega.index', ['cliente' => $cliente]) }}">Dirección de Entrega</a></li>
 			<li><a href="{{ route('clientes.descuentos.index', ['cliente' => $cliente]) }}">Descuentos</a></li>
 			<li><a href="{{ route('clientes.crm.index', ['cliente' => $cliente]) }}">CRM</a></li>
+			<li><a href="{{route('clientes.datosgenerales.index',['cliente' => $cliente])}}">Datos Generales</a></li>
 		</ul>
 		<form action="{{ route('clientes.direccionFiscal.store', ['cliente' => $cliente]) }}" method="post">
 			{{ csrf_field() }}

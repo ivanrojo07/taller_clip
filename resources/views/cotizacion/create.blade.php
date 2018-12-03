@@ -94,8 +94,20 @@
           </table>
         </div>
         <div class="row">
-          <div class="col-4 offset-4">
-            <label for="totalordenes">Total de ordenes</label>
+          <div class="col-4 offset-2">
+          <label for="totalordenes">Descuento de obras</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="number" step="0.01" class="form-control" value="0" id="desordenes">
+              <div class="input-group-append">
+                <span class="input-group-text">MXN</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <label for="totalordenes">Total de obras</label>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
@@ -147,7 +159,19 @@
           </table>
         </div>
         <div class="row">
-          <div class="col-4 offset-4">
+          <div class="col-4 offset-2">
+            <label for="totalordenes">Descuento Mano de obra</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="number" value="0" step="0.01" class="form-control"  id="descmano">
+              <div class="input-group-append">
+                <span class="input-group-text">MXN</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
             <label for="totalmanodeobra">Total mano de obra</label>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
@@ -188,7 +212,19 @@
           </table>
         </div>
         <div class="row">
-          <div class="col-4 offset-4">
+          <div class="col-4 offset-2">
+            <label for="totalordenes">Descuento Varios</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="number" value="0" step="0.01" class="form-control"  id="desvario">
+              <div class="input-group-append">
+                <span class="input-group-text">MXN</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
             <label for="totlavario">Total varios</label>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
@@ -250,24 +286,24 @@
         <div class="row"><h5>Total:</h5></div>
         <div class="row">
           <div class="col-sm-3 form-group">
-            <label class="control-label">Total orden(es):</label>
+          <label class="control-label">Total mano(s) de obra(s):</label>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
-              <input readonly type="number" step="0.01" class="form-control" name="totalordenes"  id="inputtotalordenes">
+              <input readonly type="number" step="0.01" class="form-control" name="totalmanodeobra"  id="inputtotalmanodeobra">
               <div class="input-group-append">
                 <span class="input-group-text">MXN</span>
               </div>
             </div>
           </div>
           <div class="col-sm-3 form-group">
-            <label class="control-label">Total mano(s) de obra(s):</label>
+            <label class="control-label">Total orden(es):</label>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
-              <input readonly type="number" step="0.01" class="form-control" name="totalmanodeobra"  id="inputtotalmanodeobra">
+              <input readonly type="number" step="0.01" class="form-control" name="totalordenes"  id="inputtotalordenes">
               <div class="input-group-append">
                 <span class="input-group-text">MXN</span>
               </div>
@@ -604,7 +640,10 @@ $('#cliente_id').change(function(){
     costo =totalcotizacion + totalmo + totalva + totalenvio;
     $('#totalproyecto').val(costo.toFixed(2));
 
-    var resul = parseFloat( $('#totalproyecto').val(), 10);//  + parseFloat($('#incremento').val(), 10) ;
+    var descobra = $('#desordenes').val();
+    var descvario = $('#desvario').val(); 
+    var descmano = $('#descmano');.val()
+    var resul = parseFloat( $('#totalproyecto').val(), 10) - descobra - descvario - descmano;//  + parseFloat($('#incremento').val(), 10) ;
     // if($('#incremento').val() == 0){
     //   resul = $('#totalproyecto').val() * (1 + ($('#ganacia').val() / 100));
     // }
