@@ -275,8 +275,8 @@
                 <td>${material.color}</td>
                 <td>$${material.precio}</td>
                 <td>
-                    <input type="hidden" name="materiales_obra[]" value="${material.id}">
-                    <input required type="number" step="0.01" min="0" name="cantidad_material_obra[]" value="1" id="profundidad_obra" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                    <input type="hidden" name="materiales_obra[` +  (id - 1 ) + `][]" value="${material.id}">
+                    <input required type="number" step="0.01" min="0" name="cantidad_material_obra[` +  (id-1 ) + `][]" value="1" id="profundidad_obra" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
                 </td>
                 <td>
                     <div class="row mt-1 mb-1 justify-content-md-center">

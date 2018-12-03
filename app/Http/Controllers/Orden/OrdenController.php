@@ -51,31 +51,30 @@ class OrdenController extends Controller
     public function store(Request $request)
     {
 
-
-        //TODO
-        /**
-         * guardar obras antes de jutnarlas con 
-         */
-
-
-        // dd($request->all());
         $orden = Orden::create($request->all());
-        for ($i = 0; $i < sizeof($request->obra_id); $i++) {
-            $orden->obras()->attach($request->obra_id[$i]);
+
+        for($i = 0; $i < sizeof($request->nombre_obra); $i++){
+            $obra = new Obra(['nombre' => $request->nombre_obra[$i],
+                              'nopiezas' => $request->nopiezas_obra[$i],
+                              'alto_obra' => $request->alto_obra[$i],
+                              'ancho_obra' => $request->ancho_obra[$i],
+                              'profundidad_obra' => $request->profundidad_obra[$i],
+                              'unidad_obra' => $request->unidad_obra[$i],
+                              'descripcion_obra' => $request->descripcion_obra[$i]]);
+            $obra->save();
+            
+            for($j = 0; $j < sizeof($request->materiales_obra[$i]); $j++){
+                $obra->materiales()->attach( $request->materiales_obra[$i][$j] , ['cantidad'=>$request->cantidad_material_obra[$i][$j]]);
+            }
+
+            $orden->obras()->attach($obra->id);
+            
         }
-        $orden->precio_orden=$orden->total();
-        $orden->save();
+
+        
         $alert = ['message'=>"Orden ".$orden->nombre." registrado", 'class'=>'success'];
         return redirect()->route('orden.create')->with('alert',$alert);
-        // $orden = new Orden;
-        // $orden->nombre = $request->nombre;
-        // $orden->fecha = $request->fecha;
-        // $orden->noorden = $request->noorden;
-        // $orden->descripcion = $request->descripcion;
-        // $orden->noobras = $request->noobras;
-        // $orden->save();
-        // $materiales = Material::get();
-        return view('obra.create',['orden_id'=>$orden->id, 'noabras'=>$orden->nopiezas, 'materiales'=>$materiales]);
+       
     }
 
     /**
