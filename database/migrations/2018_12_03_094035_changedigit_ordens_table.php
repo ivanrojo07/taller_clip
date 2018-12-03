@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddTotalOrdens extends Migration
+class ChangedigitOrdensTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,7 @@ class AddTotalOrdens extends Migration
      */
     public function up()
     {
-        Schema::table('ordens', function (Blueprint $table) {
-            $table->double('total', 15, 8);
-        });
+        //
     }
 
     /**
@@ -25,8 +23,6 @@ class AddTotalOrdens extends Migration
      */
     public function down()
     {
-        Schema::table('ordens', function (Blueprint $table) {
-            //
-        });
+        //
     }
 }

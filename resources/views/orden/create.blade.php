@@ -57,7 +57,7 @@
 
                         <div class="col-sm-3 form-group">
                             <label class="control-label">Precio total de venta:</label>
-                            <input required readonly type="number" step="1" min="1" name="total" id="total" class="form-control" value="23">
+                            <input required type="number" name="total" id="total" class="form-control" value="0">
                         </div>
                     </div>
                     <div id="obras"></div>
@@ -69,6 +69,7 @@
         </div>
     </div>
     <script type="text/javascript">
+        var totaltemp = 0;
         function setHTML(obras) {
             // body...
             $("#obras").empty();
@@ -104,12 +105,12 @@
                         <div class="col-sm-3 form-group">
                             <label class="control-label">Número de piezas:</label>
                             <input readonly class="form-control" type="text" id="nopiezas${i}">
-                        </div>
-                        <div class="col-sm-3 form-group">
-                            <label class="control-label">Precio:</label>
-                            <input readonly class="form-control precioese" type="text" id="precio_obra${i}">
-                        </div>
-                        <div class="col-sm-3 form-group">
+                        </div>`+
+                        // <div class="col-sm-3 form-group">
+                        //     <label class="control-label">Precio:</label>
+                        //     <input readonly class="form-control precioese" type="text" id="precio_obra${i}">
+                        // </div>
+                        `<div class="col-sm-3 form-group">
                             <label class="control-label">Descripción:</label>
                             <textarea readonly id="descripcion_obra${i}" class="form-control"></textarea>
                         </div>
@@ -147,18 +148,20 @@
                         // console.log(descripcion_material);
 
                         $("#materiales_obra"+index).val(descripcion_material);
-                       
+                        totaltemp += parseFloat(obra.precio_obra);
+                        $('#total').val(totaltemp);
+                        //alert('j');
+                        // alert($('input.precioese').text());
+                        // $('input.precioese').each(function(){
+                        //     //alert($(this).html());
+                        //     //alert($(this).val().replace('$','').replace('MXN',''));
+                        //     totaltemp += parseFloat($(this).val().replace('$','').replace('MXN',''));
+                        // });
+                        //alert(totaltemp);
                     }
                 }
             });
-            alert('j');
-            var totaltemp = 0;
-                        $('.precioese').each(function(){
-                            alert($(this).html());
-                            //alert($(this).val().replace('$','').replace('MXN',''));
-                            totaltemp += parseFloat($(this).val().replace('$','').replace('MXN',''));
-                        });
-                        alert(totaltemp);
+                        
                         //alert($('#total').val());
                         //$('#total').val(totaltemo);
                         //alert('gol');

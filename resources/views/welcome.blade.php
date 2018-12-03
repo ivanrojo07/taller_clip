@@ -198,7 +198,7 @@
                 <!--Obras-->
                 @foreach(Auth::user()->perfil->modulos as $modulo)
                 @if($modulo->nombre == "obras")
-                <!-- <div class="row my-2">
+                <div class="row my-2">
                     <div class="col">
                         <div class="card">
                             <div id="clase3" class="card-header nave" data-toggle="collapse" data-target="#obras">
@@ -211,7 +211,7 @@
                             </ul>
                         </div>
                     </div>
-                </div> -->
+                </div>
                 @endif
                 @endforeach
                 <!--Órdenes-->
