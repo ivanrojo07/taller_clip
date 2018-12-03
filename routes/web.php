@@ -160,7 +160,7 @@ Route::resource('orden', 'Orden\OrdenController');
 Route::resource('obra','Obra\ObraController');
 
 
-Route::get('/buscarMaterial/{seccion}','Material\MaterialController@buscarMateriales')->name('buscarmaterialporseccion');
+Route::get('/buscarMaterial/{seccion}/{idtabla}','Material\MaterialController@buscarMateriales')->name('buscarmaterialporseccion');
 Route::get('getObra/{obra}','Obra\ObraController@getObra');
 
 Route::resource('cotizacion','Cotizacion\CotizacionController');

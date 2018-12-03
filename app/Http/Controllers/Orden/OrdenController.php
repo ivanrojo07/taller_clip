@@ -50,6 +50,14 @@ class OrdenController extends Controller
      */
     public function store(Request $request)
     {
+
+
+        //TODO
+        /**
+         * guardar obras antes de jutnarlas con 
+         */
+
+
         // dd($request->all());
         $orden = Orden::create($request->all());
         for ($i = 0; $i < sizeof($request->obra_id); $i++) {

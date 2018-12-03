@@ -128,10 +128,10 @@ class MaterialController extends Controller
         //
     }
 
-    public function buscarMateriales($seccion){
+    public function buscarMateriales($seccion, $idtabla){
         $materiales = Material::where('seccion',$seccion)->get();
         // dd($materiales);
-        return view('material.list',['materiales'=>$materiales]);
+        return view('material.list',['materiales'=>$materiales, 'idtabla' => $idtabla]);
          $materiales = Material::where('seccion', $req->seccion)->with(['descripcion'])->get();
             return $materiales;
     }
