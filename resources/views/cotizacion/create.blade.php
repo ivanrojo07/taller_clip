@@ -642,7 +642,7 @@ $('#cliente_id').change(function(){
 
     var descobra = $('#desordenes').val();
     var descvario = $('#desvario').val(); 
-    var descmano = $('#descmano');.val()
+    var descmano = $('#descmano').val()
     var resul = parseFloat( $('#totalproyecto').val(), 10) - descobra - descvario - descmano;//  + parseFloat($('#incremento').val(), 10) ;
     // if($('#incremento').val() == 0){
     //   resul = $('#totalproyecto').val() * (1 + ($('#ganacia').val() / 100));

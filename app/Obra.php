@@ -15,7 +15,10 @@ class Obra extends Model
         'profundidad_obra',
         'unidad_obra',
         'descripcion_obra',
-        'precio_obra'
+        'precio_obra',
+        'ancho_marco',
+        'largo_marco',
+        'profundidad_marco'
     ];
         
        

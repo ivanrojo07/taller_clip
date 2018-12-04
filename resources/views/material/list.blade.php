@@ -12,7 +12,7 @@
 		<td>${{$material->precio}}</td>
 		<td>
 			<div class="row mt-1 mb-1 justify-content-md-center">
-				<a href="#" onclick="addMaterial({{json_encode($material)}} , {{$idtabla}})" class="btn btn-success">
+				<a href="#/" onclick="addMaterial({{json_encode($material)}} , {{$idtabla}})" class="btn btn-success">
 					Agregar
 				</a>
 			</div>

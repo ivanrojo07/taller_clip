@@ -18,6 +18,7 @@
 								<th scope="col" >Sección / descripción / Proveedor</th>
 								<th scope="col" >Medidas</th>
 								<th scope="col" >Color</th>
+								<th scope="col">Costo</th>
 								<th scope="col" >Precio venta(metro cuadrado)</th>
 								<th style="width: 115px;" scope="col" >Fecha</th>
 								
