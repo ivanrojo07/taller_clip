@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChangedigitOrdensTable extends Migration
+class ChangeContactoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,10 @@ class ChangedigitOrdensTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('contactos_cliente', function (Blueprint $table) {
+            $table->string('email1')->nullable()->change();
+            $table->string('telefonodir')->nullable()->change();
+        });
     }
 
     /**

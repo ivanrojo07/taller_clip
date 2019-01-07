@@ -14,7 +14,7 @@ class Changedigit2OrdensTable extends Migration
     public function up()
     {
         Schema::table('ordens', function (Blueprint $table) {
-            $table->double('total', 15, 8);
+            $table->decimal('total', 15, 8)->change();
         });
     }
 
