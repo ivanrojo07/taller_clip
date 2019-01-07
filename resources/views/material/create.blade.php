@@ -48,17 +48,17 @@
                             <input required type="text" name="clave" value="{{($edit && $material) ? $material->clave : ""}}" id="clave" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
                         </div>
                         <div class="col-sm-3 form-group">
-                            <label class="control-label">Ancho:</label>
+                            <label id="ancho-label" class="control-label">Ancho:</label>
                             <input required type="number" name="ancho" id="ancho" value="{{($edit && $material) ? $material->ancho : ""}}" class="form-control" step="0.01" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-3 form-group">
-                            <label class="control-label">Alto:</label>
+                            <label id="alto-label" class="control-label">Alto:</label>
                             <input required type="number" name="alto" id="alto" value="{{($edit && $material) ? $material->alto : ""}}" class="form-control" step="0.01" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
                         </div>
                         <div class="col-sm-3 form-group">
-                            <label class="control-label">Espesor:</label>
+                            <label id="espesor-label" class="control-label">Espesor:</label>
                             <input required type="number" name="espesor" id="espesor" value="{{($edit && $material) ? $material->espesor : ""}}" class="form-control" step="0.01" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
                         </div>
                         <div class="col-sm-3 form-group">
@@ -120,6 +120,19 @@
     <script>
         var precio_pub = 0;
     $(document).ready(function(){
+
+        $('#seccion').change(function(){
+            if($(this).val() == 'Marco'){
+                $('#alto-label').text('Frente');
+                $('#ancho-label').text('Fondo');
+                $('#espesor-label').text('Largo');
+            }else{
+                $('#alto-label').text('Alto');
+                $('#ancho-label').text('Ancho');
+                $('#espesor-label').text('Espesor');
+            }
+            
+        });
 
         $("#ganancia").change(function(){
             costo =parseFloat($("#costo").val());
