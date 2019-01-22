@@ -18,7 +18,6 @@ class MaterialController extends Controller
     public function index(Request $req)
     {
         $materiales = Material::paginate(10);
-
         return view('material.index',['materiales'=>$materiales]);
        
     }

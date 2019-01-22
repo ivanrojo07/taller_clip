@@ -27,7 +27,7 @@ class AddColumnsMarco extends Migration
      */
     public function down()
     {
-        Schema::table('obra', function (Blueprint $table) {
+        Schema::table('obras', function (Blueprint $table) {
             //
         });
     }

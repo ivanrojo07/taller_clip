@@ -26,6 +26,8 @@ class ChangeContactoTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('contactos_cliente', function (Blueprint $table) {
+            
+        });
     }
 }

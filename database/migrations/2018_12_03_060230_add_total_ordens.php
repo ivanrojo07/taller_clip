@@ -14,7 +14,7 @@ class AddTotalOrdens extends Migration
     public function up()
     {
         Schema::table('ordens', function (Blueprint $table) {
-            $table->decimal('total', 15, 8)->change();
+            $table->decimal('total', 15, 8);
         });
     }
 

@@ -42,6 +42,6 @@ class CreateContactosCliente extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('contactos_cliente');
     }
 }

@@ -25,6 +25,8 @@ class Changedigit2OrdensTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('ordens', function (Blueprint $table) {
+            
+        });
     }
 }

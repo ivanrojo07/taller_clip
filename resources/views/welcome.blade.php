@@ -191,7 +191,7 @@
                                         <p class="mb-0" style="float: right;"><i class="fa fa-angle-double-down"></i></p>
                                     </div>
                                     <ul id="collapseExample3" class="list-group list-group-flush collapse" data-parent="#acoreond">
-                                        <a class="nave3"  onclick="AgregarNuevoTab('{{ url('material') }}', 'Materiales')" href="#"><li class="list-group-item">Materiales&nbsp<i class="fa fa-clone"></i></li></a>
+                                        <a class="nave3"  onclick="AgregarNuevoTab('{{ url('material') }}', 'Materiales')" href="#"><li class="list-group-item">Búsqueda&nbsp<i class="fa fa-clone"></i></li></a>
                                         <a class="nave3"  onclick="AgregarNuevoTab('{{ url('/material/create/') }}', 'Crear Materiales')" href="#"><li class="list-group-item">Crear material&nbsp<i class="fa fa-object-group"></i></li></a>
                                     </ul>
                                 </div>

@@ -25,6 +25,8 @@ class AlterMaterialsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('material_obra', function (Blueprint $table) {
+            
+        });
     }
 }

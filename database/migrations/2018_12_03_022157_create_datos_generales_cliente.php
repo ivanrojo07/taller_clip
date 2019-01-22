@@ -40,6 +40,6 @@ class CreateDatosGeneralesCliente extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('datos_generales_cliente');
     }
 }
