@@ -111,7 +111,6 @@ class MaterialController extends Controller
         $material->proveedor_id = $request->proveedor;
         $material->precio = $request->precio;
         $material->costo = $request->costo;
-        $material->ganancia = $request->ganancia;
         $material->save();
         return redirect()->route('material.index');
     }

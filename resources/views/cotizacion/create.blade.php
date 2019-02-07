@@ -134,8 +134,12 @@
             <input type="text" class="form-control" id="puestomanodeobra">
           </div>
           <div class="col-sm-3 form-group">
-            <label class="control-label">Monto</label>
+            <label class="control-label">Venta</label>
             <input type="number" step="0.01" step="0.01" class="form-control" id="montomanodeobra">
+          </div>
+          <div class="col-sm-3 form-group">
+            <label class="control-label">Costo</label>
+            <input type="number" step="0.01" step="0.01" class="form-control" id="costomanodeobra">
           </div>
         </div>
         <div class="row justify-content-end">
@@ -149,8 +153,9 @@
               <tr class="table-info">
                 <th scope="col">Nombre</th>
                 <th scope="col">Puesto</th>
-                <th scope="col">Monto</th>
+                <th scope="col">Venta</th>
                 <th scope="col">Descripción</th>
+                <th scope="col">Costo</th>
                 <th scope="col">Eliminar</th>
               </tr>
             </thead>
@@ -159,7 +164,7 @@
           </table>
         </div>
         <div class="row">
-          <div class="col-4 offset-2">
+          <div class="col-4">
             <label for="totalordenes">Descuento Mano de obra</label>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
@@ -183,7 +188,20 @@
               </div>
             </div>
           </div>
+          <div class="col-4">
+            <label for="totalordenes">Ganancia Mano de obra</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="number" value="0" step="0.01" class="form-control"  id="gananciamanodeobra">
+              <div class="input-group-append">
+                <span class="input-group-text">MXN</span>
+              </div>
+            </div>
+          </div>
         </div>
+        
         <div class="row"><h5>Varios:</h5></div>
         <div class="row" id="svarios">
           <div class="offset-sm-3 col-sm-3 form-group">
@@ -191,8 +209,12 @@
             <input type="text" class="form-control" id="desvario">
           </div>
           <div class="col-sm-3 form-group">
-            <label class="control-label">Monto:</label>
+            <label class="control-label">Venta:</label>
             <input type="number" step="0.01" class="form-control" id="montovario">
+          </div>
+          <div class="col-sm-3 form-group">
+            <label class="control-label">Costo:</label>
+            <input type="number" step="0.01" class="form-control" id="costovario">
           </div>
           <div class="col-sm-3 form-group">
             <button id="agregarvario" type="button" class="mt-4 btn btn-primary">Agregar</button>
@@ -202,8 +224,9 @@
           <table class="table  table-striped table-bordered">
             <thead class="table-info">
               <tr>
-                <th scope="col">Monto</th>
+                <th scope="col">Venta</th>
                 <th scope="col">Descripción</th>
+                <th scope="col">Costo</th>
                 <th scope="col">Eliminar</th>
               </tr>
             </thead>
@@ -212,7 +235,7 @@
           </table>
         </div>
         <div class="row">
-          <div class="col-4 offset-2">
+          <div class="col-4">
             <label for="totalordenes">Descuento Varios</label>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
@@ -236,6 +259,18 @@
               </div>
             </div>
           </div>
+          <div class="col-4">
+            <label for="totalordenes">Ganancia Varios</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="number" value="0" step="0.01" class="form-control"  id="gananciavarios">
+              <div class="input-group-append">
+                <span class="input-group-text">MXN</span>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="row"><h5>Envios:</h5></div>
         <div class="row">
@@ -244,8 +279,12 @@
             <input type="text" class="form-control" id="desenvio">
           </div>
           <div class="col-sm-3 form-group">
-            <label class="control-label">Monto:</label>
+            <label class="control-label">Venta:</label>
             <input type="number" step="0.01" class="form-control" id="montoenvio">
+          </div>
+          <div class="col-sm-3 form-group">
+            <label class="control-label">Costo:</label>
+            <input type="number" step="0.01" class="form-control" id="costoenvio">
           </div>
           <div class="col-sm-3 form-group">
             <label class="control-label">Dirección:</label>
@@ -261,7 +300,8 @@
               <tr>
                 <th scope="col">Dirección</th>
                 <th scope="col">Descripción</th>
-                <th scope="col">Monto</th>
+                <th scope="col">Venta</th>
+                <th scope="col">Costo</th>
                 <th scope="col">Eliminar</th>
               </tr>
             </thead>
@@ -270,13 +310,37 @@
           </table>
         </div>
         <div class="row">
-          <div class="col-4 offset-4">
+          <div class="col-4">
             <label for="totalenvio">Total Envios</label>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
               <label readonly type="number" step="0.01" class="form-control"  id="totalenvios"></label>
+              <div class="input-group-append">
+                <span class="input-group-text">MXN</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <label for="totalordenes">Descuento Envios</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="number" value="0" step="0.01" class="form-control"  id="descenvio">
+              <div class="input-group-append">
+                <span class="input-group-text">MXN</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <label for="totalordenes">Ganancia Envios</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="number" value="0" step="0.01" class="form-control"  id="gananciaenvio">
               <div class="input-group-append">
                 <span class="input-group-text">MXN</span>
               </div>
@@ -291,7 +355,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
-              <input readonly type="number" step="0.01" class="form-control" name="totalmanodeobra"  id="inputtotalmanodeobra">
+              <input readonly type="number" step="0.01" class="form-control" name="totalmanodeobra"  id="inputtotalmanodeobra" value="0">
               <div class="input-group-append">
                 <span class="input-group-text">MXN</span>
               </div>
@@ -315,7 +379,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
-              <input readonly type="number" step="0.01" class="form-control" name="totalvarios"  id="inputtotalvarios">
+              <input readonly type="number" step="0.01" class="form-control" name="totalvarios"  id="inputtotalvarios" value="0">
               <div class="input-group-append">
                 <span class="input-group-text">MXN</span>
               </div>
@@ -327,7 +391,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
-              <input readonly type="number" step="0.01" class="form-control" name="totalenvios"  id="inputtotalenvios">
+              <input readonly type="number" step="0.01" class="form-control" name="totalenvios"  id="inputtotalenvios" value="0">
               <div class="input-group-append">
                 <span class="input-group-text">MXN</span>
               </div>
@@ -346,7 +410,7 @@
         </div> -->
         <div class="row">
           <div class="form-group col col-md-4 offset-4">
-            <label for="totalproyecto">Costo Proyecto</label>
+            <label for="totalproyecto">Venta Proyecto</label>
             <input required readonly form="formcotizacion" name="totalproyecto" type="number" step="0.01" class="form-control" id="totalproyecto">
           </div>
         </div>
@@ -386,12 +450,12 @@
 <script type="text/javascript">
 function checar(){
   if ($('#tablamanodeobras').children().length == 0){
-    swal({
-        type: 'error',
-        title: 'Ups...',
-        text: 'Ingresa por lo menos una mano de obra!'
-      });
-    return false;
+    // swal({
+    //     type: 'error',
+    //     title: 'Ups...',
+    //     text: 'Ingresa por lo menos una mano de obra!'
+    //   });
+    //return false;
 }
   if($('#myOrdenes').children().length == 0){
     swal({
@@ -485,7 +549,7 @@ $('#cliente_id').change(function(){
   var totalmo=0.00;
   $('#agregarmanodeobra').click(function(){
     contador++
-    if(!$('#nombremanodeobra').val() || !$('#puestomanodeobra').val() || !$('#montomanodeobra').val() || !$('#desmanodeobra').val()){
+    if(!$('#nombremanodeobra').val() || !$('#puestomanodeobra').val() || !$('#montomanodeobra').val() || !$('#desmanodeobra').val() || !$('#costomanodeobra').val()){
       swal({
         type: 'error',
         title: 'Ups...',
@@ -497,6 +561,7 @@ $('#cliente_id').change(function(){
            ' <td><input type="hidden" form="formcotizacion" name="manodeobrasp[]" value="'+ $('#puestomanodeobra').val()+'" >'+ $('#puestomanodeobra').val()+'</td>'+
             '<td class="montomanodeobra"> <input type="hidden" form="formcotizacion" name="manodeobrasm[]" value="'+ $('#montomanodeobra').val()+'">$'+ $('#montomanodeobra').val()+'MXN</td>'+
             '<td><input type="hidden" form="formcotizacion" name="manodeobrasd[]" value="'+ $('#desmanodeobra').val()+'"> '+ $('#desmanodeobra').val()+'</td>'+
+            '<td><input type="hidden" form="formcotizacion" name="manodeobrasc[]" value="'+ $('#costomanodeobra').val()+'"> '+ $('#costomanodeobra').val()+'</td>'+
             '<td><button class="btn btn-danger" type="button" onclick="removeManoO('+"'algo"+contador+"'"+','+$("#montomanodeobra").val()+')">Eliminar</button></td></tr>';
     console.log(parseFloat($('#montomanodeobra').val()));
     totalmo = +totalmo+ +parseFloat($('#montomanodeobra').val());
@@ -519,7 +584,7 @@ $('#cliente_id').change(function(){
   var totalva = 0.00;
   $('#agregarvario').click(function(){
     contador++
-    if(!$('#desvario').val() ||  !$('#montovario').val() ){
+    if(!$('#desvario').val() ||  !$('#montovario').val() ||  !$('#costovario').val()){
       swal({
         type: 'error',
         title: 'Ups...',
@@ -529,6 +594,7 @@ $('#cliente_id').change(function(){
     }
     var ht =  '<tr id="algo'+ contador+'"><td class="montovario"><input type="hidden" form="formcotizacion" name="variosm[]" value="'+ $('#montovario').val()+'" > '+ $('#montovario').val()+'</td>'+
            ' <td> <input type="hidden" form="formcotizacion" name="variosd[]" value="'+ $('#desvario').val()+'" > '+ $('#desvario').val()+'</td>'+
+           ' <td> <input type="hidden" form="formcotizacion" name="variosc[]" value="'+ $('#costovario').val()+'" > '+ $('#costovario').val()+'</td>'+
             '<td><button class="btn btn-danger" onclick="removeVario('+"'algo"+contador+"'"+','+$("#montovario").val()+')">Eliminar</button></td></tr>';
     totalva = +totalva+ +parseFloat($('#montovario').val());
     console.log(totalva);
@@ -550,7 +616,7 @@ $('#cliente_id').change(function(){
   var totalenvio = 0.00;
   $('#agregarenvio').click(function(){
     contador++
-    if(!$('#desenvio').val() ||  !$('#montoenvio').val() ||  !$('#direccionenvio').val() ){
+    if(!$('#desenvio').val() ||  !$('#montoenvio').val() ||  !$('#direccionenvio').val() ||  !$('#costoenvio').val() ){
       swal({
         type: 'error',
         title: 'Ups...',
@@ -561,6 +627,7 @@ $('#cliente_id').change(function(){
     var ht =  '<tr id="algo'+ contador+'"><td> <input type="hidden" form="formcotizacion" name="enviosdi[]" value="'+ $('#direccionenvio').val()+'" > '+ $('#direccionenvio').val()+'</td>'+
            ' <td> <input type="hidden" form="formcotizacion" name="enviosd[]" value="'+ $('#desenvio').val()+'" >'+ $('#desenvio').val()+'</td>'+
            ' <td class="montoenvio"> <input type="hidden" form="formcotizacion" name="enviosm[]" value="'+ $('#montoenvio').val()+'"  > '+ $('#montoenvio').val()+'</td>'+
+           ' <td class="montoenvio"> <input type="hidden" form="formcotizacion" name="enviosc[]" value="'+ $('#costoenvio').val()+'"  > '+ $('#costoenvio').val()+'</td>'+
             '<td><button class="btn btn-danger" onclick="removeEnvio('+"'algo"+contador+"'"+','+$("#montoenvio").val()+')">Eliminar</button></td></tr>';
     totalenvio = +totalenvio+ +parseFloat($('#montoenvio').val());
     console.log(totalenvio);

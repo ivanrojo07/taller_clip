@@ -12,7 +12,8 @@ class Envio extends Model
     protected $fillable=['descripcion',
                          'monto',
                          'direccion',
-                         'cotizacion_id'];
+                         'cotizacion_id',
+                        'costo'];
 
     public function cotizacion(){
         return $this->belongsTo('App\Cotizacion');

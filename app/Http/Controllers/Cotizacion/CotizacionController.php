@@ -48,26 +48,35 @@ class CotizacionController extends Controller
     {   
         // dd($request->all());
         $cotizacion = Cotizacion::create($request->all());
-        for($i = 0; $i < sizeof($request->manodeobrasd); $i++){
-            $cotizacion->manodeobras()->   create([
-                'descripcion'=>$request->manodeobrasd[$i],
-                'monto'=>$request->manodeobrasm[$i],
-                'nombre'=>$request->manodeobrasn[$i],
-                'puesto'=>$request->manodeobrasp[$i]
-            ]);
+        if($request->manodeobrasd){
+            for($i = 0; $i < sizeof($request->manodeobrasd); $i++){
+                $cotizacion->manodeobras()->   create([
+                    'descripcion'=>$request->manodeobrasd[$i],
+                    'monto'=>$request->manodeobrasm[$i],
+                    'nombre'=>$request->manodeobrasn[$i],
+                    'puesto'=>$request->manodeobrasp[$i],
+                    'costo'=>$request->manodeobrasc[$i]
+                ]);
+            }
         }
-        for ($i = 0; $i < sizeof($request->variosm) ; $i++) {
-            $cotizacion->varios()->create([
-                'descripcion'=>$request->variosd[$i],
-                'monto'=>$request->variosm[$i]
-            ]);
+        if($request->variosm){
+            for ($i = 0; $i < sizeof($request->variosm) ; $i++) {
+                $cotizacion->varios()->create([
+                    'descripcion'=>$request->variosd[$i],
+                    'monto'=>$request->variosm[$i],
+                    'costo'=>$request->variosc[$i]
+                ]);
+            }
         }
-        for ($i = 0; $i < sizeof($request->enviosdi) ; $i++) {
-            $cotizacion->envios()->create([
-                'descripcion'=>$request->enviosd[$i],
-                'monto'=>$request->enviosm[$i],
-                'direccion'=>$request->enviosdi[$i]
-            ]);
+        if($request->enviosdi){
+            for ($i = 0; $i < sizeof($request->enviosdi) ; $i++) {
+                $cotizacion->envios()->create([
+                    'descripcion'=>$request->enviosd[$i],
+                    'monto'=>$request->enviosm[$i],
+                    'direccion'=>$request->enviosdi[$i],
+                    'costo'=>$request->enviosc[$i]
+                ]);
+            }
         }
         for ($i = 0; $i < sizeof($request->ordenes) ; $i++) {
             $cotizacion->ordens()->attach($request->ordenes[$i]);

@@ -288,13 +288,13 @@
             </tr>`;
             $("#myMaterials" + id).append(rowHTML);
             cambiarPrecio(material.precio, id);
-            alert(id);
+            //alert(id);
         }
         
         function removeMaterial(id) {
           var cantaquitar = parseFloat($('#'+id).find('td.precioporm2').text().replace('$',''));
           var obra = $('#'+id).parent().attr('id').replace('myMaterials','');
-          alert('cantidad a quitar:\n' + cantaquitar + '\nid obra:\n' + obra);
+          //alert('cantidad a quitar:\n' + cantaquitar + '\nid obra:\n' + obra);
           cambiarPrecio(-cantaquitar, obra);
             $(`#${id}`).remove();
             // body...
@@ -304,15 +304,15 @@
             var ancho_marco = parseFloat($('#ancho_obra_marco' + obra_id).val());
             var alto_marco = parseFloat($('#alto_obra_marco' + obra_id).val());
             var profundidad_marco = parseFloat($('#profundidad_obra_marco' + obra_id).val());
-            alert('medidads:\n' + ancho_marco + '\n' + alto_marco + '\n' + profundidad_marco);
+            //alert('medidads:\n' + ancho_marco + '\n' + alto_marco + '\n' + profundidad_marco);
             var volumen = (ancho_marco * alto_marco * profundidad_marco / 1000000);
             var temp = volumen *cantidad;
-            alert('cantiad:\n' + cantidad);
-            alert('volumen:\n' + volumen);
+            //alert('cantiad:\n' + cantidad);
+            //alert('volumen:\n' + volumen);
             if(cantidad < 0){
-                alert('negativo');
+                //alert('negativo');
             }else if(cantidad > 0){
-                alert('positivo');
+                //alert('positivo');
             }
             var valor =  $('#total_obra'+obra_id).val() + (temp)
             if (valor != 0){
