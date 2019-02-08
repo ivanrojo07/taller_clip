@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\FormaContacto;
 class DatosGenerales extends Model
 {
     //
@@ -20,4 +20,6 @@ class DatosGenerales extends Model
     public function clientes(){
     	return $this->belongsTo(Personal::class, 'personal_id');
     }
+
+    
 }

@@ -20,12 +20,17 @@ class ClienteDatosGenerales extends Model
     	'banco',
     	'cuenta',
     	'beneficiario',
-    	'clabe'
+        'clabe',
+        'forma_contacto_id',
     ];
 
     protected $hidden = ['created_at', 'updated_at'];
 
     public function cliente() {
     	return $this->belongsTo('App\Cliente');
+    }
+
+    public function formacontacto(){
+        return $this->belongsTo(FormaContacto::class, 'forma_contacto_id');
     }
 }

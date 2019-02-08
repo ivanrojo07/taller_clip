@@ -123,8 +123,8 @@
 	  						<input type="text" class="form-control" id="ext2" name="ext2" value="{{ $contacto->ext2 }}">
 	  					</div>
 	  					<div class="form-group col-sm-3">
-	  						<label class="control-label" for="telefonodir">✱Telefono directo:</label>
-	  						<input type="text" class="form-control" id="telefonodir" name="telefonodir" value="{{ $contacto->telefonodir }}" required>
+	  						<label class="control-label" for="telefonodir">Telefono directo:</label>
+	  						<input type="text" class="form-control" id="telefonodir" name="telefonodir" value="{{ $contacto->telefonodir }}">
 	  					</div>
 	  					<div class="form-group col-sm-3">
 	  						<label class="control-label" for="celular1">Celular:</label>
@@ -137,8 +137,8 @@
 	  						<input type="text" class="form-control" id="celular2" name="celular2" value="{{ $contacto->celular2 }}">
 	  					</div>
 	  					<div class="form-group col-sm-3">
-	  						<label class="control-label" for="email1">✱Correo electronico:</label>
-	  						<input type="text" class="form-control" id="email1" name="email1" value="{{ $contacto->email1 }}" required>
+	  						<label class="control-label" for="email1">Correo electronico:</label>
+	  						<input type="text" class="form-control" id="email1" name="email1" value="{{ $contacto->email1 }}">
 	  					</div>
 
 	  					<div class="form-group col-sm-3">

@@ -48,6 +48,7 @@ class ClienteDatosGeneralesController extends Controller
      */
     public function store(Request $request, $cliente)
     {
+      
         $cliente = Cliente::find($cliente);
         $datos = new ClienteDatosGenerales($request->all());
         $cliente->generales()->save($datos);
@@ -62,6 +63,7 @@ class ClienteDatosGeneralesController extends Controller
      */
     public function show(Cliente $cliente)
     {
+      
         $datos = $cliente->generales;
         
         $giro='';
@@ -79,8 +81,6 @@ class ClienteDatosGeneralesController extends Controller
         $formaContactos=FormaContacto::where('id',$datos->forma_contacto_id);
       $formaContacto=$formaContactos->nombre;
       }
-        
-
         
        
         return view('clientes.datosGenerales.view', ['datos' => $datos, 'cliente' => $cliente, 'giro' => $giro, 'formaContacto' => $formaContacto]);

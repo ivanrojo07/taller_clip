@@ -94,7 +94,8 @@
 						@endif
 		 			</div>
 		 			<div class="form-group col-sm-4">
-		 				
+					 	<label class="control-label" for="nombre">Forma contacto:</label>
+						 <dd>{{$formaContacto->nombre}}</dd>
 		 			</div>
 		 		</div>
 		 		<div class="row">

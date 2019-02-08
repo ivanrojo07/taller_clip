@@ -102,7 +102,10 @@
 							</select>
 			 			</div>
 			 			<div class="form-group col-sm-4">
-			 				
+						 <label class="control-label" for="forma_contacto_id">✱Forma de Contacto:</label>
+							<select type="select" name="forma_contacto_id" class="form-control" id="forma_contacto_id" required>
+								<option value="">Elija forma de contacto</option>
+							</select>
 			 			</div>
 			 		</div>
 			 		<div class="row">
@@ -169,7 +172,7 @@
 		});
 	}
 
-	function getContacto(){
+	$(document).ready(function(){
 		$.ajaxSetup({
 	    headers: {
 	      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -182,7 +185,8 @@
 		}).done(function(resultado){
 		    $("#forma_contacto_id").html(resultado);
 		});
-	}
+
+	});
 
 	function checkURL(abc) {
 		var string = abc.value;
