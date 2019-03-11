@@ -23,6 +23,7 @@ class CreateOrdensTable extends Migration
             $table->decimal('precio_orden',12,2)->default(0);
             $table->integer('cliente_id')->unsigned();
             $table->foreign('cliente_id')->references('id')->on('clientes');
+            $table->decimal('total', 15, 8);
             $table->timestamps();
         });
     }
