@@ -57,20 +57,10 @@
 
                         <div class="col-sm-3 form-group">
                             <label class="control-label">Precio total de venta:</label>
-                            <input required type="number" step="0.01" name="total" id="total" name="total_orden" class="form-control" value="0">
+                            <input required type="number" step="0.00001" id="total" name="total_orden" class="form-control" value="0" readonly="">
                         </div>
                     </div>
                     <div id="obras">
-
-
-
-
-
-                        
-
-
-
-
 
                     </div>
                     <div class="col-sm-12 mt-2 text-center form-group">
@@ -82,8 +72,13 @@
     </div>
     <script type="text/javascript">
         var esprimero = true;
+
+        $(document).ready(function() {
+            $('#total').val('0');
+        });
+
         function setHTML(obras) {
-            console.log(obras);
+            //console.log(obras);
             // body...
             $("#obras").empty();
             for (var i = 0; i < obras; i++) {
@@ -275,7 +270,7 @@
                 <td class="precioporm2">$${material.precio}</td>
                 <td>
                     <input type="hidden" name="materiales_obra[` +  (id - 1 ) + `][]" value="${material.id}">
-                    <input required type="number" step="0.01" min="0" name="cantidad_material_obra[` +  (id-1 ) + `][]" value="1" id="profundidad_obra" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                    <input required type="number" step="1" min="0" name="cantidad_material_obra[` +  (id-1 ) + `][]" value="1" id="profundidad_obra" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
                 </td>
                 <td>
                     <div class="row mt-1 mb-1 justify-content-md-center">
@@ -292,12 +287,13 @@
         }
         
         function removeMaterial(id) {
-          var cantaquitar = parseFloat($('#'+id).find('td.precioporm2').text().replace('$',''));
-          var obra = $('#'+id).parent().attr('id').replace('myMaterials','');
-          //alert('cantidad a quitar:\n' + cantaquitar + '\nid obra:\n' + obra);
-          cambiarPrecio(-cantaquitar, obra);
+            var cantaquitar = parseFloat($('#'+id).find('td.precioporm2').text().replace('$',''));
+            console.log('cantidad a quitar: ' + cantaquitar);
+            var obra = $('#'+id).parent().attr('id').replace('myMaterials','');
+            console.log('obra: ' + obra);
+            //alert('cantidad a quitar:\n' + cantaquitar + '\nid obra:\n' + obra);
+            cambiarPrecio(-cantaquitar, obra);
             $(`#${id}`).remove();
-            // body...
         }
 
         function cambiarPrecio(cantidad, obra_id){
@@ -307,20 +303,28 @@
             //alert('medidads:\n' + ancho_marco + '\n' + alto_marco + '\n' + profundidad_marco);
             var volumen = (ancho_marco * alto_marco * profundidad_marco / 1000000);
             var temp = volumen *cantidad;
+            console.log('temp: ' + temp);
             //alert('cantiad:\n' + cantidad);
             //alert('volumen:\n' + volumen);
-            if(cantidad < 0){
-                //alert('negativo');
-            }else if(cantidad > 0){
-                //alert('positivo');
-            }
-            var valor =  $('#total_obra'+obra_id).val() + (temp)
-            if (valor != 0){
+            var valor =  parseFloat($('#total_obra'+obra_id).val()) + (temp);
+            var valor_anterior = parseFloat($('#total_obra'+obra_id).val());
+            var precio_total = parseFloat($('#total').val());
+            console.log('valor: ' + valor);
+            if (valor > 0.5){
+                precio_total -= valor_anterior;
                 $('#total_obra'+obra_id).val(valor);
+                precio_total += valor;
+                $('#total').val(precio_total.toString());
             }else{
                 $('#total_obra'+obra_id).val(0);
+                precio_total += (temp);
+                if (precio_total < 0.5) 
+                    $('#total').val('0');
+                else
+                    $('#total').val(precio_total.toString());
             }
             
         }
+
     </script>
     @endsection
