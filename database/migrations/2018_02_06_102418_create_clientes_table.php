@@ -36,6 +36,7 @@ class CreateClientesTable extends Migration
             $table->string('estado')->nullable();
             $table->string('referencia')->nullable();
             $table->string('calles')->nullable();
+            $table->string('formac')->nullable();
             $table->timestamps();
         });
     }

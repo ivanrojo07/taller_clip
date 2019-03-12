@@ -18,7 +18,7 @@ class CreateEnvios extends Migration
             $table->string('descripcion');
             $table->string('direccion');
             $table->double('monto',8,2);
-
+            $table->double('costo',8,2);
             $table->integer('cotizacion_id')->unsigned();
             $table->foreign('cotizacion_id')->references('id')->on('cotizacions');
             

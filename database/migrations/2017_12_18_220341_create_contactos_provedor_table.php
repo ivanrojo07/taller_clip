@@ -26,10 +26,10 @@ class CreateContactosProvedorTable extends Migration
             $table->string('ext1')->nullable();
             $table->string('telefono2')->nullable();
             $table->string('ext2')->nullable();
-            $table->string('telefonodir');
+            $table->string('telefonodir')->nullable();
             $table->string('celular1')->nullable();
             $table->string('celular2')->nullable();
-            $table->string('email1');
+            $table->string('email1')->nullable();
             $table->string('email2')->nullable();
             $table->timestamps();
         });
