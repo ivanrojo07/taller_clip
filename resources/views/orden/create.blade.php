@@ -57,7 +57,7 @@
 
                         <div class="col-sm-3 form-group">
                             <label class="control-label">Precio total de venta:</label>
-                            <input required type="number" step="0.00001" id="total" name="total_orden" class="form-control" value="0" readonly="">
+                            <input required type="number" step="0.00001" id="total" name="precio_orden" class="form-control" value="0" readonly="">
                         </div>
                     </div>
                     <div id="obras">

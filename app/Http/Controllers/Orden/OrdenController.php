@@ -50,6 +50,7 @@ class OrdenController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request->all());
 
         $orden = Orden::create($request->all());
 
