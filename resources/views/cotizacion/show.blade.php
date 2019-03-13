@@ -109,44 +109,24 @@
 	          </table>
 	        </div>
 	        
-	        <div class="row">
+	        {{--<div class="row">
 	          <div class="col-4 offset-4">
 	            <label for="totalordenes">Total de ordenes</label>
 	            <div class="input-group mb-3">
 	              <div class="input-group-prepend">
 	                <span class="input-group-text">$</span>
 	              </div>
-	              <label readonly class="form-control">{</label>
+	              <label readonly class="form-control">{{ $cotizacion->totalordenes }}</label>
 	              <div class="input-group-append">
 	                <span class="input-group-text">MXN</span>
 	              </div>
 	            </div>
 	          </div>
-	        </div>
+	        </div>  --}}
+	        <br>
+	        <br>
+	        <br>
 	        <div class="row"><h5>Mano de obra:</h5></div>
-	        <div class="row" id="smanodeobra">
-	          <div class="col-sm-3 form-group">
-	            <label class="control-label">Nombre:</label>
-	            <input type="text" class="form-control" id="nombremanodeobra">
-	          </div>
-	          <div class="col-sm-3 form-group">
-	            <label class="control-label">Descripción:</label>
-	            <textarea type="text" class="form-control" id="desmanodeobra"></textarea>
-	          </div>
-	          <div class="col-sm-3 form-group">
-	            <label class="control-label">Puesto:</label>
-	            <input type="text" class="form-control" id="puestomanodeobra">
-	          </div>
-	          <div class="col-sm-3 form-group">
-	            <label class="control-label">Monto</label>
-	            <input type="number" step="0.01" step="0.01" class="form-control" id="montomanodeobra">
-	          </div>
-	        </div>
-	        <div class="row justify-content-end">
-	          <div class="col-sm-3 form-group ">
-	            <button id="agregarmanodeobra" type="button" class="btn btn-primary">Agregar</button>
-	          </div>
-	        </div>
 	        <div class="row">
 	          <table class="table table-striped table-bordered">
 	            <thead>
@@ -155,86 +135,74 @@
 	                <th scope="col">Puesto</th>
 	                <th scope="col">Monto</th>
 	                <th scope="col">Descripción</th>
-	                <th scope="col">Eliminar</th>
 	              </tr>
 	            </thead>
 	            <tbody id="tablamanodeobras">
+	            	@foreach($cotizacion->manodeobras as $manodeobras)
+	            		<tr>
+	            			<td>{{ $manodeobras->nombre }}</td>
+	            			<td>{{ $manodeobras->puesto }}</td>
+	            			<td>{{ $manodeobras->monto }}</td>
+	            			<td>{{ $manodeobras->descripcion }}</td>
+	            		</tr>
+	        		@endforeach
 	            </tbody>
 	          </table>
 	        </div>
-	        <div class="row">
+	        {{--  <div class="row">
 	          <div class="col-4 offset-4">
 	            <label for="totalmanodeobra">Total mano de obra</label>
 	            <div class="input-group mb-3">
 	              <div class="input-group-prepend">
 	                <span class="input-group-text">$</span>
 	              </div>
-	              <label readonly type="number" step="0.01" class="form-control"  id="totalmanodeobra"></label>
+	              <label readonly type="number" step="0.01" class="form-control"  id="totalmanodeobra">{{ $cotizacion->totalmanodeobra }}</label>
 	              <div class="input-group-append">
 	                <span class="input-group-text">MXN</span>
 	              </div>
 	            </div>
 	          </div>
-	        </div>
+	        </div>--}}
+	        <br>
+	        <br>
+	        <br>
 	        <div class="row"><h5>Varios:</h5></div>
-	        <div class="row" id="svarios">
-	          <div class="offset-sm-3 col-sm-3 form-group">
-	            <label class="control-label">Descripción:</label>
-	            <input type="text" class="form-control" id="desvario">
-	          </div>
-	          <div class="col-sm-3 form-group">
-	            <label class="control-label">Monto:</label>
-	            <input type="number" step="0.01" class="form-control" id="montovario">
-	          </div>
-	          <div class="col-sm-3 form-group">
-	            <button id="agregarvario" type="button" class="mt-4 btn btn-primary">Agregar</button>
-	          </div>
-	        </div>
 	        <div class="row">
 	          <table class="table  table-striped table-bordered">
 	            <thead class="table-info">
 	              <tr>
 	                <th scope="col">Monto</th>
 	                <th scope="col">Descripción</th>
-	                <th scope="col">Eliminar</th>
 	              </tr>
 	            </thead>
 	            <tbody id="tablavarios">
+	            	@foreach($cotizacion->varios as $varios)
+	            		<tr>
+	            			<td>{{ $varios->monto }}</td>
+	            			<td>{{ $varios->descripcion }}</td>
+	            		</tr>
+	        		@endforeach
 	            </tbody>
 	          </table>
 	        </div>
-	        <div class="row">
+	        {{--  <div class="row">
 	          <div class="col-4 offset-4">
 	            <label for="totlavario">Total varios</label>
 	            <div class="input-group mb-3">
 	              <div class="input-group-prepend">
 	                <span class="input-group-text">$</span>
 	              </div>
-	              <label readonly type="number" step="0.01" class="form-control"  id="totalvarios"></label>
+	              <label readonly type="number" step="0.01" class="form-control"  id="totalvarios">{{ $cotizacion->totalvarios }}</label>
 	              <div class="input-group-append">
 	                <span class="input-group-text">MXN</span>
 	              </div>
 	            </div>
 	          </div>
-	        </div>
+	        </div>--}}
+	        <br>
+	        <br>
+	        <br>
 	        <div class="row"><h5>Envios:</h5></div>
-	        <div class="row">
-	          <div class="col-sm-3 form-group">
-	            <label class="control-label">Descripción:</label>
-	            <input type="text" class="form-control" id="desenvio">
-	          </div>
-	          <div class="col-sm-3 form-group">
-	            <label class="control-label">Monto:</label>
-	            <input type="number" step="0.01" class="form-control" id="montoenvio">
-	          </div>
-	          <div class="col-sm-3 form-group">
-	            <label class="control-label">Dirección:</label>
-	            <textarea class="form-control" id="direccionenvio" rows="3"></textarea>
-	          </div>
-	          <div class="col-sm-3 form-group">
-	            <button id="agregarenvio" type="button" class="mt-4 btn btn-primary">Agregar</button>
-	          </div>
-	        </div>
 	        <div class="row">
 	          <table class="table table-striped table-bordered">
 	            <thead class="table-info">
@@ -242,27 +210,33 @@
 	                <th scope="col">Dirección</th>
 	                <th scope="col">Descripción</th>
 	                <th scope="col">Monto</th>
-	                <th scope="col">Eliminar</th>
 	              </tr>
 	            </thead>
 	            <tbody id="tablaenvios">
+	            	@foreach($cotizacion->envios as $envios)
+	            		<tr>
+	            			<td>{{ $envios->direccion }}</td>
+	            			<td>{{ $envios->descripcion }}</td>
+	            			<td>{{ $envios->monto }}</td>
+	            		</tr>
+	        		@endforeach
 	            </tbody>
 	          </table>
 	        </div>
-	        <div class="row">
-	          <div class="col-4 offset-4">
+	        {{--<div class="row">
+	            <div class="col-4 offset-4">
 	            <label for="totalenvio">Total Envios</label>
 	            <div class="input-group mb-3">
 	              <div class="input-group-prepend">
 	                <span class="input-group-text">$</span>
 	              </div>
-	              <label readonly type="number" step="0.01" class="form-control"  id="totalenvios"></label>
+	              <label readonly type="number" step="0.01" class="form-control"  id="totalenvios">{{ $cotizacion->totalenvios }}</label>
 	              <div class="input-group-append">
 	                <span class="input-group-text">MXN</span>
 	              </div>
 	            </div>
 	          </div>
-	        </div>
+	        </div>--}}
 	        <div class="row"><h5>Total:</h5></div>
 	        <div class="row">
 	          <div class="col-sm-3 form-group">
@@ -271,7 +245,7 @@
 	              <div class="input-group-prepend">
 	                <span class="input-group-text">$</span>
 	              </div>
-	              <input readonly type="number" step="0.01" class="form-control" name="totalordenes"  id="inputtotalordenes">
+	              <label readonly type="number" step="0.01" class="form-control" name="totalordenes"  id="inputtotalordenes">{{ $cotizacion->totalordenes }} </label>
 	              <div class="input-group-append">
 	                <span class="input-group-text">MXN</span>
 	              </div>
@@ -283,7 +257,7 @@
 	              <div class="input-group-prepend">
 	                <span class="input-group-text">$</span>
 	              </div>
-	              <input readonly type="number" step="0.01" class="form-control" name="totalmanodeobra"  id="inputtotalmanodeobra">
+	              <label readonly type="number" step="0.01" class="form-control" name="totalmanodeobra"  id="inputtotalmanodeobra">{{ $cotizacion->totalmanodeobra }} </label>
 	              <div class="input-group-append">
 	                <span class="input-group-text">MXN</span>
 	              </div>
@@ -295,7 +269,7 @@
 	              <div class="input-group-prepend">
 	                <span class="input-group-text">$</span>
 	              </div>
-	              <input readonly type="number" step="0.01" class="form-control" name="totalvarios"  id="inputtotalvarios">
+	              <label readonly type="number" step="0.01" class="form-control" name="totalvarios"  id="inputtotalvarios">{{ $cotizacion->totalvarios }} </label>
 	              <div class="input-group-append">
 	                <span class="input-group-text">MXN</span>
 	              </div>
@@ -307,7 +281,7 @@
 	              <div class="input-group-prepend">
 	                <span class="input-group-text">$</span>
 	              </div>
-	              <input readonly type="number" step="0.01" class="form-control" name="totalenvios"  id="inputtotalenvios">
+	              <label readonly type="number" step="0.01" class="form-control" name="totalenvios"  id="inputtotalenvios">{{ $cotizacion->totalenvios }} </label>
 	              <div class="input-group-append">
 	                <span class="input-group-text">MXN</span>
 	              </div>
@@ -327,36 +301,34 @@
 	        <div class="row">
 	          <div class="form-group col col-md-4 offset-4">
 	            <label for="totalproyecto">Costo Proyecto</label>
-	            <input required readonly form="formcotizacion" name="totalproyecto" type="number" step="0.01" class="form-control" id="totalproyecto">
+	            <label required readonly form="formcotizacion" name="totalproyecto" type="number" step="0.01" class="form-control" id="totalproyecto">{{ $cotizacion->totalproyecto }}</label>
 	          </div>
 	        </div>
 	        <div class="row">
 	          <div class="form-group col col-md-4">
 	            <label for="resultado">Subtotal:</label>
-	            <input required readonly form="formcotizacion" type="number" step="0.01" name="resultado" class="form-control" id="resultado">
+	            <label required readonly form="formcotizacion" type="number" step="0.01" name="resultado" class="form-control" id="resultado">{{ $cotizacion->totalproyecto }} </label>
 	          </div>
 	          <div class="form-group col pt-4 col-md-4">
+	          @if( $cotizacion->totalproyecto != $cotizacion->totalneto )
 	            <div class="form-check">
-	              <input required form="formcotizacion" class="form-check-input" type="radio" name="iva" id="coniva" value="16">
+	              <input required form="formcotizacion" class="form-check-input" type="radio" name="iva" id="coniva" value="16" checked>
 	              <label class="form-check-label" for="coniva">
 	                con IVA
 	              </label>
 	            </div>
+	          @else
 	            <div class="form-check">
-	              <input required form="formcotizacion" class="form-check-input" type="radio" name="iva" id="siniva" value="1">
+	              <input required form="formcotizacion" class="form-check-input" type="radio" name="iva" id="siniva" value="1" checked>
 	              <label class="form-check-label" for="siniva">
 	                sin IVA
 	              </label>
 	            </div>
+	          @endif
 	          </div>
 	          <div class="form-group col col-md-4">
 	            <label for="totalneto">Total Neto:</label>
-	            <input required readonly form="formcotizacion" type="number" step="0.01" name="totalneto" class="form-control" id="totalneto">
-	          </div>
-	        </div>
-	        <div class="row">
-	          <div class="col-sm-12 text-center form-group">
-	            <button id="submit" type="submit" class="btn btn-success"><strong>Guardar</strong></button>
+	            <label required readonly form="formcotizacion" type="number" step="0.01" name="totalneto" class="form-control" id="totalneto">{{ $cotizacion->totalneto }} </label>
 	          </div>
 	        </div>
 	      </form>

@@ -21,6 +21,7 @@ class CotizacionController extends Controller
     public function index()
     {
         $cotizaciones = Cotizacion::get();
+        //dd($cotizaciones[0]->ordens);
         return view('cotizacion.index', ['cotizaciones'=>$cotizaciones]);
     }
 
@@ -50,7 +51,7 @@ class CotizacionController extends Controller
         $cotizacion = Cotizacion::create($request->all());
         if($request->manodeobrasd){
             for($i = 0; $i < sizeof($request->manodeobrasd); $i++){
-                $cotizacion->manodeobras()->   create([
+                $cotizacion->manodeobras()->create([
                     'descripcion'=>$request->manodeobrasd[$i],
                     'monto'=>$request->manodeobrasm[$i],
                     'nombre'=>$request->manodeobrasn[$i],
