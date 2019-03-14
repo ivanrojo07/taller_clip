@@ -129,7 +129,7 @@
                                 </div>
                                 <div class="col-sm-3 form-group">
                                     <label class="control-label">Precio por medidas:</label>
-                                    <input readonly value="0" class="form-control" type="number" name="total_obra[]" id="total_obra${i+1}" step="0.0000001" min="0">
+                                    <input readonly value="0" class="form-control totalO" type="number" name="total_obra[]" id="total_obra${i+1}" step="0.0000001" min="0">
                                 </div>
                                 
                             </div>
@@ -148,7 +148,7 @@
                                 </div>
                                 <div class="col-sm-6 form-group">
                                     <label class="control-label">Descripción de la obra:</label>
-                                    <textarea name="descripcion_obra[]" id="descripcion_obra" class="form-control">{{($edit && $obra) ? $obra->descripcion_obra : ""}}</textarea>
+                                    <textarea required name="descripcion_obra[]" id="descripcion_obra" class="form-control">{{($edit && $obra) ? $obra->descripcion_obra : ""}}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -270,7 +270,7 @@
                 <td class="precioporm2">$${material.precio}</td>
                 <td>
                     <input type="hidden" name="materiales_obra[` +  (id - 1 ) + `][]" value="${material.id}">
-                    <input required type="number" step="1" min="0" name="cantidad_material_obra[` +  (id-1 ) + `][]" value="1" id="cantidad_material" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                    <input required type="number" step="1" min="0" name="cantidad_material_obra[` +  (id-1 ) + `][]" value="1" id="cantidad_material" class="form-control cant_input" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required onchange="actualizarPreicoMedidas(${id})">
                 </td>
                 <td>
                     <div class="row mt-1 mb-1 justify-content-md-center">
@@ -307,7 +307,8 @@
                 var volumen = (ancho_marco * alto_marco);
             }
             //alert('medidads:\n' + ancho_marco + '\n' + alto_marco + '\n' + profundidad_marco);
-            var temp = volumen *preciom2 * parseInt($('input#cantidad_material.form-control')[0].value);
+            //console.log($('input#cantidad_material.form-control')[0].value);
+            var temp = volumen *preciom2;
             console.log('temp: ' + temp);
             //alert('cantiad:\n' + preciom2);
             //alert('volumen:\n' + volumen);
@@ -329,6 +330,36 @@
                     $('#total').val(precio_total.toString());
             }
             
+        }
+
+        function actualizarPreicoMedidas(obra_id) {
+            console.log('obraid  ' + obra_id);
+            for (var i = 0; i < $('.cant_input').length; i++) {
+                var num_obra = $('.cant_input').eq(i).attr('name').replace('cantidad_material_obra\[', '').replace(/\]\[\]/, '');
+                var total_obra = 0;
+                if (obra_id-1 == num_obra) {
+                    var precio_m2 = parseFloat($('.cant_input')[i].parentElement.parentElement.children[6].innerHTML.replace('$', ''));
+                    var cantidad_material = parseInt($('.cant_input')[i].value);
+                    var ancho_marco = parseFloat($('#ancho_obra_marco' + obra_id).val()) / 100;
+                    var alto_marco = parseFloat($('#alto_obra_marco' + obra_id).val()) / 100;
+                    var profundidad_marco = parseFloat($('#profundidad_obra_marco' + obra_id).val());
+
+                    if (profundidad_marco != 0) {
+                        var volumen = (ancho_marco * alto_marco * profundidad_marco);
+                    }
+                    else{
+                        var volumen = (ancho_marco * alto_marco);
+                    }
+
+                    total_obra += (precio_m2 * cantidad_material * volumen);
+                }
+            }
+            $('#total_obra' + obra_id).val(total_obra.toString());
+            var total_orden = 0;
+            for (var i = 0; i < $('.totalO').length; i++) {
+                total_orden += parseFloat($('.totalO').eq(i).val());
+            }
+            $('#total').val(total_orden.toString());
         }
 
     </script>
