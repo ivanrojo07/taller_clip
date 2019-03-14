@@ -19,10 +19,6 @@
                             <th scope="col">Número de cotización</th>
                             <th scope="col">fecha de creación</th>
                             <th scope="col">Fecha de entrega</th>
-                            <th scope="col">Costo Ordenes</th>
-                            <th scope="col">Costo Mano de obra</th>
-                            <th scope="col">Costo Varios</th>
-                            <th scope="col">Costo Envios</th>
                             <th scope="col">Costo proyecto</th>
                             <th scope="col">Ganancia / Incremento</th>
                             <th scope="col">Subtotal</th>
@@ -38,10 +34,6 @@
                                 <td>{{ $cotizacion->nocotizacion }}</td>
                                 <td>{{$cotizacion->fechaactual}}</td>
                                 <td>{{$cotizacion->fechaentrega}}</td>
-                                <td>${{$cotizacion->totalordenes}}MXN</td>
-                                <td>${{$cotizacion->totalmanodeobra}}MXN</td>
-                                <td>${{$cotizacion->totalvarios}}MXN</td>
-                                <td>${{$cotizacion->totalenvios}}MXN</td>
                                 <td>${{$cotizacion->totalproyecto}} MXN</td>
                                 <td>{{$cotizacion->incremento == "0.00" ? "$".$cotizacion->incremento." MXN" : $cotizacion->ganancia." %"}}</td>
                                 <td>${{$cotizacion->resultado}}MXN</td>

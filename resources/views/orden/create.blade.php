@@ -136,7 +136,7 @@
                             <div class="row">
                                 <div class="col-sm-3 form-group">
                                     <label class="control-label">Profundidad de la obra:</label>
-                                    <input required type="number" name="profundidad_obra[]" step="0.01" min="0" value="{{($edit && $obra) ? $obra->profundidad_obra : ""}}" id="profundidad_obra" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                                    <input required type="number" name="profundidad_obra[]" step="0.01" min="0" value="{{($edit && $obra) ? $obra->profundidad_obra : "0"}}" id="profundidad_obra" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
                                 </div>
                                 <div class="col-sm-3 form-group">
                                     <label class="control-label">Medidas de la obra:</label>
@@ -270,7 +270,7 @@
                 <td class="precioporm2">$${material.precio}</td>
                 <td>
                     <input type="hidden" name="materiales_obra[` +  (id - 1 ) + `][]" value="${material.id}">
-                    <input required type="number" step="1" min="0" name="cantidad_material_obra[` +  (id-1 ) + `][]" value="1" id="profundidad_obra" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                    <input required type="number" step="1" min="0" name="cantidad_material_obra[` +  (id-1 ) + `][]" value="1" id="cantidad_material" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
                 </td>
                 <td>
                     <div class="row mt-1 mb-1 justify-content-md-center">
@@ -296,15 +296,20 @@
             $(`#${id}`).remove();
         }
 
-        function cambiarPrecio(cantidad, obra_id){
-            var ancho_marco = parseFloat($('#ancho_obra_marco' + obra_id).val());
-            var alto_marco = parseFloat($('#alto_obra_marco' + obra_id).val());
+        function cambiarPrecio(preciom2, obra_id){
+            var ancho_marco = parseFloat($('#ancho_obra_marco' + obra_id).val()) / 100;
+            var alto_marco = parseFloat($('#alto_obra_marco' + obra_id).val()) / 100;
             var profundidad_marco = parseFloat($('#profundidad_obra_marco' + obra_id).val());
+            if (profundidad_marco != 0) {
+                var volumen = (ancho_marco * alto_marco * profundidad_marco);
+            }
+            else{
+                var volumen = (ancho_marco * alto_marco);
+            }
             //alert('medidads:\n' + ancho_marco + '\n' + alto_marco + '\n' + profundidad_marco);
-            var volumen = (ancho_marco * alto_marco * profundidad_marco / 1000000);
-            var temp = volumen *cantidad;
+            var temp = volumen *preciom2 * parseInt($('input#cantidad_material.form-control')[0].value);
             console.log('temp: ' + temp);
-            //alert('cantiad:\n' + cantidad);
+            //alert('cantiad:\n' + preciom2);
             //alert('volumen:\n' + volumen);
             var valor =  parseFloat($('#total_obra'+obra_id).val()) + (temp);
             var valor_anterior = parseFloat($('#total_obra'+obra_id).val());
