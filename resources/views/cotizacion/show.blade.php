@@ -27,86 +27,173 @@
 	            <label class="form-control">{{$cotizacion->fechaentrega}}</label>
 	          </div>
 	        </div>
-	        <div class="row"><h5>Ordenes:</h5></div>
-	        <div class="row">
-	          <table class="table table-striped table-bordered">
-	            <tbody>
-	              @foreach ($cotizacion->ordens as $orden)
-	                {{-- expr --}}
-	                <tr class="table-info">
-	                  <th scope="col" colspan="7">Orden</th>
-	                </tr>
-	                <tr class="table-info">
-	                  <th scope="col">Número</th>
-	                  <th scope="col">Orden</th>
-	                  <th scope="col">Fecha</th>
-	                  <th scope="col" colspan="2">Descripción</th>
-	                  <th scope="col">Precio</th>
-	                  <th scope="col">Acción</th>
-	                </tr>
-	                <tr>
-	                  <td scope="row">{{$orden->noorden}}</td>
-	                  <td>{{$orden->nombre}}</td>
-	                  <td>{{$orden->fecha}}</td>
-	                  <td colspan="2">{{$orden->descripcion}}</td>
-	                  <td>${{$orden->precio_orden}}MXN</td>
-	                  <td>
-	                    <div class="row mt-1 mb-1 justify-content-md-center">
-	                      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".collapse{{$orden->id}}" aria-expanded="false" aria-controls="collapseExample">
-	                        Más detalles
-	                      </button>
-	                    </div>
-	                  </td>
-	                </tr>
-	                @foreach ($orden->obras as $index=>$obra)
-	                <tr class="table-success collapse collapse{{$orden->id}}">
-	                  <th scope="col" colspan="7">Obra(s) de {{$orden->nombre}}</th>
-	                </tr>
-	                <tr class="table-success collapse collapse{{$orden->id}}">
-	                  <th scope="col">Nombre</th>
-	                  <th scope="col">Piezas</th>
-	                  <th scope="col" colspan="2">Descripción</th>
-	                  <th scope="col">Alto</th>
-	                  <th scope="col">Ancho</th>
-	                  <th scope="col">Profundidad</th>
-	                </tr> 
-	                <tr class="collapse collapse{{$orden->id}}">
-	                  <td scope="row">
-	                    {{$obra->nombre}}
-	                  </td>
-	                  <td>{{$obra->nopiezas}}</td>
-	                  <td colspan="2">{{$obra->descripcion_obra}}</td>
-	                  <td>{{$obra->alto_obra}} {{$obra->unidad_obra}}</td>
-	                  <td>{{$obra->ancho_obra}} {{$obra->unidad_obra}}</td>
-	                  <td>{{$obra->profundidad_obra}} {{$obra->unidad_obra}}</td>
-	                </tr>
-	                <tr class="table-secondary collapse collapse{{$orden->id}}">
-	                  <th scope="col" colspan="7">Material(es) de {{$obra->nombre}}</th>
-	                </tr>
-	                <tr class="table-secondary collapse collapse{{$orden->id}}">
-	                  <th scope="col">Clave</th>
-	                  <th scope="col">Sección</th>
-	                  <th scope="col">Color</th>
-	                  <th scope="col">Alto</th>
-	                  <th scope="col">Ancho</th>
-	                  <th scope="col">Espesor</th>
-	                  <th scope="col">Precio</th>
-	                </tr>
-	                @foreach ($obra->materiales as $material)
-	                <tr class="collapse collapse{{$orden->id}}">
-	                  <td scope="row">{{$material->clave}}</td>
-	                  <td>{{$material->seccion}}</td>
-	                  <td>{{$material->color}}</td>
-	                  <td>{{$material->alto}} {{$material->medidas}}</td>
-	                  <td>{{$material->ancho}} {{$material->medidas}}</td>
-	                  <td>{{$material->espesor}} {{$material->medidas}}</td>
-	                  <td>${{$material->precio}}MXN</td>
-	                </tr>
-	                @endforeach
-	                @endforeach
-	              @endforeach
-	            </tbody>
-	          </table>
+	        <ul class="nav nav-tabs" id="myTab" role="tablist">
+			  <li class="nav-item">
+			    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Ordenes</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Mano de obra</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Varios</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" id="envios-tab" data-toggle="tab" href="#envios" role="tab" aria-controls="envios" aria-selected="false">Envios</a>
+			  </li>
+			</ul>
+			<div class="tab-content" id="myTabContent">
+			  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+		        <div class="row"><h5>Ordenes:</h5></div>
+		        <div class="row">
+		          <table class="table table-striped table-bordered">
+		            <tbody>
+		              @foreach ($cotizacion->ordens as $orden)
+		                {{-- expr --}}
+		                <tr class="table-info">
+		                  <th scope="col" colspan="7">Orden</th>
+		                </tr>
+		                <tr class="table-info">
+		                  <th scope="col">Número</th>
+		                  <th scope="col">Orden</th>
+		                  <th scope="col">Fecha</th>
+		                  <th scope="col" colspan="2">Descripción</th>
+		                  <th scope="col">Precio</th>
+		                  <th scope="col">Acción</th>
+		                </tr>
+		                <tr>
+		                  <td scope="row">{{$orden->noorden}}</td>
+		                  <td>{{$orden->nombre}}</td>
+		                  <td>{{$orden->fecha}}</td>
+		                  <td colspan="2">{{$orden->descripcion}}</td>
+		                  <td>${{$orden->precio_orden}}MXN</td>
+		                  <td>
+		                    <div class="row mt-1 mb-1 justify-content-md-center">
+		                      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".collapse{{$orden->id}}" aria-expanded="false" aria-controls="collapseExample">
+		                        Más detalles
+		                      </button>
+		                    </div>
+		                  </td>
+		                </tr>
+		                @foreach ($orden->obras as $index=>$obra)
+		                <tr class="table-success collapse collapse{{$orden->id}}">
+		                  <th scope="col" colspan="7">Obra(s) de {{$orden->nombre}}</th>
+		                </tr>
+		                <tr class="table-success collapse collapse{{$orden->id}}">
+		                  <th scope="col">Nombre</th>
+		                  <th scope="col">Piezas</th>
+		                  <th scope="col" colspan="2">Descripción</th>
+		                  <th scope="col">Alto</th>
+		                  <th scope="col">Ancho</th>
+		                  <th scope="col">Profundidad</th>
+		                </tr> 
+		                <tr class="collapse collapse{{$orden->id}}">
+		                  <td scope="row">
+		                    {{$obra->nombre}}
+		                  </td>
+		                  <td>{{$obra->nopiezas}}</td>
+		                  <td colspan="2">{{$obra->descripcion_obra}}</td>
+		                  <td>{{$obra->alto_obra}} {{$obra->unidad_obra}}</td>
+		                  <td>{{$obra->ancho_obra}} {{$obra->unidad_obra}}</td>
+		                  <td>{{$obra->profundidad_obra}} {{$obra->unidad_obra}}</td>
+		                </tr>
+		                <tr class="table-secondary collapse collapse{{$orden->id}}">
+		                  <th scope="col" colspan="7">Material(es) de {{$obra->nombre}}</th>
+		                </tr>
+		                <tr class="table-secondary collapse collapse{{$orden->id}}">
+		                  <th scope="col">Clave</th>
+		                  <th scope="col">Sección</th>
+		                  <th scope="col">Color</th>
+		                  <th scope="col">Alto</th>
+		                  <th scope="col">Ancho</th>
+		                  <th scope="col">Espesor</th>
+		                  <th scope="col">Precio</th>
+		                </tr>
+		                @foreach ($obra->materiales as $material)
+		                <tr class="collapse collapse{{$orden->id}}">
+		                  <td scope="row">{{$material->clave}}</td>
+		                  <td>{{$material->seccion}}</td>
+		                  <td>{{$material->color}}</td>
+		                  <td>{{$material->alto}} {{$material->medidas}}</td>
+		                  <td>{{$material->ancho}} {{$material->medidas}}</td>
+		                  <td>{{$material->espesor}} {{$material->medidas}}</td>
+		                  <td>${{$material->precio}}MXN</td>
+		                </tr>
+		                @endforeach
+		                @endforeach
+		              @endforeach
+		            </tbody>
+		          </table>
+			  	</div>
+			  </div>
+			  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+		        <div class="row"><h5>Mano de obra:</h5></div>
+		        <div class="row">
+		          <table class="table table-striped table-bordered">
+		            <thead>
+		              <tr class="table-info">
+		                <th scope="col">Nombre</th>
+		                <th scope="col">Puesto</th>
+		                <th scope="col">Monto</th>
+		                <th scope="col">Descripción</th>
+		              </tr>
+		            </thead>
+		            <tbody id="tablamanodeobras">
+		            	@foreach($cotizacion->manodeobras as $manodeobras)
+		            		<tr>
+		            			<td>{{ $manodeobras->nombre }}</td>
+		            			<td>{{ $manodeobras->puesto }}</td>
+		            			<td>{{ $manodeobras->monto }}</td>
+		            			<td>{{ $manodeobras->descripcion }}</td>
+		            		</tr>
+		        		@endforeach
+		            </tbody>
+		          </table>
+		        </div>	
+			  </div>
+			  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+		        <div class="row"><h5>Varios:</h5></div>
+		        <div class="row">
+		          <table class="table  table-striped table-bordered">
+		            <thead class="table-info">
+		              <tr>
+		                <th scope="col">Monto</th>
+		                <th scope="col">Descripción</th>
+		              </tr>
+		            </thead>
+		            <tbody id="tablavarios">
+		            	@foreach($cotizacion->varios as $varios)
+		            		<tr>
+		            			<td>{{ $varios->monto }}</td>
+		            			<td>{{ $varios->descripcion }}</td>
+		            		</tr>
+		        		@endforeach
+		            </tbody>
+		          </table>
+		        </div>
+			  </div>
+			  <div class="tab-pane fade" id="envios" role="tabpanel" aria-labelledby="envios-tab">
+		        <div class="row"><h5>Envios:</h5></div>
+		        <div class="row">
+		          <table class="table table-striped table-bordered">
+		            <thead class="table-info">
+		              <tr>
+		                <th scope="col">Dirección</th>
+		                <th scope="col">Descripción</th>
+		                <th scope="col">Monto</th>
+		              </tr>
+		            </thead>
+		            <tbody id="tablaenvios">
+		            	@foreach($cotizacion->envios as $envios)
+		            		<tr>
+		            			<td>{{ $envios->direccion }}</td>
+		            			<td>{{ $envios->descripcion }}</td>
+		            			<td>{{ $envios->monto }}</td>
+		            		</tr>
+		        		@endforeach
+		            </tbody>
+		          </table>
+		        </div>	
+			  </div>
 	        </div>
 	        
 	        {{--<div class="row">
@@ -126,29 +213,6 @@
 	        <br>
 	        <br>
 	        <br>
-	        <div class="row"><h5>Mano de obra:</h5></div>
-	        <div class="row">
-	          <table class="table table-striped table-bordered">
-	            <thead>
-	              <tr class="table-info">
-	                <th scope="col">Nombre</th>
-	                <th scope="col">Puesto</th>
-	                <th scope="col">Monto</th>
-	                <th scope="col">Descripción</th>
-	              </tr>
-	            </thead>
-	            <tbody id="tablamanodeobras">
-	            	@foreach($cotizacion->manodeobras as $manodeobras)
-	            		<tr>
-	            			<td>{{ $manodeobras->nombre }}</td>
-	            			<td>{{ $manodeobras->puesto }}</td>
-	            			<td>{{ $manodeobras->monto }}</td>
-	            			<td>{{ $manodeobras->descripcion }}</td>
-	            		</tr>
-	        		@endforeach
-	            </tbody>
-	          </table>
-	        </div>
 	        {{--  <div class="row">
 	          <div class="col-4 offset-4">
 	            <label for="totalmanodeobra">Total mano de obra</label>
@@ -166,25 +230,6 @@
 	        <br>
 	        <br>
 	        <br>
-	        <div class="row"><h5>Varios:</h5></div>
-	        <div class="row">
-	          <table class="table  table-striped table-bordered">
-	            <thead class="table-info">
-	              <tr>
-	                <th scope="col">Monto</th>
-	                <th scope="col">Descripción</th>
-	              </tr>
-	            </thead>
-	            <tbody id="tablavarios">
-	            	@foreach($cotizacion->varios as $varios)
-	            		<tr>
-	            			<td>{{ $varios->monto }}</td>
-	            			<td>{{ $varios->descripcion }}</td>
-	            		</tr>
-	        		@endforeach
-	            </tbody>
-	          </table>
-	        </div>
 	        {{--  <div class="row">
 	          <div class="col-4 offset-4">
 	            <label for="totlavario">Total varios</label>
@@ -202,27 +247,6 @@
 	        <br>
 	        <br>
 	        <br>
-	        <div class="row"><h5>Envios:</h5></div>
-	        <div class="row">
-	          <table class="table table-striped table-bordered">
-	            <thead class="table-info">
-	              <tr>
-	                <th scope="col">Dirección</th>
-	                <th scope="col">Descripción</th>
-	                <th scope="col">Monto</th>
-	              </tr>
-	            </thead>
-	            <tbody id="tablaenvios">
-	            	@foreach($cotizacion->envios as $envios)
-	            		<tr>
-	            			<td>{{ $envios->direccion }}</td>
-	            			<td>{{ $envios->descripcion }}</td>
-	            			<td>{{ $envios->monto }}</td>
-	            		</tr>
-	        		@endforeach
-	            </tbody>
-	          </table>
-	        </div>
 	        {{--<div class="row">
 	            <div class="col-4 offset-4">
 	            <label for="totalenvio">Total Envios</label>
