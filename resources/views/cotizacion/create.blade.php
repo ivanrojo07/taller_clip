@@ -51,350 +51,396 @@
 					</div>
 				</div>
 				<div class="row">
-					<!-- <div class="col-4">
-						<label for="totalordenes">Descuento al cliente:</label>
-            <select required class="form-control" id="clienteDescuento">
-				<option value="">Selecciona el descuento</option>
-				<option value="0">Sin descuento</option>
-            </select>
-          </div> -->
-		  <div class="col-sm-4 form-group">
+					<div class="col-sm-4 form-group">
 						<label class="control-label">Correo de cliente:</label>
 						<input required type="text" class="form-control" name="correo" id="correo"
 							placeholder="Sin correo">
-						</div>
 					</div>
-					<div class="row">
+				</div>
+				<div class="row">
 					<div class="col-12">
 						<nav>
 							<div class="nav nav-tabs" id="nav-tab" role="tablist">
 								<a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab"
-								href="#nav-obras" role="tab" aria-controls="nav-home">Obras</a>
+									href="#nav-obras" role="tab" aria-controls="nav-home">Obras</a>
 								<a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab"
-								href="#nav-mano_de_obra" role="tab" aria-controls="nav-home">Mano de obra</a>
+									href="#nav-mano_de_obra" role="tab" aria-controls="nav-home">Mano de obra</a>
 								<a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-varios"
-								role="tab" aria-controls="nav-profile">Varios</a>
+									role="tab" aria-controls="nav-profile">Varios</a>
 								<a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-envios"
-								role="tab" aria-controls="nav-contact">Envíos</a>
+									role="tab" aria-controls="nav-contact">Envíos</a>
 							</div>
 						</nav>
 						<div class="tab-content" id="nav-tabContent">
+
 							<div class="tab-pane fade show active" id="nav-obras" role="tabpanel">
-								<div class="row">
-									<h5>Ordenes:</h5>
-									<div class="col-sm-4 form-group">
-										<label class="control-label">Órdenes de Cliente:</label>
-										<select required class="form-control" id="cliente_id">
-											<option value="">Selecciona el cliente</option>
-											@foreach ($clientes as $cliente)
-											<option value="{{$cliente->id}}">
-												{{($cliente->tipopersona == "Moral" ? $cliente->razonsocial : $cliente->nombre." ".$cliente->apellidopaterno." ".$cliente->apellidomaterno)}}
-											</option>
-											@endforeach
-										</select>
+								<div class="card">
+									<div class="card-header">
+										<h5>Ordenes:</h5>
 									</div>
-								</div>
-								<div class="row">
-									<table class="table table-striped table-bordered">
-										<tbody id="ordenesdelcliente">
+									<div class="card-body">
+										<div class="row">
+											<div class="col-sm-4 form-group">
+												<label class="control-label">Órdenes de Cliente:</label>
+												<select required class="form-control" id="cliente_id">
+													<option value="">Selecciona el cliente</option>
+													@foreach ($clientes as $cliente)
+													<option value="{{$cliente->id}}">
+														{{($cliente->tipopersona == "Moral" ? $cliente->razonsocial : $cliente->nombre." ".$cliente->apellidopaterno." ".$cliente->apellidomaterno)}}
+													</option>
+													@endforeach
+												</select>
+											</div>
+										</div>
+										<div class="row">
+											<table class="table table-striped table-bordered">
+												<tbody id="ordenesdelcliente">
+
+												</tbody>
+											</table>
+										</div>
+									</div>
+									<div class="card-footer text-muted">
+										<div class="row">
+											<table class="table table-striped table-bordered">
+												<thead>
+													<tr class="table-info">
+														<th scope="col" colspan="7">Orden en cotización</th>
+													</tr>
+													<tr class="table-info">
+														<th scope="col">Número</th>
+														<th scope="col">Orden</th>
+														<th scope="col">Fecha</th>
+														<th scope="col" colspan="2">Descripción</th>
+														<th scope="col">Precio</th>
+														<th scope="col">Acción</th>
+													</tr>
+													<tr>
+												</thead>
+												<tbody id="myOrdenes"></tbody>
+											</table>
+										</div>
+										<div class="row">
+											<div class="col-4">
+												<label for="totalordenes">Suma de ordenes</label>
+												<div class="input-group mb-3">
+													<div class="input-group-prepend">
+														<span class="input-group-text">$</span>
+													</div>
+													<label readonly type="number" step="0.01" class="form-control"
+														id="totalordenes"></label>
+													<div class="input-group-append">
+														<span class="input-group-text">MXN</span>
+													</div>
+												</div>
+											</div>
+											<div class="col-4">
+												<label for="desordenes">Descuento de ordenes</label>
+												<div class="input-group mb-3">
+													<div class="input-group-prepend">
+														<span class="input-group-text">$</span>
+													</div>
+													<input type="number" step="0.01" class="form-control" value="0" onchange="calcular()" id="descuento_ordenes">
+													<div class="input-group-append">
+														<span class="input-group-text">MXN</span>
+													</div>
+												</div>
+											</div>
+											<div class="col-4">
+													<label for="ganancia_ordenes">Ganancia de ordenes</label>
+													<div class="input-group mb-3">
+														<div class="input-group-prepend">
+															<span class="input-group-text">$</span>
+														</div>
+														<input type="number" step="0.01" class="form-control" value="0" onchange="calcular()"
+															id="ganancia_ordenes">
+														<div class="input-group-append">
+															<span class="input-group-text">MXN</span>
+														</div>
+													</div>
+												</div>
 											
-										</tbody>
-									</table>
-								</div>
-								<div class="row">
-									<table class="table table-striped table-bordered">
-										<thead>
-											<tr class="table-info">
-												<th scope="col" colspan="7">Orden en cotización</th>
-											</tr>
-											<tr class="table-info">
-												<th scope="col">Número</th>
-												<th scope="col">Orden</th>
-												<th scope="col">Fecha</th>
-												<th scope="col" colspan="2">Descripción</th>
-												<th scope="col">Precio</th>
-												<th scope="col">Acción</th>
-											</tr>
-											<tr>
-										</thead>
-										<tbody id="myOrdenes"></tbody>
-									</table>
-								</div>
-								<div class="row">
-									<div class="col-4 offset-2">
-										<label for="totalordenes">Descuento de obras</label>
-										<div class="input-group mb-3">
-											<div class="input-group-prepend">
-												<span class="input-group-text">$</span>
-											</div>
-											<input type="number" step="0.01" class="form-control" value="0" id="desordenes">
-											<div class="input-group-append">
-												<span class="input-group-text">MXN</span>
-											</div>
-										</div>
-									</div>
-									<div class="col-4">
-										<label for="totalordenes">Total de obras</label>
-										<div class="input-group mb-3">
-											<div class="input-group-prepend">
-												<span class="input-group-text">$</span>
-											</div>
-											<label readonly type="number" step="0.01" class="form-control" id="totalordenes"></label>
-											<div class="input-group-append">
-												<span class="input-group-text">MXN</span>
-											</div>
 										</div>
 									</div>
 								</div>
+
+
 							</div>
 							<div class="tab-pane fade" id="nav-mano_de_obra" role="tabpanel">
-								<div class="row">
-									<h5>Mano de obra:</h5>
-								</div>
-								<div class="row" id="smanodeobra">
-									<div class="col-sm-3 form-group">
-										<label class="control-label">Nombre:</label>
-										<input type="text" class="form-control" id="nombremanodeobra">
+
+								<div class="card">
+									<div class="card-header">
+										<h5>Mano de obra:</h5>
 									</div>
-									<div class="col-sm-3 form-group">
-										<label class="control-label">Descripción:</label>
-										<textarea type="text" class="form-control" id="desmanodeobra"></textarea>
-									</div>
-									<div class="col-sm-3 form-group">
-										<label class="control-label">Puesto:</label>
-										<input type="text" class="form-control" id="puestomanodeobra">
-									</div>
-									<div class="col-sm-3 form-group">
-										<label class="control-label">Venta</label>
-										<input type="number" step="0.01" step="0.01" class="form-control"
-											id="montomanodeobra">
-									</div>
-									<div class="col-sm-3 form-group">
-										<label class="control-label">Costo</label>
-										<input type="number" step="0.01" step="0.01" class="form-control"
-											id="costomanodeobra">
-									</div>
-								</div>
-								<div class="row justify-content-end">
-									<div class="col-sm-3 form-group ">
-										<button id="agregarmanodeobra" type="button"
-											class="btn btn-primary">Agregar</button>
-									</div>
-								</div>
-								<div class="row">
-									<table class="table table-striped table-bordered">
-										<thead>
-											<tr class="table-info">
-												<th scope="col">Nombre</th>
-												<th scope="col">Puesto</th>
-												<th scope="col">Venta</th>
-												<th scope="col">Descripción</th>
-												<th scope="col">Costo</th>
-												<th scope="col">Eliminar</th>
-											</tr>
-										</thead>
-										<tbody id="tablamanodeobras">
-										</tbody>
-									</table>
-								</div>
-								<div class="row">
-									<div class="col-4">
-										<label for="totalordenes">Descuento Mano de obra</label>
-										<div class="input-group mb-3">
-											<div class="input-group-prepend">
-												<span class="input-group-text">$</span>
+									<div class="card-body">
+										<div class="row" id="smanodeobra">
+											<div class="col-4 form-group">
+												<label class="control-label">Nombre:</label>
+												<input type="text" class="form-control" id="nombremanodeobra">
 											</div>
-											<input type="number" value="0" step="0.01" class="form-control"
-												id="descmano">
-											<div class="input-group-append">
-												<span class="input-group-text">MXN</span>
+											<div class="col-4 form-group">
+												<label class="control-label">Descripción:</label>
+												<textarea type="text" class="form-control"
+													id="desmanodeobra"></textarea>
+											</div>
+											<div class="col-4 form-group">
+												<label class="control-label">Puesto:</label>
+												<input type="text" class="form-control" id="puestomanodeobra">
+											</div>
+											<div class="col-4 form-group">
+												<label class="control-label">Venta</label>
+												<input type="number" step="0.01" step="0.01" class="form-control"
+													id="montomanodeobra">
+											</div>
+											<div class="col-4 form-group">
+												<label class="control-label">Costo</label>
+												<input type="number" step="0.01" step="0.01" class="form-control"
+													id="costomanodeobra">
+											</div>
+											<div class="col-4 form-group pt-4 text-center">
+												<button id="agregarmanodeobra" type="button"
+													class="btn btn-primary">Agregar</button>
 											</div>
 										</div>
-									</div>
-									<div class="col-4">
-										<label for="totalmanodeobra">Total mano de obra</label>
-										<div class="input-group mb-3">
-											<div class="input-group-prepend">
-												<span class="input-group-text">$</span>
-											</div>
-											<label readonly type="number" step="0.01" class="form-control"
-												id="totalmanodeobra"></label>
-											<div class="input-group-append">
-												<span class="input-group-text">MXN</span>
-											</div>
+										<div class="row">
+											<table class="table table-striped table-bordered">
+												<thead>
+													<tr class="table-info">
+														<th scope="col">Nombre</th>
+														<th scope="col">Puesto</th>
+														<th scope="col">Descripción</th>
+														<th scope="col">Venta</th>
+														<th scope="col">Costo</th>
+														<th scope="col">Total</th>
+														<th scope="col">Eliminar</th>
+													</tr>
+												</thead>
+												<tbody id="tablamanodeobras">
+												</tbody>
+											</table>
 										</div>
 									</div>
-									<div class="col-4">
-										<label for="totalordenes">Ganancia Mano de obra</label>
-										<div class="input-group mb-3">
-											<div class="input-group-prepend">
-												<span class="input-group-text">$</span>
+									<div class="card-footer text-muted">
+										<div class="row">
+											<div class="col-4">
+												<label for="totalmanodeobra">Suma mano de obra</label>
+												<div class="input-group mb-3">
+													<div class="input-group-prepend">
+														<span class="input-group-text">$</span>
+													</div>
+													<label readonly type="number" step="0.01" class="form-control"
+														id="totalmanodeobra">0.0</label>
+													<div class="input-group-append">
+														<span class="input-group-text">MXN</span>
+													</div>
+												</div>
 											</div>
-											<input type="number" value="0" step="0.01" class="form-control"
-												id="gananciamanodeobra">
-											<div class="input-group-append">
-												<span class="input-group-text">MXN</span>
+											<div class="col-4">
+												<label for="descmano">Descuento mano obra</label>
+												<div class="input-group mb-3">
+													<div class="input-group-prepend">
+														<span class="input-group-text">$</span>
+													</div>
+													<input type="number" value="0" step="0.01" class="form-control" onchange="calcular()"
+														id="descuento_manodeobra">
+													<div class="input-group-append">
+														<span class="input-group-text">MXN</span>
+													</div>
+												</div>
 											</div>
+											<div class="col-4">
+												<label for="ganancia_manodeobra">Ganancia mano obra</label>
+												<div class="input-group mb-3">
+													<div class="input-group-prepend">
+														<span class="input-group-text">$</span>
+													</div>
+													<input type="number" value="0" step="0.01" class="form-control" onchange="calcular()"
+														id="ganancia_manodeobra">
+													<div class="input-group-append">
+														<span class="input-group-text">MXN</span>
+													</div>
+												</div>
+											</div>
+
 										</div>
 									</div>
 								</div>
 							</div>
 							<div class="tab-pane fade" id="nav-varios" role="tabpanel">
-								<div class="row">
-									<h5>Varios:</h5>
-								</div>
-								<div class="row" id="svarios">
-									<div class="offset-sm-3 col-sm-3 form-group">
-										<label class="control-label">Descripción:</label>
-										<input type="text" class="form-control" id="desvario">
+								<div class="card">
+									<div class="card-header">
+										<h5>Varios:</h5>
 									</div>
-									<div class="col-sm-3 form-group">
-										<label class="control-label">Venta:</label>
-										<input type="number" step="0.01" class="form-control" id="montovario">
-									</div>
-									<div class="col-sm-3 form-group">
-										<label class="control-label">Costo:</label>
-										<input type="number" step="0.01" class="form-control" id="costovario">
-									</div>
-									<div class="col-sm-3 form-group">
-										<button id="agregarvario" type="button"
-											class="mt-4 btn btn-primary">Agregar</button>
-									</div>
-								</div>
-								<div class="row">
-									<table class="table  table-striped table-bordered">
-										<thead class="table-info">
-											<tr>
-												<th scope="col">Venta</th>
-												<th scope="col">Descripción</th>
-												<th scope="col">Costo</th>
-												<th scope="col">Eliminar</th>
-											</tr>
-										</thead>
-										<tbody id="tablavarios">
-										</tbody>
-									</table>
-								</div>
-								<div class="row">
-									<div class="col-4">
-										<label for="totalordenes">Descuento Varios</label>
-										<div class="input-group mb-3">
-											<div class="input-group-prepend">
-												<span class="input-group-text">$</span>
+									<div class="card-body">
+										<div class="row" id="svarios">
+											<div class="col-3 form-group">
+												<label class="control-label">Descripción:</label>
+												<input type="text" class="form-control" id="desvario">
 											</div>
-											<input type="number" value="0" step="0.01" class="form-control"
-												id="desvario">
-											<div class="input-group-append">
-												<span class="input-group-text">MXN</span>
+											<div class="col-3 form-group">
+												<label class="control-label">Venta:</label>
+												<input type="number" step="0.01" class="form-control" id="montovario">
+											</div>
+											<div class="col-3 form-group">
+												<label class="control-label">Costo:</label>
+												<input type="number" step="0.01" class="form-control" id="costovario">
+											</div>
+											<div class="col-3 form-group">
+												<button id="agregarvario" type="button"
+													class="mt-4 btn btn-primary">Agregar</button>
+											</div>
+										</div>
+										<div class="row">
+											<table class="table  table-striped table-bordered">
+												<thead class="table-info">
+													<tr>
+														<th scope="col">Descripción</th>
+														<th scope="col">Venta</th>
+														<th scope="col">Costo</th>
+														<th scope="col">Total</th>
+														<th scope="col">Eliminar</th>
+													</tr>
+												</thead>
+												<tbody id="tablavarios">
+												</tbody>
+											</table>
+										</div>
+									</div>
+									<div class="card-footer text-muted">
+										<div class="row">
+											<div class="col-4">
+												<label for="totlavario">Suma varios</label>
+												<div class="input-group mb-3">
+													<div class="input-group-prepend">
+														<span class="input-group-text">$</span>
+													</div>
+													<label readonly type="number" step="0.01" class="form-control"
+														id="totalvarios"></label>
+													<div class="input-group-append">
+														<span class="input-group-text">MXN</span>
+													</div>
+												</div>
+											</div>
+											<div class="col-4">
+												<label for="desvario">Descuento Varios</label>
+												<div class="input-group mb-3">
+													<div class="input-group-prepend">
+														<span class="input-group-text">$</span>
+													</div>
+													<input type="number" value="0" step="0.01" class="form-control" onchange="calcular()"
+														id="descuento_varios">
+													<div class="input-group-append">
+														<span class="input-group-text">MXN</span>
+													</div>
+												</div>
+											</div>
+											
+											<div class="col-4">
+												<label for="ganancia_varios">Ganancia Varios</label>
+												<div class="input-group mb-3">
+													<div class="input-group-prepend">
+														<span class="input-group-text">$</span>
+													</div>
+													<input type="number" value="0" step="0.01" class="form-control" onchange="calcular()"
+														id="ganancia_varios">
+													<div class="input-group-append">
+														<span class="input-group-text">MXN</span>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
-									<div class="col-4">
-										<label for="totlavario">Total varios</label>
-										<div class="input-group mb-3">
-											<div class="input-group-prepend">
-												<span class="input-group-text">$</span>
-											</div>
-											<label readonly type="number" step="0.01" class="form-control"
-												id="totalvarios"></label>
-											<div class="input-group-append">
-												<span class="input-group-text">MXN</span>
-											</div>
-										</div>
-									</div>
-									<div class="col-4">
-										<label for="totalordenes">Ganancia Varios</label>
-										<div class="input-group mb-3">
-											<div class="input-group-prepend">
-												<span class="input-group-text">$</span>
-											</div>
-											<input type="number" value="0" step="0.01" class="form-control"
-												id="gananciavarios">
-											<div class="input-group-append">
-												<span class="input-group-text">MXN</span>
-											</div>
-										</div>
-									</div>
 								</div>
+
+
 							</div>
 							<div class="tab-pane fade" id="nav-envios" role="tabpanel">
-								<div class="row">
-									<h5>Envios:</h5>
-								</div>
-								<div class="row">
-									<div class="col-sm-3 form-group">
-										<label class="control-label">Descripción:</label>
-										<input type="text" class="form-control" id="desenvio">
+
+								<div class="card">
+									<div class="card-header">
+										<h5>Envios:</h5>
 									</div>
-									<div class="col-sm-3 form-group">
-										<label class="control-label">Venta:</label>
-										<input type="number" step="0.01" class="form-control" id="montoenvio">
-									</div>
-									<div class="col-sm-3 form-group">
-										<label class="control-label">Costo:</label>
-										<input type="number" step="0.01" class="form-control" id="costoenvio">
-									</div>
-									<div class="col-sm-3 form-group">
-										<label class="control-label">Dirección:</label>
-										<textarea class="form-control" id="direccionenvio" rows="3"></textarea>
-									</div>
-									<div class="col-sm-3 form-group">
-										<button id="agregarenvio" type="button"
-											class="mt-4 btn btn-primary">Agregar</button>
-									</div>
-								</div>
-								<div class="row">
-									<table class="table table-striped table-bordered">
-										<thead class="table-info">
-											<tr>
-												<th scope="col">Dirección</th>
-												<th scope="col">Descripción</th>
-												<th scope="col">Venta</th>
-												<th scope="col">Costo</th>
-												<th scope="col">Eliminar</th>
-											</tr>
-										</thead>
-										<tbody id="tablaenvios">
-										</tbody>
-									</table>
-								</div>
-								<div class="row">
-									<div class="col-4">
-										<label for="totalenvio">Total Envios</label>
-										<div class="input-group mb-3">
-											<div class="input-group-prepend">
-												<span class="input-group-text">$</span>
+									<div class="card-body">
+										<div class="row">
+											<div class="col-3 form-group">
+												<label class="control-label">Descripción:</label>
+												<input type="text" class="form-control" id="desenvio">
 											</div>
-											<label readonly type="number" step="0.01" class="form-control"
-												id="totalenvios"></label>
-											<div class="input-group-append">
-												<span class="input-group-text">MXN</span>
+											<div class="col-3 form-group">
+												<label class="control-label">Venta:</label>
+												<input type="number" step="0.01" class="form-control" id="montoenvio">
+											</div>
+											<div class="col-3 form-group">
+												<label class="control-label">Costo:</label>
+												<input type="number" step="0.01" class="form-control" id="costoenvio">
+											</div>
+											<div class="col-3 form-group">
+												<label class="control-label">Dirección:</label>
+												<textarea class="form-control" id="direccionenvio" rows="3"></textarea>
+											</div>
+											<div class="col-3 form-group">
+												<button id="agregarenvio" type="button" class="mt-4 btn btn-primary">
+													Agregar
+												</button>
 											</div>
 										</div>
-									</div>
-									<div class="col-4">
-										<label for="totalordenes">Descuento Envios</label>
-										<div class="input-group mb-3">
-											<div class="input-group-prepend">
-												<span class="input-group-text">$</span>
-											</div>
-											<input type="number" value="0" step="0.01" class="form-control"
-												id="descenvio">
-											<div class="input-group-append">
-												<span class="input-group-text">MXN</span>
-											</div>
+										<div class="row">
+											<table class="table table-striped table-bordered">
+												<thead class="table-info">
+													<tr>
+														<th scope="col">Dirección</th>
+														<th scope="col">Descripción</th>
+														<th scope="col">Venta</th>
+														<th scope="col">Costo</th>
+														<th scope="col">Total</th>
+														<th scope="col">Eliminar</th>
+													</tr>
+												</thead>
+												<tbody id="tablaenvios">
+												</tbody>
+											</table>
 										</div>
 									</div>
-									<div class="col-4">
-										<label for="totalordenes">Ganancia Envios</label>
-										<div class="input-group mb-3">
-											<div class="input-group-prepend">
-												<span class="input-group-text">$</span>
+									<div class="card-footer text-muted">
+										<div class="row">
+											<div class="col-4">
+												<label for="totalenvio">Suma envíos</label>
+												<div class="input-group mb-3">
+													<div class="input-group-prepend">
+														<span class="input-group-text">$</span>
+													</div>
+													<label readonly type="number" step="0.01" class="form-control"
+														id="totalenvios"></label>
+													<div class="input-group-append">
+														<span class="input-group-text">MXN</span>
+													</div>
+												</div>
 											</div>
-											<input type="number" value="0" step="0.01" class="form-control"
-												id="gananciaenvio">
-											<div class="input-group-append">
-												<span class="input-group-text">MXN</span>
+											<div class="col-4">
+												<label for="descenvio">Descuento Envios</label>
+												<div class="input-group mb-3">
+													<div class="input-group-prepend">
+														<span class="input-group-text">$</span>
+													</div>
+													<input type="number" value="0" step="0.01" class="form-control" onchange="calcular()"
+														id="descuento_envios">
+													<div class="input-group-append">
+														<span class="input-group-text">MXN</span>
+													</div>
+												</div>
+											</div>
+											<div class="col-4">
+												<label for="ganancia_envios">Ganancia Envios</label>
+												<div class="input-group mb-3">
+													<div class="input-group-prepend">
+														<span class="input-group-text">$</span>
+													</div>
+													<input type="number" value="0" step="0.01" class="form-control" onchange="calcular()"
+														id="ganancia_envios">
+													<div class="input-group-append">
+														<span class="input-group-text">MXN</span>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -409,82 +455,65 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-3 form-group">
-						<label class="control-label">Total mano(s) de obra(s):</label>
-						<div class="input-group mb-3">
-							<div class="input-group-prepend">
-								<span class="input-group-text">$</span>
-							</div>
-							<input readonly type="number" step="0.01" class="form-control" name="totalmanodeobra"
-								id="inputtotalmanodeobra" value="0">
-							<div class="input-group-append">
-								<span class="input-group-text">MXN</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-3 form-group">
-						<label class="control-label">Total orden(es):</label>
+						<label for="inputtotalordenes" class="control-label">Total orden(es):</label>
 						<div class="input-group mb-3">
 							<div class="input-group-prepend">
 								<span class="input-group-text">$</span>
 							</div>
 							<input readonly type="number" step="0.01" class="form-control" name="totalordenes"
-								id="inputtotalordenes">
+							id="inputtotalordenes">
 							<div class="input-group-append">
 								<span class="input-group-text">MXN</span>
 							</div>
 						</div>
 					</div>
 					<div class="col-sm-3 form-group">
-						<label class="control-label">Total varios:</label>
+						<label for="tmanodeobra" class="control-label">Total mano(s) de obra(s):</label>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text">$</span>
+							</div>
+							<input readonly type="number" step="0.01" class="form-control" name="totalmanodeobra"
+								id="tmanodeobra" value="0">
+							<div class="input-group-append">
+								<span class="input-group-text">MXN</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3 form-group">
+						<label for="tvarios" class="control-label">Total varios:</label>
 						<div class="input-group mb-3">
 							<div class="input-group-prepend">
 								<span class="input-group-text">$</span>
 							</div>
 							<input readonly type="number" step="0.01" class="form-control" name="totalvarios"
-								id="inputtotalvarios" value="0">
+								id="tvarios" value="0">
 							<div class="input-group-append">
 								<span class="input-group-text">MXN</span>
 							</div>
 						</div>
 					</div>
 					<div class="col-sm-3 form-group">
-						<label class="control-label">Total envio(s):</label>
+						<label for="tenvios" class="control-label">Total envio(s):</label>
 						<div class="input-group mb-3">
 							<div class="input-group-prepend">
 								<span class="input-group-text">$</span>
 							</div>
 							<input readonly type="number" step="0.01" class="form-control" name="totalenvios"
-								id="inputtotalenvios" value="0">
+								id="tenvios" value="0">
 							<div class="input-group-append">
 								<span class="input-group-text">MXN</span>
 							</div>
 						</div>
 					</div>
 				</div>
-				<!-- <div class="row">
-          <div class="form-group col col-md-6">
-            <label for="ganacia">Porcentaje de ganancia</label>
-            <input required form="formcotizacion" name="ganancia" type="number" step="0.01" class="form-control" id="ganacia">
-          </div>
-          <div class="form-group col col-md-6">
-            <label for="incremento">Incremento</label>
-            <input required form="formcotizacion" name="incremento" type="number" step="0.01" class="form-control" id="incremento">
-          </div>
-        </div> -->
 				<div class="row">
-					<div class="form-group col col-md-4 offset-4">
+					<div class="form-group col-4">
 						<label for="totalproyecto">Venta Proyecto</label>
 						<input required readonly form="formcotizacion" name="totalproyecto" type="number" step="0.01"
 							class="form-control" id="totalproyecto">
 					</div>
-				</div>
-				<div class="row">
-					<div class="form-group col col-md-4">
-						<label for="resultado">Subtotal:</label>
-						<input required readonly form="formcotizacion" type="number" step="0.01" name="resultado"
-							class="form-control" id="resultado">
-					</div>
-					<div class="form-group col pt-4 col-md-4">
+					<div class="form-group col-4 pt-4 ">
 						<div class="form-check">
 							<input required form="formcotizacion" class="form-check-input" type="radio" name="iva"
 								id="coniva" value="16">
@@ -556,26 +585,6 @@
 		});
 
 	});
-	/*function searchDescuentos(usuario_id) {
-	  // body...
-	  $("#clienteDescuento").empty();
-	  
-	  $.ajax({
-		url:'../getDescuentos/'+usuario_id,
-		type:'GET',
-		success: function(res){
-		  console.log(res.correo);
-		  $('#correo').val(res.correo);
-		  $("#clienteDescuento").append('<option value="0">Sin descuento</option>');
-		  for (var i = res.descuentos.length - 1; i >= 0; i--) {
-			optiondesc= `<option value="${res.descuentos[i].descuento}">${res.descuentos[i].nombre}</option>`;
-			$("#clienteDescuento").append(optiondesc);
-		  }
-  
-		},
-  
-	  })
-	}*/
 
 	var totalcotizacion = 0.00;
 	function addOrden(orden) {
@@ -601,15 +610,12 @@
       </tr>`;
 		$("#myOrdenes").append(rowHTML);
 		totalcotizacion = +totalcotizacion + +parseFloat(orden.precio_orden);
-		console.log(totalcotizacion.toFixed(2));
 		$("#totalordenes").text(totalcotizacion.toFixed(2));
-		$("#inputtotalordenes").val(totalcotizacion.toFixed(2));
 		calcular();
 	}
 	function removeOrden(id, precio) {
 		totalcotizacion = +totalcotizacion + -precio;
 		$("#totalordenes").text(totalcotizacion.toFixed(2));
-		$("#inputtotalordenes").val(totalcotizacion.toFixed(2));
 		$(`#${id}`).remove();
 		calcular();
 		// body...
@@ -622,15 +628,17 @@
 			swal({
 				type: 'error',
 				title: 'Ups...',
-				text: 'Ingresa todos los datos!'
+				text: 'Ingresa todos los datos de mano de obra!'
 			});
 			return 0;
 		}
+		let total = parseFloat($('#montomanodeobra').val()) - parseFloat($('#costomanodeobra').val());
 		var ht = '<tr id="algo' + contador + '"><td> <input type="hidden" form="formcotizacion" name="manodeobrasn[]" value="' + $('#nombremanodeobra').val() + '"> ' + $('#nombremanodeobra').val() + '</td>' +
 			' <td><input type="hidden" form="formcotizacion" name="manodeobrasp[]" value="' + $('#puestomanodeobra').val() + '" >' + $('#puestomanodeobra').val() + '</td>' +
-			'<td class="montomanodeobra"> <input type="hidden" form="formcotizacion" name="manodeobrasm[]" value="' + $('#montomanodeobra').val() + '">$' + $('#montomanodeobra').val() + 'MXN</td>' +
 			'<td><input type="hidden" form="formcotizacion" name="manodeobrasd[]" value="' + $('#desmanodeobra').val() + '"> ' + $('#desmanodeobra').val() + '</td>' +
+			'<td class="montomanodeobra"> <input type="hidden" form="formcotizacion" name="manodeobrasm[]" value="' + $('#montomanodeobra').val() + '">' + $('#montomanodeobra').val() +
 			'<td><input type="hidden" form="formcotizacion" name="manodeobrasc[]" value="' + $('#costomanodeobra').val() + '"> ' + $('#costomanodeobra').val() + '</td>' +
+			'<td><input type="hidden" form="formcotizacion" name="manodeobrast[]" class="totals_manodeobra" value="' + total + '"> ' + total + '</td>' +
 			'<td><button class="btn btn-danger" type="button" onclick="removeManoO(' + "'algo" + contador + "'" + ',' + $("#montomanodeobra").val() + ')">Eliminar</button></td></tr>';
 		console.log(parseFloat($('#montomanodeobra').val()));
 		totalmo = +totalmo + +parseFloat($('#montomanodeobra').val());
@@ -661,23 +669,18 @@
 			});
 			return 0;
 		}
-		var ht = '<tr id="algo' + contador + '"><td class="montovario"><input type="hidden" form="formcotizacion" name="variosm[]" value="' + $('#montovario').val() + '" > ' + $('#montovario').val() + '</td>' +
-			' <td> <input type="hidden" form="formcotizacion" name="variosd[]" value="' + $('#desvario').val() + '" > ' + $('#desvario').val() + '</td>' +
+		let total = parseFloat($('#montovario').val()) - parseFloat($('#costovario').val());
+		var ht = ' <tr id="algo' + contador + '"><td> <input type="hidden" form="formcotizacion" name="variosd[]" value="' + $('#desvario').val() + '" > ' + $('#desvario').val() + '</td>' +
+			'<td class="montovario"><input type="hidden" form="formcotizacion" name="variosm[]" value="' + $('#montovario').val() + '" > ' + $('#montovario').val() + '</td>' +
 			' <td> <input type="hidden" form="formcotizacion" name="variosc[]" value="' + $('#costovario').val() + '" > ' + $('#costovario').val() + '</td>' +
+			' <td> <input type="hidden" form="formcotizacion" class="totals_varios" name="variost[]" value="' + total + '" > ' + total + '</td>' +
 			'<td><button class="btn btn-danger" onclick="removeVario(' + "'algo" + contador + "'" + ',' + $("#montovario").val() + ')">Eliminar</button></td></tr>';
-		totalva = +totalva + +parseFloat($('#montovario').val());
-		console.log(totalva);
-		$("#totalvarios").text(totalva.toFixed(2));
-		$("#inputtotalvarios").val(totalva.toFixed(2));
+
 		$('#tablavarios').append(ht);
 		calcular();
 	});
 
 	function removeVario(id, precio) {
-		totalva = +totalva + -precio;
-		$("#totalvarios").text(totalva.toFixed(2));
-		$("#inputtotalvarios").val(totalva.toFixed(2));
-		console.log(id);
 		$(`#${id}`).remove();
 		calcular();
 	}
@@ -693,24 +696,18 @@
 			});
 			return 0;
 		}
+		let total = parseFloat($('#montoenvio').val()) - parseFloat($('#costoenvio').val());
 		var ht = '<tr id="algo' + contador + '"><td> <input type="hidden" form="formcotizacion" name="enviosdi[]" value="' + $('#direccionenvio').val() + '" > ' + $('#direccionenvio').val() + '</td>' +
 			' <td> <input type="hidden" form="formcotizacion" name="enviosd[]" value="' + $('#desenvio').val() + '" >' + $('#desenvio').val() + '</td>' +
 			' <td class="montoenvio"> <input type="hidden" form="formcotizacion" name="enviosm[]" value="' + $('#montoenvio').val() + '"  > ' + $('#montoenvio').val() + '</td>' +
 			' <td class="montoenvio"> <input type="hidden" form="formcotizacion" name="enviosc[]" value="' + $('#costoenvio').val() + '"  > ' + $('#costoenvio').val() + '</td>' +
+			' <td class="montoenvio"> <input type="hidden" form="formcotizacion" class="totals_envio" name="enviost[]" value="' + total + '"  > ' + total + '</td>' +
 			'<td><button class="btn btn-danger" onclick="removeEnvio(' + "'algo" + contador + "'" + ',' + $("#montoenvio").val() + ')">Eliminar</button></td></tr>';
-		totalenvio = +totalenvio + +parseFloat($('#montoenvio').val());
-		console.log(totalenvio);
-		$("#totalenvios").text(totalenvio.toFixed(2));
-		$("#inputtotalenvios").val(totalenvio.toFixed(2));
 		$('#tablaenvios').append(ht);
 		calcular();
 	});
 
 	function removeEnvio(id, precio) {
-		totalenvio = +totalenvio + -precio;
-		$("#totalenvios").text(totalenvio.toFixed(2));
-		$("#inputtotalenvios").val(totalenvio.toFixed(2));
-		console.log(id);
 		$(`#${id}`).remove();
 		calcular();
 	}
@@ -741,62 +738,50 @@
 		calcular();
 	}
 
-	$('#ganacia').change(function () {
-		$('#incremento').val('0');
-		calcular();
-	});
-
-	$('#incremento').change(function () {
-		$('#ganacia').val('0');
-		calcular();
-	});
-	var subtotal = 0.00;
-	$("#inputtotalordenes").change(function (e) {
-		$
-	});
-
 	function calcular() {
-		// var totalmanodeobra = 0;
-		// var  totalvarios = 0;
-		// var totalenvio = 0;
-		// $('.montomanodeobra').each(function(){
-		//   totalmanodeobra += parseFloat($(this).text(), 10);
-		// });
-		// $('#totalmanodeobra').val(totalmanodeobra);
+		let totalvarios = 0.0;
+		let totalmanoobra = 0.0;
+		let totalenvios = 0.0;
+		let totalordens = 0.0;
+		/***SUMAS***/
+		$('.totals_varios').each(function () {
+			totalvarios += parseFloat($(this).val());
+		});
+		$('.totals_manodeobra').each(function () {
+			totalmanoobra += parseFloat($(this).val());
+		});
+		$('.totals_envio').each(function () {
+			totalenvios += parseFloat($(this).val());
+		});
+		totalordens = parseFloat($('#totalordenes').text());
+		$('#totalenvios').text(totalenvios);
+		$('#totalvarios').text(totalvarios);
+		$('#totalmanodeobra').text(totalmanoobra);
 
-		// $('.montovario').each(function(){
-		//   totalvarios += parseFloat($(this).text(), 10);
-		// });
-		// $('#totalvario').val(totalvarios);
+		/***GANANCIAS Y DESCUENTOS***/
+		let a = parseFloat($('#totalordenes').text()) - parseFloat($('#descuento_ordenes').val()) + parseFloat($('#ganancia_ordenes').val());
+		$("#inputtotalordenes").val(a);
+		let b = parseFloat($('#totalmanodeobra').text()) - parseFloat($('#descuento_manodeobra').val()) + parseFloat($('#ganancia_manodeobra').val());
+		$('#tmanodeobra').val(b);
+		let c = parseFloat($('#totalvarios').text()) - parseFloat($('#descuento_varios').val()) + parseFloat($('#ganancia_varios').val());
+		$('#tvarios').val(c);
+		let d = parseFloat($('#totalenvios').text()) - parseFloat($('#descuento_envios').val()) + parseFloat($('#ganancia_envios').val());
+		$('#tenvios').val(d);
+		
+		/***FINAL***/
+		$('#totalproyecto').val(a+b+c+d)
 
-		// $('.montoenvio').each(function(){
-		//   totalenvio += parseFloat($(this).text(), 10);
-		// });
-		// $('#totalenvio').val(totalenvio);
-		costo = totalcotizacion + totalmo + totalva + totalenvio;
-		$('#totalproyecto').val(costo.toFixed(2));
-
-		var descobra = $('#desordenes').val();
-		var descvario = $('#desvario').val();
-		var descmano = $('#descmano').val()
-		var resul = parseFloat($('#totalproyecto').val(), 10) - descobra - descvario - descmano;//  + parseFloat($('#incremento').val(), 10) ;
-		// if($('#incremento').val() == 0){
-		//   resul = $('#totalproyecto').val() * (1 + ($('#ganacia').val() / 100));
-		// }
-
-		$('#resultado').val(resul.toFixed(2));
-		if ($('input[name=iva]:checked').val()) {
-			if ($('input[name=iva]:checked').val() == 1) {
-				totaliva = resul;
-			}
-			else {
-				totaliva = resul * (1 + $('input[name=iva]:checked').val()) / 100;
-
-			}
-			$('#totalneto').val(totaliva.toFixed(2));
+		
+	}
+	$('input[name=iva]').change(function(){
+		let bruto = parseFloat($('#totalproyecto').val());
+		if(document.getElementById('coniva').checked){
+			$('#totalneto').val(bruto*1.16);
+		}else{
+			$('#totalneto').val(bruto);
 		}
 
-	}
+	})
 </script>
 
 

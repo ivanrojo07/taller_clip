@@ -12,7 +12,8 @@ class Vario extends Model
     protected $fillable=['descripcion',
                          'monto',
                         'cotizacion_id',
-                        'costo'];
+                        'costo',
+                    'total'];
 
     public function cotizacion(){
         return $this->belongsTo('App\Cotizacion');

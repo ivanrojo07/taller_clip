@@ -18,6 +18,7 @@ class CreateVarios extends Migration
             $table->text('descripcion');
             $table->double('monto',8,2);
             $table->double('costo',8,2);
+            $table->double('total',8,2)->nullable();
             $table->integer('cotizacion_id')->unsigned();
             $table->foreign('cotizacion_id')->references('id')->on('cotizacions');
             

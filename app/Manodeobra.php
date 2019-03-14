@@ -14,7 +14,8 @@ class Manodeobra extends Model
                          'nombre',
                          'puesto',
                          'cotizacion_id',
-                         'costo'];
+                         'costo',
+                        'total'];
 
     public function cotizacion(){
         return $this->belongsTo('App\Cotizacion');

@@ -20,6 +20,7 @@ class CreateManodeobras extends Migration
             $table->string('nombre');
             $table->string('puesto');
             $table->double('costo',8,2);
+            $table->double('total',8,2)->nullable();
             $table->integer('cotizacion_id')->unsigned();
             $table->foreign('cotizacion_id')->references('id')->on('cotizacions');
             

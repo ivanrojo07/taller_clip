@@ -19,10 +19,7 @@ class Cotizacion extends Model
         "totalmanodeobra",
         "totalvarios",
         "totalenvios",
-        "ganancia",
-        "incremento",
         "totalproyecto",
-        "resultado",
         "totalneto",
         "correo"
     ];
