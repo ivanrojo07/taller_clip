@@ -13,7 +13,8 @@ class Envio extends Model
                          'monto',
                          'direccion',
                          'cotizacion_id',
-                        'costo'];
+                        'costo',
+                    'total'];
 
     public function cotizacion(){
         return $this->belongsTo('App\Cotizacion');

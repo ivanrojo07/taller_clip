@@ -16,7 +16,7 @@
                   <td>{{$orden->nombre}}</td>
                   <td>{{$orden->fecha}}</td>
                   <td colspan="2">{{$orden->descripcion}}</td>
-                  <td>${{$orden->precio_orden}}MXN</td>
+                  <td>{{$orden->precio_orden}}</td>
                   <td>
                     <div class="row mt-1 mb-1 justify-content-md-center">
                       <a href="#" onclick="addOrden({{json_encode($orden)}})" class="btn btn-success">
