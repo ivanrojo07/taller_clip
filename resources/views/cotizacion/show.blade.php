@@ -4,7 +4,14 @@
 	  <div class="card">
 	    <div class="card-header">
 	      <div class="row">
-	        <h5>Cotización {{$cotizacion->nocotizacion}}:</h5>
+	        <div class="col-sm-8">
+	        	<h5>Cotización {{$cotizacion->nocotizacion}}:</h5>
+	        </div>
+	        <div class="col-sm-4 text-center">
+				<a class="btn btn-success" href="{{ route('cotizacion.index') }}">
+					<i class="fa fa-bars" aria-hidden="true"></i><strong> Lista de cotizaciones</strong>
+				</a>
+			</div>
 	      </div>
 	    </div>
 	    <div class="card-body">
@@ -45,9 +52,9 @@
 			  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 		        <div class="row"><h5>Ordenes:</h5></div>
 		        <div class="row">
+		        @foreach ($cotizacion->ordens as $orden)
 		          <table class="table table-striped table-bordered">
 		            <tbody>
-		              @foreach ($cotizacion->ordens as $orden)
 		                {{-- expr --}}
 		                <tr class="table-info">
 		                  <th scope="col" colspan="7">Orden</th>
@@ -75,54 +82,58 @@
 		                  </td>
 		                </tr>
 		                @foreach ($orden->obras as $index=>$obra)
-		                <tr class="table-success collapse collapse{{$orden->id}}">
-		                  <th scope="col" colspan="7">Obra(s) de {{$orden->nombre}}</th>
-		                </tr>
-		                <tr class="table-success collapse collapse{{$orden->id}}">
-		                  <th scope="col">Nombre</th>
-		                  <th scope="col">Piezas</th>
-		                  <th scope="col" colspan="2">Descripción</th>
-		                  <th scope="col">Alto</th>
-		                  <th scope="col">Ancho</th>
-		                  <th scope="col">Profundidad</th>
-		                </tr> 
-		                <tr class="collapse collapse{{$orden->id}}">
-		                  <td scope="row">
-		                    {{$obra->nombre}}
-		                  </td>
-		                  <td>{{$obra->nopiezas}}</td>
-		                  <td colspan="2">{{$obra->descripcion_obra}}</td>
-		                  <td>{{$obra->alto_obra}} {{$obra->unidad_obra}}</td>
-		                  <td>{{$obra->ancho_obra}} {{$obra->unidad_obra}}</td>
-		                  <td>{{$obra->profundidad_obra}} {{$obra->unidad_obra}}</td>
-		                </tr>
-		                <tr class="table-secondary collapse collapse{{$orden->id}}">
-		                  <th scope="col" colspan="7">Material(es) de {{$obra->nombre}}</th>
-		                </tr>
-		                <tr class="table-secondary collapse collapse{{$orden->id}}">
-		                  <th scope="col">Clave</th>
-		                  <th scope="col">Sección</th>
-		                  <th scope="col">Color</th>
-		                  <th scope="col">Alto</th>
-		                  <th scope="col">Ancho</th>
-		                  <th scope="col">Espesor</th>
-		                  <th scope="col">Precio</th>
-		                </tr>
-		                @foreach ($obra->materiales as $material)
-		                <tr class="collapse collapse{{$orden->id}}">
-		                  <td scope="row">{{$material->clave}}</td>
-		                  <td>{{$material->seccion}}</td>
-		                  <td>{{$material->color}}</td>
-		                  <td>{{$material->alto}} {{$material->medidas}}</td>
-		                  <td>{{$material->ancho}} {{$material->medidas}}</td>
-		                  <td>{{$material->espesor}} {{$material->medidas}}</td>
-		                  <td>${{$material->precio}}MXN</td>
-		                </tr>
+			                <table class="table table-striped table-bordered">
+				                <tr class="table-success collapse collapse{{$orden->id}} tr-space">
+				                  <th scope="col" colspan="7">Obra(s) de {{$orden->nombre}}</th>
+				                </tr>
+				                <tr class="table-success collapse collapse{{$orden->id}}">
+				                  <th scope="col">Nombre</th>
+				                  <th scope="col">Piezas</th>
+				                  <th scope="col" colspan="2">Descripción</th>
+				                  <th scope="col">Alto</th>
+				                  <th scope="col">Ancho</th>
+				                  <th scope="col">Profundidad</th>
+				                </tr> 
+				                <tr class="collapse collapse{{$orden->id}}">
+				                  <td scope="row">
+				                    {{$obra->nombre}}
+				                  </td>
+				                  <td>{{$obra->nopiezas}}</td>
+				                  <td colspan="2">{{$obra->descripcion_obra}}</td>
+				                  <td>{{$obra->alto_obra}} {{$obra->unidad_obra}}</td>
+				                  <td>{{$obra->ancho_obra}} {{$obra->unidad_obra}}</td>
+				                  <td>{{$obra->profundidad_obra}} {{$obra->unidad_obra}}</td>
+				                </tr>
+					                <table class="table table-striped table-bordered">
+						                <tr class="table-secondary collapse collapse{{$orden->id}}">
+						                  <th scope="col" colspan="7">Material(es) de {{$obra->nombre}}</th>
+						                </tr>
+						                <tr class="table-secondary collapse collapse{{$orden->id}}">
+						                  <th scope="col">Clave</th>
+						                  <th scope="col">Sección</th>
+						                  <th scope="col">Color</th>
+						                  <th scope="col">Alto</th>
+						                  <th scope="col">Ancho</th>
+						                  <th scope="col">Espesor</th>
+						                  <th scope="col">Precio</th>
+						                </tr>
+						                @foreach ($obra->materiales as $material)
+							                <tr class="collapse collapse{{$orden->id}} tr-space">
+							                  <td scope="row">{{$material->clave}}</td>
+							                  <td>{{$material->seccion}}</td>
+							                  <td>{{$material->color}}</td>
+							                  <td>{{$material->alto}} {{$material->medidas}}</td>
+							                  <td>{{$material->ancho}} {{$material->medidas}}</td>
+							                  <td>{{$material->espesor}} {{$material->medidas}}</td>
+							                  <td>${{$material->precio}}MXN</td>
+							                </tr>
+						                @endforeach
+						            </table>
+				            </table>
 		                @endforeach
-		                @endforeach
-		              @endforeach
 		            </tbody>
 		          </table>
+              	@endforeach
 			  	</div>
 			  </div>
 			  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
@@ -244,16 +255,6 @@
 	                <span class="input-group-text">MXN</span>
 	              </div>
 	            </div>
-	          </div>
-	        </div>
-	        <div class="row">
-	          <div class="form-group col col-md-6">
-	            <label for="ganacia">Porcentaje de ganancia</label>
-	            <input required form="formcotizacion" name="ganancia" type="number" step="0.01" class="form-control" id="ganacia">
-	          </div>
-	          <div class="form-group col col-md-6">
-	            <label for="incremento">Incremento</label>
-	            <input required form="formcotizacion" name="incremento" type="number" step="0.01" class="form-control" id="incremento">
 	          </div>
 	        </div>
 	        <div class="row">
