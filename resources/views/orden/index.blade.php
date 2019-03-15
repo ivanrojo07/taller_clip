@@ -41,7 +41,7 @@
                       {{$obra->nombre}} <br>
                     @endforeach
                   </div>
-                  <div class="modal fade" tabindex="-1" role="dialog" id="infObra{{$orden->id}}" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                  <div class="modal fade" tabindex="-1" role="dialog" id="infObra{{$orden->id}}" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="width: 90%;margin: 3% auto">
                         <div class="modal-dialog" role="document" style="min-width: 100%!important;margin: 0!important;">
                           <div class="modal-content" style="min-height: 50vh!important;">
                             <div class="modal-header">
