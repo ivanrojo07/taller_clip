@@ -35,7 +35,7 @@
                                 <td>{{$cotizacion->fechaactual}}</td>
                                 <td>{{$cotizacion->fechaentrega}}</td>
                                 <td>${{$cotizacion->totalproyecto}} MXN</td>
-                                <td>{{$cotizacion->incremento == "0.00" ? "$".$cotizacion->incremento." MXN" : $cotizacion->ganancia." %"}}</td>
+                                <td>{{$cotizacion->incremento ? "$".$cotizacion->incremento." MXN" : "Sin Ganancia"}}</td>
                                 <td>${{$cotizacion->resultado}}MXN</td>
                                 <td>${{$cotizacion->totalneto}}MXN</td>
                                 <td><a href="{{ route('cotizacion.show',['cotizacion'=>$cotizacion]) }}" class="btn btn-info">Detalle</a></td>

@@ -21,7 +21,7 @@ class CreateMaterialsTable extends Migration
             $table->decimal('ancho')->unsigned();
             $table->decimal('alto')->unsigned();
             $table->decimal('espesor')->unsigned();
-            $table->string('medidas');
+             // eliminar y ver en donde se ocupa
             $table->string('color');
             $table->string('tipo');
             $table->string('descripcion');

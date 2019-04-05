@@ -20,7 +20,7 @@ class CreateObrasTable extends Migration
             $table->decimal('alto_obra');
             $table->decimal('ancho_obra');
             $table->decimal('profundidad_obra');
-            $table->string('unidad_obra');
+            //
             $table->string('tipo_material_obra');
             $table->text('descripcion_obra');
             $table->decimal('precio_obra',12,2);

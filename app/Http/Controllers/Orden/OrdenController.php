@@ -60,7 +60,6 @@ class OrdenController extends Controller
                               'alto_obra' => $request->alto_obra[$i],
                               'ancho_obra' => $request->ancho_obra[$i],
                               'profundidad_obra' => $request->profundidad_obra[$i],
-                              'unidad_obra' => $request->unidad_obra[$i],
                               'descripcion_obra' => $request->descripcion_obra[$i],
                               'ancho_marco' => $request->ancho_obra_marco[$i],
                               'largo_marco' => $request->alto_obra_marco[$i],

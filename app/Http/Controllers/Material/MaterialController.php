@@ -50,7 +50,6 @@ class MaterialController extends Controller
         $material->ancho = $request->ancho;
         $material->alto = $request->alto;
         $material->espesor = $request->espesor;
-        $material->medidas = $request->medidas;
         $material->color = $request->color;
         $material->proveedor_id = $request->proveedor;
         $material->precio = $request->precio;
@@ -106,7 +105,6 @@ class MaterialController extends Controller
         $material->ancho = $request->ancho;
         $material->alto = $request->alto;
         $material->espesor = $request->espesor;
-        $material->medidas = $request->medidas;
         $material->color = $request->color;
         $material->proveedor_id = $request->proveedor;
         $material->precio = $request->precio;

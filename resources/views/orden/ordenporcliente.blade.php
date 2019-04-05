@@ -48,9 +48,9 @@
                   </td>
                   <td>{{$obra->nopiezas}}</td>
                   <td colspan="2">{{$obra->descripcion_obra}}</td>
-                  <td>{{$obra->alto_obra}} {{$obra->unidad_obra}}</td>
-                  <td>{{$obra->ancho_obra}} {{$obra->unidad_obra}}</td>
-                  <td>{{$obra->profundidad_obra}} {{$obra->unidad_obra}}</td>
+                  <td>{{$obra->alto_obra}} cm</td>
+                  <td>{{$obra->ancho_obra}} cm</td>
+                  <td>{{$obra->profundidad_obra}} cm</td>
                 </tr>
                 <tr class="table-secondary collapse collapse{{$orden->id}}">
                   <th scope="col" colspan="7">Material(es) de {{$obra->nombre}}</th>
@@ -69,9 +69,9 @@
                   <td scope="row">{{$material->clave}}</td>
                   <td>{{$material->seccion}}</td>
                   <td>{{$material->color}}</td>
-                  <td>{{$material->alto}} {{$material->medidas}}</td>
-                  <td>{{$material->ancho}} {{$material->medidas}}</td>
-                  <td>{{$material->espesor}} {{$material->medidas}}</td>
+                  <td>{{$material->alto}} cm</td>
+                  <td>{{$material->ancho}} cm</td>
+                  <td>{{$material->espesor}} cm</td>
                   <td>${{$material->precio}}MXN</td>
                 </tr>
                 @endforeach

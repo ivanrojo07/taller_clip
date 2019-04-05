@@ -14,11 +14,10 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 <title>{{ config('app.name', 'Laravel') }}</title>
-
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 </head>
 
@@ -191,8 +190,8 @@
                                         <p class="mb-0" style="float: right;"><i class="fa fa-angle-double-down"></i></p>
                                     </div>
                                     <ul id="collapseExample3" class="list-group list-group-flush collapse" data-parent="#acoreond">
-                                        <a class="nave3"  onclick="AgregarNuevoTab('{{ url('material') }}', 'Materiales')" href="#"><li class="list-group-item">Búsqueda&nbsp<i class="fa fa-clone"></i></li></a>
                                         <a class="nave3"  onclick="AgregarNuevoTab('{{ url('/material/create/') }}', 'Crear Materiales')" href="#"><li class="list-group-item">Crear material&nbsp<i class="fa fa-object-group"></i></li></a>
+                                        <a class="nave3"  onclick="AgregarNuevoTab('{{ url('material') }}', 'Materiales')" href="#"><li class="list-group-item">Búsqueda&nbsp<i class="fa fa-search" aria-hidden="true"></i></li></a>
                                     </ul>
                                 </div>
                             </div>
@@ -230,7 +229,7 @@
                                     </div>
                                     <ul id="collapseExample4" class="list-group list-group-flush collapse" data-parent="#acoreond">
                                         <a class="nave4"  onclick="AgregarNuevoTab('{{ url('/orden/create') }}', 'Generar Orden')" href="#"><li class="list-group-item">Generar orden&nbsp<i class="fa fa-plus"></i></li></a>
-                                            <a class="nave4"  onclick="AgregarNuevoTab('{{ url('/orden') }}', 'Historial Ordenes')" href="#"><li class="list-group-item">Historial órdenes&nbsp<i class="fa fa-plus"></i></li></a>
+                                            <a class="nave4"  onclick="AgregarNuevoTab('{{ url('/orden') }}', 'Historial Ordenes')" href="#"><li class="list-group-item">Historial órdenes&nbsp<i class="fa fa-search" aria-hidden="true"></i></li></a>
                                             <!--<a class="nave4"  onclick="AgregarNuevoTab('{{ url('/clientes') }}', 'Clientes')" href="#"{{ url('productos')}}"><li class="list-group-item">Búsqueda&nbsp<i class="fa fa-search" aria-hidden="true"></i></li></a>-->
                                     </ul>
                                 </div>

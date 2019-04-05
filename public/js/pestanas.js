@@ -20,7 +20,7 @@ function closeNav() {
     $('.collapse').removeClass('in');
     $('.navbar-nav li').removeClass("active");
 }
-
+var numTab = 0;
 function AgregarNuevoTab(url, nombre) {
     closeNav();
     var tabs = document.getElementById("tabsApp");
@@ -39,9 +39,10 @@ function AgregarNuevoTab(url, nombre) {
         }
     }
     var lblTab = document.createElement("li");
-    var numTab = tabs.getElementsByTagName("li").length + 1;
+    //var numTab = tabs.getElementsByTagName("li").length + 1;
+    numTab = numTab + 1;
     var titulo = document.createElement("a");
-    var heigh = parseInt($(window).height()) - 150;
+    var heigh = parseInt($(window).height()) - 120;
     titulo.setAttribute("data-toggle", "tab");
     titulo.setAttribute("href", "#tab" + numTab);
     var eso = "#tab" + numTab;
@@ -51,6 +52,7 @@ function AgregarNuevoTab(url, nombre) {
     tabs.appendChild(lblTab);
     CambiarAtributoElementosTag("li", "tabsApp", "class", "");
     lblTab.className = "active";
+    lblTab.setAttribute("style", "padding:5px 10px;border-top-left-radius: 5px;border-top-right-radius: 5px;border: 2px solid #6E6E6E;");
     var iframes = document.getElementById("contenedortab");
     var srcTab = document.createElement("div");
     srcTab.id = "tab" + numTab;
@@ -65,7 +67,8 @@ function CerrarTab(objeto) {
     var nombre = $(objeto.parentNode).attr("href");
     var iframen = document.getElementById(nombre.replace("#", ""));
     iframen.parentNode.removeChild(iframen);
-    objeto.parentNode.parentNode.removeChild(objeto.parentNode);
+    //objeto.parentNode.parentNode.removeChild(objeto.parentNode);
+    objeto.parentNode.parentNode.parentNode.removeChild(objeto.parentNode.parentNode);
 }
 
 function CambiarAtributoElementosTag(tipo, idContenedor, atributo, valor) {

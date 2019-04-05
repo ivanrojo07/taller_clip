@@ -69,15 +69,15 @@
 													        <div class="row">
 													        	<div class="col-sm-4 form-group">
 													        		<label class="control-label">Alto:</label>
-													        		<label class="form-control">{{$material->alto}} {{$material->medidas}}</label>
+													        		<label class="form-control">{{$material->alto}} cm</label>
 													        	</div>
 													        	<div class="col-sm-4 form-group">
 													        		<label class="control-label">Ancho:</label>
-													        		<label class="form-control">{{$material->ancho}} {{$material->medidas}}</label>
+													        		<label class="form-control">{{$material->ancho}} cm</label>
 													        	</div>
 													        	<div class="col-sm-4 form-group">
 													        		<label class="control-label">Profundidad:</label>
-													        		<label class="form-control">{{$material->espesor}} {{$material->medidas}}</label>
+													        		<label class="form-control">{{$material->espesor}} cm</label>
 													        	</div>
 													        </div>
 													        <div class="row">

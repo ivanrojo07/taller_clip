@@ -46,14 +46,6 @@
                             <label class="control-label">Profundidad de la obra:</label>
                             <input required type="number" step="0.01" min="0" name="profundidad_obra" value="{{($edit && $obra) ? $obra->profundidad_obra : ""}}" id="profundidad_obra" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
                         </div>
-                        <div class="col-sm-3 form-group">
-                            <label class="control-label">Medidas de la obra:</label>
-                            <select required class="custom-select" name="unidad_obra" id="unidad_obra">
-                                <option value="mm" {{($edit && $material->unidad_obra == "mm") ? "selected" : ""}}>mm</option>
-                                <option value="cm" {{($edit && $material->unidad_obra == "cm") ? "selected" : ""}}>cm</option>
-                                <option value="m" {{($edit && $material->unidad_obra == "m") ? "selected" : ""}}>m</option>
-                            </select>
-                        </div>
                         <div class="col-sm-6 form-group">
                             <label class="control-label">Descripción de la obra:</label>
                             <textarea name="descripcion_obra" id="descripcion_obra" class="form-control">{{($edit && $obra) ? $obra->descripcion_obra : ""}}</textarea>
@@ -133,9 +125,9 @@
                     ${material.clave}
                 </td>
                 <td>${material.descripcion}</td>
-                <td>${material.alto} ${material.medidas}</td>
-                <td>${material.ancho} ${material.medidas} </td>
-                <td>${material.espesor} ${material.medidas}</td>
+                <td>${material.alto} cm</td>
+                <td>${material.ancho} cm</td>
+                <td>${material.espesor} cm</td>
                 <td>${material.color}</td>
                 <td>$${material.precio}</td>
                 <td>

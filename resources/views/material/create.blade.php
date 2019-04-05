@@ -62,14 +62,6 @@
                             <input required type="number" name="espesor" id="espesor" value="{{($edit && $material) ? $material->espesor : ""}}" class="form-control" step="0.01" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
                         </div>
                         <div class="col-sm-3 form-group">
-                            <label class="control-label">Medidas:</label>
-                            <select required class="custom-select" name="medidas" id="medidas">
-                                <option value="mm" {{($edit && $material->medidas == "mm") ? "selected" : ""}}>mm</option>
-                                <option value="cm" {{($edit && $material->medidas == "cm") ? "selected" : ""}}>cm</option>
-                                <option value="m" {{($edit && $material->medidas == "m") ? "selected" : ""}}>m</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-3 form-group">
                             <label class="control-label">Color:</label>
                             <input required type="text" name="color" id="color" value="{{($edit && $material) ? $material->color : ""}}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
                         </div>

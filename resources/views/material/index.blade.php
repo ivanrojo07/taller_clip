@@ -62,8 +62,7 @@
 							<td>{{$material->seccion}} / {{$material->descripcion}} / {{$material->proveedor->razonsocial ?
 								$material->proveedor->razonsocial : $material->proveedor->nombre." ".$material->proveedor->apellidopaterno."
 								".$material->proveedor->apellidomaterno}}</td>
-							<td>{{$material->alto}} X {{$material->ancho}} X {{$material->espesor}}
-								{{$material->medidas}}</td>
+							<td>{{$material->alto}} X {{$material->ancho}} X {{$material->espesor}} cm</td>
 							<td>{{$material->color}}</td>
 							<td>${{$material->costo}}</td>
 							<td>${{$material->precio}}</td>

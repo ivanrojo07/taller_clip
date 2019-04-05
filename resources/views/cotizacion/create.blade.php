@@ -632,7 +632,7 @@
 			});
 			return 0;
 		}
-		let total = parseFloat($('#montomanodeobra').val()) - parseFloat($('#costomanodeobra').val());
+		let total = parseFloat($('#montomanodeobra').val());// - parseFloat($('#costomanodeobra').val());
 		var ht = '<tr id="algo' + contador + '"><td> <input type="hidden" form="formcotizacion" name="manodeobrasn[]" value="' + $('#nombremanodeobra').val() + '"> ' + $('#nombremanodeobra').val() + '</td>' +
 			' <td><input type="hidden" form="formcotizacion" name="manodeobrasp[]" value="' + $('#puestomanodeobra').val() + '" >' + $('#puestomanodeobra').val() + '</td>' +
 			'<td><input type="hidden" form="formcotizacion" name="manodeobrasd[]" value="' + $('#desmanodeobra').val() + '"> ' + $('#desmanodeobra').val() + '</td>' +
@@ -669,7 +669,7 @@
 			});
 			return 0;
 		}
-		let total = parseFloat($('#montovario').val()) - parseFloat($('#costovario').val());
+		let total = parseFloat($('#montovario').val());// - parseFloat($('#costovario').val());
 		var ht = ' <tr id="algo' + contador + '"><td> <input type="hidden" form="formcotizacion" name="variosd[]" value="' + $('#desvario').val() + '" > ' + $('#desvario').val() + '</td>' +
 			'<td class="montovario"><input type="hidden" form="formcotizacion" name="variosm[]" value="' + $('#montovario').val() + '" > ' + $('#montovario').val() + '</td>' +
 			' <td> <input type="hidden" form="formcotizacion" name="variosc[]" value="' + $('#costovario').val() + '" > ' + $('#costovario').val() + '</td>' +
@@ -696,7 +696,7 @@
 			});
 			return 0;
 		}
-		let total = parseFloat($('#montoenvio').val()) - parseFloat($('#costoenvio').val());
+		let total = parseFloat($('#montoenvio').val());// - parseFloat($('#costoenvio').val());
 		var ht = '<tr id="algo' + contador + '"><td> <input type="hidden" form="formcotizacion" name="enviosdi[]" value="' + $('#direccionenvio').val() + '" > ' + $('#direccionenvio').val() + '</td>' +
 			' <td> <input type="hidden" form="formcotizacion" name="enviosd[]" value="' + $('#desenvio').val() + '" >' + $('#desenvio').val() + '</td>' +
 			' <td class="montoenvio"> <input type="hidden" form="formcotizacion" name="enviosm[]" value="' + $('#montoenvio').val() + '"  > ' + $('#montoenvio').val() + '</td>' +
