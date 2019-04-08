@@ -58,6 +58,7 @@
                         <div class="col-sm-3 form-group">
                             <label class="control-label">Precio total de venta:</label>
                             <input required type="text" id="total" name="precio_orden" class="form-control" value="0" readonly="">
+                            <input type="hidden" name="ganancia_orden" id="ganancia_orden">
                         </div>
                     </div>
                     <div id="obras">
@@ -128,6 +129,7 @@
                                     <input required type="number"  onchange="cambiarPrecio(0,${i+1})" name="profundidad_obra_marco[]" step="0.01" min="0" value="0" id="profundidad_obra_marco${i+1}" class="form-control controladordeprecio">
                                 </div>
                                 <div class="col-sm-3 form-group">
+                                    <input type="hidden" class="costomaterial" id="ganancia_obra${i+1}" value="0">
                                     <label class="control-label">Precio por medidas:</label>
                                     <input readonly value="0" class="form-control totalO" type="text" name="total_obra[]" id="total_obra${i+1}"  min="0">
                                 </div>
@@ -237,11 +239,6 @@
                             descripcion_material = descripcion_material.concat(`Clave: ${material.clave}, Sección: ${material.seccion}, Descripción: ${material.descripcion} \n`);
                         })
                         $("#materiales_obra"+index).val(descripcion_material);
-
-
-                        //TOTAL ORDEN CON PRECIOS OBR
-                        // totaltemp += parseFloat(obra.precio_obra);
-                        // $('#total').val(totaltemp);
                     }
                 }
             });
@@ -271,6 +268,7 @@
                 <td>${material.color}</td>
                 <td class="precioporm2">$${new Intl.NumberFormat('es-MX').format(material.precio)}</td>
                 <td>
+                    <input type="hidden" class="costo${id}" value="${material.costo}">
                     <input type="hidden" name="materiales_obra[` +  (id - 1 ) + `][]" value="${material.id}">
                     <input required type="number" step="1" min="0" name="cantidad_material_obra[` +  (id-1 ) + `][]" value="1" id="cantidad_material" class="form-control cant_input" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required onchange="actualizarPreicoMedidas(${id})">
                 </td>
@@ -285,21 +283,28 @@
                 
             </tr>`;
             $("#myMaterials" + id).append(rowHTML);
-            cambiarPrecio(material.precio, id);
+            console.log('material.costo: ' + material.costo);
+            cambiarPrecio(material.precio, id, material.costo);
             //alert(id);
         }
         
         function removeMaterial(id) {
             var cantaquitar = parseFloat($('#'+id).find('td.precioporm2').text().replace(/(\$|,)+/g,''));
+            //Obtenemos el td donde se encuantra el costo del material
+            var celda = $('#'+id).find('td')[7];
+
+            //obtenemos el costo del material en float
+            celda = parseFloat(celda.children[0].value);
+            
             console.log('cantidad a quitar: ' + cantaquitar);
             var obra = $('#'+id).parent().attr('id').replace('myMaterials','');
             console.log('obra: ' + obra);
             //alert('cantidad a quitar:\n' + cantaquitar + '\nid obra:\n' + obra);
-            cambiarPrecio(-cantaquitar, obra);
+            cambiarPrecio(-cantaquitar, obra, -celda);
             $(`#${id}`).remove();
         }
 
-        function cambiarPrecio(preciom2, obra_id){
+        function cambiarPrecio(preciom2, obra_id, costo_material){
             var ancho_marco = parseFloat($('#ancho_obra_marco' + obra_id).val()) / 100;
             var alto_marco = parseFloat($('#alto_obra_marco' + obra_id).val()) / 100;
             var profundidad_marco = parseFloat($('#profundidad_obra_marco' + obra_id).val());
@@ -308,13 +313,12 @@
             for (var i = 0; i < $('.cant_input').length; i++) {
                 var num_obra = $('.cant_input').eq(i).attr('name').replace('cantidad_material_obra\[', '').replace(/\]\[\]/, '').replace(',', '');
                 var precio_m2 = parseFloat($('.cant_input')[i].parentElement.parentElement.children[6].innerHTML.replace(/(\$|,)+/g, ''));
-                //console.log('preciom2: ' + preciom2);
-                //console.log('precio_m2: ' + precio_m2);
+                //var costomaterial = $('#costo' + obra_id).val();
+
                 if (obra_id-1 == num_obra && precio_m2 == Math.abs(preciom2)) {
                     cantidad_material = parseInt($('.cant_input')[i].value);
                 }
             }
-            //console.log('cantidad_material: ' + cantidad_material);
 
             if (profundidad_marco != 0) {
                 var volumen = (ancho_marco * alto_marco * profundidad_marco);
@@ -322,24 +326,23 @@
             else{
                 var volumen = (ancho_marco * alto_marco);
             }
-            //alert('medidads:\n' + ancho_marco + '\n' + alto_marco + '\n' + profundidad_marco);
-            //console.log($('input#cantidad_material.form-control')[0].value);
+
             var temp = volumen *preciom2 * cantidad_material;
+            var ganaciamaterial = 0.0;
+            if (!isNaN(costo_material)) 
+                 ganaciamaterial = volumen *costo_material * cantidad_material;
+            //console.log('ganaciamaterial: ' + ganaciamaterial);
+            //console.log('ganancia_obra: ' + $('#ganancia_obra' + obra_id).val());
+            $('#ganancia_obra' + obra_id).val(parseFloat($('#ganancia_obra' + obra_id).val()) + ganaciamaterial);
             console.log('temp: ' + temp);
-            //alert('cantiad:\n' + preciom2);
-            //alert('volumen:\n' + volumen);
             var valor =  parseFloat($('#total_obra'+obra_id).val().replace(',', '')) + (temp);
             var valor_anterior = parseFloat($('#total_obra'+obra_id).val().replace(',', ''));
             var precio_total = parseFloat($('#total').val().replace(',', ''));
-            //console.log('valor: ' + valor);
-            //console.log('valor_anterior: ' + valor_anterior);
+
             if (valor > 0.5){
-                //console.log('precio_total: ' + precio_total);
                 precio_total -= valor_anterior;
                 $('#total_obra'+obra_id).val(new Intl.NumberFormat('es-MX').format(valor));
-                //console.log('precio_total: ' + precio_total);
                 precio_total += valor;
-                //console.log('precio_total: ' + precio_total);
                 $('#total').val(new Intl.NumberFormat('es-MX').format(precio_total));
             }else{
                 $('#total_obra'+obra_id).val(0);
@@ -349,6 +352,14 @@
                 else
                     $('#total').val(new Intl.NumberFormat('es-MX').format(precio_total));
             }
+
+            // ######### Calcular ganancia de acuerdo al material
+            let ganancia_orden = 0.0;
+            $('.costomaterial').each(function() {
+                ganancia_orden += parseFloat($(this).val());
+            });
+            $('#ganancia_orden').val(ganancia_orden.toString());
+
             
         }
 

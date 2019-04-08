@@ -451,7 +451,7 @@
 				</div>
 				<hr>
 				<div class="row">
-					<h5>Total:</h5>
+					<h4>Total:</h4>
 				</div>
 				<div class="row">
 					<div class="col-sm-3 form-group">
@@ -507,13 +507,71 @@
 						</div>
 					</div>
 				</div>
+				<!--########################## Ganancias del pryecto#######################-->
 				<div class="row">
-					<div class="form-group col-4">
+					<h4>Ganancias:</h4>
+				</div>
+				<div class="row">
+					<div class="col-sm-3 text form-group">
+						<label for="tenvios" class="control-label">Ganancia orden(s):</label>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text">$</span>
+							</div>
+							<input readonly type="number" step="0.01" class="form-control" name="Ganancia_orden"
+								id="gordenes" value="0">
+							<div class="input-group-append">
+								<span class="input-group-text">MXN</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3 text form-group">
+						<label for="tenvios" class="control-label">Ganancia mano(s) de obra(s):</label>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text">$</span>
+							</div>
+							<input readonly type="number" step="0.01" class="form-control" name="Ganancia_manodeobra"
+								id="gmanodeobra" value="0">
+							<div class="input-group-append">
+								<span class="input-group-text">MXN</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3 text form-group">
+						<label for="tenvios" class="control-label">Ganancia varios:</label>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text">$</span>
+							</div>
+							<input readonly type="number" step="0.01" class="form-control" name="Ganancia_varios"
+								id="gvarios" value="0">
+							<div class="input-group-append">
+								<span class="input-group-text">MXN</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3 text form-group">
+						<label for="tenvios" class="control-label">Ganancia envio(s):</label>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text">$</span>
+							</div>
+							<input readonly type="number" step="0.01" class="form-control" name="Gananciaenvios"
+								id="genvios" value="0">
+							<div class="input-group-append">
+								<span class="input-group-text">MXN</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-3">
 						<label for="totalproyecto">Venta Proyecto</label>
 						<input required readonly form="formcotizacion" name="totalproyecto" type="number" step="0.01"
 							class="form-control" id="totalproyecto">
 					</div>
-					<div class="form-group col-4 pt-4 ">
+					<div class="form-group col-3 pt-4 ">
 						<div class="form-check">
 							<input required form="formcotizacion" class="form-check-input" type="radio" name="iva"
 								id="coniva" value="16">
@@ -529,12 +587,18 @@
 							</label>
 						</div>
 					</div>
-					<div class="form-group col col-md-4">
+					<div class="form-group col col-md-3">
+						<label for="totalneto">Ganacia Neto:</label>
+						<input required readonly form="formcotizacion" type="number" step="0.01" name="ganancianeto"
+							class="form-control" id="ganancianeto">
+					</div>
+					<div class="form-group col col-md-3">
 						<label for="totalneto">Total Neto:</label>
 						<input required readonly form="formcotizacion" type="number" step="0.01" name="totalneto"
 							class="form-control" id="totalneto">
 					</div>
 				</div>
+				
 				<div class="row">
 					<div class="col-sm-12 text-center form-group">
 						<button id="submit" type="submit" onclick="checar()"
@@ -597,8 +661,12 @@
           <td>${orden.nombre}</td>
           <td>${orden.fecha}</td>
           <td colspan="2">${orden.descripcion}</td>
-          <td>$${orden.precio_orden}</td>
           <td>
+          	<input type="hidden" class="gananciaO" value="${orden.ganancia_orden}">
+          	$${orden.precio_orden}
+          </td>
+          <td>
+          	<input type="hidden" class="costos_orden" value="${orden.ganancia_orden}">
             <input type="hidden" name="ordenes[]" value="${orden.id}">
               <div class="row mt-1 mb-1 justify-content-md-center">
                   <a href="#" onclick="removeOrden('row${orden.id}',${orden.precio_orden})" class="btn btn-danger remove_button">
@@ -637,7 +705,7 @@
 			' <td><input type="hidden" form="formcotizacion" name="manodeobrasp[]" value="' + $('#puestomanodeobra').val() + '" >' + $('#puestomanodeobra').val() + '</td>' +
 			'<td><input type="hidden" form="formcotizacion" name="manodeobrasd[]" value="' + $('#desmanodeobra').val() + '"> ' + $('#desmanodeobra').val() + '</td>' +
 			'<td class="montomanodeobra"> <input type="hidden" form="formcotizacion" name="manodeobrasm[]" value="' + $('#montomanodeobra').val() + '">' + $('#montomanodeobra').val() +
-			'<td><input type="hidden" form="formcotizacion" name="manodeobrasc[]" value="' + $('#costomanodeobra').val() + '"> ' + $('#costomanodeobra').val() + '</td>' +
+			'<td><input type="hidden" form="formcotizacion" name="manodeobrasc[]" class="costos_manodeobra" value="' + $('#costomanodeobra').val() + '"> ' + $('#costomanodeobra').val() + '</td>' +
 			'<td><input type="hidden" form="formcotizacion" name="manodeobrast[]" class="totals_manodeobra" value="' + total + '"> ' + total + '</td>' +
 			'<td><button class="btn btn-danger" type="button" onclick="removeManoO(' + "'algo" + contador + "'" + ',' + $("#montomanodeobra").val() + ')">Eliminar</button></td></tr>';
 		console.log(parseFloat($('#montomanodeobra').val()));
@@ -672,7 +740,7 @@
 		let total = parseFloat($('#montovario').val());// - parseFloat($('#costovario').val());
 		var ht = ' <tr id="algo' + contador + '"><td> <input type="hidden" form="formcotizacion" name="variosd[]" value="' + $('#desvario').val() + '" > ' + $('#desvario').val() + '</td>' +
 			'<td class="montovario"><input type="hidden" form="formcotizacion" name="variosm[]" value="' + $('#montovario').val() + '" > ' + $('#montovario').val() + '</td>' +
-			' <td> <input type="hidden" form="formcotizacion" name="variosc[]" value="' + $('#costovario').val() + '" > ' + $('#costovario').val() + '</td>' +
+			' <td> <input type="hidden" form="formcotizacion" class="costos_varios" name="variosc[]" value="' + $('#costovario').val() + '" > ' + $('#costovario').val() + '</td>' +
 			' <td> <input type="hidden" form="formcotizacion" class="totals_varios" name="variost[]" value="' + total + '" > ' + total + '</td>' +
 			'<td><button class="btn btn-danger" onclick="removeVario(' + "'algo" + contador + "'" + ',' + $("#montovario").val() + ')">Eliminar</button></td></tr>';
 
@@ -700,7 +768,7 @@
 		var ht = '<tr id="algo' + contador + '"><td> <input type="hidden" form="formcotizacion" name="enviosdi[]" value="' + $('#direccionenvio').val() + '" > ' + $('#direccionenvio').val() + '</td>' +
 			' <td> <input type="hidden" form="formcotizacion" name="enviosd[]" value="' + $('#desenvio').val() + '" >' + $('#desenvio').val() + '</td>' +
 			' <td class="montoenvio"> <input type="hidden" form="formcotizacion" name="enviosm[]" value="' + $('#montoenvio').val() + '"  > ' + $('#montoenvio').val() + '</td>' +
-			' <td class="montoenvio"> <input type="hidden" form="formcotizacion" name="enviosc[]" value="' + $('#costoenvio').val() + '"  > ' + $('#costoenvio').val() + '</td>' +
+			' <td class="montoenvio"> <input type="hidden" form="formcotizacion" class="costos_envio" name="enviosc[]" value="' + $('#costoenvio').val() + '"  > ' + $('#costoenvio').val() + '</td>' +
 			' <td class="montoenvio"> <input type="hidden" form="formcotizacion" class="totals_envio" name="enviost[]" value="' + total + '"  > ' + total + '</td>' +
 			'<td><button class="btn btn-danger" onclick="removeEnvio(' + "'algo" + contador + "'" + ',' + $("#montoenvio").val() + ')">Eliminar</button></td></tr>';
 		$('#tablaenvios').append(ht);
@@ -771,14 +839,40 @@
 		/***FINAL***/
 		$('#totalproyecto').val(a+b+c+d)
 
+		/***  Ganancias Netas  ***/
+		let gananciaordenes = a;
+		let gananciamanoobra = b;
+		let gananciavarios = c;
+		let gananciaenvios = d;
+		$('.costos_orden').each(function() {
+			gananciaordenes -= parseFloat($(this).val());
+		});
+		$('.costos_manodeobra').each(function() {
+			gananciamanoobra -= parseFloat($(this).val());
+		});
+		$('.costos_varios').each(function() {
+			gananciavarios -= parseFloat($(this).val());
+		});
+		$('.costos_envio').each(function() {
+			gananciaenvios -= parseFloat($(this).val());
+		});
+
+		$('#gordenes').val(gananciaordenes);
+		$('#gmanodeobra').val(gananciamanoobra);
+		$('#gvarios').val(gananciavarios);
+		$('#genvios').val(gananciaenvios);
+
 		
 	}
 	$('input[name=iva]').change(function(){
 		let bruto = parseFloat($('#totalproyecto').val());
+		let gneto = parseFloat($('#gordenes').val()) + parseFloat($('#gmanodeobra').val()) + parseFloat($('#gvarios').val()) + parseFloat($('#genvios').val());
 		if(document.getElementById('coniva').checked){
 			$('#totalneto').val(bruto*1.16);
+			$('#ganancianeto').val(gneto);
 		}else{
 			$('#totalneto').val(bruto);
+			$('#ganancianeto').val(gneto);
 		}
 
 	})
