@@ -104,7 +104,7 @@
                                 </div>
                                 <div class="col-sm-3 form-group">
                                     <label class="control-label">Número de piezas:</label>
-                                    <input required type="number" name="nopiezas_obra[]" step="1" min="1"  value="{{($edit && $obra) ? $obra->nopiezas : "1"}}" id="nopiezas" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                                    <input required type="number" name="nopiezas_obra[]" step="1" min="1"  value="{{($edit && $obra) ? $obra->nopiezas : "1"}}" class="form-control" id="nopiezas${i+1}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" onchange="actualizarPreicoMedidas(${i+1})" required>
                                 </div>
                                 <div class="col-sm-3 form-group">
                                     <label class="control-label">Alto de la obra (cm):</label>
@@ -204,6 +204,7 @@
                 `;
                 
                 $("#obras").append(rowHTML);
+                $('#total').val('0');
                 
             }
             
@@ -340,6 +341,7 @@
             var precio_total = parseFloat($('#total').val().replace(',', ''));
 
             if (valor > 0.5){
+                valor *= $('#nopiezas' + obra_id).val();
                 precio_total -= valor_anterior;
                 $('#total_obra'+obra_id).val(new Intl.NumberFormat('es-MX').format(valor));
                 precio_total += valor;
@@ -382,12 +384,14 @@
                         var volumen = (ancho_marco * alto_marco);
                     }
 
-                    total_obra += (precio_m2 * cantidad_material * volumen);
+                    total_obra += (precio_m2 * cantidad_material * volumen );
                     let precioMaterial = (precio_m2 * cantidad_material * volumen).toFixed(4);
                     precioMaterial = new Intl.NumberFormat('es-MX').format(parseFloat(precioMaterial));
                     $('.precioFmaterial').eq(i).text(precioMaterial);
                 }
             }
+            total_obra *= $('#nopiezas' + obra_id).val();
+
             $('#total_obra' + obra_id).val(new Intl.NumberFormat('es-MX').format(total_obra));
             var total_orden = 0;
             //console.log($('.totalO'));
@@ -399,6 +403,7 @@
             }
             $('#total').val(new Intl.NumberFormat('es-MX').format(total_orden));
         }
+
 
     </script>
     @endsection

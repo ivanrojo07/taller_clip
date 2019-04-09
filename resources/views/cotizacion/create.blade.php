@@ -679,6 +679,8 @@
 		$("#myOrdenes").append(rowHTML);
 		totalcotizacion = +totalcotizacion + +parseFloat(orden.precio_orden);
 		$("#totalordenes").text(totalcotizacion.toFixed(2));
+		$('#cliente_id').val('');
+		$('#ordenesdelcliente').empty();
 		calcular();
 	}
 	function removeOrden(id, precio) {

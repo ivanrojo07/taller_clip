@@ -12,15 +12,15 @@
         </div>
         <div class="card-body">
             <div class="mt-1">
-                <table class="table table-striped table-bordered table-responsive">
-                    <thead>
-                        <tr class="table-info">
+                <table class="table table-bordered table-responsive">
+                    <thead class="thead-dark">
+                        <tr>
                             <th scope="col">Cliente / Correo</th>
                             <th scope="col">Número de cotización</th>
                             <th scope="col">fecha de creación</th>
                             <th scope="col">Fecha de entrega</th>
                             <th scope="col">Costo proyecto</th>
-                            <th scope="col">Ganancia / Incremento</th>
+                            <th scope="col">Ganancia</th>
                             <th scope="col">Subtotal</th>
                             <th scope="col">Total</th>
                             <th scope="col">Acción</th>
@@ -35,7 +35,7 @@
                                 <td>{{$cotizacion->fechaactual}}</td>
                                 <td>{{$cotizacion->fechaentrega}}</td>
                                 <td>${{$cotizacion->totalproyecto}} MXN</td>
-                                <td>{{$cotizacion->incremento ? "$".$cotizacion->incremento." MXN" : "Sin Ganancia"}}</td>
+                                <td>{{$cotizacion->ganancianeto ? "$".$cotizacion->ganancianeto." MXN" : "Sin Ganancia"}}</td>
                                 <td>${{$cotizacion->resultado}}MXN</td>
                                 <td>${{$cotizacion->totalneto}}MXN</td>
                                 <td><a href="{{ route('cotizacion.show',['cotizacion'=>$cotizacion]) }}" class="btn btn-info">Detalle</a></td>

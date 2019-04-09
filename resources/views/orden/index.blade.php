@@ -9,14 +9,15 @@
       </div>
       <div class="card-body">
         <div class="mt-1">
-          <table id="tablaordenes" class="table table-striped table-bordered">
-            <thead>
-              <tr class="table-info">
+          <table id="tablaordenes" class="table table-bordered table-sm">
+            <thead class="thead-dark">
+              <tr>
                 <th scope="col">No. de orden</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Fecha</th>
                 <th scope="col">Descripción</th>
                 <th scope="col">Total Orden</th>
+                <th scope="col">Ganancia Orden</th>
                 <th scope="col">Obras</th>
                 <!-- <th scope="col">Acción</th> -->
                 <th scope="col">Cliente</th>
@@ -36,13 +37,12 @@
                 </td>
                 <td>{{$orden->descripcion}}</td>
                 <td>$ {{number_format($orden->precio_orden,4)}}</td>
+                <td>${{ number_format($orden->precio_orden - $orden->ganancia_orden) }}</td>
                 <td>
-                  <div class="row justify-content-md-center">
                     {{$orden->noobras}} obra(s): <br>
                     @foreach ($orden->obras as $obra)
                       {{$obra->nombre}} <br>
                     @endforeach
-                  </div>
                   <div class="modal fade" tabindex="-1" role="dialog" id="infObra{{$orden->id}}" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="width: 90%;margin: 3% auto">
                     <div class="modal-dialog" role="document" style="min-width: 100%!important;margin: 0!important;">
                       <div class="modal-content" style="min-height: 50vh!important;">
@@ -54,7 +54,7 @@
                         </div>
                         <div class="modal-body">
                           @foreach ($orden->obras as $index=>$obra)
-                            <table class="table table-striped table-bordered">
+                            <table class="table">
                               <tbody>
                                 <tr class="table-info">
                                   <th class="span" colspan="8" scope="colgroup">Obra {{$index+1}}</th>
@@ -81,7 +81,7 @@
                                 </tr>
                               </tbody>
                             </table>
-                            <table class="table table-striped table-bordered">
+                            <table class="table">
                               <tbody>
                                 <tr class="table-secondary">
                                   <th class="span" colspan="8" scope="colgroup">Materiales</th>

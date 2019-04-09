@@ -1,7 +1,8 @@
 @extends('layouts.cotizacion')
 @section('content')
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
-<script type="text/javascript" src="{{ asset('js/datatable.js') }}"></script>
+{{--<link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
+{{-- <script type="text/javascript" src="{{ asset('js/datatable.js') }}"></script> --}}
+	
 <div class="container-fluid">
 	<div class="card">
 		<div class="card-header">
@@ -12,27 +13,56 @@
 			</div>
 		</div>
 		<div class="card-body">
-			<form>
-				<div class="row">
-					<div class="col">
-						<h6>Buscador</h6>
+		<div class="mt-1">
+			{{--  <div class="container-table100">
+				<div class="wrap-table100">
+					<div class="table100 ver1 m-b-10">
+						<div class="table100-head">
+							<table>
+								<thead>
+									<tr class="row100 head">
+										<th class="cell100 column2">Clave</th>
+										<th class="cell100 column2">Sección / descripción / Proveedor</th>
+										<th class="cell100 column2">Medidas</th>
+										<th class="cell100 column2">Color</th>
+										<th class="cell100 column2">Costo</th>
+										<th class="cell100 column2">Precio venta(metro cuadrado)</th>
+										<th class="cell100 column2">Fecha</th>
+									</tr>
+								</thead>
+							</table>
+						</div>
+
+						<div class="table100-body js-pscroll">
+							<table>
+								<tbody>
+									@foreach ($materiales as $material)
+									<tr class="row100 body">
+										<td scope="row" class="cell100 column2">
+											<div class="row mt-1 mb-1 justify-content-md-center">
+												{{$material->clave}}
+											</div>
+											<div class="row mt-1 mb-1 justify-content-md-center">
+												<a href="{{ route('material.edit',['material'=>$material->id]) }}"
+													class="btn btn-info">Editar</a>
+											</div>
+										</td>
+										<td class="cell100 column2">{{$material->seccion}} / {{$material->descripcion}} / {{$material->proveedor->razonsocial ?
+											$material->proveedor->razonsocial : $material->proveedor->nombre." ".$material->proveedor->apellidopaterno."
+											".$material->proveedor->apellidomaterno}}</td>
+										<td class="cell100 column2">{{$material->alto}} X {{$material->ancho}} X {{$material->espesor}} cm</td>
+										<td class="cell100 column2">{{$material->color}}</td>
+										<td class="cell100 column2">${{$material->costo}}</td>
+										<td class="cell100 column2">${{$material->precio}}</td>
+										<td class="cell100 column2">{{date('d-m-Y', strtotime($material->created_at))}}</td>
+									</tr>
+									@endforeach
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
-				<div class="form-row">
-					<div class="col">
-						<input type="text" class="form-control" placeholder="Medida Color etc">
-					</div>
-					<div class="col">
-						<select class="custom-select">
-							<option value="" selected>Sección</option>
-							<option value="1">One</option>
-							<option value="2">Two</option>
-							<option value="3">Three</option>
-						</select>
-					</div>
-				</div>
-			</form>
-			<div class="mt-1">
+			</div>--}}
 				<table id="tablamateriales" class="table table-striped table-bordered">
 					<thead>
 						<tr class="table-info">
@@ -48,7 +78,6 @@
 					</thead>
 					<tbody>
 						@foreach ($materiales as $material)
-						{{-- expr --}}
 						<tr>
 							<td scope="row">
 								<div class="row mt-1 mb-1 justify-content-md-center">
@@ -71,7 +100,7 @@
 						</tr>
 						@endforeach
 					</tbody>
-				</table>
+				</table> 
 			</div>
 		</div>
 	</div>
@@ -107,5 +136,13 @@
 			}
 		);
 	});
+	$('.js-pscroll').each(function(){
+		var ps = new PerfectScrollbar(this);
+
+		$(window).on('resize', function(){
+			ps.update();
+		})
+	});
+			
 </script>
 @endsection
