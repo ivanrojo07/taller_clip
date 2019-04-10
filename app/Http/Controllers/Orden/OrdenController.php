@@ -52,7 +52,10 @@ class OrdenController extends Controller
     {
         //dd($request->all());
 
+        $precio_orden = str_replace(",", "",$request->precio_orden);
         $orden = Orden::create($request->all());
+        $orden->precio_orden = $precio_orden;
+        $orden->save();
 
         for($i = 0; $i < sizeof($request->nombre_obra); $i++){
             $obra = new Obra(['nombre' => $request->nombre_obra[$i],
