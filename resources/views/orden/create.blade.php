@@ -308,7 +308,7 @@
         function cambiarPrecio(preciom2, obra_id, costo_material){
             var ancho_marco = parseFloat($('#ancho_obra_marco' + obra_id).val()) / 100;
             var alto_marco = parseFloat($('#alto_obra_marco' + obra_id).val()) / 100;
-            var profundidad_marco = parseFloat($('#profundidad_obra_marco' + obra_id).val());
+            var profundidad_marco = parseFloat($('#profundidad_obra_marco' + obra_id).val()) / 100;
             var cantidad_material = 0;
 
             for (var i = 0; i < $('.cant_input').length; i++) {
@@ -375,7 +375,7 @@
                     var cantidad_material = parseInt($('.cant_input')[i].value);
                     var ancho_marco = parseFloat($('#ancho_obra_marco' + obra_id).val()) / 100;
                     var alto_marco = parseFloat($('#alto_obra_marco' + obra_id).val()) / 100;
-                    var profundidad_marco = parseFloat($('#profundidad_obra_marco' + obra_id).val());
+                    var profundidad_marco = parseFloat($('#profundidad_obra_marco' + obra_id).val()) / 100;
 
                     if (profundidad_marco != 0) {
                         var volumen = (ancho_marco * alto_marco * profundidad_marco);
