@@ -37,7 +37,7 @@
                 </td>
                 <td>{{$orden->descripcion}}</td>
                 <td>$ {{number_format($orden->precio_orden,4)}}</td>
-                <td>${{ number_format($orden->precio_orden - $orden->ganancia_orden) }}</td>
+                <td>$ {{ number_format(($orden->precio_orden - $orden->ganancia_orden),4) }}</td>
                 <td>
                     {{$orden->noobras}} obra(s): <br>
                     @foreach ($orden->obras as $obra)

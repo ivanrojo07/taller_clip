@@ -57,7 +57,7 @@
 
                         <div class="col-sm-3 form-group">
                             <label class="control-label">Precio total de venta:</label>
-                            <input required type="text" id="total" name="precio_orden" class="form-control" value="0" readonly="">
+                            <input required type="text" id="total" name="precio_orden" class="form-control"  readonly="">
                             <input type="hidden" name="ganancia_orden" id="ganancia_orden">
                         </div>
                     </div>
