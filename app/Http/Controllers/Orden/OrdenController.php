@@ -68,7 +68,7 @@ class OrdenController extends Controller
                               'ancho_marco' => $request->ancho_obra_marco[$i],
                               'largo_marco' => $request->alto_obra_marco[$i],
                               'profundidad_marco' => $request->profundidad_obra_marco[$i],
-                              'precio_obra' => $request->total_obra[$i]]);
+                              'precio_obra' => str_replace(",", "",$request->total_obra[$i]) ]);
             $obra->save();
             
             for($j = 0; $j < sizeof($request->materiales_obra[$i]); $j++){
