@@ -54,6 +54,7 @@ class OrdenController extends Controller
 
         $precio_orden = str_replace(",", "",$request->precio_orden);
         $orden = Orden::create($request->all());
+        $orden->ganancia_orden = $request->ganancia_orden;
         $orden->precio_orden = $precio_orden;
         $orden->save();
 
