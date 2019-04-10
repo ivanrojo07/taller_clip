@@ -22,12 +22,14 @@
 						<div id="datos" name="datos">
 							@if(count($proveedores) > 0)
 								<table class="table table-striped table-bordered table-hover" style="color:rgb(51, 51, 51); border-collapse: collapse; margin-bottom: 0px">
-									<tr class="info">
-										<th>@sortablelink('tipopersona', 'Tipo de persona')</th>
-										<th>@sortablelink('nombre', 'Nombre/Razón Social')</th>
-										<th>@sortablelink('rfc', 'RFC')</th>
-										<th>Operacion</th>
-									</tr>
+									<thead>
+										<tr class="info">
+											<th>@sortablelink('tipopersona', 'Tipo de persona')</th>
+											<th>@sortablelink('nombre', 'Nombre/Razón Social')</th>
+											<th>@sortablelink('rfc', 'RFC')</th>
+											<th>Operacion</th>
+										</tr>
+									</thead>
 									@foreach($proveedores as $proveedor)
 										<tr class="active" title="Has Click Aquì para Ver" style="cursor: pointer" href="#{{ $proveedor->id }}">
 											<td>{{ $proveedor->tipopersona }}</td>
