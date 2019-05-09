@@ -162,6 +162,13 @@ Route::resource('obra','Obra\ObraController');
 
 Route::get('/buscarMaterial/{seccion}/{idtabla}','Material\MaterialController@buscarMateriales')->name('buscarmaterialporseccion');
 Route::get('getObra/{obra}','Obra\ObraController@getObra');
-
 Route::resource('cotizacion','Cotizacion\CotizacionController');
 Route::get('buscarordenporcliente', 'Orden\OrdenController@buscarporcliente');
+Route::get('cotizacion/downloadPDF/{id}','Cotizacion\CotizacionController@downloadPDF');
+
+//Orden de trabajo
+Route::resource('actividades','OrdenTrabajo\ActividadesController');
+Route::get('ordentrabajoconvert/{id}','OrdenTrabajo\OrdenTrabajoController@convert');
+Route::resource('ordentrabajo','OrdenTrabajo\OrdenTrabajoController');
+
+

@@ -600,7 +600,10 @@
 				</div>
 				
 				<div class="row">
-					<div class="col-sm-12 text-center form-group">
+					<label class="switch ">
+						<input type="checkbox" name="PDF" value="1" >Generar PDF
+					</label>
+					<div class="col-sm-12 text-center form-group">			
 						<button id="submit" type="submit" onclick="checar()"
 							class="btn btn-success"><strong>Guardar</strong></button>
 					</div>

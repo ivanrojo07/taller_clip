@@ -313,8 +313,26 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row my-2">
+                            <div class="col">
+                                <div class="card">
+                                    <div id="clase11" class="card-header nave" data-toggle="collapse" data-target="#collapseExample12">
+                                        <p class="mb-0" style="float: left;">Orden de trabajo <i class="fa fa-refresh" aria-hidden="true"></i></p>
+                                        <p class="mb-0" style="float: right;"><i class="fa fa-angle-double-down"></i></p>
+                                    </div>
+                                    <ul id="collapseExample12" class="list-group list-group-flush collapse" data-parent="#acoreond">
+                                        <a class="nave11"  onclick="AgregarNuevoTab('{{ route('actividades.index') }}', 'Actividades')" href="#"><li class="list-group-item">Actividades </li></a>
+                                        <a class="nave11"  onclick="AgregarNuevoTab('{{ route('ordentrabajo.index') }}', 'Ordenes de trabajo')" href="#"><li class="list-group-item">Ordenes de trabajo</li></a>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                         @endauth
                     </div>
+
+
 
 
 

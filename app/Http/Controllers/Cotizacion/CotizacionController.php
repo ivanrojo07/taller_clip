@@ -10,6 +10,7 @@ use App\Orden;
 use App\Cliente;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use PDF;
 
 class CotizacionController extends Controller
 {
@@ -47,7 +48,7 @@ class CotizacionController extends Controller
      */
     public function store(Request $request)
     {   
-        // dd($request->all());
+        //dd($request->PDF);
         $cotizacion = Cotizacion::create($request->all());
         if($request->manodeobrasd){
             for($i = 0; $i < sizeof($request->manodeobrasd); $i++){
@@ -86,6 +87,9 @@ class CotizacionController extends Controller
             $cotizacion->ordens()->attach($request->ordenes[$i]);
         }
         $alert = ['message'=>"Cotizacion ".$cotizacion->nocotizacion." registrado", 'class'=>'success'];
+        if($request->PDF)
+            return $this->downloadPDF($cotizacion->id);
+
         return redirect()->route('cotizacion.create')->with('alert',$alert);
     }
 
@@ -135,4 +139,20 @@ class CotizacionController extends Controller
     {
         //
     }
+
+    public function downloadPDF($id){
+      $cotizacion = Cotizacion::find($id);
+      //dd($cotizacion->ordens);
+      $pdf = PDF::loadView('cotizacion.pdf', compact('cotizacion'));
+      return $pdf->download('Cotizacion '.$id.'.pdf');
+
+    }
+
+    // public function storeAndDownloadPDF(Request $request){
+    //   $cotizacion = Cotizacion::find($id);
+    //   //dd($cotizacion->ordens);
+    //   $pdf = PDF::loadView('cotizacion.pdf', compact('cotizacion'));
+    //   return $pdf->download('invoice.pdf');
+
+    // }
 }

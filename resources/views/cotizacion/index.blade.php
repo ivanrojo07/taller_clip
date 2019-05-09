@@ -38,7 +38,9 @@
                                 <td>{{$cotizacion->ganancianeto ? "$".$cotizacion->ganancianeto." MXN" : "Sin Ganancia"}}</td>
                                 <td>${{$cotizacion->resultado}}MXN</td>
                                 <td>${{$cotizacion->totalneto}}MXN</td>
-                                <td><a href="{{ route('cotizacion.show',['cotizacion'=>$cotizacion]) }}" class="btn btn-info">Detalle</a></td>
+                                <td><a href="{{ route('cotizacion.show',['cotizacion'=>$cotizacion]) }}" class="btn btn-info btn-sm">Detalle</a>
+                                    <a href="{{ url('cotizacion/downloadPDF/'.$cotizacion->id) }}" class="btn btn-secondary btn-sm">PDF</a>
+                                    <a href="{{ url('ordentrabajoconvert/'.$cotizacion->id)}}" class="btn btn-success btn-sm">Generar Orden</a></td>
 
                             </tr>
                         @endforeach
