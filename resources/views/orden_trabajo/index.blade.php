@@ -32,11 +32,22 @@
 										<th>Acciones</th>
 									</tr>
 								</thead>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td>Orden de trabajo X</td>
+										<td>B&W</td>
+										<td>13/05/2019</td>
+										<td>18/05/2019</td>
+										<td>50%</td>
+										<td><a class="btn btn-info" href="{{ route('ordentrabajo.show',['id'=>1]) }}">Ver</a></td>
+									</tr>									
+								</tbody>
 								
 							</table>
 							
 						
-							<h4>No hay Orenes de trabajo agregadas.</h4>
+							{{-- <h4>No hay Ordenes de trabajo agregadas.</h4> --}}
 						
 					</div>
 				</div>

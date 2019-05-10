@@ -25,7 +25,7 @@ class OrdenTrabajoController extends Controller
      */
     public function create()
     {
-        $cotizaciones=Cotizacion::get();
+        $cotizaciones=Cotizacion::get();        
         return view('orden_trabajo.create',['cotizaciones'=>$cotizaciones,'coleccion'=>1]);
     }
 
@@ -48,7 +48,7 @@ class OrdenTrabajoController extends Controller
      */
     public function show($id)
     {
-        //
+        return view ('orden_trabajo.view');
     }
 
     /**

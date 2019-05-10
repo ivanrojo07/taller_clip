@@ -324,6 +324,7 @@
                                     <ul id="collapseExample12" class="list-group list-group-flush collapse" data-parent="#acoreond">
                                         <a class="nave11"  onclick="AgregarNuevoTab('{{ route('actividades.index') }}', 'Actividades')" href="#"><li class="list-group-item">Actividades </li></a>
                                         <a class="nave11"  onclick="AgregarNuevoTab('{{ route('ordentrabajo.index') }}', 'Ordenes de trabajo')" href="#"><li class="list-group-item">Ordenes de trabajo</li></a>
+{{--                                         <a class="nave11"  onclick="AgregarNuevoTab('{{ route('ordentrabajo.show') }}', 'Ordenes de trabajo')" href="#"><li class="list-group-item">Avance actividades</li></a> --}}
                                         
                                     </ul>
                                 </div>

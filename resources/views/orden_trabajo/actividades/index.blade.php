@@ -29,6 +29,14 @@
 										<th class="text-center">Acciones</th>
 									</tr>
 								</thead>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td>Cortar</td>
+										<td>Cortar el mmaterial necesario</td>
+										<td><button class="btn btn-danger">Borrar</button></td>
+									</tr>
+								</tbody>
 								{{-- @foreach ($empleados as $empleado)
 									<tr class="active" title="Has Click Aquì para Ver" style="cursor: pointer" href="#{{$empleado->id}}">
 										<td>{{$empleado->id}}</td>
